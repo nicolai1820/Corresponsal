@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.giros.cancelar.pantallaCancelarGiroDatosBeneficiario"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/fondo">
+
+    <FrameLayout
+        android:id="@+id/contenedorHeaderCancelarGiroDatosBeneficiario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <ScrollView
+        android:layout_below="@+id/contenedorHeaderCancelarGiroDatosBeneficiario"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="5dp"
+            >
+
+            <TextView
+                android:layout_width="167dp"
+                android:layout_height="60dp"
+                android:fontFamily="@font/quicksand_regular"
+                android:textColor="@color/azul"
+                android:textSize="21dp"
+                android:text="@string/textView_CancelarGiroDatosBeneficiario"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="38dp"/>
+
+            <Spinner
+                android:id="@+id/spinner_tipoDocumentoBeneficiarioCancelarGiro"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="45dp"
+                android:layout_marginTop="68dp"
+                android:paddingStart="23dp"
+                android:background="@null"
+                android:foreground="@drawable/spinner_style"
+                android:overlapAnchor="false"
+                />
+
+            <EditText
+                android:id="@+id/editText_DocumentoBeneficiarioCancelarGiro"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="45dp"
+                android:layout_marginTop="21dp"
+                android:background="@drawable/input_form"
+                android:fontFamily="@font/quicksand_regular"
+                android:hint="@string/editText_CancelarGiroNumeroDocumentoBeneficiario"
+                android:inputType="number"
+                android:paddingStart="23dp"
+                android:textColorHint="@color/azul"
+                android:textSize="21dp"/>
+
+            <Button
+                android:id="@+id/button_ContinuarDatosBeneficiarioCancelarGiro"
+                android:layout_width="138dp"
+                android:layout_height="67dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="137dp"
+                android:background="@drawable/boton_inicio"
+                android:fontFamily="@font/quicksand_regular"
+                android:text="@string/button_CancelarGirosDatosBeneficiarioContinuar"
+                android:textAllCaps="false"
+                android:textColor="@color/blanco"
+                android:textSize="20dp"
+                android:onClick="continuarDatosBeneficiarioCancelarGiro"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+</RelativeLayout>

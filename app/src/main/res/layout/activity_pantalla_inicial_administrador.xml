@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo"
+    tools:context=".pantallas.corresponsal.administrador.inicio.pantallaInicialAdministrador">
+
+   <FrameLayout
+       android:id="@+id/contenedorFragmentAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       android:layout_alignParentTop="true"
+       android:layout_above="@+id/menuAdmin"
+       android:layout_marginBottom="5dp"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/menuAdmin"
+        android:background="@drawable/menu_fondo"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:itemIconTint="@color/azul"
+        app:itemTextColor="@color/azul"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:menu="@menu/menu_administrador"
+        android:paddingLeft="100dp"
+        android:paddingRight="100dp"
+        app:itemIconSize="35dp"
+        app:labelVisibilityMode="unlabeled"
+
+        />
+
+
+
+
+
+</RelativeLayout>

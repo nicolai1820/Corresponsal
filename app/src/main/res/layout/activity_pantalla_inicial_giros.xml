@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.giros.pantallaInicialGiros"
+    android:background="@drawable/fondo"
+    android:layout_gravity="center_horizontal"
+    >
+
+    <FrameLayout
+        android:id="@+id/contenedorHeaderGiros"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="10dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ScrollViewGirosInicial"
+        android:layout_below="@id/contenedorHeaderGiros"
+        android:layout_above="@id/menuUserGiros"
+        android:layout_marginBottom="5dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            >
+            <TextView
+                android:id="@+id/textView_Giros"
+                android:layout_width="264dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="37dp"
+                android:layout_marginEnd="74dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/textView_GirosInicial"
+                android:fontFamily="@font/quicksand_regular"
+                android:textSize="21dp"
+                android:textColor="@color/azul" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                >
+                <Button
+                    android:id="@+id/Button_Giros_Enviar"
+                    android:onClick="enviarGiro"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="117dp"
+                    android:layout_marginStart="36dp"
+                    android:layout_marginTop="46dp"
+                    android:background="@drawable/input_form"
+                    android:drawableTop="@drawable/enviar_giro_icon"
+                    android:text="@string/button_Giros_Enviar"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/quicksand_regular"
+                    android:textSize="19dp"
+                    android:textColor="@color/azul"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="15dp"/>
+
+                <Button
+                    android:id="@+id/Button_Giros_Reclamar"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="117dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="46dp"
+                    android:layout_marginEnd="36dp"
+                    android:background="@drawable/input_form"
+                    android:drawableTop="@drawable/reclamar_giro_icon"
+                    android:fontFamily="@font/quicksand_regular"
+                    android:text="@string/button_Giros_Reclamar"
+                    android:textAllCaps="false"
+                    android:textColor="@color/azul"
+                    android:textSize="19dp"
+                    android:paddingTop="13dp"
+                    android:paddingBottom="15dp"
+                    android:onClick="reclamarGiro"
+                    />
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/Button_Giros_Cancelar"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="117dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/input_form"
+                android:drawableTop="@drawable/cancelar_giro_icon"
+                android:fontFamily="@font/quicksand_regular"
+                android:text="@string/button_Giros_Cancelar"
+                android:textAllCaps="false"
+                android:textColor="@color/azul"
+                android:textSize="19dp"
+                android:paddingTop="13dp"
+                android:paddingBottom="15dp"
+                android:onClick="cancelarGiro"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="36dp"/>
+
+            <Button
+                android:id="@+id/Button_Giros_Salir"
+                android:layout_width="114dp"
+                android:layout_height="67dp"
+                android:background="@drawable/boton_inicio"
+                android:textColor="@color/blanco"
+                android:text="@string/button_Giros_Salir"
+                android:textAllCaps="false"
+                android:fontFamily="@font/quicksand_regular"
+                android:textSize="20dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:onClick="salirGiros"/>
+
+        </LinearLayout>
+
+
+
+
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/menuUserGiros"
+        android:background="@drawable/menu_fondo"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:itemIconTint="@color/azul"
+        app:itemTextColor="@color/azul"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:menu="@menu/menu_home"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp"
+        app:itemIconSize="35dp"
+        app:labelVisibilityMode="unlabeled"
+
+        />
+</RelativeLayout>

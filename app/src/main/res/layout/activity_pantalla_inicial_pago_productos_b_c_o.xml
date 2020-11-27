@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.pagoProductosBCO.pantallaInicialPagoProductosBCO"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/fondo">
+
+    <FrameLayout
+        android:id="@+id/contenedorHeaderPagosBCOInicial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ScrollView
+        android:layout_below="@+id/contenedorHeaderPagosBCOInicial"
+        android:layout_above="@+id/menuPagosBCO"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="5dp">
+    
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
+            
+            <TextView
+                android:layout_width="192dp"
+                android:layout_height="60dp"
+                android:textColor="@color/azul"
+                android:fontFamily="@font/quicksand_regular"
+                android:textSize="21dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="38dp"
+                android:text="@string/textView_PagoProductosBCOInicial"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="90dp"
+                >
+
+                <Button
+                    android:id="@+id/button_CarteraPagoProductosBCO"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="129dp"
+
+                    android:background="@drawable/input_form"
+                    android:drawableTop="@drawable/cartera"
+                    android:text="@string/button_PagoProductosBCOInicialCartera"
+                    android:textAllCaps="false"
+                    android:textColor="@color/azul"
+                    android:fontFamily="@font/quicksand_regular"
+                    android:paddingTop="34dp"
+                    android:paddingBottom="20dp"
+                    android:textSize="21dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="36dp"
+                    android:onClick="CarteraPagoProductosBCO"/>
+
+
+                <Button
+                    android:id="@+id/button_PagoProductosBCOTarjetaDeCredito"
+                    android:layout_width="0dp"
+                    android:layout_height="129dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/input_form"
+                    android:drawableTop="@drawable/credit_card"
+                    android:text="@string/button_PagoProductosBCOTarjetaDeCredito"
+                    android:textAllCaps="false"
+                    android:textColor="@color/azul"
+                    android:fontFamily="@font/quicksand_regular"
+                    android:textSize="21dp"
+                    android:paddingTop="24dp"
+                    android:paddingBottom="15dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="36dp"
+                    android:onClick="PagoProductosBCOTarjetaDeCredito"/>
+            </LinearLayout>
+
+      </LinearLayout>
+
+
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/menuPagosBCO"
+        android:background="@drawable/menu_fondo"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:itemIconTint="@color/azul"
+        app:itemTextColor="@color/azul"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:menu="@menu/menu_home"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp"
+        app:itemIconSize="35dp"
+        app:labelVisibilityMode="unlabeled"
+        />
+</RelativeLayout>

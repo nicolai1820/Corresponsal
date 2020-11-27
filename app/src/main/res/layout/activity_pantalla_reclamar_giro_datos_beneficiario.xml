@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.giros.reclamar.pantallaReclamarGiroDatosBeneficiario"
+    android:layout_gravity="center_vertical"
+    android:background="@drawable/fondo"
+    >
+
+    <FrameLayout
+        android:id="@+id/contenedorHeaderReclamarGiroDatosBeneficiario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/contenedorHeaderReclamarGiroDatosBeneficiario">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            >
+
+            <TextView
+                android:layout_width="173dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="28dp"
+                android:textColor="@color/azul"
+                android:fontFamily="@font/quicksand_regular"
+                android:textSize="21dp"
+                android:text="@string/textView_DatosBeneficiarioReclamarGiro"/>
+
+
+            <Spinner
+                android:id="@+id/spinner_tipoDocumentoBeneficiarioReclamarGiro"
+                android:overlapAnchor="false"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="45dp"
+                android:layout_marginTop="23dp"
+                android:foreground="@drawable/spinner_style"
+                android:background="@null"
+                android:paddingStart="23dp" />
+
+            <EditText
+                android:id="@+id/editText_DocumentoBeneficiarioReclamarGiro"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="45dp"
+                android:layout_marginTop="21dp"
+                android:textSize="21dp"
+                android:inputType="number"
+                android:fontFamily="@font/quicksand_regular"
+                android:textColorHint="@color/azul"
+                android:background="@drawable/input_form"
+                android:hint="@string/editText_DocumentoBeneficiarioReclamarGiro"
+                android:paddingStart="23dp"/>
+
+            <EditText
+                android:id="@+id/editText_MontoReclamarGiro"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="45dp"
+                android:layout_marginTop="21dp"
+                android:textSize="21dp"
+                android:inputType="number"
+                android:textColorHint="@color/azul"
+                android:fontFamily="@font/quicksand_regular"
+                android:background="@drawable/input_form"
+                android:hint="@string/editText_MontoReclamarGiro"
+                android:paddingStart="23dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                >
+                <TextView
+                    android:id="@+id/textView_terminosReclamarGiro"
+                    android:layout_width="190dp"
+                    android:layout_height="20dp"
+                    android:textColor="@color/azul"
+                    android:textSize="17dp"
+                    android:fontFamily="@font/roboto_light"
+                    android:text="@string/textView_terminos"
+                    android:layout_marginTop="35dp"/>
+
+
+                <Switch
+                    android:id="@+id/switch_ReclamarGiro"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:thumb="@drawable/sw_thumb"
+                    android:track="@drawable/sw_track"
+                    android:gravity="center"
+                    android:scaleX="1.3"
+                    android:scaleY="1.3"
+                    android:layout_marginBottom="10dp"
+                    />
+
+            </LinearLayout>
+            
+            <Button
+                android:id="@+id/button_ContinuarDatosBeneficiarioReclamarGiro"
+                android:layout_width="138dp"
+                android:layout_height="67dp"
+                android:background="@drawable/boton_inicio"
+                android:fontFamily="@font/quicksand_regular"
+                android:textColor="@color/blanco"
+                android:textSize="20dp"
+                android:textAllCaps="false"
+                android:text="@string/button_ContinuarDatosBeneficiarioReclamarGiro"
+                android:layout_marginTop="71dp"
+                android:layout_gravity="center_horizontal"
+                android:onClick="continuarDatosBeneficiarioReclamarGiro"/>
+
+
+
+
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+</RelativeLayout>

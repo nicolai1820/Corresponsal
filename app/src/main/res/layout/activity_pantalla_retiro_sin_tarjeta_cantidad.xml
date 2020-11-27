@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.retiro.sinTarjeta.pantallaRetiroSinTarjetaCantidad"
+    android:background="@drawable/fondo"
+    android:layout_gravity="center_horizontal">
+
+    <FrameLayout
+        android:id="@+id/contenedorHeaderRetiroSinTarjetaCantidad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ScrollView
+        android:layout_below="@id/contenedorHeaderRetiroSinTarjetaCantidad"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="38dp"
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:textColor="@color/azul"
+                android:fontFamily="@font/quicksand_regular"
+                android:textSize="21dp"
+                android:text="@string/textView_RetiroSinTarjetaCantidad"/>
+
+            <EditText
+                android:id="@+id/editText_RetiroSinTarjetaCantidad"
+                android:layout_marginTop="132dp"
+                android:textSize="21dp"
+                android:fontFamily="@font/quicksand_regular"
+                android:textColorHint="@color/azul"
+                android:paddingStart="23dp"
+                android:hint="@string/editText_RetiroSinTarjetaCantidad"
+                android:inputType="number"
+                android:background="@drawable/input_form"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="45dp"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"/>
+            
+            <Button
+                android:id="@+id/button_RetiroSinTarjetaContinuar"
+                android:fontFamily="@font/quicksand_regular"
+                android:textSize="20dp"
+                android:text="@string/button_RetiroSinTarjetaContinuar"
+                android:textAllCaps="false"
+                android:textColor="@color/blanco"
+                android:background="@drawable/boton_inicio"
+                android:layout_marginTop="143dp"
+                android:layout_width="138dp"
+                android:layout_height="67dp"
+                android:layout_gravity="center_horizontal"
+                android:onClick="retiroSinTarjetaContinuar"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

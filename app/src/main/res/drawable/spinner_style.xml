@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" android:paddingEnd="120dp">
+
+    <item>
+        <layer-list>
+            <item>
+                <shape android:shape="rectangle" >
+                    <solid/>
+                    <corners android:radius="10dp"/>
+                    <stroke android:color="@color/azul" android:width="1.5dp"/>
+                    <padding android:right="20dp"></padding>
+
+                </shape>
+            </item>
+
+
+            <item  android:height="10dp" android:width="20dp"  android:gravity="end|center_vertical">
+                <bitmap android:src="@drawable/spinner_arrow" ></bitmap>
+
+            </item >
+        </layer-list>
+
+    </item>
+
+</selector>
+
+
+
+
+
+

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.retiro.PantallaInicialRetiro"
+    android:background="@drawable/fondo">
+
+    <FrameLayout
+        android:id="@+id/contenedorHeaderPantallaInicialRetiro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ScrollView
+        android:layout_above="@id/menuRetiro"
+        android:layout_below="@id/contenedorHeaderPantallaInicialRetiro"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            
+            <TextView
+                android:layout_width="262dp"
+                android:layout_height="35dp"
+                android:textColor="@color/azul"
+                android:fontFamily="@font/quicksand_regular"
+                android:text="@string/textView_PantallaInicialRetiro"
+                android:textSize="21dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="38dp"
+                />
+
+            <Button
+                android:id="@+id/buttomPantallaInicialRetiroSinTarjeta"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:background="@drawable/input_form"
+                android:inputType="number"
+                android:textSize="21dp"
+                android:textAllCaps="false"
+                android:textColor="@color/azul"
+                android:fontFamily="@font/quicksand_regular"
+                android:text="@string/button_PantallaInicialRetiroSinTarjeta"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="45dp"
+                android:layout_marginTop="122dp"
+                android:onClick="pantallaInicialRetiroSinTarjeta"/>
+
+            <Button
+                android:id="@+id/buttomPantallaInicialRetiroConTarjeta"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:background="@drawable/input_form"
+                android:inputType="number"
+                android:textSize="21dp"
+                android:textAllCaps="false"
+                android:textColor="@color/azul"
+                android:fontFamily="@font/quicksand_regular"
+                android:text="@string/button_PantallaInicialRetiroConTarjeta"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="45dp"
+                android:layout_marginTop="13dp"
+                android:onClick="pantallaInicialRetiroConTarjeta"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/menuRetiro"
+        android:background="@drawable/menu_fondo"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:itemIconTint="@color/azul"
+        app:itemTextColor="@color/azul"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:menu="@menu/menu_home"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp"
+        app:itemIconSize="35dp"
+        app:labelVisibilityMode="unlabeled" />
+
+</RelativeLayout>

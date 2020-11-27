@@ -1,0 +1,1072 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Corresponsal Bancolombia</string>
+
+    <!--> Strings Activity Login </!-->
+    <string name="editText_Email">Usuario</string>
+    <string name="editText_password">Contraseña</string>
+    <string name="btnLogin">Inicio</string>
+    <string name="textView_Password">Olvidé mi contraseña</string>
+    <string name="textView_Dudas">¿Tienes dudas?</string>
+
+    <!--> Strings Activity Deposito  </!-->
+    <string name="radioButtonCorriente">Corriente</string>
+    <string name="radioButtonAhorros">Ahorros</string>
+    <string name="editTextNumeroDeCuenta">Ingrese el número de la cuenta</string>
+    <string name="editTextValorDeposito">Ingrese el valor a depositar</string>
+    <string name="buttonAceptar">Aceptar</string>
+
+    <!--> Strings Activity Inicio Usuario Común  </!-->
+    <string name="textView_Menu">¿Qué es esto?</string>
+    <string name="textView_Saludo">¡Hola!</string>
+    <string name="textView_Bienvenida">Bienvenido a Corresponsal Bancolombia.</string>
+    <!--string name="textView_Bienvenida">Bienvenido a <b>Corresponsal</b> Bancolombia</string-->
+    <string name="button_Giros">Giros</string>
+    <string name="button_ConsultaSaldo">Consulta de saldo</string>
+    <string name="button_Transferencia">Transferencia</string>
+    <string name="button_PagoProductos">Pago de productos</string>
+    <string name="button_PagoFacturas">Pago de facturas</string>
+    <string name="button_Duplicado">Duplicado</string>
+    <string name="button_Deposito">Depósito</string>
+    <string name="button_Retiro">Retiro</string>
+    <string name="button_Recargas">Recargas</string>
+
+    <!--> Strings Activity Pantalla Giro Inicial</!-->
+
+    <string name="textView_GirosInicial">Desde aquí puedes enviar, reclamar y cancelar giros.</string>
+    <string name="button_Giros_Enviar">Enviar</string>
+    <string name="button_Giros_Reclamar">Reclamar</string>
+    <string name="button_Giros_Cancelar">Cancelar</string>
+    <string name="button_Giros_Salir">Salir</string>
+
+    <!--> Strings Activity Pantalla  Ennviar Cantidad</!-->
+    <string name="textView_GirosEnviar">Ingrese la cantidad que va a girar.</string>
+    <string name="editText_CantidadGirosEnviar">Cantidad</string>
+    <string name="button_ContinuarGirosEnviar">Continuar</string>
+
+    <!--> Strings Activity Pantalla Enviar Giro Datos Girador</!-->
+
+    <string name="textView_DatosGiradorEnviarGiro">Ingrese los datos del girador.</string>
+    <string name="dropList_TipoDocumentoEnviarGiro">Tipo de Documento</string>
+    <string name="editText_DocumentoEnviarGiro">Número de Documento</string>
+    <string name="editText_NumeroDeCelularEnviarGiro">Número de Celular</string>
+    <string name="button_ContinuarDatosGiradorEnviarGiro">Continuar</string>
+
+
+    <!--> Strings Activity Pantalla Enviar Giro Datos Beneficiario</!-->
+
+    <string name="textView_DatosBeneficiarioEnviarGiro">Ingrese los datos del beneficiario.</string>
+    <string name="dropList_TipoDocumentoBeneficiarioEnviarGiro">Tipo de Documento</string>
+    <string name="editText_DocumentoBeneficiarioEnviarGiro">Número de Documento</string>
+    <string name="editText_NumeroDeCelularBeneficiarioEnviarGiro">Número de Celular</string>
+    <string name="button_ContinuarDatosBeneficiarioEnviarGiro">Continuar</string>
+
+
+    <!--> Strings Activity Pantalla Reclamar Giro Datos Beneficiario</!-->
+
+    <string name="textView_DatosBeneficiarioReclamarGiro">Ingrese los datos del Beneficiario.</string>
+    <string name="dropList_TipoDocumentoBeneficiarioReclamarGiro">Tipo de Documento</string>
+    <string name="editText_DocumentoBeneficiarioReclamarGiro">Número de Documento</string>
+    <string name="editText_MontoReclamarGiro">Monto</string>
+    <string name="button_ContinuarDatosBeneficiarioReclamarGiro">Continuar</string>
+
+
+    <!--> Strings Activity Pantalla Reclamar Giro Datos Beneficiario</!-->
+
+    <string name="textView_NumeroReferenciaReclamarGiro">Ingrese el número de referencia del giro.</string>
+    <string name="editText_NumeroReferenciaReclamarGiro">Número de referencia</string>
+    <string name="button_VamosNumeroReferenciaReclamarGiro">¡Vamos!</string>
+
+
+    <!--> Strings Activity Pantalla Cancelar Giro Datos Girador</!-->
+
+    <string name="textView_CancelarGiroDatosGirador">Ingrese los datos del depositante.</string>
+    <string name="editText_CancelarGiroNumeroDocumentoGirador">Número de documento</string>
+    <string name="button_CancelarGirosDatosGiradorContinuar">Continuar</string>
+
+
+    <!--> Strings Activity Pantalla Cancelar Giro Datos Beneficiario</!-->
+
+    <string name="textView_CancelarGiroDatosBeneficiario">Ingrese los datos del beneficiario.</string>
+    <string name="editText_CancelarGiroNumeroDocumentoBeneficiario">Número de documento</string>
+    <string name="button_CancelarGirosDatosBeneficiarioContinuar">Continuar</string>
+
+
+    <!--> Strings Activity Pantalla Cancelar Giro Pin Referencia</!-->
+
+    <string name="textView_CancelarGiroPinReferencia">Ingrese el pin de referencia.</string>
+    <string name="editText_CancelarGiroPinReferencia">Pin de referencia</string>
+    <string name="button_CancelarGirosPinReferenciaContinuar">Continuar</string>
+
+
+    <!--> Strings Activity Pantalla Depósito Datos Depositante</!-->
+
+    <string name="textView_DepositoDatosDepositante">Ingrese los datos del depositante.</string>
+    <string name="editText_DepositoDatosDepositanteNumeroCuenta">Número de cuenta</string>
+    <string name="editText_DepositoDatosDepositanteCantidad">Cantidad de depósito</string>
+    <string name="button_DepositoDatosDepositanteContinuar">Continuar</string>
+
+    <!--> Strings Activity Pantalla Pago Productos BCO</!-->
+
+    <string name="textView_PagoProductosBCOInicial">Pago tus productos del banco</string>
+    <string name="button_PagoProductosBCOInicialCartera">Cartera</string>
+    <string name="button_PagoProductosBCOTarjetaDeCredito">Tarjeta de crédito</string>
+
+
+    <!--> Strings Activity Pantalla Pago Productos Cartera Numero Pagare</!-->
+
+    <string name="textView_CarteraNumeroPagare">Ingrese el número de pagaré</string>
+    <string name="editText_CarteraNumeroPagare">Numero de pagaré</string>
+    <string name="button_CarteraNumeroPagareContinuar">Continuar</string>
+
+    <!--> Strings Activity Pantalla Pago Productos Tarjeta de Credito</!-->
+
+    <string name="textView_TarjetaDeCreditoPagoProductosBCO">Ingrese número de tarjeta y cantidad que va a pagar.</string>
+    <string name="editText_TarjetaDeCreditoPagoProductosBCONumero">Numero de tarjeta</string>
+    <string name="editText_TarjetaDeCreditoPagoProductosBCOCantidad">Cantidad a pagar</string>
+    <string name="button_TarjetaDeCreditoPagoProductosBCOContinuar">Continuar</string>
+
+    <!--> Strings Activity Pantalla Facturas</!-->
+
+    <string name="textView_PagoFacturasInicial">Paga de tres maneras diferentes.</string>
+    <string name="button_PagoFacturasInicialManual">Manual</string>
+    <string name="button_PagoFacturasInicialEmpresarial">Empresarial</string>
+    <string name="button_PagoFacturasInicialCodigoBarras">Código de barras</string>
+
+    <!--> Strings Activity Pantalla Facturas Manual</!-->
+
+    <string name="textView_PagoFacturasManual">Selecciona el tipo de pago</string>
+    <string name="button_PagoFacturasManualConvenio">Código de convenio</string>
+    <string name="button_PagoFacturasManualRecaudadora">Cuenta Recaudadora</string>
+
+    <!--> Strings Activity Pantalla Facturas Manual Convenio</!-->
+
+    <string name="textView_PagoFacturasManualConvenio">Ingrese código de convenio, y número de referencia.</string>
+    <string name="editText_PagoFacturasManualCodigoConvenio">Código de convenio</string>
+    <string name="editText_PagoFacturasManualNumeroReferencia">Número de referencia</string>
+    <string name="button_PagoFacturasManualContinuar">Continuar</string>
+
+    <!--> Strings Activity Pantalla Facturas Manual Cuenta Recaudadora</!-->
+
+    <string name="textView_PagoFacturasManualCuentaRecaudadora">Ingrese código de convenio, y número de referencia.</string>
+    <string name="editText_PagoFacturasManualNumeroCuentaRecaudadora">Cuenta recaudadora</string>
+    <string name="editText_PagoFacturasManualCuentaRecaudadoraNumeroReferencia">Número de referencia</string>
+    <string name="button_PagoFacturasManualCuentaRecaudadoraVamos">¡Vamos!</string>
+
+    <!--> Strings Activity Pantalla Inicial Retiros</!-->
+
+    <string name="textView_PantallaInicialRetiro">Selecciona el tipo de pago.</string>
+    <string name="button_PantallaInicialRetiroConTarjeta">Con tarjeta</string>
+    <string name="button_PantallaInicialRetiroSinTarjeta">Sin tarjeta</string>
+
+    <!--> Strings Activity Pantalla Retiro Sin Tarjeta Cantidad</!-->
+
+    <string name="textView_RetiroSinTarjetaCantidad">Ingrese la cantidad a retirar.</string>
+    <string name="editText_RetiroSinTarjetaCantidad">Cantidad</string>
+    <string name="button_RetiroSinTarjetaContinuar">Continuar</string>
+
+    <!--> Strings Activity Pantalla Retiro Sin Tarjeta Pin</!-->
+
+    <string name="textView_RetiroSinTarjetaPin">Ingrese el pin para continuar la transacción.</string>
+    <string name="editText_RetiroSinTarjetaPin">Pin</string>
+    <string name="button_RetiroSinTarjetaPinVamos">¡Vamos!</string>
+
+    <!--> Strings Activity Pantalla Ajustes Usuario Comun</!-->
+
+    <string name="button_BuscarDispositivoAjusterUsuarioComun">Buscar dispositivos</string>
+
+    <!--> Strings Activity Pantalla Confirmar Valores</!-->
+    <string name="button_ContinuarConfirmarValores">Continuar</string>
+
+    <!--> Strings Generales</!-->
+    <string name="textView_terminos">*Terminos y condiciones</string>
+
+
+    <!--> __________________________________________________________________Proyecto APOS _____________________________________________________________________________________________________</!-->
+    <string name="title_activity_venta" tools:ignore="ExtraTranslation"></string>
+    <string name="prompt_email">Email</string>
+    <string name="input_venta">VALOR</string>
+    <string name="input_iva">IVA</string>
+    <string name="input_inc">INC</string>
+    <string name="input_MontoBaseInc">MONTO BASE PARA INC</string>
+    <string name="input_baseDevolucion">BASE DE DEVOLUCION</string>
+    <string name="input_propina">INGRESE PROPINA</string>
+    <string name="label_vender">Vender</string>
+    <string name="label_ingresar_monto">Ingrese el monto</string>
+    <string name="label_ingresar_valor_venta">Ingrese el valor de la venta</string>
+    <string name="label_seleccionar_cuenta">Seleccione tipo de cuenta</string>
+    <string name="label_ahorros">Ahorros</string>
+    <string name="label_corriente">Corriente</string>
+    <string name="label_continuar">Continuar</string>
+    <string name="label_pos">Inserte, acerque o pase la tarjeta por el terminal</string>
+    <string name="label_pos_0">Ahora debes:</string>
+    <string name="label_pos_1">Acercar, insertar o pasar</string>
+    <string name="label_pos_3"> insertar o pasar</string>
+    <string name="label_pos_2">la tarjeta por el terminal</string>
+    <string name="conectando">Conectando...</string>
+    <string name="procesando">Procesando...</string>
+    <string name="inicializando">Inicializando...</string>
+    <string name="imprimiendo_duplicado">Imprimiendo duplicado...</string>
+    <string name="imprimiendo_reporte">Imprimiendo reporte...</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Generar venta</string>
+    <string name="popup_titulo">Verificación</string>
+    <string name="label_consultar">Consultar</string>
+    <string name="popup_descripcion">Confirmar los valores ingresados</string>
+    <string name="popup_total">Total venta</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="guardar_cambios">Guardar cambios</string>
+    <string name="actualizar_cnb">Actualizar Terminal Cnb</string>
+    <string name="aceptar">Aceptar</string>
+    <string-array name="propinas_array">
+        <item>5%</item>
+        <item>10%</item>
+        <item>15%</item>
+        <item>20%</item>
+        <item>Otro</item>
+    </string-array>
+
+    <string name="corresponsal_login">Iniciar sesión</string>
+    <string name="corresponsal_descripcion">Ingrese usuario</string>
+    <string name="corresponsal_username">Usuario</string>
+    <string name="corresponsal_descripcion2">Ingrese clave usuario</string>
+    <string name="corresponsal_password">Contraseña</string>
+    <string name="corresponsal_crear_usuario">Ingrese nombre de usuario</string>
+    <string name="corresponsal_crear_clave">Ingrese clave de usuario</string>
+    <string name="corresponsal_confirmar_clave">Confirmar clave de usuario</string>
+    <string name="corresponsal_crear">Crear usuario</string>
+    <string name="corresponsal_usuario_a_modificar">Ingrese Usuario a modificar</string>
+    <string name="corresponsal_validar_usuario">Validar</string>
+    <string name="corresponsal_modificar_usuario">Ingresar nuevo nombre de usuario</string>
+    <string name="corresponsal_modificar_clave">Ingrese nueva clave de usuario</string>
+    <string name="corresponsal_modificar">Actualizar usuario</string>
+    <string name="corresponsal_usuario_a_eliminar">Ingrese Usuario a eliminar</string>
+    <string name="corresponsal_eliminar_usuario">Eliminar</string>
+
+    <string-array name="corresponsal_administrador">
+        <item>Menú operador</item>
+        <item>Menú administrador</item>
+        <item>Cerrar sesión</item>
+    </string-array>
+    <string-array name="corresponsal_menu_administrador">
+        <item>Solicitud Anulacion</item>
+        <item>Admin. Usuarios</item>
+    </string-array>
+    <string-array name="corresponsal_lista_inicial">
+        <item>Menú operador</item>
+        <item>Cerrar sesión</item>
+    </string-array>
+    <string-array name="corresponsal_lista_menu">
+        <item>Retiro</item>
+        <item>Depósito</item>
+        <item>Duplicado</item>
+        <item>Pago de facturas</item>
+        <item>Recargas</item>
+        <item>Pago de productos BCO</item>
+        <item>Transferencia</item>
+        <item>Consulta de saldo</item>
+        <item>Giros</item>
+        <item>Consulta cupo CB</item>
+        <item>Cierre</item>
+        <item>Echo test</item>
+        <item>Inicialización</item>
+    </string-array>
+    <string-array name="corresponsal_lista_retiro">
+        <item>Con tarjeta</item>
+        <item>Sin tarjeta</item>
+    </string-array>
+    <string name="corresponsal_consulta">Iniciar sesión</string>
+    <string name="corresponsal_deposito_tipocuenta">Tipo de cuenta</string>
+    <string name="corresponsal_deposito_numero_cuenta">Número de cuenta</string>
+    <string name="corresponsal_deposito_monto">Monto a depositar</string>
+
+    <string name="corresponsal_transferencia_tipocuenta">Tipo de cuenta destino</string>
+    <string name="corresponsal_transferencia_numero_cuenta">Número de cuenta destino</string>
+    <string name="corresponsal_transferencia_monto">Monto a transferir</string>
+
+    <string name="corresponsal_retiro_monto">Monto a retirar</string>
+
+    <!-- Recargas -->
+    <string-array name="corresponsal_lista_recargas">
+        <item>Nequi</item>
+    </string-array>
+    <string name="corresponsal_recarga_celular_titulo">Ingrese número de celular</string>
+    <string name="corresponsal_recarga_celular_placeholder"># celular</string>
+    <string name="corresponsal_recarga_celular_boton">Enviar</string>
+    <string name="corresponsal_recarga_confirmar_titulo">Confirmar número de celular</string>
+    <string name="corresponsal_recarga_confirmar_placeholder"># celular</string>
+    <string name="corresponsal_recarga_confirmar_boton">Recargar</string>
+
+    <!-- Cierre -->
+    <string name="corresponsal_cierre_acceso_titulo">Clave Supervisor</string>
+    <string name="corresponsal_cierre_acceso_placeholder">Clave</string>
+    <string name="corresponsal_cierre_acceso_boton">Ingresar</string>
+    <string-array name="corresponsal_lista_cierre">
+        <item>General</item>
+        <item>Parcial</item>
+    </string-array>
+
+    <!-- Consultar Cupo CB -->
+    <string name="corresponsal_consultarcupo_acceso_titulo">Clave Supervisor</string>
+    <string name="corresponsal_consultarcupo_placeholder">Clave</string>
+    <string name="corresponsal_consultarcupo_acceso_boton">Ingresar</string>
+
+    <!-- Pago productos BCO -->
+    <string-array name="corresponsal_lista_pagobco">
+        <item>Cartera</item>
+        <item>Tarjeta de crédito</item>
+    </string-array>
+    <string name="corresponsal_pagobco_pagare_titulo">Ingrese número de pagaré</string>
+    <string name="corresponsal_pagobco_pagare_placeholder"># pagaré</string>
+    <string name="corresponsal_pagobco_pagare_boton">Validar</string>
+    <string name="corresponsal_pagobco_tarjeta_titulo">Ingrese número de tarjeta</string>
+    <string name="corresponsal_pagobco_tarjeta_placeholder"># tarjeta</string>
+    <string name="corresponsal_pagobco_tarjeta_boton">Continuar</string>
+    <string name="corresponsal_pagobco_valor_titulo">Ingrese valor a pagar</string>
+    <string name="corresponsal_pagobco_valor_placeholder">Valor a pagar</string>
+    <string name="corresponsal_pagobco_valor_boton">Validar</string>
+
+    <!-- Corresponsal facturas -->
+    <string-array name="corresponsal_lista_facturas">
+        <item>Manual</item>
+        <item>Tarjeta empresarial</item>
+        <item>Código de barras</item>
+    </string-array>
+
+    <string name="corresponsal_factura_codigo_convenio">Ingresar código de convenio</string>
+    <string name="corresponsal_factura_recaudo_cuenta">Ingresar cuenta recaudadora</string>
+    <string name="corresponsal_factura_valor_pagar">Confirme o modifique el valor</string>
+    <string name="corresponsal_lecturaTarjetaR1">Deslize</string>
+    <string name="corresponsal_lecturaTarjetaR2">Su tarjeta recaudo</string>
+    <string name="corresponsal_montoTempresarial1">Ingrese monto</string>
+    <string name="corresponsal_montoTempresarial2">Pago de facturas</string>
+    <!-- END CORRESPONSAL -->
+
+
+    <!-- INICIO TRANSACCIONES -->
+    <!-- menu -->
+    <string-array name="transacciones_menu">
+        <item>Duplicado</item>
+        <item>Reporte</item>
+        <item>Saldo</item>
+        <item>Cierre</item>
+        <item>Anulación</item>
+        <item>Bonos</item>
+        <item>Trans. de clave</item>
+        <item>Logon</item>
+        <item>Echo test</item>
+        <item>Inicializar</item>
+    </string-array>
+
+    <string-array name="transacciones_menu2">
+        <item>Logon</item>
+        <item>Echo test</item>
+        <item>Inicializar</item>
+    </string-array>
+
+    <!-- duplicado acceso -->
+    <string name="duplicado_acceso_titulo">Clave Supervisor</string>
+    <string name="duplicado_acceso_placeholder">Clave</string>
+    <string name="duplicado_acceso_boton">Ingresar</string>
+    <!-- duplicado tipo -->
+    <string-array name="duplicado_tipo">
+        <item>Último recibo</item>
+        <item>Otro recibo</item>
+    </string-array>
+    <!-- duplicado recibo -->
+    <string name="duplicado_recibo_titulo">Ingrese número de recibo</string>
+    <string name="duplicado_recibo_placeholder"># recibo</string>
+    <string name="duplicado_recibo_boton">Buscar</string>
+    <!-- duplicado tipo -->
+    <string-array name="duplicado_recibo_tipo">
+        <item>Duplicado comercio</item>
+        <item>Duplicado cliente</item>
+    </string-array>
+
+    <!--tipo cuenta sembrado tarjeta -->
+    <string-array name="tipo_cuenta_tarjeta_sembrado">
+        <item>Ahorro</item>
+        <item>Corriente</item>
+    </string-array>
+
+    <!-- reporte acceso -->
+    <string name="reporte_acceso_titulo">Clave Supervisor</string>
+    <string name="reporte_acceso_placeholder">Clave</string>
+    <string name="reporte_acceso_boton">Ingresar</string>
+    <!-- reporte tipo -->
+    <string-array name="reporte_tipo">
+        <item>Totales</item>
+        <item>Detallado</item>
+    </string-array>
+
+    <!-- anulacion acceso -->
+    <string name="anulacion_acceso_titulo">Clave Supervisor</string>
+    <string name="anulacion_acceso_placeholder">Clave</string>
+    <string name="anulacion_acceso_boton">Ingresar</string>
+    <!-- anulacion recibo tipo -->
+    <string-array name="anulacion_recibo_tipo">
+        <item>Último recibo</item>
+        <item>Otro recibo</item>
+    </string-array>
+    <!-- anulacion recibo -->
+    <string name="anulacion_recibo_titulo">Ingrese número de recibo</string>
+    <string name="anulacion_recibo_placeholder"># de recibo</string>
+    <string name="anulacion_recibo_boton">Buscar</string>
+
+    <!-- cierre acceso -->
+    <string name="cierre_acceso_titulo">Clave Supervisor</string>
+    <string name="cierre_acceso_placeholder">Clave</string>
+    <string name="cierre_acceso_boton">Ingresar</string>
+    <!-- cierre consulta -->
+    <string name="cierre_consulta">Espere cargando transacciones</string>
+
+    <!-- bonos tipo -->
+    <string-array name="bonos_tipo">
+        <item>Manual</item>
+        <item>Bono recargable</item>
+        <item>Anulación bono rec</item>
+    </string-array>
+    <!-- bonos acceso -->
+    <string name="bonos_acceso_titulo">Clave Supervisor Bono</string>
+    <string name="bonos_acceso_placeholder">Clave</string>
+    <string name="bonos_acceso_boton">Ingresar</string>
+    <!-- bonos recargables -->
+    <string-array name="bonos_recargables">
+        <item>La Riviera</item>
+        <item>Teatro Nacional</item>
+        <item>Colsubsidio</item>
+        <item>Pepe Ganga</item>
+        <item>Crepes Waffles</item>
+        <item>Studio F</item>
+    </string-array>
+
+    <!-- inicializar tipo -->
+    <string-array name="inicializar_tipo">
+        <item>Inicialización</item>
+        <item>Ini parámetros</item>
+    </string-array>
+    <!-- inicializar acceso -->
+    <string name="inicializar_acceso_titulo">Clave Supervisor</string>
+    <string name="inicializar_acceso_placeholder">Clave</string>
+    <string name="inicializar_acceso_boton">Ingresar</string>
+
+    <!-- transacciones_clave tipo -->
+    <string-array name="transacciones_clave">
+        <item>Clave internet</item>
+        <item>Cambio clave</item>
+        <item>Clave por olvido</item>
+        <item>Clave banca móvil</item>
+    </string-array>
+
+    <!-- Textos para configuración -->
+    <string name="configuracion_acceso_label">Clave administrador</string>
+
+    <!-- Menu configuracion -->
+    <string-array name="configuracion_menu">
+        <item>Terminal</item>
+        <item>Activación de impuestos</item>
+        <item>Claves</item>
+        <item>Comunicación</item>
+        <item>Texto Comercio</item>
+        <item>Corresp. No Bancario</item>
+        <item>Habilitar Tarifa Administrativa</item>
+        <item>Habilitar Efectivo</item>
+        <item>Paypass</item>
+        <item>Configurar Caja</item>
+        <item>Borrar Reverso</item>
+        <item>Habilitar Bonos Teff</item>
+        <item>Catalogos Digitales</item>
+        <item>Puntos Colombia</item>
+        <item>Valores Archivo CFGRBM</item>
+    </string-array>
+
+    <!-- Menu configuracion Activacion Impuestos-->
+    <string-array name="configuracion_impuestos">
+        <item>Iva</item>
+        <item>Iva Multiple</item>
+        <item>Inc</item>
+        <item>Inc Multiple</item>
+    </string-array>
+
+    <!-- Menu configuracion terminal -->
+    <string-array name="configuracion_menu_terminal">
+        <item>Configuración</item>
+        <item>Borrar transacciones</item>
+        <item>Envío serial</item>
+        <item>Borrar parámetros</item>
+    </string-array>
+
+    <!-- Menu configuracion claves -->
+    <string-array name="configuracion_menu_claves">
+        <item>Supervisor</item>
+        <item>Administrador</item>
+        <item>Adm Bonos R.</item>
+    </string-array>
+
+    <!-- Menu Giros -->
+    <string-array name="menu_corresponsal_giros">
+        <item>Enviar</item>
+        <item>Reclamar</item>
+        <item>Cancelar</item>
+    </string-array>
+    <string name="giros_valor_comision">Valor de comisión</string>
+    <string name="giros_tipo_documento">Tipo de documento</string>
+    <string name="giros_numero_documento">Número de documento</string>
+    <string name="giros_numero_documento_beneficiario">Número de documento beneficiario</string>
+    <string name="giros_numero_documento_girador">Número de documento girador</string>
+    <string name="giros_celular">Número de celular</string>
+    <string name="giros_referencia">Número de referencia</string>
+    <string name="giros_Pin_referencia">Ingrese Pin</string>
+
+    <!-- Menu configuracion corresponsal -->
+    <string-array name="configuracion_menu_corresponsal">
+        <item>Con Pan/Cta Virtual</item>
+        <item>Cta Sembrada</item>
+        <item>Deshabilitar CNB</item>
+        <item>Codigo Terminal</item>
+        <item>Habilitar Costo Transaccion</item>
+        <item>Habilitar Impresion Cierre</item>
+    </string-array>
+
+    <!-- Menu administrador -->
+    <string-array name="administardor_menu">
+        <item>Test Comunicacion</item>
+        <item>Test Impresion</item>
+        <item>Ver Transacciones</item>
+        <item>Ver Totales</item>
+        <item>Version Software</item>
+        <item>Consultar Reverso</item>
+    </string-array>
+
+    <!-- Menu configuracion comunicaciones -->
+    <string-array name="configuracion_menu_comunicaciones">
+        <item>WI-FI</item>
+        <item>GPRS</item>
+    </string-array>
+
+    <string-array name="comunicacion_tipo_canal">
+        <item>TCP/IP</item>
+        <item>TLS</item>
+    </string-array>
+
+    <string-array name="comunicacion_tipo_cuenta">
+        <item>Ahorro</item>
+        <item>Corriente</item>
+    </string-array>
+
+    <string-array name="login_tipo_usuario">
+        <item>Administrador</item>
+        <item>Operador</item>
+    </string-array>
+
+    <string-array name="corresponsal_lista_administrador">
+        <item>Crear</item>
+        <item>Modificar</item>
+        <item>Eliminar</item>
+        <item>Lista Usuarios</item>
+    </string-array>
+
+    <!-- Formulario de terminal -->
+    <string name="terminal_nii">NII</string>
+    <string name="terminal_nii_multipos">NII Multipos</string>
+    <string name="terminal_nii_celucompra">NII Celucompra</string>
+    <string name="terminal_nii_dcc">NII DCC</string>
+    <string name="terminal_numero">Número de terminal</string>
+    <string name="terminal_id_bonos">Id bonos</string>
+    <string name="terminal_numero_placa">Número de placa</string>
+    <string name="terminal_codigo_qr">Código QR</string>
+
+    <string name="terminal_cnb">Terminal CNB</string>
+    <string name="terminal_codgio_banco_cnb">Nro. Banco</string>
+
+    <!-- menu otras transacciones-->
+    <string-array name="otras_menu">
+        <item>Cnb Aval</item>
+        <item>Dinero Electronico</item>
+        <item>Codigo QR</item>
+        <item>Lealtad</item>
+        <item>Fidelizacion</item>
+        <item>T.Mi Compra</item>
+        <item>Sincronizacion Caja</item>
+        <item>Descuentos</item>
+        <item>Gasopass</item>
+    </string-array>
+
+    <!-- FIN TRANSACCIONES -->
+
+
+    <!-- FLujo Unificado -->
+    <string name="flujo_cuotas">Número de cuotas</string>
+    <string name="flujo_texto">Indique texto</string>
+    <string name="otraCuenta">Digite numero de cuenta</string>
+    <string name="flujo_cvc">Indique CVC</string>
+    <string name="flujo_documento">Ingrese Documento</string>
+    <string name="flujo_cuatro_ultimos">Cuatro últimos digitos</string>
+
+    <!--STRINGS DEL SDK Y API DE INGENICO-->
+    <string name="get_pin">GET PIN</string>
+    <string name="pin_entry_cancelled">PIN Entry cancelled</string>
+    <string name="credit_card">Crédito</string>
+    <string name="succeed">Succeed</string>
+    <string name="failed">Failed</string>
+    <string name="cancel">Cancel</string>
+    <string name="not_support">Not Support</string>
+    <string name="beeper">Beeper</string>
+    <string name="card">Card</string>
+    <string name="emv">EMV</string>
+    <string name="led">LED</string>
+    <string name="other">Other</string>
+    <string name="simple_pay">Simple Pay</string>
+    <string name="pinpad_dukpt">PINPAD (DUKPT)</string>
+    <string name="pinpad_fk">PINPAD (FK)</string>
+    <string name="pinpad_mksk">PINPAD (MK/SK)</string>
+    <string name="printer">Printer</string>
+    <string name="scanner">Scanner</string>
+    <string name="serial_port">Serial Port</string>
+    <string name="normal">Normal</string>
+    <string name="error">Error</string>
+    <string name="interval">Interval</string>
+    <string name="beep_two_seconds">Beep 2s</string>
+    <string name="magnetic_stripe_card">Magnetic Stripe Card</string>
+    <string name="cpu_ic_card">CPU IC Card</string>
+    <string name="indonesia_rf_card">Indonesia RF Card</string>
+    <string name="rf_card">RF Card</string>
+    <string name="is_card_in">Is Card In</string>
+    <string name="start_process">Start Process</string>
+    <string name="get_balance">Get Balance</string>
+    <string name="get_dol">Get DOL</string>
+    <string name="get_tlv">Get TLV</string>
+    <string name="get_data_apdu">Get Data APDU</string>
+    <string name="led_on_all">Turn On All</string>
+    <string name="led_off_all">Turn Off All</string>
+    <string name="operate_red_light">Operate Red Light</string>
+    <string name="operate_green_light">Operate Green Light</string>
+    <string name="operate_yellow_light">Operate Yellow Light</string>
+    <string name="operate_blue_light">Operate Blue Light</string>
+    <string name="turn_on_blue_and_red_lights">Turn On Blue And Red Lights</string>
+    <string name="init_dukpt_ik_ksn">Init DUKPT Ik KSN</string>
+    <string name="get_current_ksn">Get Current KSN</string>
+    <string name="increase_current_ksn">Increase Current KSN</string>
+    <string name="load_plain_text_key">Load Plain Text Key</string>
+    <string name="is_key_exist">Is Key Exist</string>
+    <string name="load_encrypted_key">Load Encrypted Key</string>
+    <string name="calculate_mac">Calculate MAC</string>
+    <string name="calculate_des">Calculate DES</string>
+    <string name="start_pin_entry">Start PIN Entry</string>
+    <string name="cancel_pin_entry">Cancel PIN Entry</string>
+    <string name="start_offline_pin_entry">Start Offline PIN Entry</string>
+    <string name="verify_offline_pin">Verify Offline PIN</string>
+    <string name="format_pinpad">Format PINPad</string>
+    <string name="switch_to_work_mode">Switch To Work Mode</string>
+    <string name="encrypt_mag_track">Encrypt Mag Track</string>
+    <string name="get_random">Get Random</string>
+    <string name="set_serial_number">Set Serial Number</string>
+    <string name="delete_key">Delete Key</string>
+    <string name="calculate_kcv">Calculate KCV</string>
+    <string name="print">Print</string>
+    <string name="get_printer_status">Get Printer Status</string>
+    <string name="feed_paper">Feed Paper</string>
+    <string name="start_front_scan">Start Front Scan</string>
+    <string name="start_back_scan">Start Back Scan</string>
+    <string name="stop_front_scan">Stop Front Scan</string>
+    <string name="stop_back_scan">Stop Back Scan</string>
+    <string name="open">Open</string>
+    <string name="send_data_timeout_0">Send Data (Timeout = 0)</string>
+    <string name="read_data_timeout_0">Read Data (Timeout = 0)</string>
+    <string name="send_data_timeout_10000">Send Data (Timeout = 10000)</string>
+    <string name="read_data_timeout_10000">Read Data (Timeout = 10000)</string>
+    <string name="flush">Flush</string>
+    <string name="close">Close</string>
+    <string name="get_terminal_info">Get Terminal Info</string>
+    <string name="update_system_time">Update System Time</string>
+    <string name="is_first_run">Is First Run</string>
+    <string name="is_exist">Is Exist</string>
+    <string name="get_boolean_param">Get Boolean Param</string>
+    <string name="get_string_param">Get String Param</string>
+    <string name="sale">Sale</string>
+    <string name="multimedia">Multimedia</string>
+    <string name="video_player">Video Player</string>
+    <string name="No_video_files">No video files!</string>
+    <string name="please_swipe_card">Please Swipe Card</string>
+    <string name="please_insert_card">Please Insert Card</string>
+    <string name="please_present_card">Please present Card</string>
+    <string name="waiting_for_printing">Waiting For Printing</string>
+    <string name="waiting_for_card">Waiting For Card</string>
+    <string name="timeout">Timeout</string>
+    <string name="transaction_approved">Transaction Approved</string>
+    <string name="transaction_declined">Transaction Declined</string>
+    <string name="get_icc_log">Get ICC Log</string>
+    <string name="get_ecc_log">Get ECC Log</string>
+    <string name="other_error">Other Error</string>
+    <string name="request_online_authorization">Request Online Authorization</string>
+    <string name="power_up_error">Power Up Error</string>
+    <string name="unknown_card">Unknown Card</string>
+    <string name="activate_error">Activate Error</string>
+    <string name="auth_sector_error">Auth Sector Error</string>
+    <string name="auth_block_error">Auth Block Error</string>
+    <string name="write_block_error">Write Block Error</string>
+    <string name="read_block_error">Read Block Error</string>
+    <string name="increase_value_error">Increase Value Error</string>
+    <string name="decrease_value_error">Decrease Value Error</string>
+    <string name="no_data">No Data</string>
+    <string name="confirm">Confirm</string>
+    <string name="pan">Pan</string>
+    <string name="date">Date</string>
+    <string name="input_offline_pin_times">Input Offline PIN (%1$d Times)</string>
+    <string name="input_offline_pin_one_time">Input Offline PIN (1 time)</string>
+    <string name="amount">Amount</string>
+    <string name="please_input_pin">Please Input PIN</string>
+    <string name="emv_power_up_card_error">Power up card error</string>
+    <string name="emv_activate_card_error">Activate card error</string>
+    <string name="wait_card_timeout">Wait card timeout</string>
+    <string name="not_start_process">Not start process</string>
+    <string name="emv_param_error">Emv parameter error</string>
+    <string name="no_final_select_data">No final select data</string>
+    <string name="amount_empty">Amount empty</string>
+    <string name="invalid_operation">Invalid operation</string>
+    <string name="dol_type_error">DOL type error</string>
+    <string name="emv_thread_is_working_please_try_again_later">EMV thread is working, please try again later</string>
+    <string name="the_card_no_candidate_applications">The card no candidate applications</string>
+    <string name="public_key_not_set_transaction_is_terminated">public key not set.</string>
+    <string name="the_application_of_the_card_has_expired_transaction_terminated">The application of the card has expired, transaction terminated</string>
+    <string name="contactless_quickpass_torn_transaction_transaction_is_terminated_please_take_remedial_measures">Contactless quickpass torn transaction, transaction is terminated, please take remedial measures.</string>
+    <string name="termination_is_required_transaction_exits_automatically">Termination is required,transaction exits automatically</string>
+    <string name="power_up_the_card_again_and_start_transaction">Power up the card again and start transaction(No need to input amount again)</string>
+    <string name="service_is_not_allowed_by_the_card">Service is not allowed by the card</string>
+    <string name="card_is_locked">Card is locked</string>
+    <string name="application_is_locked">Application is locked</string>
+    <string name="amount_limit_the_number_of_transactions_limit">Amount limit/The number of transactions limit</string>
+    <string name="apdu_error">APDU error</string>
+    <string name="apdu_status_code_error">APDU status error</string>
+    <string name="return_all_flash_card_process">Return all flash card process</string>
+    <string name="merchant_name">MERCHANT NAME</string>
+    <string name="merchant_no">MERCHANT NO</string>
+    <string name="terminal_no">TERMINAL NO</string>
+    <string name="operator_no">OPERATOR NO</string>
+    <string name="acquirer">ACQUIRER</string>
+    <string name="issuer">ISSUER</string>
+    <string name="card_no">CARD NO</string>
+    <string name="expiry_date">EXPIRY DATE</string>
+    <string name="trans_type">TRANS TYPE</string>
+    <string name="batch_no">BATCH NO</string>
+    <string name="date_time">DATE TIME</string>
+    <string name="request_exception">Request Exception</string>
+    <string name="service_crash">Service Crash</string>
+    <string name="device_disable">Device Disable</string>
+    <string name="device_used">Device Used</string>
+    <string name="param_error">Param Error</string>
+    <string name="ic_atr_error">IC ATR Error</string>
+    <string name="ic_data_error">IC Data Error</string>
+    <string name="ic_type_error">IC Type Error</string>
+    <string name="ic_for_response">IC For Response</string>
+    <string name="ic_need_reset">IC Need Reset</string>
+    <string name="ic_no_card">IC No Card</string>
+    <string name="ic_no_power">IC No Power</string>
+    <string name="ic_sw_error">IC SW Error</string>
+    <string name="ic_timeout">IC Timeout</string>
+    <string name="insert_error">Insert Error</string>
+    <string name="verify_track_or_data_error">Verify Track Or Data Error</string>
+    <string name="need_restart">Need Restart</string>
+    <string name="empty_card">Empty Card</string>
+    <string name="ic_no_verify">IC No Verify</string>
+    <string name="ack_error">ACK Error</string>
+    <string name="auth_error">Auth Error</string>
+    <string name="fuse_done">Fuse Done</string>
+    <string name="init_auth_error">Init Auth Error</string>
+    <string name="ic_no_auth">IC No Auth</string>
+    <string name="operation_forbid">Operation Forbid</string>
+    <string name="operation_fail">Operation Fail</string>
+    <string name="read_aac_error">Read AAC Error</string>
+    <string name="read_ar_error">Read AR Error</string>
+    <string name="read_ci_error">Read CI Error</string>
+    <string name="read_fail">Read Fail</string>
+    <string name="read_fuse_fail">Read Fuse Fail</string>
+    <string name="read_nc_error">Read NC Error</string>
+    <string name="read_only">Read Only</string>
+    <string name="read_pac_error">Read PAC Error</string>
+    <string name="return_power_up_information_error">Return Power-Up Information Error</string>
+    <string name="save_password_without_verify">Save Password Without Verify</string>
+    <string name="ic_write_timeout">IC Write Timeout</string>
+    <string name="user_zone_not_set">User Zone Not Set</string>
+    <string name="verify_count_over_limit">Verify Count Over Limit</string>
+    <string name="verify_fail">Verify Fail</string>
+    <string name="write_fail">Write Fail</string>
+    <string name="change_disable">Change Disable</string>
+    <string name="pinpad_error_error">other error</string>
+    <string name="pinpad_error_open_device">open device error</string>
+    <string name="pinpad_error_abolish">press cancel quit</string>
+    <string name="pinpad_error_no_such_pinpad">user specified pinpad does not exist</string>
+    <string name="pinpad_error_invalid_argument">invalid argument</string>
+    <string name="pinpad_error_no_enough_space">no enough space</string>
+    <string name="pinpad_error_time_out">time out</string>
+    <string name="pinpad_error_comm_err">communication error</string>
+    <string name="pinpad_error_unsupported_func">unsupported function</string>
+    <string name="pinpad_error_busy">pinpad hardware busy</string>
+    <string name="pinpad_error_no_such_key">no such key</string>
+    <string name="pinpad_error_fail_to_auth">fail to auth</string>
+    <string name="pinpad_error_cancelled_by_user">press cancel by user when enter pin</string>
+    <string name="pinpad_error_no_pin_entered">no enter pin press cancel</string>
+    <string name="pinpad_error_dukpt_counter_overflow">DUKPT counter overflow</string>
+    <string name="pinpad_error_reopen_pinpad">reopen pinpad device</string>
+    <string name="pinpad_error_bad_status">the current status of the module is incorrect</string>
+    <string name="pinpad_error_bad_key_usage">bad key usage</string>
+    <string name="pinpad_error_bad_mode_of_key_use">bad mode of key use</string>
+    <string name="pinpad_error_invalid_key_handle">invalid key handle</string>
+    <string name="pinpad_error_no_such_kap">the key area does not exist</string>
+    <string name="pinpad_error_kap_already_exist">the key area is already exist</string>
+    <string name="pinpad_error_permission_deny">app have no api permission</string>
+    <string name="pinpad_error_refer_to_key_outside_kap">refer to key outside kap</string>
+    <string name="pinpad_error_key_usage_and_mode_of_use_not_match">key usage and mode of use not match</string>
+    <string name="pinpad_error_accessing_kap_deny">access kap deny</string>
+    <string name="pinpad_error_wrong_kap_mode">the key area incompatible</string>
+    <string name="pinpad_error_pin_entry_too_frequently">pin entry too frequently</string>
+    <string name="pinpad_error_dukpt_not_inited">DUKPT not inited</string>
+    <string name="pinpad_error_incompatible_key_system">current key incompatible with key system</string>
+    <string name="pinpad_error_enc_key_fmt_too_simple">enter enc key format too simple</string>
+    <string name="pinpad_error_same_key_value_detected">same key value detected</string>
+    <string name="pinpad_error_key_bundle_err">key bundle error</string>
+    <string name="update_date_time_error">Update Date Time Error</string>
+    <string name="pinpad_error_encrypt_mag_track_too_frequently">encrypt mag track too frequently</string>
+    <string name="pinpad_error_input_comm_err">input comm error</string>
+    <string name="pinpad_error_input_timeout">input timeout</string>
+    <string name="pinpad_error_input_unknown">input unknown</string>
+    <string name="pinpad_error_service_died">service died</string>
+    <string name="pinpad_error_argument_conflict">argument conflict</string>
+    <string name="display_error">Display Error</string>
+    <string name="pinpad_beep_error">Pinpad Beep Error</string>
+    <string name="pinpad_reset_error">Pinpad Reset Error</string>
+    <string name="verify_offline_pin_error">Verify Offline PIN Error</string>
+    <string name="already_init">Already Init</string>
+    <string name="auth_license_error">Auth License Error</string>
+    <string name="init_engine_error">Init Engine Error</string>
+    <string name="init_decoder_library_fail">Init Decoder Library Fail</string>
+    <string name="no_init">No Init</string>
+    <string name="start_scanner_fail">Start Scanner Fail</string>
+    <string name="base_scan_library_error">Base Scan Library Error</string>
+    <string name="open_camera_error">Open Camera Error</string>
+    <string name="bit_count_error">Bit Count Error</string>
+    <string name="byte_count_error">Byte Count Error</string>
+    <string name="card_exist">Card Exist</string>
+    <string name="card_no_act">Card No ACT</string>
+    <string name="card_collide">Card Collide</string>
+    <string name="card_crc_error">Card CRC Error</string>
+    <string name="exchange_apdu_error">Exchange APDU Error</string>
+    <string name="invalid_call">Invalid Call</string>
+    <string name="exchange_operation_error">Exchange Operation Error</string>
+    <string name="frame_error">Frame Error</string>
+    <string name="interface_error">Interface Error</string>
+    <string name="multi_card_error">Multi Card Error</string>
+    <string name="no_tag_error">No TAG Error</string>
+    <string name="overflow_error">Overflow Error</string>
+    <string name="verify_parity_error">Verify Parity Error</string>
+    <string name="pass_card_error">Pass Card Error</string>
+    <string name="data_norm_error">Data Norm Error</string>
+    <string name="receive_buffer_overflow">Receive Buffer Overflow</string>
+    <string name="reset_error">Reset Error</string>
+    <string name="prevent_conflict_error">Prevent Conflict Error</string>
+    <string name="transaction_error">Transaction Error</string>
+    <string name="unknown_command">Unknown Command</string>
+    <string name="operate_data_value_error">Operate Data Value Error</string>
+    <string name="no_activate">No Activate</string>
+    <string name="printer_paper_ended">Out of paper</string>
+    <string name="printer_hardware_error">Hardware error</string>
+    <string name="printer_overheat">Overheat</string>
+    <string name="printer_buffer_overflow">Buffer overflow</string>
+    <string name="printer_low_vol">Low VOL protection</string>
+    <string name="printer_paper_ending">Out of paper soon</string>
+    <string name="printer_engine_error">Printer engine error</string>
+    <string name="printer_pe_not_found">Failed to locate automatically, paper returned to the original position</string>
+    <string name="printer_paper_jam">Paper jam</string>
+    <string name="printer_no_bm">Black mark not found</string>
+    <string name="printer_busy">Printer is busy</string>
+    <string name="printer_bm_black">Black signal</string>
+    <string name="printer_power_on">Printer is powered on</string>
+    <string name="printer_lift_head">Printer head is lifted</string>
+    <string name="printer_cutter_position_error">Cutter not in position</string>
+    <string name="printer_low_temperature">Low temperature</string>
+    <string name="get_ethernet_info">Get Info</string>
+    <string name="get_ethernet_config_info">Get Config Info</string>
+    <string name="get_ethernet_enabled_state">Get Ethernet Enabled State</string>
+    <string name="get_ethernet_state">Get Ethernet State</string>
+    <string name="is_ethernet_enabled">Is Ethernet Enabled</string>
+    <string name="is_ethernet_exist">Is Ethernet Exist</string>
+    <string name="config_ethernet_dhcp_to_true">Config Ethernet DHCP To True</string>
+    <string name="config_ethernet_dhcp_to_false">Config Ethernet DHCP To False</string>
+    <string name="ethernet">Ethernet</string>
+    <string name="unknown_error">Unknown Error</string>
+    <string name="ethernet_disabled">Ethernet Disabled</string>
+    <string name="ethernet_disabling">Ethernet Disabling</string>
+    <string name="ethernet_enabled">Ethernet Enabled</string>
+    <string name="ethernet_enabling">Ethernet Enabling</string>
+    <string name="ethernet_state_unknown">Ethernet State Unknown</string>
+    <string name="signpanel_title">Please sign</string>
+    <string name="signpanel_time_remain">Countdown: </string>
+    <string name="signpanel_btn_ok">"    OK    "</string>
+    <string name="signpanel_btn_redo">"  Redo  "</string>
+    <string name="signpanel_btn_cancel">Cancel</string>
+    <string name="signpanel_error_empty">Sign failed, please retry.</string>
+    <string name="signpanel_error_save_fail">The sign saving failed, please retry.</string>
+    <string name="signpanel_error_too_complex">The sign is too complex, please retry.</string>
+    <string name="sign_panel">Sign Panel</string>
+    <string name="statistic">Statistic</string>
+    <string name="system_statistic">System Statistic</string>
+    <string name="statistic_item">Statistic Item</string>
+    <string name="value">Value</string>
+    <string name="show_sign_panel">Show Sign Panel</string>
+    <string name="hide_sign_panel">Hide Sign Panel</string>
+    <string name="print_html5">Print (HTML5)</string>
+    <string name="at24cxx_ic_card">AT24Cxx IC Card</string>
+    <string name="sim4428_ic_card">SIM4428 IC Card</string>
+    <string name="sim4442_ic_card">SIM4442 IC Card</string>
+    <string name="at1604_ic_card">AT1604 IC Card</string>
+    <string name="at1608_ic_card">AT1608 IC Card</string>
+    <string name="psam_ic_card">PSAM IC Card</string>
+    <string name="lki_error_cancel">LKI Cancel</string>
+    <string name="lki_error_connecting">LKI Connecting</string>
+    <string name="lki_error_end">LKI End</string>
+    <string name="lki_error_get_tk">LKI Get TK</string>
+    <string name="lki_error_get_tk_end">LKI Get TK End</string>
+    <string name="lki_error_inject_key">LKI Inject Key</string>
+    <string name="lki_error_inject_key_end">LKI Inject Key End</string>
+    <string name="lki_error_open_device">LKI Open Device Error</string>
+    <string name="lki_error_process">LKI Process Error</string>
+    <string name="lki_error_status">LKI Status Error</string>
+    <string name="get_existent_kap_ids">Get Existent KAP IDs</string>
+    <string name="get_version">Get Version</string>
+    <string name="upgrade">Upgrade</string>
+    <string name="offline_dll_upgrade">Offline DLL Upgrade</string>
+    <string name="upgrading">Upgrading</string>
+    <string name="mock_download">Mock Download</string>
+    <string name="install_apk">Install APK</string>
+    <string name="uninstall_apk">Uninstall APK</string>
+    <string name="installing">Installing</string>
+    <string name="uninstalling">Uninstalling</string>
+    <string name="no_device">No Device</string>
+    <string name="network_switch">Network Switch</string>
+    <string name="switch_to_wifi">Switch To WIFI</string>
+    <string name="switch_to_gprs">Switch To GPRS</string>
+    <string name="switch_to_eth">Switch To ETH</string>
+    <string name="uid">UID</string>
+    <string name="block_num">Block Num</string>
+    <string name="block_data">Block data</string>
+    <string name="read">Read</string>
+    <string name="write">Write</string>
+    <string name="increase">Increase</string>
+    <string name="decrease">Decrease</string>
+    <string name="increase_decrease_value">Increase/Decrease value</string>
+    <string name="please_enter">Please enter</string>
+    <string name="card_not_exist">Card not exist</string>
+    <string name="block_number_exceeds_maximum">Block number exceeds maximum</string>
+    <string name="block_data_length_32_please_enter_again">Block data length is 32, please enter again</string>
+    <string name="print_multi_languages">Print multi languages</string>
+    <string name="flujo_pinOtp">INGRESE SU PIN OTP</string>
+    <string name="proteja_su_clave">Proteja su clave</string>
+    <string name="de_terceros">De terceros</string>
+    <string name="codigo_cajero">Ingrese codigo de cajero</string>
+    <string name="galones">Ingrese galones</string>
+
+    <string name="time_out_title">Atención</string>
+    <string name="time_out_message">La transaccion sera cancelada </string>
+    <string name="time_out_stay">Continuar operando</string>
+    <string name="time_out_sesion_out">Su sesión terminará en %s segundos</string>
+    <string name="time_out_time">1</string>
+    <string name="bienvenida">Bienvenido a tu Corresponsal Bancario</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="large_text">
+        "Material is the metaphor.\n\n"
+
+        "A material metaphor is the unifying theory of a rationalized space and a system of motion."
+        "The material is grounded in tactile reality, inspired by the study of paper and ink, yet "
+        "technologically advanced and open to imagination and magic.\n"
+        "Surfaces and edges of the material provide visual cues that are grounded in reality. The "
+        "use of familiar tactile attributes helps users quickly understand affordances. Yet the "
+        "flexibility of the material creates new affordances that supercede those in the physical "
+        "world, without breaking the rules of physics.\n"
+        "The fundamentals of light, surface, and movement are key to conveying how objects move, "
+        "interact, and exist in space and in relation to each other. Realistic lighting shows "
+        "seams, divides space, and indicates moving parts.\n\n"
+
+        "Bold, graphic, intentional.\n\n"
+
+        "The foundational elements of print based design typography, grids, space, scale, color, "
+        "and use of imagery guide visual treatments. These elements do far more than please the "
+        "eye. They create hierarchy, meaning, and focus. Deliberate color choices, edge to edge "
+        "imagery, large scale typography, and intentional white space create a bold and graphic "
+        "interface that immerse the user in the experience.\n"
+        "An emphasis on user actions makes core functionality immediately apparent and provides "
+        "waypoints for the user.\n\n"
+
+        "Motion provides meaning.\n\n"
+
+        "Motion respects and reinforces the user as the prime mover. Primary user actions are "
+        "inflection points that initiate motion, transforming the whole design.\n"
+        "All action takes place in a single environment. Objects are presented to the user without "
+        "breaking the continuity of experience even as they transform and reorganize.\n"
+        "Motion is meaningful and appropriate, serving to focus attention and maintain continuity. "
+        "Feedback is subtle yet clear. Transitions are efﬁcient yet coherent.\n\n"
+
+        "3D world.\n\n"
+
+        "The material environment is a 3D space, which means all objects have x, y, and z "
+        "dimensions. The z-axis is perpendicularly aligned to the plane of the display, with the "
+        "positive z-axis extending towards the viewer. Every sheet of material occupies a single "
+        "position along the z-axis and has a standard 1dp thickness.\n"
+        "On the web, the z-axis is used for layering and not for perspective. The 3D world is "
+        "emulated by manipulating the y-axis.\n\n"
+
+        "Light and shadow.\n\n"
+
+        "Within the material environment, virtual lights illuminate the scene. Key lights create "
+        "directional shadows, while ambient light creates soft shadows from all angles.\n"
+        "Shadows in the material environment are cast by these two light sources. In Android "
+        "development, shadows occur when light sources are blocked by sheets of material at "
+        "various positions along the z-axis. On the web, shadows are depicted by manipulating the "
+        "y-axis only. The following example shows the card with a height of 6dp.\n\n"
+
+        "Resting elevation.\n\n"
+
+        "All material objects, regardless of size, have a resting elevation, or default elevation "
+        "that does not change. If an object changes elevation, it should return to its resting "
+        "elevation as soon as possible.\n\n"
+
+        "Component elevations.\n\n"
+
+        "The resting elevation for a component type is consistent across apps (e.g., FAB elevation "
+        "does not vary from 6dp in one app to 16dp in another app).\n"
+        "Components may have different resting elevations across platforms, depending on the depth "
+        "of the environment (e.g., TV has a greater depth than mobile or desktop).\n\n"
+
+        "Responsive elevation and dynamic elevation offsets.\n\n"
+
+        "Some component types have responsive elevation, meaning they change elevation in response "
+        "to user input (e.g., normal, focused, and pressed) or system events. These elevation "
+        "changes are consistently implemented using dynamic elevation offsets.\n"
+        "Dynamic elevation offsets are the goal elevation that a component moves towards, relative "
+        "to the component’s resting state. They ensure that elevation changes are consistent "
+        "across actions and component types. For example, all components that lift on press have "
+        "the same elevation change relative to their resting elevation.\n"
+        "Once the input event is completed or cancelled, the component will return to its resting "
+        "elevation.\n\n"
+
+        "Avoiding elevation interference.\n\n"
+
+        "Components with responsive elevations may encounter other components as they move between "
+        "their resting elevations and dynamic elevation offsets. Because material cannot pass "
+        "through other material, components avoid interfering with one another any number of ways, "
+        "whether on a per component basis or using the entire app layout.\n"
+        "On a component level, components can move or be removed before they cause interference. "
+        "For example, a floating action button (FAB) can disappear or move off screen before a "
+        "user picks up a card, or it can move if a snackbar appears.\n"
+        "On the layout level, design your app layout to minimize opportunities for interference. "
+        "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
+        "when a user tries to pick up one of cards.\n\n"
+    </string>
+
+</resources>

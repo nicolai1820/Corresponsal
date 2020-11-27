@@ -1,0 +1,7 @@
+/Users/netcom/Desktop/App Corresponsal/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/netcom/Desktop/App Corresponsal/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/netcom_Bancolombia.dir
+/Users/netcom/Desktop/App Corresponsal/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/netcom_Caja.dir
+/Users/netcom/Desktop/App Corresponsal/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+/Users/netcom/Desktop/App Corresponsal/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/netcom_Lealtad.dir
+/Users/netcom/Desktop/App Corresponsal/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/netcom_Venta.dir
+/Users/netcom/Desktop/App Corresponsal/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/native-lib.dir

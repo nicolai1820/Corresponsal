@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ToolbarTheme" parent="Theme.AppCompat.Light">
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textColor">@color/netcom_blanco</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:subtitleTextColor">@color/netcom_blanco</item>
+    </style>
+</resources>

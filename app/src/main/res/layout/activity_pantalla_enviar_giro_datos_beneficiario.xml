@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo"
+    android:layout_gravity="center_horizontal"
+    >
+
+    <FrameLayout
+        android:id="@+id/contenedorHeaderGirosDatosBeneficiario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/contenedorHeaderGirosDatosBeneficiario">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="167dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/quicksand_regular"
+                android:text="@string/textView_DatosBeneficiarioEnviarGiro"
+                android:textColor="@color/azul"
+                android:textSize="21dp" />
+
+            <Spinner
+                android:id="@+id/spinner_tipoDocumentoBeneficiarioEnviarGiro"
+                android:layout_width="match_parent"
+                android:layout_marginEnd="45dp"
+                android:layout_height="49dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="68dp"
+                android:paddingStart="23dp"
+                android:background="@null"
+                android:foreground="@drawable/spinner_style"
+                android:overlapAnchor="false"
+                />
+
+
+            <EditText
+                android:id="@+id/editText_DocumentoBeneficiarioEnviarGiro"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="45dp"
+                android:layout_marginTop="21dp"
+                android:background="@drawable/input_form"
+                android:fontFamily="@font/quicksand_regular"
+                android:hint="@string/editText_DocumentoBeneficiarioEnviarGiro"
+                android:inputType="number"
+                android:paddingStart="23dp"
+                android:textColorHint="@color/azul"
+                android:textSize="21dp">
+
+            </EditText>
+
+            <EditText
+                android:id="@+id/editText_NumeroCelularBeneficiarioEnviarGiro"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="45dp"
+                android:layout_marginTop="21dp"
+                android:background="@drawable/input_form"
+                android:fontFamily="@font/quicksand_regular"
+                android:hint="@string/editText_NumeroDeCelularBeneficiarioEnviarGiro"
+                android:inputType="number"
+                android:paddingStart="23dp"
+                android:textColorHint="@color/azul"
+                android:textSize="21dp">
+
+            </EditText>
+
+            <Button
+                android:id="@+id/button_ContinuarDatosBeneficiarioEnviarGiro"
+                android:layout_width="138dp"
+                android:layout_height="67dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="78dp"
+                android:background="@drawable/boton_inicio"
+                android:fontFamily="@font/quicksand_regular"
+                android:text="@string/button_ContinuarDatosBeneficiarioEnviarGiro"
+                android:textAllCaps="false"
+                android:textColor="@color/blanco"
+                android:textSize="20dp"
+                android:onClick="continuarDatosBeneficiario"/>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</RelativeLayout>

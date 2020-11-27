@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="co.com.netcom.corresponsal">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="Corressponsal"
+        android:roundIcon="@mipmap/ic_cnb_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.retiro.sinTarjeta.pantallaRetiroSinTarjetaPin" />
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.retiro.sinTarjeta.pantallaRetiroSinTarjetaCantidad" />
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.retiro.PantallaInicialRetiro" />
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.manual.manualCuentaRecaudadora.pantallaPagoFacturasManualCuentaRecaudadora" />
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.manual.manualConvenio.pantallaPagoFacturasManualConvenio" />
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.manual.pantallaPagoFacturasManual" />
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.pantallaInicialPagoFacturas" />
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoProductosBCO.tarjetaCredito.pantallaTarjetaCreditoProductosBCO" />
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoProductosBCO.cartera.pantallaCarteraNumeroPagare" />
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoProductosBCO.pantallaInicialPagoProductosBCO" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.deposito.pantallaDepositoDatosDepositante"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.cancelar.pantallaCancelarGiroPinReferencia" />
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.cancelar.pantallaCancelarGiroDatosBeneficiario" />
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.cancelar.pantallaCancelarGiroDatosGirador" />
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.reclamar.pantallaReclamarGiroNumeroReferencia" />
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.reclamar.pantallaReclamarGiroDatosBeneficiario" />
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.enviar.pantallaEnviarGiroDatosBeneficiario" />
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.enviar.pantallaEnviarGiroDatosGirador" />
+        <activity android:name=".pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion" />
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.enviar.pantallaEnviarGiroCantidad" />
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.pantallaInicialGiros" />
+        <activity android:name=".pantallas.corresponsal.administrador.inicio.pantallaInicialAdministrador" />
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".pantallas.comunes.logIn.LogIn">
+
+        </activity>
+        <activity android:name=".pantallas.comunes.popUp.PopUp" />
+        <activity android:name=".PruebaC" />
+    </application>
+
+</manifest>

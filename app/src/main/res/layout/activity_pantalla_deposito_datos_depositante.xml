@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.deposito.pantallaDepositoDatosDepositante"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/fondo">
+
+    <FrameLayout
+        android:id="@+id/contenedorHeaderDepositoDatosDepositante"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ScrollView
+        android:layout_below="@id/contenedorHeaderDepositoDatosDepositante"
+        android:layout_above="@+id/menuDeposito"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
+        
+            <TextView
+                android:layout_width="167dp"
+                android:layout_height="60dp"
+                android:textColor="@color/azul"
+                android:textSize="21dp"
+                android:layout_marginTop="38dp"
+                android:layout_marginStart="36dp"
+                android:fontFamily="@font/quicksand_regular"
+                android:text="@string/textView_DepositoDatosDepositante"/>
+
+            <Spinner
+                android:id="@+id/spinner_tipoCuentaDepositoDatosDepositante"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="68dp"
+                android:layout_marginEnd="45dp"
+                android:paddingStart="23dp"
+                android:background="@null"
+                android:foreground="@drawable/spinner_style"
+                android:overlapAnchor="false"
+                />
+
+            <EditText
+                android:id="@+id/editText_DepositoDatosDepositanteNumeroCuenta"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="21dp"
+                android:background="@drawable/input_form"
+                android:fontFamily="@font/quicksand_regular"
+                android:hint="@string/editText_DepositoDatosDepositanteNumeroCuenta"
+                android:inputType="number"
+                android:paddingStart="23dp"
+                android:layout_marginEnd="45dp"
+                android:textColorHint="@color/azul"
+                android:textSize="21dp"/>
+
+            <EditText
+                android:id="@+id/editText_DepositoDatosDepositanteCantidad"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="21dp"
+                android:background="@drawable/input_form"
+                android:fontFamily="@font/quicksand_regular"
+                android:hint="@string/editText_DepositoDatosDepositanteCantidad"
+                android:inputType="number"
+                android:paddingStart="23dp"
+                android:layout_marginEnd="45dp"
+                android:textColorHint="@color/azul"
+                android:textSize="21dp"/>
+
+            <Button
+                android:id="@+id/button_ContinuarDatosDepositanteDeposito"
+                android:layout_width="138dp"
+                android:layout_height="67dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="69dp"
+                android:background="@drawable/boton_inicio"
+                android:fontFamily="@font/quicksand_regular"
+                android:text="@string/button_DepositoDatosDepositanteContinuar"
+                android:textAllCaps="false"
+                android:textColor="@color/blanco"
+                android:textSize="20dp"
+                android:onClick="continuarDatosDepositanteDeposito"/>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/menuDeposito"
+        android:background="@drawable/menu_fondo"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:itemIconTint="@color/azul"
+        app:itemTextColor="@color/azul"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:menu="@menu/menu_home"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp"
+        app:itemIconSize="35dp"
+        app:labelVisibilityMode="unlabeled"
+        />
+
+</RelativeLayout>

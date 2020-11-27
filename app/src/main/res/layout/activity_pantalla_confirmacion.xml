@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion"
+    android:background="@drawable/fondo">
+
+    <FrameLayout
+        android:id="@+id/contenedorHeaderConfirmarValores"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/contenedorHeaderConfirmarValores">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:gravity="">
+
+            <TextView
+                android:id="@+id/textViewDescripcionValores"
+                android:layout_width="239dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="37dp"
+                android:textColor="@color/azul"
+                android:layout_marginTop="33dp"
+                android:layout_marginBottom="32dp"
+                android:textSize="21dp"
+                android:fontFamily="@font/quicksand_regular"
+                />
+        <LinearLayout
+            android:id="@+id/linearLayoutConfirmacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:orientation="vertical">
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            >
+            
+            <ImageButton
+                android:id="@+id/button_CancelarConfirmacion"
+                android:layout_width="67dp"
+                android:layout_height="67dp"
+                android:background="@drawable/boton_inicio"
+                android:drawableTint="@color/blanco"
+
+                android:layout_marginTop="73dp"
+                android:padding="20dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:src="@drawable/cancelar_giro_icon"
+                android:tint="@color/blanco"
+                android:onClick="cancelarValores"
+                />
+
+            
+        <Button
+            android:id="@+id/button_ContinuarConfirmarValores"
+            android:layout_width="138dp"
+            android:layout_height="67dp"
+            android:background="@drawable/boton_inicio"
+            android:textColor="@color/blanco"
+            android:textAllCaps="false"
+            android:textSize="20dp"
+            android:text="@string/button_ContinuarConfirmarValores"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="73dp"
+            android:onClick="confirmarValores"
+            />
+        </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+
+
+</RelativeLayout>

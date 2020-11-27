@@ -1,0 +1,50 @@
+{
+  "buildFiles": [
+    "/Users/netcom/Desktop/App Corresponsal/app/CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/netcom/Desktop/App\\ Corresponsal/app/.cxx/cmake/release/x86 --target clean"
+  ],
+  "libraries": {
+    "netcom_Caja-Release-x86": {
+      "artifactName": "netcom_Caja",
+      "buildCommand": "/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/netcom/Desktop/App\\ Corresponsal/app/.cxx/cmake/release/x86 --target netcom_Caja",
+      "abi": "x86",
+      "output": "/Users/netcom/Desktop/App Corresponsal/app/.cxx/cmake/release/x86/libnetcom_Caja.a"
+    },
+    "libcrypto-Release-x86": {
+      "artifactName": "libcrypto",
+      "abi": "x86",
+      "output": "/Users/netcom/Desktop/App Corresponsal/app/libs/openssl-1.0.2/x86/lib/libcrypto.a"
+    },
+    "netcom_Bancolombia-Release-x86": {
+      "artifactName": "netcom_Bancolombia",
+      "buildCommand": "/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/netcom/Desktop/App\\ Corresponsal/app/.cxx/cmake/release/x86 --target netcom_Bancolombia",
+      "abi": "x86",
+      "output": "/Users/netcom/Desktop/App Corresponsal/app/.cxx/cmake/release/x86/libnetcom_Bancolombia.a"
+    },
+    "native-lib-Release-x86": {
+      "artifactName": "native-lib",
+      "buildCommand": "/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/netcom/Desktop/App\\ Corresponsal/app/.cxx/cmake/release/x86 --target native-lib",
+      "abi": "x86",
+      "output": "/Users/netcom/Desktop/App Corresponsal/app/build/intermediates/cmake/release/obj/x86/libnative-lib.so"
+    },
+    "libssl-Release-x86": {
+      "artifactName": "libssl",
+      "abi": "x86",
+      "output": "/Users/netcom/Desktop/App Corresponsal/app/libs/openssl-1.0.2/x86/lib/libssl.a"
+    },
+    "netcom_Lealtad-Release-x86": {
+      "artifactName": "netcom_Lealtad",
+      "buildCommand": "/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/netcom/Desktop/App\\ Corresponsal/app/.cxx/cmake/release/x86 --target netcom_Lealtad",
+      "abi": "x86",
+      "output": "/Users/netcom/Desktop/App Corresponsal/app/.cxx/cmake/release/x86/libnetcom_Lealtad.a"
+    },
+    "netcom_Venta-Release-x86": {
+      "artifactName": "netcom_Venta",
+      "buildCommand": "/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/netcom/Desktop/App\\ Corresponsal/app/.cxx/cmake/release/x86 --target netcom_Venta",
+      "abi": "x86",
+      "output": "/Users/netcom/Desktop/App Corresponsal/app/.cxx/cmake/release/x86/libnetcom_Venta.a"
+    }
+  }
+}
