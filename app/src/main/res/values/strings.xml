@@ -97,6 +97,12 @@
     <string name="editText_CancelarGiroPinReferencia">Pin de referencia</string>
     <string name="button_CancelarGirosPinReferenciaContinuar">Continuar</string>
 
+    <!--> Strings Activity Pantalla Cancelar Giro Cantidad</!-->
+
+    <string name="textView_CancelarGiroCantidadDescripcion">Verifique la cantidad del giro.</string>
+    <string name="textView_TituloCantidadGiro"><b>Cantidad</b></string>
+    <string name="button_CancelarGiroCantidadContinuar">Continuar</string>
+
 
     <!--> Strings Activity Pantalla Depósito Datos Depositante</!-->
 
@@ -116,6 +122,7 @@
 
     <string name="textView_CarteraNumeroPagare">Ingrese el número de pagaré</string>
     <string name="editText_CarteraNumeroPagare">Numero de pagaré</string>
+    <string name="editText_CarteraCantidad">Cantidad</string>
     <string name="button_CarteraNumeroPagareContinuar">Continuar</string>
 
     <!--> Strings Activity Pantalla Pago Productos Tarjeta de Credito</!-->
@@ -180,6 +187,14 @@
     <!--> Strings Generales</!-->
     <string name="textView_terminos">*Terminos y condiciones</string>
 
+    <!--> Strings Activity Pantalla Recargas</!-->
+    <string name="textView_RecargasCelular">Ingrese el número de Celular</string>
+    <string name="editText_RecargasCelular">Celular</string>
+    <string name="button_RecargasContinuar">Continuar</string>
+
+    <string name="textView_RecargasCantidad">Ingrese la cantidad</string>
+    <string name="editText_RecargasCantidad">Cantidad</string>
+    <string name="button_RecargasVamos">¡Vamos!</string>
 
     <!--> __________________________________________________________________Proyecto APOS _____________________________________________________________________________________________________</!-->
     <string name="title_activity_venta" tools:ignore="ExtraTranslation"></string>

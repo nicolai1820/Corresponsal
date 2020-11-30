@@ -22,7 +22,7 @@ public class pantallaTarjetaCreditoProductosBCO extends AppCompatActivity {
     private String [] titulos={"Número de tarjeta","Cantidad a pagar"};
     private ArrayList<String> valores = new ArrayList<String>();
     private CodigosTransacciones codigo = new CodigosTransacciones();
-
+    private String origen ="1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +56,7 @@ public class pantallaTarjetaCreditoProductosBCO extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Debe ingresar la cantidad",Toast.LENGTH_SHORT).show();
         } else {
 
+            valores.add(origen);
             valores.add(numeroTarjeta_string);
             valores.add(cantidad_string);
 
@@ -68,7 +69,7 @@ public class pantallaTarjetaCreditoProductosBCO extends AppCompatActivity {
             i.putExtra("valores",valores);
             i.putExtra("terminos",false);
             i.putExtra("clase","");
-            i.putExtra("contador", 0);
+            i.putExtra("contador", 1);
             i.putExtra("transaccion", codigo.CORRESPONSAL_PAGO_PRODUCTOS);
             startActivity(i);
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);

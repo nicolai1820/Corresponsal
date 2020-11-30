@@ -5,6 +5,7 @@ import androidx.core.content.res.ResourcesCompat;
 
 
 import co.com.netcom.corresponsal.core.comunicacion.DatosComision;
+import co.com.netcom.corresponsal.core.comunicacion.DatosRecaudo;
 import co.com.netcom.corresponsal.core.comunicacion.IntegradorC;
 import co.com.netcom.corresponsal.pantallas.funciones.CodigosTransacciones;
 
@@ -43,11 +44,10 @@ public class pantallaConfirmacion extends AppCompatActivity {
     private ArrayList<String> datosTransaccion = new ArrayList<String>();
     private Hilos hiloTransacciones;
 
-    private IntegradorC integradorC;
     private String valorGiro;
     private DatosComision datosComision;
+    private DatosRecaudo datosRecaudo;
 
-    private String[] respuestaTransacion = new String[4];
 
 
     @Override
@@ -55,9 +55,8 @@ public class pantallaConfirmacion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_confirmacion);
 
-        integradorC = new IntegradorC(this);
 
-        //hiloTransacciones = new Hilos(getApplicationContext());
+        hiloTransacciones = new Hilos(pantallaConfirmacion.this);
 
         /*Se obtienen los datos que vienen en el intent: titulo activity, descripcion,titulo de contenidos, valores
          y la clase a la cual se debe redireccionar*/
@@ -86,6 +85,9 @@ public class pantallaConfirmacion extends AppCompatActivity {
         valorGiro = i.getString("valorGiro");
         datosComision = new DatosComision();
         datosComision = i.getParcelable("datosComision");
+
+        datosRecaudo = new DatosRecaudo();
+        datosRecaudo = i.getParcelable("datosRecaudo");
 
         //Se crea el header con el titulo que se rescato del intent
         header = new Header(tituloActivity);
@@ -229,6 +231,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
 
             switch (transaccion){
 
+                //listo
                 case CodigosTransacciones.CORRESPONSAL_DEPOSITO:{
                     for (int i=0;i < valores.size();i++){
                         datosTransaccion.add(valores.get(i));
@@ -241,173 +244,6 @@ public class pantallaConfirmacion extends AppCompatActivity {
                         @Override
                         public void run() {
 
-                            new Thread(() -> {
-                                String resultado = null;
-
-                                resultado = integradorC.enviarDeposito(datosTransaccion.get(0),datosTransaccion.get(1),Integer.parseInt(datosTransaccion.get(2)));
-
-                                Log.d("RESULTADO DEPOSITO",resultado);
-                            }).start();
-
-                            try {
-                                // code runs in a thread
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Log.d("CLOSE"," se cerro el loader");
-                                        dialog.dismiss();
-                                    }
-                                });
-                            } catch (final Exception ex) {
-
-                            }
-                        }
-                    }.start();
-
-                    break;
-                }
-
-                case CodigosTransacciones.CORRESPONSAL_RECLAMACION_GIRO:{
-
-                    for (int i=0;i < valores.size();i++){
-                        datosTransaccion.add(valores.get(i));
-                    }
-
-                    for (int i =0; i<tipoDocumento.size();i++) {
-                        datosTransaccion.add(tipoDocumento.get(i));
-                    }
-
-                    Log.d("DATOS",datosTransaccion.toString());
-
-                    new Thread() {
-                        @Override
-                        public void run() {
-
-                            try {
-
-                                new Thread(() -> {
-                                    String resultado = null;
-
-                                    resultado = integradorC.realizarReclamacionGiro(datosTransaccion.get(2),datosTransaccion.get(3),datosTransaccion.get(0),datosTransaccion.get(1));
-
-                                    Log.d("RESULTADO RECLAMAR GIRO",resultado);
-                                }).start();
-
-                                // code runs in a thread
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Log.d("CLOSE"," se cerro el loader");
-                                        dialog.dismiss();
-                                    }
-                                });
-                            } catch (final Exception ex) {
-
-                            }
-                        }
-                    }.start();
-
-                    break;
-                }
-
-                case CodigosTransacciones.CORRESPONSAL_CANCELACION_GIRO_CONSULTA:{
-
-                    for (int i=0; i<valores.size();i++){
-                        datosTransaccion.add(valores.get(i));
-                    }
-
-                    for(int i =0; i<tipoDocumento.size();i++){
-                        datosTransaccion.add(tipoDocumento.get(i));
-                    }
-
-                    new Thread() {
-                        @Override
-                        public void run() {
-
-                            new Thread(() -> {
-                                String resultado = null;
-                                //Se crea un objeto de tipo datos recaudo.
-
-                                DatosComision datosComision = new DatosComision();
-                                resultado = integradorC.realizaConsultaCancelacionGiroCnb(datosComision,datosTransaccion.get(3),datosTransaccion.get(4),datosTransaccion.get(0),datosTransaccion.get(1),datosTransaccion.get(2));
-
-                                if (resultado == null) {
-                                    //PANTALLA RESULTADO TRANSACCION
-                                } else {
-                                    respuestaTransacion = resultado.split(";");
-                                    if (respuestaTransacion[0].equals("00")) {
-
-
-                                        // PANTALLA CONFIRMACIÓN CANCELAR GIRO
-                                        //Agregar titulos
-                                        //Agregar Descripción
-                                        //Agregar tipo transaccion
-                                        //agregar valor respuesta
-                                        //agregar array valores
-                                        //Agregar datosComision
-
-                                        Intent intento = new Intent(getApplicationContext(),pantallaConfirmacion.class);
-                                        intento.putExtra("valorGiro", respuestaTransacion[1]);
-                                        intento.putExtra("valores", datosTransaccion);
-                                        intento.putExtra("datosComision", datosComision);
-                                        intento.putExtra("titulo","<b>CancelarGiro</b>");
-                                        intento.putExtra("descripcion","Verifique el valor del giro");
-                                        intento.putExtra("transaccion",CodigosTransacciones.CORRESPONSAL_CANCELACION_GIRO);
-
-                                       /* Intent intento = new Intent(getApplicationContext(), pantallaConfirmacion.class);
-                                        intento.putExtra("valorGiro", respuestaTransacion[1]);
-                                        intento.putExtra("valores", datos);
-                                        intento.putExtra("datosComision", datosComision);
-                                        intento.putExtra("titulo","<b>CancelarGiro</b>");
-                                        intento.putExtra("descripcion","Verifique el valor del giro");
-                                        intento.putExtra("transaccion",CodigosTransacciones.CORRESPONSAL_CANCELACION_GIRO);
-
-                                        startActivity(intento);*/
-
-                                    } else {
-                                        //PANTALLA RESULTADO TRANSACCION
-
-                                   }
-                                }
-                            }).start();
-
-                            try {
-                                // code runs in a thread
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Log.d("CLOSE"," se cerro el loader");
-                                        dialog.dismiss();
-                                    }
-                                });
-                            } catch (final Exception ex) {
-
-                            }
-                        }
-                    }.start();
-
-
-                    break;
-                }
-
-                //Arriba Codigo nuevo
-
-
-                // CODIGO FUNCIONAL CON CLASE HILO
-                /*case CodigosTransacciones.CORRESPONSAL_DEPOSITO:{
-                    for (int i=0;i < valores.size();i++){
-                        datosTransaccion.add(valores.get(i));
-                    }
-                    for (int i =0; i<tipoDeCuenta.size();i++) {
-                        datosTransaccion.add(tipoDeCuenta.get(i));
-                    }
-
-
-
-                    new Thread() {
-                        @Override
-                        public void run() {
-
                             hiloTransacciones.transacciones(transaccion,datosTransaccion);
                             try {
                                 // code runs in a thread
@@ -427,6 +263,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
                     //datosTransaccion.clear();
                     break;
                 }
+                //listo
                 case CodigosTransacciones.CORRESPONSAL_RECLAMACION_GIRO:{
 
                     for (int i=0;i < valores.size();i++){
@@ -462,10 +299,40 @@ public class pantallaConfirmacion extends AppCompatActivity {
 
                     break;
                 }
+                //listo
                 case CodigosTransacciones.CORRESPONSAL_ENVIO_GIRO:{
 
+                    for (int i=0; i<valores.size();i++){
+                        datosTransaccion.add(valores.get(i));
+                    }
+
+                    for(int i =0; i<tipoDocumento.size();i++){
+                        datosTransaccion.add(tipoDocumento.get(i));
+                    }
+
+                    new Thread() {
+                        @Override
+                        public void run() {
+
+                            hiloTransacciones.transacciones(transaccion,datosTransaccion);
+                            try {
+                                // code runs in a thread
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Log.d("CLOSE"," se cerro el loader");
+                                        dialog.dismiss();
+                                    }
+                                });
+                            } catch (final Exception ex) {
+
+                            }
+                        }
+                    }.start();
+
                     break;
                 }
+                //listo
                 case CodigosTransacciones.CORRESPONSAL_CANCELACION_GIRO_CONSULTA:{
 
                     for (int i=0; i<valores.size();i++){
@@ -497,6 +364,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
                     }.start();
                     break;
                 }
+                //listo
                 case CodigosTransacciones.CORRESPONSAL_CANCELACION_GIRO:{
 
                     new Thread() {
@@ -530,21 +398,93 @@ public class pantallaConfirmacion extends AppCompatActivity {
                 case CodigosTransacciones.CORRESPONSAL_CONSULTA_SALDO:{
                     break;
                 }
+                //listo
                 case CodigosTransacciones.CORRESPONSAL_PAGO_FACTURA_MANUAL:{
+                    new Thread() {
+                        @Override
+                        public void run() {
+
+                            hiloTransacciones.pagoFacturaManual(datosRecaudo);
+                            try {
+                                // code runs in a thread
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Log.d("CLOSE"," se cerro el loader");
+                                        dialog.dismiss();
+                                    }
+                                });
+                            } catch (final Exception ex) {
+
+                            }
+                        }
+                    }.start();
                     break;
                 }
                 case CodigosTransacciones.CORRESPONSAL_PAGO_FACTURA_TARJETA_EMPRESARIAL:{
                     break;
                 }
+                //listo
                 case CodigosTransacciones.CORRESPONSAL_PAGO_PRODUCTOS:{
+                    for (int i=0;i < valores.size();i++){
+                        datosTransaccion.add(valores.get(i));
+                    }
+
+
+                    new Thread() {
+                        @Override
+                        public void run() {
+
+                            hiloTransacciones.transacciones(transaccion,datosTransaccion);
+                            try {
+                                // code runs in a thread
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Log.d("CLOSE"," se cerro el loader");
+                                        dialog.dismiss();
+                                    }
+                                });
+                            } catch (final Exception ex) {
+
+                            }
+                        }
+                    }.start();
+
+
                     break;
                 }
                 case CodigosTransacciones.CORRESPONSAL_TRANSFERENCIA:{
                     break;
                 }
-                case CodigosTransacciones.CORRESPONSAL_RECARGAS:{
+                //listo para recargas y cancelar giro, falta facturas
+                case CodigosTransacciones.CORRESPONSAL_CONSULTA_FACTURAS:{
+                    for (int i=0;i < valores.size();i++){
+                        datosTransaccion.add(valores.get(i));
+                    }
+
+                    new Thread() {
+                        @Override
+                        public void run() {
+
+                            hiloTransacciones.transacciones(transaccion,datosTransaccion);
+                            try {
+                                // code runs in a thread
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Log.d("CLOSE"," se cerro el loader");
+                                        dialog.dismiss();
+                                    }
+                                });
+                            } catch (final Exception ex) {
+
+                            }
+                        }
+                    }.start();
+
                     break;
-                }*/
+                }
 
 
                 default: {

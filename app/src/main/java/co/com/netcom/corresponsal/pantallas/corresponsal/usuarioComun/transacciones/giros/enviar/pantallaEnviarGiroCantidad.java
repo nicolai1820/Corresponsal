@@ -11,6 +11,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import co.com.netcom.corresponsal.R;
+import co.com.netcom.corresponsal.core.comunicacion.DatosComision;
+import co.com.netcom.corresponsal.core.comunicacion.IntegradorC;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion;
 
@@ -20,7 +22,7 @@ public class pantallaEnviarGiroCantidad extends AppCompatActivity {
     private EditText cantidad;
     private pantallaConfirmacion confirmacion;
     private ArrayList<String> valores = new ArrayList<String>();
-    private String titulos [] = {"Valor del Giro","Valor de comisión","Valor total del giro"};
+    private String titulos [] = {"Valor del Giro","Valor de comisión","Valor total del giro","Iva"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,11 @@ public class pantallaEnviarGiroCantidad extends AppCompatActivity {
         //Se obtiene la cantidad digitada por el usuario
         String cantidad_string = cantidad.getText().toString();
 
+        IntegradorC integradorC = new IntegradorC(getApplicationContext());
+        DatosComision datosComision = new DatosComision();
+        int numeroItems = 0;
+
+
         //Se evalua que el campo no este vacio
 
         if(cantidad_string.isEmpty()){
@@ -53,24 +60,39 @@ public class pantallaEnviarGiroCantidad extends AppCompatActivity {
 
         } else {
 
+            numeroItems = integradorC.verificarComisionEnvioGiro(cantidad_string,datosComision);
 
-            valores.add(cantidad_string);
-            valores.add("10.000");
-            valores.add(String.valueOf(Integer.parseInt(cantidad_string)+10000));
+            int valorComision = Integer.parseInt(datosComision.getValorComision());
+
+            if(valorComision > 0){
+
+                int montoTotal = Integer.parseInt(cantidad_string) + valorComision;
+                String montoEnvio = String.valueOf(montoTotal);
+
+                valores.add(cantidad_string);
+                valores.add(String.valueOf(valorComision));
+                valores.add(montoEnvio);
+                valores.add(datosComision.getValorIvaComision());
+
              /*confirmacion = new pantallaConfirmacion("Enviar Giro","Por favor confirme los datos del girador.",
                 titulos,valores,false, pantallaInicialUsuarioComun.class);*/
 
-            //Se realiza el intent a la activity confirmar valores
-            Intent i = new Intent(getApplicationContext(),pantallaConfirmacion.class);
-            i.putExtra("titulo","<b>Enviar Giro</b>");
-            i.putExtra("descripcion","Por favor confirme con el girador los datos de la comision.");
-            i.putExtra("titulos",titulos);
-            i.putExtra("valores",valores);
-            i.putExtra("terminos",false);
-            i.putExtra("clase","co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.giros.enviar.pantallaEnviarGiroDatosGirador");
-            i.putExtra("contador",0);
-            startActivity(i);
-            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                //Se realiza el intent a la activity confirmar valores
+                Intent i = new Intent(getApplicationContext(),pantallaConfirmacion.class);
+                i.putExtra("titulo","<b>Enviar Giro</b>");
+                i.putExtra("descripcion","Por favor confirme con el girador los datos de la comision.");
+                i.putExtra("titulos",titulos);
+                i.putExtra("valores",valores);
+                i.putExtra("terminos",false);
+                i.putExtra("clase","co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.giros.enviar.pantallaEnviarGiroDatosGirador");
+                i.putExtra("contador",0);
+                startActivity(i);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+            }else{
+
+
+            }
+
 
         }
 

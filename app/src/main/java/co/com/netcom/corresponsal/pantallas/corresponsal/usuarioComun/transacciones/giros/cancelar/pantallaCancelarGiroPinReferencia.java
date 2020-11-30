@@ -82,7 +82,7 @@ public class pantallaCancelarGiroPinReferencia extends AppCompatActivity {
             i.putExtra("clase","");
             i.putExtra("contador", contador);
             i.putExtra("tipoDocumento", tipoDocumento);
-            i.putExtra("transaccion", codigo.CORRESPONSAL_CANCELACION_GIRO);
+            i.putExtra("transaccion", codigo.CORRESPONSAL_CANCELACION_GIRO_CONSULTA);
             startActivity(i);
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 

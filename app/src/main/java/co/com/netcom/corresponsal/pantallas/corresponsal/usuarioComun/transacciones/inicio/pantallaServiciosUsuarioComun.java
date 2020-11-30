@@ -20,6 +20,7 @@ import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transaccio
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.giros.pantallaInicialGiros;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.pantallaInicialPagoFacturas;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.pagoProductosBCO.pantallaInicialPagoProductosBCO;
+import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.recargas.pantallaRecargaCelular;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.retiro.PantallaInicialRetiro;
 
 public class pantallaServiciosUsuarioComun extends Fragment {
@@ -152,7 +153,9 @@ public class pantallaServiciosUsuarioComun extends Fragment {
         recargas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(getContext(), pantallaRecargaCelular.class);
+                startActivity(i);
+                getActivity().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
         });
 

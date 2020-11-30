@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.giros.cancelar.pantallaCancelarGiroCantidad"
+    android:background="@drawable/fondo">
+
+
+    <FrameLayout
+        android:id="@+id/contenedorHeaderCancelarGiroCantidad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ScrollView
+        android:layout_below="@+id/contenedorHeaderCancelarGiroCantidad"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="5dp"
+            >
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:fontFamily="@font/quicksand_regular"
+                android:textColor="@color/azul"
+                android:textSize="21dp"
+                android:text="@string/textView_CancelarGiroCantidadDescripcion"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="38dp"/>
+            
+            <TextView
+                android:id="@+id/textView_TituloCantidadGiro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textView_TituloCantidadGiro"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="50dp"
+                android:textColor="@color/azul"
+                android:textSize="21dp"
+                android:fontFamily="@font/quicksand_regular"/>
+
+            <TextView
+                android:id="@+id/textView_CantidadGiro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/azul"
+                android:textSize="21dp"
+                android:fontFamily="@font/quicksand_regular"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                >
+
+                <ImageButton
+                    android:id="@+id/button_CancelarCantidadGiro"
+                    android:layout_width="67dp"
+                    android:layout_height="67dp"
+                    android:background="@drawable/boton_inicio"
+                    android:drawableTint="@color/blanco"
+                    android:layout_marginTop="73dp"
+                    android:padding="20dp"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/cancelar_giro_icon"
+                    android:tint="@color/blanco"
+                    android:onClick="cancelarCancelarGiroCantidad"
+                    />
+
+
+                <Button
+                    android:id="@+id/button_ContinuarDatosGiradorCancelarGiro"
+                    android:layout_width="138dp"
+                    android:layout_height="67dp"
+                    android:background="@drawable/boton_inicio"
+                    android:textColor="@color/blanco"
+                    android:textAllCaps="false"
+                    android:textSize="20dp"
+                    android:text="@string/button_CancelarGiroCantidadContinuar"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginTop="73dp"
+                    android:onClick="continuarCancelarGiroCantidad"
+                    />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

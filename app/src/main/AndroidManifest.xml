@@ -27,6 +27,9 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.recargas.pantallaRecargaCantidad"></activity>
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.recargas.pantallaRecargaCelular" />
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.cancelar.pantallaCancelarGiroCantidad" />
         <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.retiro.sinTarjeta.pantallaRetiroSinTarjetaPin" />
         <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.retiro.sinTarjeta.pantallaRetiroSinTarjetaCantidad" />
         <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.retiro.PantallaInicialRetiro" />
@@ -58,9 +61,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".pantallas.comunes.logIn.LogIn">
-
-        </activity>
+        <activity android:name=".pantallas.comunes.logIn.LogIn" />
         <activity android:name=".pantallas.comunes.popUp.PopUp" />
         <activity android:name=".PruebaC" />
     </application>

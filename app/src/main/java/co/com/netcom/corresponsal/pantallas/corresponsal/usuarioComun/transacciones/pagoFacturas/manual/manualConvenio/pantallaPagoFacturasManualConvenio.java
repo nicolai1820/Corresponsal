@@ -22,7 +22,8 @@ public class pantallaPagoFacturasManualConvenio extends AppCompatActivity {
     private String [] titulos={"Código de convenio","Número de referencia "};
     private ArrayList<String> valores = new ArrayList<String>();
     private CodigosTransacciones codigo = new CodigosTransacciones();
-
+    private ArrayList<String> tipoDeCuenta = new ArrayList<String>();
+    private String tipoCuenta_String = "00";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +60,7 @@ public class pantallaPagoFacturasManualConvenio extends AppCompatActivity {
 
                 valores.add(codigoConvenio_string);
                 valores.add(numeroReferencia_string);
-
+                tipoDeCuenta.add(tipoCuenta_String);
 
             //Se realiza el intent a la activity confirmar valores
             Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);
@@ -71,7 +72,8 @@ public class pantallaPagoFacturasManualConvenio extends AppCompatActivity {
             i.putExtra("terminos",false);
             i.putExtra("clase","");
             i.putExtra("contador", 0);
-            i.putExtra("transaccion", codigo.CORRESPONSAL_PAGO_FACTURA_MANUAL);
+            i.putExtra("tipoDeCuenta",tipoDeCuenta);
+            i.putExtra("transaccion", codigo.CORRESPONSAL_CONSULTA_FACTURAS);
             startActivity(i);
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 

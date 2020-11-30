@@ -18,10 +18,11 @@ import co.com.netcom.corresponsal.pantallas.funciones.CodigosTransacciones;
 public class pantallaCarteraNumeroPagare extends AppCompatActivity {
 
     private Header header = new Header("<b>Pago productos banco.</b>");
-    private EditText editTextCarteraNumeroPagare;
+    private EditText editTextCarteraNumeroPagare, editText_CarteraCantidad;
     private String [] titulos={"Número de pagaré"};
     private ArrayList<String> valores = new ArrayList<String>();
     private CodigosTransacciones codigo = new CodigosTransacciones();
+    private String origen ="2";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,8 @@ public class pantallaCarteraNumeroPagare extends AppCompatActivity {
 
         //se realiz a la respectiva conexion con la interfaz grafica
         editTextCarteraNumeroPagare = (EditText) findViewById(R.id.editText_CarteraNumeroPagare);
+
+        editText_CarteraCantidad = (EditText) findViewById(R.id.editText_CarteraCantidad);
     }
 
 
@@ -44,26 +47,30 @@ public class pantallaCarteraNumeroPagare extends AppCompatActivity {
     public void carteraNumeroPagareContinuar(View view){
 
         String numeroPagare_string = editTextCarteraNumeroPagare.getText().toString();
-
+        String cantidad_String = editText_CarteraCantidad.getText().toString();
         if(numeroPagare_string.isEmpty()){
             Toast.makeText(getApplicationContext(),"Debe ingresar el número del pagaré",Toast.LENGTH_SHORT).show();
+        } else if (cantidad_String.isEmpty()) {
+            Toast.makeText(getApplicationContext(),"Debe ingresar la cantidad",Toast.LENGTH_SHORT).show();
         } else {
 
+            valores.add(origen);
             valores.add(numeroPagare_string);
+            valores.add(cantidad_String);
 
             //Se realiza el intent a la activity confirmar valores
             Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);
 
-            i.putExtra("titulo","<b>Pago productos banco</b>");
-            i.putExtra("descripcion","Por favor confirme los datos del pagaré");
-            i.putExtra("titulos",titulos);
-            i.putExtra("valores",valores);
-            i.putExtra("terminos",false);
-            i.putExtra("clase","");
+            i.putExtra("titulo", "<b>Pago productos banco</b>");
+            i.putExtra("descripcion", "Por favor confirme los datos del pagaré");
+            i.putExtra("titulos", titulos);
+            i.putExtra("valores", valores);
+            i.putExtra("terminos", false);
+            i.putExtra("clase", "");
             i.putExtra("contador", 0);
             i.putExtra("transaccion", codigo.CORRESPONSAL_PAGO_PRODUCTOS);
             startActivity(i);
-            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
         }
     }
