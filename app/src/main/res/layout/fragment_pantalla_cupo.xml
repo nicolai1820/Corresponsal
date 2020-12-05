@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pantallas.corresponsal.administrador.inicio.pantallaCupo"
+    android:background="@drawable/fondo">
+
+    <FrameLayout
+        android:id="@+id/contenedorHeaderCupo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    
+    <ScrollView
+        android:layout_below="@id/contenedorHeaderCupo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <TextView
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:text="@string/textView_Cupo"
+            android:textColor="@color/azul"
+            android:textSize="19dp"
+            android:fontFamily="@font/quicksand_regular"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="36dp"/>
+
+        </LinearLayout>
+        
+        
+    </ScrollView>
+
+
+</RelativeLayout>

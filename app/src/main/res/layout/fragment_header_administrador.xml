@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".pantallas.corresponsal.administrador.headerAdministrador.HeaderAdministrador">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageViewHeaderAdministrador"
+                android:layout_width="51dp"
+                android:layout_height="51dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="54dp"
+                android:background="@drawable/logo"/>
+
+            <TextView
+                android:id="@+id/tituloHeaderAdministrador"
+                android:layout_width="165dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="55dp"
+                android:fontFamily="@font/quicksand_bold"
+                android:textColor="@color/azul"
+                android:autoSizeMinTextSize="21dp"
+                android:autoSizeMaxTextSize="25dp"
+                android:autoSizeTextType="uniform"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageViewHeaderAdministrador"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </TextView>
+
+            <FrameLayout
+
+                android:id="@+id/frameLayoutLogoComercioAdministrador"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="36dp"
+                android:layout_marginTop="46dp"
+                android:layout_marginStart="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </FrameLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_marginTop="34dp"
+            android:layout_width="214dp"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:background="@drawable/header_line"
+            />
+    </LinearLayout>
+
+
+</FrameLayout>

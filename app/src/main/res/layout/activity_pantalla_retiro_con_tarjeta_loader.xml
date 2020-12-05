@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.retiro.conTarjeta.PantallaRetiroConTarjetaLoader"
+    android:background="@drawable/fondo">
+
+    <FrameLayout
+        android:id="@+id/contenedorHeaderPantallaRetiroConTarjetaLoader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    
+    <TextView
+        android:id="@+id/textView_pantallaRetiroConTarjetaLoader"
+        android:layout_below="@id/contenedorHeaderPantallaRetiroConTarjetaLoader"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/textView_pantallaRetiroConTarjetaLoader"
+        android:textColor="@color/azul"
+        android:fontFamily="@font/quicksand_regular"
+        android:textSize="21dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_below="@id/textView_pantallaRetiroConTarjetaLoader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/inserte_tarjeta"
+        />
+
+
+</RelativeLayout>

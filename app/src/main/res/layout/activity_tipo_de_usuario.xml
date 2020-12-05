@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pantallas.comunes.tipoDeUsuario.pantallaTipoDeUsuario"
+    android:background="@drawable/fondo">
+
+    <ImageView
+        android:id="@+id/imageViewLogoNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/logo_nombre"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="130dp"/>
+
+    <LinearLayout
+        android:layout_marginTop="104dp"
+        android:layout_below="@id/imageViewLogoNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/button_tipoUsuarioOperador"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="117dp"
+            android:background="@drawable/input_form"
+            android:textAllCaps="false"
+            android:drawableTop="@drawable/operador"
+            android:paddingTop="34dp"
+            android:text="@string/button_tipoDeUsuarioOperado"
+            android:textColor="@color/azul"
+            android:textSize="21dp"
+            android:fontFamily="@font/quicksand_bold"
+            android:paddingBottom="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="49dp"
+            android:onClick="buttonOperador"/>
+
+
+        <Button
+            android:id="@+id/button_tipoUsuarioAdmin"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="117dp"
+            android:background="@drawable/input_form"
+            android:textAllCaps="false"
+            android:drawableTop="@drawable/admin"
+            android:paddingTop="34dp"
+            android:text="@string/button_tipoDeUsuarioAdmin"
+            android:textColor="@color/azul"
+            android:textSize="21dp"
+            android:fontFamily="@font/quicksand_bold"
+            android:paddingBottom="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="49dp"
+            android:onClick="buttonAdministrador"/>
+
+
+    </LinearLayout>
+
+</RelativeLayout>
