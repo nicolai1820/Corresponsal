@@ -1,85 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/LayoutPopUpContainer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="20dp"
     android:padding="20dp"
+    android:orientation="vertical"
+    android:background="@drawable/input_form"
     >
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/LayoutDialogo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="20dp">
-
-
-        <TextView
-            android:id="@+id/TituloPopUp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:padding="10dp"
-            android:textAlignment="center"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent">
-        </TextView>
-
         <LinearLayout
-            android:id="@+id/LinearLayoutContenido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="40dp"
-            android:orientation="horizontal"
-            android:padding="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/TituloPopUp"
-            ></LinearLayout>
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/ButtonAceptar"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginBottom="15dp"
-            app:layout_constraintBottom_toBottomOf="@id/LayoutDialogo"
-            app:layout_constraintEnd_toStartOf="@id/ButtonCancelar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/LinearLayoutContenido"
-            app:layout_constraintTop_toTopOf="@id/LinearLayoutContenido"></Button>
+            <TextView
+                android:layout_marginTop="40dp"
+                android:text="@string/textView_PopUp"
+                android:textColor="@color/azul"
+                android:textSize="22dp"
+                android:fontFamily="@font/quicksand_bold"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"/>
 
-        <Button
-            android:id="@+id/ButtonCancelar"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginBottom="15dp"
-            app:layout_constraintBottom_toBottomOf="@id/LayoutDialogo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ButtonAceptar"
-            app:layout_constraintTop_toBottomOf="@id/LinearLayoutContenido"
-            app:layout_constraintTop_toTopOf="@id/LinearLayoutContenido"></Button>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="50dp"
+                >
+
+                <Button
+                    android:onClick="salirPopUp"
+                    android:id="@+id/button_PopUpSalir"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="49dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/blanco"
+                    android:background="@drawable/boton_inicio"
+                    android:text="@string/button_PopUpSalir"
+                    android:textSize="19dp"
+                    android:fontFamily="@font/quicksand_regular"
+                    />
+
+                <Button
+                    android:onClick="continuarPopUp"
+                    android:id="@+id/button_PopUpContinuar"
+                    android:layout_marginStart="20dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="49dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/blanco"
+                    android:background="@drawable/boton_inicio"
+                    android:text="@string/button_PopUpContinuar"
+                    android:textSize="19dp"
+                    android:fontFamily="@font/quicksand_regular"
+                    />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

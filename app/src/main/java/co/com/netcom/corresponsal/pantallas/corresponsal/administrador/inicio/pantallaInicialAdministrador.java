@@ -4,9 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import androidx.fragment.app.FragmentTransaction;
-import androidx.fragment.app.FragmentManager;
-
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -17,14 +14,6 @@ import co.com.netcom.corresponsal.R;
 public class pantallaInicialAdministrador extends AppCompatActivity {
 
     private BottomNavigationView menuAdmin;
-    long animationDuration = 300;
-
-
-
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +35,20 @@ public class pantallaInicialAdministrador extends AppCompatActivity {
                     case R.id.home_admin:
                         selectedFragment = new pantallaServiciosAdministrador();
                         break;
+
+                    case R.id.usuarios_admin:
+                        selectedFragment = new pantallaAdministracionUsuarios();
+                        break;
                     case R.id.settings_admin:
-                        selectedFragment = new pantallaAjustesAdministrador();
+                        selectedFragment = new pantallaDuplicado();
+                        break;
+
+                    case R.id.cupoTarjeta_admin:
+                        selectedFragment = new pantallaCupo();
+                        break;
+
+                    case R.id.transaction_admin:
+                        selectedFragment = new pantallaTransaccionesAdministrador();
                         break;
                 }
 
@@ -62,44 +63,4 @@ public class pantallaInicialAdministrador extends AppCompatActivity {
 
     }
 
-   /* public void mostrarMenu(View v) {
-
-        ObjectAnimator animatorup = ObjectAnimator.ofFloat(menu, "y", 1500f);
-
-
-        animatorup.setDuration(animationDuration);
-
-        AnimatorSet animatorSetUp = new AnimatorSet();
-
-
-        animatorSetUp.playTogether(animatorup);
-        animatorSetUp.start();
-    }*/
-
-
-    /*private BottomNavigationView.OnNavigationItemSelectedListener  navListener =
-
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                    Fragment selectedFragment = null;
-
-
-                    switch (menuItem.getItemId()){
-                        case R.id.home_icon:
-                            selectedFragment = new servicios();
-
-
-                            break;
-                        case R.id.settings_icon:
-                            Intent y = new Intent(getApplicationContext(),PantallaInicialUsuario.class);
-                            startActivity(y);
-                            break;
-                    }
-
-                    getSupportFragmentManager().beginTransaction().replace(R.id.contenedorFragment,selectedFragment).commit();
-
-                    return true;
-                }
-            };*/
 }

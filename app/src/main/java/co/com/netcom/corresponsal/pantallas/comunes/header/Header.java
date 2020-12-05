@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,6 +23,8 @@ public class Header extends Fragment {
     private View vista;
     private String titulo_string;
     private ImageView logo;
+    private LogoComercio logoComercioImage;
+
 
     /**Metodo constructor que recibo como parametro un String, el cual va a ser el titulo del header*/
 
@@ -45,8 +48,12 @@ public class Header extends Fragment {
         titulo = (TextView) vista.findViewById(R.id.tituloHeader);
         logo = (ImageView) vista.findViewById(R.id.imageViewHeader);
 
+        logoComercioImage = new LogoComercio();
+
+        getFragmentManager().beginTransaction().replace(R.id.frameLayoutLogoComercio , logoComercioImage).commit();
         //Se asigna el String recibido como parametro en el constructor como titulo
         titulo.setText(Html.fromHtml(titulo_string));
+
 
         //Se crea el evento click del logo
         logo.setOnClickListener(new View.OnClickListener() {

@@ -45,11 +45,10 @@
 
     <FrameLayout
 
-        android:id="@+id/frameLayout"
-        android:layout_width="46dp"
-        android:layout_height="50dp"
-        android:background="@color/azul"
-        android:layout_marginEnd="43dp"
+        android:id="@+id/frameLayoutLogoComercio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="36dp"
         android:layout_marginTop="46dp"
         android:layout_marginStart="10dp"
         app:layout_constraintBottom_toBottomOf="parent"

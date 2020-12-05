@@ -196,6 +196,72 @@
     <string name="editText_RecargasCantidad">Cantidad</string>
     <string name="button_RecargasVamos">¡Vamos!</string>
 
+    <!--> String Activity Tipo de Usuario </!-->
+
+    <string name="button_tipoDeUsuarioOperado">Operador</string>
+    <string name="button_tipoDeUsuarioAdmin">Admin</string>
+
+    <!--> String Activity Pantalla Retiro con TarjetaCantidad </!-->
+
+    <string name="textView_pantallaRetiroConTarjetaCantidad">Ingrese la cantidad a retirar.</string>
+    <string name="editText_pantallaRetiroConTarjetaCantidad">Cantidad</string>
+    <string name="button_pantallaRetiroConTarjetaCantidadContinuar">Continuar</string>
+
+    <!-->String Activity Loader RetiroCon Tarjeta </!-->
+
+    <string name="textView_pantallaRetiroConTarjetaLoader">Inserte, deslice o acerque la tarjeta.</string>
+
+    <!-->String Pop up </!-->
+
+    <string name="textView_PopUp">!Dispositivo desconectado¡</string>
+    <string name="button_PopUpContinuar"> Continuar</string>
+    <string name="button_PopUpSalir">Salir</string>
+
+    <!-->String Activity Pantalla Administracion Usuarios </!-->
+
+    <string name="textView_pantallaAdministracionUsuario">Cree, borre, edite o muestre la lista de sus usuarios facilmente.</string>
+    <string name="button_pantallaAdministracionUsuarioCrear">Crear</string>
+    <string name="button_pantallaAdministacionUsuarioEditar">Editar</string>
+    <string name="button_pantallaAdministacionUsuarioEliminar">Eliminar</string>
+    <string name="button_pantallaAdministracionUsuarioListar">Lista de Usuarios</string>
+
+    <!-->String Activity Pantalla inicial administrador</!-->
+
+    <string name="textView_SaludoAdministrado">¡Hola Admin!</string>
+    <string name="textView_bienvenidaAdministrador">Bienvenido a Pygree la app corresponsal de Bancolombia</string>
+    <string name="button_pantallaInicialAdministradorPreguntasFrecuentes">FAQ</string>
+    <string name="button_pantallaInicialAdministradorSoporte">Soporte</string>
+    <string name="button_pantallaInicialAdministradorCerrarSesion">Cerrar sesión</string>
+
+    <!-->String Activity Pantalla Cupo</!-->
+    <string name="textView_Cupo">El cupo de la tarjeta es:</string>
+
+    <!-->String Activity Duplicado</!-->
+    <string name="tetxtView_Duplicado">Selecione de que comprobante ecesita duplicado.</string>
+    <string name="button_ultimoRecibo">Ultimo recibo</string>
+    <string name="button_otroRecibo">Otro recibo</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!--> __________________________________________________________________Proyecto APOS _____________________________________________________________________________________________________</!-->
     <string name="title_activity_venta" tools:ignore="ExtraTranslation"></string>
     <string name="prompt_email">Email</string>

@@ -79,15 +79,6 @@ public class pantallaInicialGiros extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
     }
 
-    /**Metodo salirGiros de tipo void, recibo como parametro un View, para poder ser implementado por
-     * el button salirGiros. Hace el intent a la activity pantalla InicialUsuarioComun*/
-
-    public void salirGiros(View view){
-        Intent i = new Intent(getApplicationContext(), pantallaInicialUsuarioComun.class);
-        startActivity(i);
-        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
-
-    }
 
     /**Metodo nativo de android onBackPressed. Se sobreescribe para que el usuario no se pueda desplazar hacia atras
      * por medio del menu del celular.*/

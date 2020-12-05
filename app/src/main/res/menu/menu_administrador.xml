@@ -8,6 +8,20 @@
         android:title="Inicio" />
 
     <item
+        android:id="@+id/cupoTarjeta_admin"
+        android:icon="@drawable/credit_card"
+        android:title="Cupo"/>
+    <item
+        android:id="@+id/usuarios_admin"
+        android:icon="@drawable/usuarios"
+        android:title="Perfiles" />
+
+    <item
+        android:id="@+id/transaction_admin"
+        android:icon="@drawable/transacciones"
+        android:title="Transacciones"/>
+
+    <item
         android:id="@+id/settings_admin"
         android:icon="@drawable/settings_icon"
         android:title="Ajustes"/>

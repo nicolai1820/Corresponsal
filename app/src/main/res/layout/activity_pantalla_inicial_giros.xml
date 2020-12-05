@@ -58,9 +58,10 @@
                     android:layout_marginTop="46dp"
                     android:background="@drawable/input_form"
                     android:drawableTop="@drawable/enviar_giro_icon"
+                    android:drawableTint="@color/azul"
                     android:text="@string/button_Giros_Enviar"
                     android:textAllCaps="false"
-                    android:fontFamily="@font/quicksand_regular"
+                    android:fontFamily="@font/quicksand_bold"
                     android:textSize="19dp"
                     android:textColor="@color/azul"
                     android:paddingTop="20dp"
@@ -76,7 +77,8 @@
                     android:layout_marginEnd="36dp"
                     android:background="@drawable/input_form"
                     android:drawableTop="@drawable/reclamar_giro_icon"
-                    android:fontFamily="@font/quicksand_regular"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:drawableTint="@color/azul"
                     android:text="@string/button_Giros_Reclamar"
                     android:textAllCaps="false"
                     android:textColor="@color/azul"
@@ -98,10 +100,11 @@
                 android:layout_marginTop="12dp"
                 android:background="@drawable/input_form"
                 android:drawableTop="@drawable/cancelar_giro_icon"
-                android:fontFamily="@font/quicksand_regular"
+                android:fontFamily="@font/quicksand_bold"
                 android:text="@string/button_Giros_Cancelar"
                 android:textAllCaps="false"
                 android:textColor="@color/azul"
+                android:drawableTint="@color/azul"
                 android:textSize="19dp"
                 android:paddingTop="13dp"
                 android:paddingBottom="15dp"
@@ -109,19 +112,6 @@
                 android:layout_marginStart="36dp"
                 android:layout_marginEnd="36dp"/>
 
-            <Button
-                android:id="@+id/Button_Giros_Salir"
-                android:layout_width="114dp"
-                android:layout_height="67dp"
-                android:background="@drawable/boton_inicio"
-                android:textColor="@color/blanco"
-                android:text="@string/button_Giros_Salir"
-                android:textAllCaps="false"
-                android:fontFamily="@font/quicksand_regular"
-                android:textSize="20dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
-                android:onClick="salirGiros"/>
 
         </LinearLayout>
 

@@ -14,8 +14,11 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -154,18 +157,26 @@ public class pantallaConfirmacion extends AppCompatActivity {
 
             for (int j = 0; j < titulos.length; j++) {
 
+
+                LinearLayout.LayoutParams paramImage = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                paramImage.setMargins(0,20,0,20);
+
+
+                //Se crea el linear layout
                 LinearLayout linearLayout = new LinearLayout(getBaseContext());
                 linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+                linearLayout.setGravity( Gravity.CENTER_VERTICAL);
+
 
                 //Se agrega el icono
                 TextView icono = new TextView(getBaseContext());
-                icono.setBackgroundResource(R.drawable.boton_inicio);
-                icono.setText("#");
+                icono.setBackgroundResource(R.drawable.icon_number);
                 icono.setTextColor(getResources().getColor(R.color.blanco));
                 icono.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
                 icono.setTextSize(21);
+                icono.setLayoutParams(paramImage);
 
-
+                //Se agrega el titulo
                 TextView referencia = new TextView(getBaseContext());
                 referencia.setTextSize(21);
                 referencia.setTypeface(quicksandBold);
@@ -173,11 +184,19 @@ public class pantallaConfirmacion extends AppCompatActivity {
                 referencia.setText(titulos[j]);
 
 
+                //se agrega las margenes del contenido
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                params.setMargins(25,0,0,0);
+
                 //Se crean los TextView de los valores.
                 TextView contenido = new TextView(getBaseContext());
-                referencia.setTextColor(getResources().getColor(R.color.azul));
                 contenido.setTextSize(29);
-                referencia.setTypeface(quicksandRegular);
+                contenido.setTypeface(quicksandRegular);
+                contenido.setTextColor(getResources().getColor(R.color.azul));
+                contenido.setGravity(Gravity.CENTER_VERTICAL);
+                contenido.setLayoutParams(params);
+
+
                 contenido.setText(valores.get(contador).toString());
 
                 contador++;
@@ -215,6 +234,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
 
         }else {
 
+            //Se crea el loader que se mostrara mientras se procesa la transaccion
             AlertDialog.Builder loader = new AlertDialog.Builder(pantallaConfirmacion.this);
 
             LayoutInflater inflater = this.getLayoutInflater();

@@ -5,6 +5,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,6 +40,9 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
+import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
+import co.com.netcom.corresponsal.pantallas.comunes.tipoDeUsuario.pantallaTipoDeUsuario;
+import co.com.netcom.corresponsal.pantallas.corresponsal.administrador.inicio.pantallaInicialAdministrador;
 import co.com.netcom.corresponsal.pantallas.funciones.ConvertirBase64;
 
 import co.com.netcom.corresponsal.R;
@@ -59,6 +63,7 @@ public class LogIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
+
 
         //Se crea el objeto para convertir a base 64
         base64 = new ConvertirBase64();
@@ -156,7 +161,10 @@ public class LogIn extends AppCompatActivity {
             };
             Volley.newRequestQueue(this).add(postRequest);*/
 
-            Thread thread = new Thread(new Runnable() {
+
+
+            //Hilo funcional
+           /* Thread thread = new Thread(new Runnable() {
 
                 @Override
                 public void run() {
@@ -182,7 +190,11 @@ public class LogIn extends AppCompatActivity {
                 }
             });
 
-            thread.start();
+            thread.start();*/
+
+            Intent i = new Intent(this, pantallaTipoDeUsuario.class);
+            startActivity(i);
+            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 
         }
     }

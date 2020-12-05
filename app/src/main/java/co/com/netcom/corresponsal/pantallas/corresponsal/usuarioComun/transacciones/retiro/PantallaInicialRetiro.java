@@ -13,6 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun;
+import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.retiro.conTarjeta.PantallaRetiroConTarjetaCantidad;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.retiro.sinTarjeta.pantallaRetiroSinTarjetaCantidad;
 
 public class PantallaInicialRetiro extends AppCompatActivity {
@@ -67,6 +68,9 @@ public class PantallaInicialRetiro extends AppCompatActivity {
      * el button_pantallaInicialRetiroConTarjeta. Hace el intent a la activity pantallaRetiroConTarjeta*/
 
     public void pantallaInicialRetiroConTarjeta(View view){
+        Intent i = new Intent(getApplicationContext(), PantallaRetiroConTarjetaCantidad.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 
     }
 

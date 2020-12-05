@@ -21,49 +21,111 @@
         android:name=".App"
         android:allowBackup="true"
         android:icon="@drawable/logo"
-        android:label="Corressponsal"
-        android:roundIcon="@mipmap/ic_cnb_round"
+        android:label="Pygree"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.recargas.pantallaRecargaCantidad"></activity>
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.recargas.pantallaRecargaCelular" />
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.cancelar.pantallaCancelarGiroCantidad" />
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.retiro.sinTarjeta.pantallaRetiroSinTarjetaPin" />
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.retiro.sinTarjeta.pantallaRetiroSinTarjetaCantidad" />
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.retiro.PantallaInicialRetiro" />
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.manual.manualCuentaRecaudadora.pantallaPagoFacturasManualCuentaRecaudadora" />
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.manual.manualConvenio.pantallaPagoFacturasManualConvenio" />
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.manual.pantallaPagoFacturasManual" />
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.pantallaInicialPagoFacturas" />
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoProductosBCO.tarjetaCredito.pantallaTarjetaCreditoProductosBCO" />
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoProductosBCO.cartera.pantallaCarteraNumeroPagare" />
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoProductosBCO.pantallaInicialPagoProductosBCO" />
-        <activity
-            android:name=".pantallas.corresponsal.usuarioComun.transacciones.deposito.pantallaDepositoDatosDepositante"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.cancelar.pantallaCancelarGiroPinReferencia" />
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.cancelar.pantallaCancelarGiroDatosBeneficiario" />
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.cancelar.pantallaCancelarGiroDatosGirador" />
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.reclamar.pantallaReclamarGiroNumeroReferencia" />
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.reclamar.pantallaReclamarGiroDatosBeneficiario" />
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.enviar.pantallaEnviarGiroDatosBeneficiario" />
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.enviar.pantallaEnviarGiroDatosGirador" />
-        <activity android:name=".pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion" />
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.enviar.pantallaEnviarGiroCantidad" />
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.pantallaInicialGiros" />
-        <activity android:name=".pantallas.corresponsal.administrador.inicio.pantallaInicialAdministrador" />
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun">
+        <activity android:name=".pantallas.comunes.splash.SplashInicial" android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".pantallas.comunes.logIn.LogIn" />
-        <activity android:name=".pantallas.comunes.popUp.PopUp" />
-        <activity android:name=".PruebaC" />
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.retiro.conTarjeta.PantallaRetiroConTarjetaLoader" android:screenOrientation="portrait"  />
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.retiro.conTarjeta.PantallaRetiroConTarjetaCantidad"  android:screenOrientation="portrait" />
+        <activity android:name=".pantallas.comunes.tipoDeUsuario.pantallaTipoDeUsuario"  android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.recargas.pantallaRecargaCantidad"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.recargas.pantallaRecargaCelular"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.cancelar.pantallaCancelarGiroCantidad"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.retiro.sinTarjeta.pantallaRetiroSinTarjetaPin"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.retiro.sinTarjeta.pantallaRetiroSinTarjetaCantidad"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.retiro.PantallaInicialRetiro"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.manual.manualCuentaRecaudadora.pantallaPagoFacturasManualCuentaRecaudadora"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.manual.manualConvenio.pantallaPagoFacturasManualConvenio"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.manual.pantallaPagoFacturasManual"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.pantallaInicialPagoFacturas"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoProductosBCO.tarjetaCredito.pantallaTarjetaCreditoProductosBCO"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoProductosBCO.cartera.pantallaCarteraNumeroPagare"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoProductosBCO.pantallaInicialPagoProductosBCO"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.deposito.pantallaDepositoDatosDepositante"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.cancelar.pantallaCancelarGiroPinReferencia"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.cancelar.pantallaCancelarGiroDatosBeneficiario"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.cancelar.pantallaCancelarGiroDatosGirador"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.reclamar.pantallaReclamarGiroNumeroReferencia"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.reclamar.pantallaReclamarGiroDatosBeneficiario"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.enviar.pantallaEnviarGiroDatosBeneficiario"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.enviar.pantallaEnviarGiroDatosGirador"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.enviar.pantallaEnviarGiroCantidad"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.pantallaInicialGiros"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.administrador.inicio.pantallaInicialAdministrador"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.comunes.logIn.LogIn"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".pantallas.comunes.popUp.PopUp"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PruebaC"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

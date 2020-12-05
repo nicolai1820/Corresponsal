@@ -38,7 +38,7 @@
                 android:id="@+id/editText_RetiroSinTarjetaCantidad"
                 android:layout_marginTop="132dp"
                 android:textSize="21dp"
-                android:fontFamily="@font/quicksand_regular"
+                android:fontFamily="@font/quicksand_bold"
                 android:textColorHint="@color/azul"
                 android:paddingStart="23dp"
                 android:hint="@string/editText_RetiroSinTarjetaCantidad"
@@ -47,7 +47,8 @@
                 android:layout_marginStart="36dp"
                 android:layout_marginEnd="45dp"
                 android:layout_width="match_parent"
-                android:layout_height="49dp"/>
+                android:layout_height="49dp"
+                android:imeOptions="actionDone"/>
             
             <Button
                 android:id="@+id/button_RetiroSinTarjetaContinuar"
@@ -61,7 +62,8 @@
                 android:layout_width="138dp"
                 android:layout_height="67dp"
                 android:layout_gravity="center_horizontal"
-                android:onClick="retiroSinTarjetaContinuar"/>
+                android:onClick="retiroSinTarjetaContinuar"
+                android:layout_marginBottom="15dp"/>
 
 
         </LinearLayout>

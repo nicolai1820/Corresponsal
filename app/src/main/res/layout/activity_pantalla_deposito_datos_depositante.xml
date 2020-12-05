@@ -56,7 +56,7 @@
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="21dp"
                 android:background="@drawable/input_form"
-                android:fontFamily="@font/quicksand_regular"
+                android:fontFamily="@font/quicksand_bold"
                 android:hint="@string/editText_DepositoDatosDepositanteNumeroCuenta"
                 android:inputType="number"
                 android:paddingStart="23dp"
@@ -71,13 +71,14 @@
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="21dp"
                 android:background="@drawable/input_form"
-                android:fontFamily="@font/quicksand_regular"
+                android:fontFamily="@font/quicksand_bold"
                 android:hint="@string/editText_DepositoDatosDepositanteCantidad"
                 android:inputType="number"
                 android:paddingStart="23dp"
                 android:layout_marginEnd="45dp"
                 android:textColorHint="@color/azul"
-                android:textSize="21dp"/>
+                android:textSize="21dp"
+                android:imeOptions="actionDone"/>
 
             <Button
                 android:id="@+id/button_ContinuarDatosDepositanteDeposito"
@@ -91,7 +92,8 @@
                 android:textAllCaps="false"
                 android:textColor="@color/blanco"
                 android:textSize="20dp"
-                android:onClick="continuarDatosDepositanteDeposito"/>
+                android:onClick="continuarDatosDepositanteDeposito"
+                android:layout_marginBottom="15dp"/>
 
 
 

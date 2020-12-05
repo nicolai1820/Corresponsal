@@ -59,7 +59,7 @@
                 android:hint="@string/editText_DocumentoEnviarGiro"
                 android:textColorHint="@color/azul"
                 android:inputType="number"
-                android:fontFamily="@font/quicksand_regular"
+                android:fontFamily="@font/quicksand_bold"
                 android:textSize="21dp"
                 android:paddingStart="23dp"
                 android:background="@drawable/input_form">
@@ -76,10 +76,11 @@
                 android:hint="@string/editText_NumeroDeCelularEnviarGiro"
                 android:textColorHint="@color/azul"
                 android:inputType="number"
-                android:fontFamily="@font/quicksand_regular"
+                android:fontFamily="@font/quicksand_bold"
                 android:textSize="21dp"
                 android:paddingStart="23dp"
-                android:background="@drawable/input_form">
+                android:background="@drawable/input_form"
+                android:imeOptions="actionDone">
 
             </EditText>
             
@@ -95,7 +96,8 @@
                 android:textColor="@color/blanco"
                 android:fontFamily="@font/quicksand_regular"
                 android:layout_marginTop="78dp"
-                android:onClick="continuarDatosGirador"/>
+                android:onClick="continuarDatosGirador"
+                android:layout_marginBottom="15dp"/>
 
 
         </LinearLayout>

@@ -12,50 +12,49 @@
         android:layout_height="wrap_content"/>
 
     <ScrollView
+        android:fillViewport="true"
+        android:id="@+id/scrollView_Dispositivos"
         android:layout_below="@id/contenedorHeaderAjustesUsuarioComun"
+        android:layout_above="@id/button_BuscarDispositivosAjusterUsuarioComun"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
 
+            <ListView
 
-
-            <LinearLayout
+                android:id="@+id/listView_Dispositivos"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal">
-
-
-
-                <Button
-                    android:id="@+id/button_BuscarDispositivosAjusterUsuarioComun"
-                    android:layout_width="196dp"
-                    android:layout_height="67dp"
-                    android:background="@drawable/boton_inicio"
-                    android:textColor="@color/blanco"
-                    android:textAllCaps="false"
-                    android:textSize="20dp"
-                    android:text="@string/button_BuscarDispositivoAjusterUsuarioComun"
-                    android:layout_marginTop="50dp"
-                    android:layout_marginStart="11dp"
-                    android:layout_marginBottom="89dp"
-                    />
-            </LinearLayout>
-
-
-
-
-            <!--FrameLayout
-                android:id="@+id/contenedorBarraAjustes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/-->
+                android:layout_height="match_parent"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="36dp"
+                android:divider="@null"
+                />
 
         </LinearLayout>
 
     </ScrollView>
+
+    <Button
+        android:layout_alignParentBottom="true"
+        android:id="@+id/button_BuscarDispositivosAjusterUsuarioComun"
+        android:layout_width="196dp"
+        android:layout_height="67dp"
+        android:background="@drawable/boton_inicio"
+        android:textColor="@color/blanco"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        android:text="@string/button_BuscarDispositivoAjusterUsuarioComun"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"
+
+
+        />
 
 </RelativeLayout>

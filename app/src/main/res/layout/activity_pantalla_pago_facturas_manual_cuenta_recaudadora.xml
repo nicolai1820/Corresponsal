@@ -57,7 +57,7 @@
                 android:hint="@string/editText_PagoFacturasManualNumeroCuentaRecaudadora"
                 android:textColorHint="@color/azul"
                 android:inputType="number"
-                android:fontFamily="@font/quicksand_regular"
+                android:fontFamily="@font/quicksand_bold"
                 android:textSize="21dp"
                 android:paddingStart="23dp"
                 android:background="@drawable/input_form"/>
@@ -72,10 +72,11 @@
                 android:hint="@string/editText_PagoFacturasManualCuentaRecaudadoraNumeroReferencia"
                 android:textColorHint="@color/azul"
                 android:inputType="number"
-                android:fontFamily="@font/quicksand_regular"
+                android:fontFamily="@font/quicksand_bold"
                 android:textSize="21dp"
                 android:paddingStart="23dp"
-                android:background="@drawable/input_form"/>
+                android:background="@drawable/input_form"
+                android:imeOptions="actionDone"/>
 
             <Button
                 android:id="@+id/button_PagoFacturasManualCuentaRecaudadoraVamos"
@@ -89,7 +90,8 @@
                 android:textColor="@color/blanco"
                 android:fontFamily="@font/quicksand_regular"
                 android:layout_marginTop="78dp"
-                android:onClick="pagoFacturasManualCuentaRecaudadoraVamos"/>
+                android:onClick="pagoFacturasManualCuentaRecaudadoraVamos"
+                android:layout_marginBottom="15dp"/>
 
         </LinearLayout>
 

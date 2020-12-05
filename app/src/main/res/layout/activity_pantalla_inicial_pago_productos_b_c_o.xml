@@ -42,6 +42,7 @@
                 android:orientation="horizontal"
                 android:gravity="center_horizontal"
                 android:layout_marginTop="90dp"
+                android:layout_marginBottom="15dp"
                 >
 
                 <Button
@@ -55,10 +56,11 @@
                     android:text="@string/button_PagoProductosBCOInicialCartera"
                     android:textAllCaps="false"
                     android:textColor="@color/azul"
-                    android:fontFamily="@font/quicksand_regular"
+                    android:fontFamily="@font/quicksand_bold"
                     android:paddingTop="34dp"
                     android:paddingBottom="20dp"
-                    android:textSize="21dp"
+                    android:drawableTint="@color/azul"
+                    android:textSize="20dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginStart="36dp"
                     android:onClick="CarteraPagoProductosBCO"/>
@@ -74,8 +76,9 @@
                     android:text="@string/button_PagoProductosBCOTarjetaDeCredito"
                     android:textAllCaps="false"
                     android:textColor="@color/azul"
-                    android:fontFamily="@font/quicksand_regular"
-                    android:textSize="21dp"
+                    android:drawableTint="@color/azul"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:textSize="20dp"
                     android:paddingTop="24dp"
                     android:paddingBottom="15dp"
                     android:layout_marginStart="10dp"

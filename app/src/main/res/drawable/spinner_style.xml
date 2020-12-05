@@ -7,7 +7,7 @@
                 <shape android:shape="rectangle" >
                     <solid/>
                     <corners android:radius="10dp"/>
-                    <stroke android:color="@color/azul" android:width="1.5dp"/>
+                    <stroke android:color="@color/azul" android:width="2.5dp"/>
                     <padding android:right="20dp"></padding>
 
                 </shape>
@@ -15,7 +15,7 @@
 
 
             <item  android:height="10dp" android:width="20dp"  android:gravity="end|center_vertical">
-                <bitmap android:src="@drawable/spinner_arrow" ></bitmap>
+                <bitmap android:src="@drawable/spinner_arrow" android:tint="@color/azul"></bitmap>
 
             </item >
         </layer-list>

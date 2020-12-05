@@ -28,7 +28,7 @@ public class pantallaDepositoDatosDepositante extends AppCompatActivity {
     private Header header = new Header("<b>Depósito</b>");
     private Spinner spinner_tipoCuentaDepositoDatosDepositante;
     private EditText editText_DepositoDatosDepositanteNumeroCuenta,editText_DepositoDatosDepositanteCantidad;
-    private String [] titulos={"Número de documento","Cantidad"};
+    private String [] titulos={"Número de cuenta","Cantidad"};
     private ArrayList<String> valores = new ArrayList<String>();
     private ArrayList<String> tipoDeCuenta = new ArrayList<String>();
     private BottomNavigationView menuDeposito;
