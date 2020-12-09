@@ -32,6 +32,51 @@
             android:layout_marginTop="20dp"
             android:layout_marginStart="36dp"/>
 
+            <RelativeLayout
+                android:layout_width="294dp"
+                android:layout_height="161dp"
+                android:layout_gravity="center"
+                android:background="@drawable/cupo"
+                android:layout_marginTop="60dp">
+
+                <TextView
+                    android:id="@+id/textView_NombreComercio"
+                    android:layout_width="142dp"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre Comercio"
+                    android:textColor="@color/blanco"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginStart="80dp"
+                    android:textSize="12dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/textView_saldoPygree"
+                    android:layout_marginEnd="50dp"
+                    android:textColor="@color/blanco"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="85dp"
+                    android:layout_marginStart="80dp"
+                    android:textSize="12dp"
+                    />
+                <TextView
+                    android:id="@+id/textView_CupoComercio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blanco"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="40dp"
+                    android:layout_marginRight="45dp"
+                    android:text="$200.000"
+                    android:textSize="37dp"/>
+
+            </RelativeLayout>
+
+
         </LinearLayout>
         
         

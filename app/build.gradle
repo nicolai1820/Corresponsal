@@ -14,10 +14,12 @@
          // NOTE: Do not place your application dependencies here; they belong
          // in the individual module build.gradle files
      }
+
  }
 
 
  android {
+
     signingConfigs {
         Prod {
             storeFile file('/Users/desarrollomoviles/Desktop/Desarrollo/Proyectos/APOS8/Desarrollo/Android/Certificados/apos_keystore.jks')
@@ -36,6 +38,9 @@
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.Prod
+        //Se agrega estas dos linea para que el c funcione en todos los dispositivos
+        ndk.abiFilters 'armeabi-v7a'
+        ndk.abiFilters 'x86'
         externalNativeBuild {
             cmake {
                 cppFlags ""
@@ -68,6 +73,7 @@
         // but continue the build even when errors are found:
         abortOnError false
     }
+
 }
 
 dependencies {
@@ -110,6 +116,8 @@ dependencies {
 
     //gif
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
+
+
 }
 
 

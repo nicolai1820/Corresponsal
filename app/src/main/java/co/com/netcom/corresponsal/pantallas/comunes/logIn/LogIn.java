@@ -8,6 +8,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -30,22 +31,30 @@ import java.util.regex.Pattern;
 */
 
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.security.KeyManagementException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.security.cert.X509Certificate;
+import java.security.cert.CertificateException;
+import java.security.cert.CertificateFactory;
 
 import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
+import javax.net.ssl.TrustManagerFactory;
 
-import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
 import co.com.netcom.corresponsal.pantallas.comunes.tipoDeUsuario.pantallaTipoDeUsuario;
-import co.com.netcom.corresponsal.pantallas.corresponsal.administrador.inicio.pantallaInicialAdministrador;
-import co.com.netcom.corresponsal.pantallas.funciones.ConvertirBase64;
+import co.com.netcom.corresponsal.pantallas.funciones.CodificarBase64;
 
 import co.com.netcom.corresponsal.R;
+import co.com.netcom.corresponsal.pantallas.funciones.CodificarSHA512;
+import co.com.netcom.corresponsal.pantallas.funciones.ServicioLogin;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -56,7 +65,16 @@ public class LogIn extends AppCompatActivity {
 
     private EditText editText_User,editText_Password;
     private TextView textView_Password, textView_Dudas;
-    private ConvertirBase64 base64;
+    private CodificarBase64 base64;
+    private CodificarSHA512 sha512;
+    private Thread solicitudToken;
+    private Thread solicitudInicioSesion;
+    private String token;
+    private String usuarioEncriptado;
+    private String contrasenaEncriptada;
+    private String estadoConexion= null;
+    private ServicioLogin servicioLogin=null;
+
 
 
     @Override
@@ -65,8 +83,12 @@ public class LogIn extends AppCompatActivity {
         setContentView(R.layout.activity_log_in);
 
 
-        //Se crea el objeto para convertir a base 64
-        base64 = new ConvertirBase64();
+        //Se crea el objeto para convertir a base 64 y sha 512
+        base64 = new CodificarBase64();
+        sha512 = new CodificarSHA512();
+
+        //Se cre el objeto para hacer las peticiones http
+        servicioLogin = new ServicioLogin(getApplicationContext());
 
         //Se crea la conexion con la interfaz grafica
         editText_User = (EditText) findViewById(R.id.editText_User);
@@ -125,72 +147,60 @@ public class LogIn extends AppCompatActivity {
         } else if(password.isEmpty()){
             Toast.makeText(getApplicationContext(),"Debe Ingresar una contraseña",Toast.LENGTH_SHORT).show();
         } else{
-            Log.d("USER64",base64.convertirBase64(user));
-            Log.d("PASSWORD64",base64.convertirBase64(password));
 
-            //String url = "https://192.168.215.12:9544/oauth2/token";
+            usuarioEncriptado=base64.convertirBase64(user);
+            contrasenaEncriptada=base64.convertirBase64(sha512.codificarSHA512(password));
 
-            /*StringRequest postRequest = new StringRequest(Request.Method.POST, url,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            Log.d("RESPUESTA",response);
-                        }
-                    },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Log.d("ERROR",error.toString());
-                            error.printStackTrace();
+           Log.d("USUARIODECO",base64.decodificarBase64(usuarioEncriptado));
 
-                        }
-                    }
-            ) {
-                @Override
-                protected Map<String, String> getParams()
-                {
-                    Map<String, String>  params = new HashMap<>();
-                    // the POST parameters:
-                    params.put("client_id", "CFGkFIU4JKhy9cjG6HnoctOg8aQa");
-                    params.put("client_secret", "Tek1bEVvPXLNb7AI5fkVVbhToEMa");
-                    params.put("grant_type", "password");
-                    params.put("username", "admin");
-                    params.put("password", "admin");
-                    return params;
-                }
-            };
-            Volley.newRequestQueue(this).add(postRequest);*/
-
-
-
-            //Hilo funcional
-           /* Thread thread = new Thread(new Runnable() {
-
+            //Se crea hilo para hacer la petición al servidor del token
+           /* solicitudToken =  new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    OkHttpClient client = new OkHttpClient().newBuilder()
-                            .build();
-                    MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
-                    RequestBody body = RequestBody.create(mediaType, "client_id=CFGkFIU4JKhy9cjG6HnoctOg8aQa&client_secret=Tek1bEVvPXLNb7AI5fkVVbhToEMa&grant_type=password&username=admin&password=admin");
-                    Request request = new Request.Builder()
-                            .url("https://192.168.215.12:9544/oauth2/token")
-                            .method("POST", body)
-                            .addHeader("Access-Control-Allow-Origin", "*")
-                            .addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT")
-                            .addHeader("Content-Type", "application/x-www-form-urlencoded")
-                            .build();
-
-                    try {
-                        Response response = client.newCall(request).execute();
-
-                        Log.d("RESPUESTA",response.toString());
-                    } catch (Exception e){
-                        Log.d("ERROR",e.toString());
-                    }
+                    token = servicioLogin.solicitarToken();
+                    Log.d("TOKEN",token.toString());
                 }
             });
 
-            thread.start();*/
+            solicitudToken.start();
+            try {
+                solicitudToken.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            //Se cre hilo para hacer la petición del inicio de sesión.
+            solicitudInicioSesion = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Log.d("HILO2","Segundo Hilo");
+                    estadoConexion= base64.decodificarBase64(servicioLogin.Login(usuarioEncriptado,contrasenaEncriptada,token));
+
+                    Log.d("LOGIN",estadoConexion);
+
+                }
+           });
+
+            solicitudInicioSesion.start();
+            try {
+                solicitudInicioSesion.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+
+            //Log.d("ESTADODECODIFICADO",base64.decodificarBase64(estadoConexion));
+
+
+            //Log.d("ESTADO",base64.decodificarBase64(estadoConexion));
+
+            if (Integer.parseInt(estadoConexion)==1){
+                Intent i = new Intent(this, pantallaTipoDeUsuario.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+            }else{
+                Toast.makeText(this,"Contraseña Incorrecta",Toast.LENGTH_SHORT).show();
+            }*/
 
             Intent i = new Intent(this, pantallaTipoDeUsuario.class);
             startActivity(i);
@@ -198,4 +208,11 @@ public class LogIn extends AppCompatActivity {
 
         }
     }
+
+
+
+
+    /**/
+
+
 }

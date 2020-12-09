@@ -235,6 +235,7 @@
 
     <!-->String Activity Pantalla Cupo</!-->
     <string name="textView_Cupo">El cupo de la tarjeta es:</string>
+    <string name="textView_saldoPygree">Saldo de Pygree</string>
 
     <!-->String Activity Duplicado</!-->
     <string name="tetxtView_Duplicado">Selecione de que comprobante ecesita duplicado.</string>
