@@ -16,12 +16,14 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
+import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.consultaSaldo.pantallaConsultaSaldoLectura;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.deposito.pantallaDepositoDatosDepositante;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.giros.pantallaInicialGiros;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.pantallaInicialPagoFacturas;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.pagoProductosBCO.pantallaInicialPagoProductosBCO;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.recargas.pantallaRecargaCelular;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.retiro.PantallaInicialRetiro;
+import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.transferencia.pantallaTransferenciaLectura;
 
 public class pantallaServiciosUsuarioComun extends Fragment {
 
@@ -70,7 +72,9 @@ public class pantallaServiciosUsuarioComun extends Fragment {
         transferencia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(getContext(), pantallaTransferenciaLectura.class);
+                startActivity(i);
+                getActivity().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
         });
 
@@ -143,7 +147,9 @@ public class pantallaServiciosUsuarioComun extends Fragment {
         consultaDeSaldo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(getContext(), pantallaConsultaSaldoLectura.class);
+                startActivity(i);
+                getActivity().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
         });
 

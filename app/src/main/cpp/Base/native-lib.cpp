@@ -277,8 +277,15 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_enviarDeposito(JNI
     memcpy(cuenta, parametroRecibido, strlen(parametroRecibido));
     memcpy(monto, parametroRecibido2, strlen(parametroRecibido2));
     int resultado = 0;
+
+    LOGI("Entre al c y agregue los datos ");
+
     setParameter(HABILITACION_MODO_CNB, (char *) "4");//Temporal de android
+
+    LOGI("Despues de set parameter habilitacion modo CNB");
+
     if (realizarConexionTlS() > 0) {
+        LOGI("Verificando la conexion");
         resultado = enviarDeposito(cuenta, monto, tipo_cuenta, codigoAprobacion);
         cerrarConexion();
         resultadoTransaccionBancolombia(resultado, respuesta, env, thiz);

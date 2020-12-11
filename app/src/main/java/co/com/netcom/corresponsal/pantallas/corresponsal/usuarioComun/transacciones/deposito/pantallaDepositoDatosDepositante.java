@@ -115,8 +115,8 @@ public class pantallaDepositoDatosDepositante extends AppCompatActivity {
                  tipoCuenta = "20";
             }
 
-            valores.add(cantidad_string);
             valores.add(numeroDeCuenta_string);
+            valores.add(cantidad_string);
             tipoDeCuenta.add(tipoCuenta);
 
             //Se realiza el intent a la activity confirmar valores

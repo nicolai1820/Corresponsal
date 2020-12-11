@@ -11,7 +11,9 @@ import co.com.netcom.corresponsal.pantallas.funciones.CodigosTransacciones;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -243,6 +245,8 @@ public class pantallaConfirmacion extends AppCompatActivity {
             loader.setCancelable(false);
 
             AlertDialog dialog = loader.create();
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
             Log.d("OPEN"," se abrio el loader");
 
 

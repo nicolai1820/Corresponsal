@@ -8,7 +8,6 @@ import android.os.Handler;
 
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.logIn.LogIn;
-import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
 
 public class SplashInicial extends AppCompatActivity {
     private Intent a;

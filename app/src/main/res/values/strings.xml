@@ -213,9 +213,10 @@
 
     <!-->String Pop up </!-->
 
-    <string name="textView_PopUp">!Dispositivo desconectado¡</string>
+    <string name="textView_PopUp">¡Dispositivo desconectado!</string>
     <string name="button_PopUpContinuar"> Continuar</string>
     <string name="button_PopUpSalir">Salir</string>
+    <string name="button_PopUpIntentarNuevamente">Intentar nuevamente</string>
 
     <!-->String Activity Pantalla Administracion Usuarios </!-->
 
@@ -243,21 +244,23 @@
     <string name="button_otroRecibo">Otro recibo</string>
 
 
+    <!-->String Activity consulta saldo</!-->
+    <string name="textView_pantallaConsultaSaldoLectura">Ingrese o pase la tarjeta para consultar el saldo.</string>
+    <string name="textView_pantallaConsultaSaldoCuenta">Seleccione el tipo de cuenta.</string>
+    <string name="button_pantallaConsultaSaldoCCuentaContinuar">Continuar</string>
 
+    <!-->String Activity TransferenciaLecturaTarjeta</!-->
+    <string name="textView_pantallaTransferenciaLectura">Ingrese o pase la tarjeta para transferir.</string>
 
+    <!-->String Activity TransferenciaTipoDeCuenta</!-->
+    <string name="textView_pantallaTransferenciaTipoCuenta">Seleccione tipo de cuenta y tipo de cuenta destino.</string>
+    <string name="button_pantallaTransferenciaTipoCuentaContinuar">Continuar</string>
 
-
-
-
-
-
-
-
-
-
-
-
-
+    <!-->String Activity TransferenciaTipoDeCuentaNumeroYMonto</!-->
+    <string name="textView_pantallaTransferenciaTipoDeCuentaNumeroYMonto">Ingrese la cuenta destino y el monto.</string>
+    <string name="editText_pantallaTransferenciaTipoDeCuentaNumeroYMontoCuenta">Ingrese cuenta destino</string>
+    <string name="editText_pantallaTransferenciaTipoDeCuentaNumeroYMontoMonto">Ingrese Monto</string>
+    <string name="button_pantallaTransferenciaTipoDeCuentaNumeroYMontoContinuar">Continuar</string>
 
 
 

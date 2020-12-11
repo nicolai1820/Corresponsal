@@ -38,6 +38,7 @@ public void transacciones(int transaccion, ArrayList datos){
            new Thread(() -> {
                 String resultado = null;
 
+               //resultado = integradorC.enviarDeposito(datos.get(0).toString(),datos.get(1).toString(),Integer.parseInt(datos.get(2).toString()));
                resultado = integradorC.enviarDeposito(datos.get(0).toString(),datos.get(1).toString(),Integer.parseInt(datos.get(2).toString()));
 
                Log.d("RESULTADO DEPOSITO",resultado);

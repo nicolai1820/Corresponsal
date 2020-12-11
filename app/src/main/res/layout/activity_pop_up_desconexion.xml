@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/LayoutPopUpContainer"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="20dp"
     android:padding="20dp"
-    android:orientation="vertical"
     android:background="@drawable/input_form"
+    android:backgroundTint="@color/blanco"
+
+
     >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
 
             <TextView
-                android:layout_marginTop="40dp"
+                android:id="@+id/textView_PopUp"
                 android:text="@string/textView_PopUp"
+                android:layout_marginTop="40dp"
                 android:textColor="@color/azul"
                 android:textSize="22dp"
                 android:fontFamily="@font/quicksand_bold"
@@ -31,14 +35,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="50dp"
+                android:gravity="center_horizontal"
                 >
 
                 <Button
-                    android:onClick="salirPopUp"
+                    android:clickable="true"
                     android:id="@+id/button_PopUpSalir"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="49dp"
+                    android:layout_width="138dp"
+                    android:layout_height="67dp"
                     android:textAllCaps="false"
                     android:textColor="@color/blanco"
                     android:background="@drawable/boton_inicio"
@@ -47,20 +51,7 @@
                     android:fontFamily="@font/quicksand_regular"
                     />
 
-                <Button
-                    android:onClick="continuarPopUp"
-                    android:id="@+id/button_PopUpContinuar"
-                    android:layout_marginStart="20dp"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="49dp"
-                    android:textAllCaps="false"
-                    android:textColor="@color/blanco"
-                    android:background="@drawable/boton_inicio"
-                    android:text="@string/button_PopUpContinuar"
-                    android:textSize="19dp"
-                    android:fontFamily="@font/quicksand_regular"
-                    />
+
 
 
             </LinearLayout>
@@ -71,4 +62,4 @@
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

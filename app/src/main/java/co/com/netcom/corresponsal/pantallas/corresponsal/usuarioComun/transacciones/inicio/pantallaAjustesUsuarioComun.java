@@ -2,8 +2,11 @@ package co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacci
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -77,6 +80,7 @@ public class pantallaAjustesUsuarioComun extends Fragment {
         int permisoUbicacionFine = ContextCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION);
         int permisoAlmacenamiento = ContextCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
+        //Se verifica que se tengan los permisos
         Log.d("PERMISOS",Manifest.permission.ACCESS_COARSE_LOCATION);
         if (permisoAlmacenamiento != PackageManager.PERMISSION_GRANTED || permisoUbicacionCoarse!=PackageManager.PERMISSION_GRANTED ||permisoUbicacionFine!=PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -93,29 +97,32 @@ public class pantallaAjustesUsuarioComun extends Fragment {
         buscarDispositivosAjusterUsuarioComun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //Loader de buscando dispositivos
                 AlertDialog.Builder loader = new AlertDialog.Builder(getActivity());
 
                 LayoutInflater inflater = getActivity().getLayoutInflater();
 
-                loader.setView(inflater.inflate(R.layout.loader_buscando_dispositivos,null));
+                loader.setView(R.layout.loader_buscando_dispositivos);
                 loader.setCancelable(false);
 
 
                 AlertDialog dialog = loader.create();
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 Log.d("OPEN"," se abrio el loader");
 
                 dialog.show();
 
-
-
+                //Loader de conectando dispositivos
                 AlertDialog.Builder loader2 = new AlertDialog.Builder(getActivity());
 
                 LayoutInflater inflater2 = getActivity().getLayoutInflater();
 
-                loader2.setView(inflater2.inflate(R.layout.loader_buscando_dispositivos,null));
+                loader2.setView(inflater2.inflate(R.layout.loader_conectando_dispositivo,null));
                 loader2.setCancelable(false);
 
                 AlertDialog dialog2 = loader2.create();
+                dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 Log.d("OPEN"," se abrio el loader");
 
 
@@ -134,6 +141,8 @@ public class pantallaAjustesUsuarioComun extends Fragment {
                                     Toast.makeText(getActivity(),"Conexión Fallida",Toast.LENGTH_SHORT).show();
                                 break;}
                             case 3:{
+                                //Se utiliza para conectar al mpos que se elija de la lista.
+
                                dispositivos= newlandSDK.getDevices();
                                Log.d("DISPOSITIVOS",newlandSDK.getDevices().toString());
 
@@ -172,7 +181,7 @@ public class pantallaAjustesUsuarioComun extends Fragment {
                                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                             Log.d("DIRECCION",direcciones[position]);
 
-                                            dialog2.show();
+                                                    dialog2.show();
 
                                             new Thread(new Runnable() {
                                                 @Override
@@ -197,6 +206,7 @@ public class pantallaAjustesUsuarioComun extends Fragment {
                 };
 
 
+                //Se realiza la busqueda de dispostivos
                 Thread t = new Thread(new Runnable() {
                     @Override
                     public void run() {

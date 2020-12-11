@@ -22,7 +22,8 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="40dp"
         android:layout_marginTop="54dp"
-        android:background="@drawable/logo"/>
+        android:background="@drawable/logo"
+        />
 
     <TextView
         android:id="@+id/tituloHeader"

@@ -16,6 +16,7 @@
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:name=".App"
@@ -25,25 +26,35 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true"
-        tools:ignore="GoogleAppIndexingWarning"
-        >
-
-        <activity android:name=".pantallas.comunes.splash.SplashInicial" android:screenOrientation="portrait" >
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.transferencia.pantallaTransferenciaLectura"
+            android:windowSoftInputMode="adjustPan" android:screenOrientation="portrait"></activity>
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.consultaSaldo.pantallaConsultaSaldoLectura" android:screenOrientation="portrait"/>
+        <activity
+            android:name=".pantallas.comunes.splash.SplashInicial"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.retiro.conTarjeta.PantallaRetiroConTarjetaLoader" android:screenOrientation="portrait"  />
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.retiro.conTarjeta.PantallaRetiroConTarjetaCantidad"  android:screenOrientation="portrait" />
-        <activity android:name=".pantallas.comunes.tipoDeUsuario.pantallaTipoDeUsuario"  android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.retiro.conTarjeta.PantallaRetiroConTarjetaLoader"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.retiro.conTarjeta.PantallaRetiroConTarjetaCantidad"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.comunes.tipoDeUsuario.pantallaTipoDeUsuario"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".pantallas.corresponsal.usuarioComun.transacciones.recargas.pantallaRecargaCantidad"
             android:screenOrientation="portrait" />
         <activity
             android:name=".pantallas.corresponsal.usuarioComun.transacciones.recargas.pantallaRecargaCelular"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".pantallas.corresponsal.usuarioComun.transacciones.giros.cancelar.pantallaCancelarGiroCantidad"
             android:screenOrientation="portrait" />
@@ -119,11 +130,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".pantallas.comunes.logIn.LogIn"
-            android:screenOrientation="portrait">
-
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".pantallas.comunes.popUp.PopUp"
+            android:name=".pantallas.comunes.popUp.PopUpDesconexion"
             android:screenOrientation="portrait" />
         <activity
             android:name=".PruebaC"
