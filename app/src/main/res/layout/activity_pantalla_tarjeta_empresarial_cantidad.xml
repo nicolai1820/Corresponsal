@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.tarjetaEmpresarial.PantallaTarjetaEmpresarialCantidad"
+    android:background="@drawable/fondo">
+
+    <FrameLayout
+        android:id="@+id/contenedorHeaderPantallaTarjetaEmpresarialCantidad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ScrollView
+        android:layout_below="@id/contenedorHeaderPantallaTarjetaEmpresarialCantidad"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            
+            <TextView
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/azul"
+                android:fontFamily="@font/quicksand_regular"
+                android:textSize="19dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="40dp"
+                android:text="@string/textView_PantallaTarjetaEmpresarialCantidad"
+                />
+
+            <EditText
+                android:id="@+id/editText_TarjetaEmpresarialCantidad"
+                android:textSize="19dp"
+                android:textColorHint="@color/azul"
+                android:textColor="@color/azul"
+                android:fontFamily="@font/quicksand_bold"
+                android:hint="@string/editText_PantallaTarjetaEmpresarialCantidad"
+                android:layout_marginTop="130dp"
+                android:paddingStart="23dp"
+                android:layout_marginEnd="36dp"
+                android:layout_marginStart="36dp"
+                android:background="@drawable/input_form"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                />
+
+            <Button
+                android:onClick="pagoFacturaEmpresarialContinuar"
+                android:id="@+id/button_TarjetaEmpresarialContinuar"
+                android:layout_width="138dp"
+                android:layout_height="67dp"
+                android:background="@drawable/boton_inicio"
+                android:layout_gravity="center_horizontal"
+                android:textAllCaps="false"
+                android:textSize="20dp"
+                android:fontFamily="@font/quicksand_regular"
+                android:textColor="@color/blanco"
+                android:text="@string/button_pantallaTransferenciaTipoDeCuentaNumeroYMontoContinuar"
+                android:layout_marginTop="117dp"
+                android:layout_marginBottom="15dp"/>
+            
+            
+        </LinearLayout>
+        
+    </ScrollView>
+    
+
+</RelativeLayout>

@@ -16,7 +16,6 @@ import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.core.comunicacion.CardDTO;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUpDesconexion;
-import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.consultaSaldo.pantallaConsultaSaldoLectura;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun;
 import co.com.netcom.corresponsal.pantallas.funciones.MetodosSDKNewland;
 
@@ -42,7 +41,7 @@ public class pantallaTransferenciaLectura extends AppCompatActivity {
         setContentView(R.layout.activity_pantalla_transferencia_lectura);
 
         //Se crea el objeto header con el correspondiente titulo
-        header= new Header("<b>Recargas</b>");
+        header= new Header("<b>Transferencia</b>");
 
         //se carga el fragmento del titulo
         getSupportFragmentManager().beginTransaction().replace(R.id.contenedorHeaderPantallaTransferenciaLectura,header).commit();
@@ -87,10 +86,10 @@ public class pantallaTransferenciaLectura extends AppCompatActivity {
 
                         tarjeta = sdkNewland.getDatosTarjeta();
 
-                        Log.d("tarjeta",tarjeta.toString());
-
-
-
+                        Intent i = new Intent(getApplicationContext(), pantallaTransferenciaTipoCuentas.class);
+                        i.putExtra("tarjeta",tarjeta);
+                        startActivity(i);
+                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 
                         break;}
 
@@ -103,6 +102,7 @@ public class pantallaTransferenciaLectura extends AppCompatActivity {
 
                     //Caso en el cual el dispositivo MPOS no pudo leer la tarjeta o el usuario cancelara la transacción
                     case ERROR_DE_LECTURA:{
+                        Log.d("TRANSFERENCIA","ERROR TRANSFERENCIA");
                         popUp.crearPopUpError("Transacción Cancelada",popUp.TRANSFERENCIA_LEER_TARJETA);
                         break;
                     }
@@ -115,7 +115,7 @@ public class pantallaTransferenciaLectura extends AppCompatActivity {
 
                                 @Override
                                 public void run() {
-                                    sdkNewland.readCard("0",false);
+                                    sdkNewland.readCard("0",false, sdkNewland.TRANSFERENCIA);
                                 }
                             });
 
@@ -147,7 +147,8 @@ public class pantallaTransferenciaLectura extends AppCompatActivity {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    sdkNewland.readCard("0",false);
+
+                    sdkNewland.readCard("0",false, sdkNewland.TRANSFERENCIA);
 
                 }
             }).start();
@@ -157,14 +158,11 @@ public class pantallaTransferenciaLectura extends AppCompatActivity {
 
     }
 
-
-
-
-
     /** Se sobreescribe el metodo nativo onBackPressed para que el usuario no pueda retroceder dentro de la aplicación*/
     @Override
     public void onBackPressed() {
 
     }
+
 
 }

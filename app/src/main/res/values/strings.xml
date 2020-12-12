@@ -262,8 +262,14 @@
     <string name="editText_pantallaTransferenciaTipoDeCuentaNumeroYMontoMonto">Ingrese Monto</string>
     <string name="button_pantallaTransferenciaTipoDeCuentaNumeroYMontoContinuar">Continuar</string>
 
+    <!-->String Activity TarjetaEmpresarialLectura</!-->
 
+    <string name="textView_PantallaTarjetaEmpresarialLectura">Ingrese o pase la tarjeta de recaudo.</string>
 
+    <!-->String Activity TarjetaEmpresarialCantidad</!-->
+    <string name="textView_PantallaTarjetaEmpresarialCantidad">Ingrese la cantidad a cancelar.</string>
+    <string name="editText_PantallaTarjetaEmpresarialCantidad">Cantidad</string>
+    <string name="button_PantallaTarjetaEmpresarialContinuar">Continuar</string>
 
 
     <!--> __________________________________________________________________Proyecto APOS _____________________________________________________________________________________________________</!-->

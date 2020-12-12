@@ -1,5 +1,6 @@
 package co.com.netcom.corresponsal.pantallas.funciones;
 
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
@@ -33,6 +34,7 @@ import com.newland.mtype.util.ISOUtils;
 import co.com.netcom.corresponsal.core.comunicacion.CardDTO;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.consultaSaldo.pantallaConsultaSaldoLectura;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaAjustesUsuarioComun;
+import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.tarjetaEmpresarial.PantallaTarjetaEmpresarialLectura;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.retiro.conTarjeta.PantallaRetiroConTarjetaLoader;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.retiro.sinTarjeta.pantallaRetiroSinTarjetaPin;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.transferencia.pantallaTransferenciaLectura;
@@ -56,7 +58,14 @@ public class MetodosSDKNewland {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor sharedPreferencesEditor;
     private String pinBlockFinal;
+    private String estado="";
+    private int codigoTransaccion;
 
+
+    public static final int RETIRO =1;
+    public static final int CONSULTA_SALDO =2;
+    public static final int TRANSFERENCIA =3;
+    public static final int TARJETA_EMPRESARIAL=4;
 
 
     public static final int DEFAULT_MK_INDEX = 1;
@@ -482,27 +491,58 @@ public class MetodosSDKNewland {
            Log.d("TARJETA CARDDTO",datosTarjeta.toString());
             nlPosManager.calculateMAC(PinManageType.DUKPT, DEFAULT_MAC_WK_INDEX, ISOUtils.hex2byte(DataforMac), MacAlgorithm.MAC_X919);
 
-            //Lectura de tarjeta exitosa en Retiro con Tarjeta
-            try{
-                Message respuestaLectura = new Message();
-                respuestaLectura.what = PantallaRetiroConTarjetaLoader.PROCESO_EXISTOSO;
-                PantallaRetiroConTarjetaLoader.respuesta.sendMessage(respuestaLectura);
-            }catch (Exception e){ }
+            switch (codigoTransaccion){
 
-            //Lectura de tarjeta exitosa en Consulta Saldo
+                case RETIRO:
 
-            try{
-                Message respuestaLectura = new Message();
-                respuestaLectura.what = pantallaConsultaSaldoLectura.PROCESO_EXISTOSO;
-                pantallaConsultaSaldoLectura.respuesta.sendMessage(respuestaLectura);
-            }catch (Exception e){ }
+                    //Lectura de tarjeta exitosa en Retiro con Tarjeta
+                    try{
+                        Message respuestaLectura = new Message();
+                        respuestaLectura.what = PantallaRetiroConTarjetaLoader.PROCESO_EXISTOSO;
+                        PantallaRetiroConTarjetaLoader.respuesta.sendMessage(respuestaLectura);
+                    }catch (Exception e){ }
 
-            //Lectura de tarjeta exitosa en Transferencia
-            try{
-                Message respuestaLectura = new Message();
-                respuestaLectura.what = pantallaTransferenciaLectura.PROCESO_EXISTOSO;
-                pantallaTransferenciaLectura.respuesta.sendMessage(respuestaLectura);
-            }catch (Exception e){ }
+                    break;
+
+                case CONSULTA_SALDO:
+
+                    //Lectura de tarjeta exitosa en Consulta Saldo
+
+                    try{
+                        Message respuestaLectura = new Message();
+                        respuestaLectura.what = pantallaConsultaSaldoLectura.PROCESO_EXISTOSO;
+                        pantallaConsultaSaldoLectura.respuesta.sendMessage(respuestaLectura);
+                    }catch (Exception e){ }
+
+
+                    break;
+                case TRANSFERENCIA:
+
+                    //Lectura de tarjeta exitosa en Transferencia
+                    try{
+                        Message respuestaLectura = new Message();
+                        respuestaLectura.what = pantallaTransferenciaLectura.PROCESO_EXISTOSO;
+                        pantallaTransferenciaLectura.respuesta.sendMessage(respuestaLectura);
+                    }catch (Exception e){ }
+                    break;
+
+                case TARJETA_EMPRESARIAL:
+
+                    //Lectura de tarjeta exitosa en TarjetaEmpresarial
+                    try{
+                        Message respuestaLectura = new Message();
+                        respuestaLectura.what = PantallaTarjetaEmpresarialLectura.PROCESO_EXISTOSO;
+                        PantallaTarjetaEmpresarialLectura.respuesta.sendMessage(respuestaLectura);
+                    }catch (Exception e){ }
+
+                    break;
+
+
+            }
+
+
+
+
 
         }
 
@@ -556,13 +596,57 @@ public class MetodosSDKNewland {
             //Error dispositivo esta apagado
               if(errCode == ErrorCode.ERR_BTDISCONNECTED){
 
-                  try{
-                      //Se envia un mensaje al handler de la clase retiro con tarjeta, para que se muestre el popUp de dispositivo desconectado
+                  switch (codigoTransaccion){
+                      case RETIRO:
 
-                      Message desconexion = new Message();
-                      desconexion.what = PantallaRetiroConTarjetaLoader.DISPOSITIVO_DESCONECTADO;
-                      PantallaRetiroConTarjetaLoader.respuesta.sendMessage(desconexion);
-                  }catch (Exception e){ }
+                          try{
+                              //Se envia un mensaje al handler de la clase retiro con tarjeta, para que se muestre el popUp de dispositivo desconectado
+
+                              Message desconexion = new Message();
+                              desconexion.what = PantallaRetiroConTarjetaLoader.DISPOSITIVO_DESCONECTADO;
+                              PantallaRetiroConTarjetaLoader.respuesta.sendMessage(desconexion);
+                          }catch (Exception e){ }
+
+                          break;
+
+                      case CONSULTA_SALDO:
+
+                          try{
+                              //Se envia un mensaje al handler de la retiroSinTarjetaPin para que se muestre el popUp de dispositivo desconectado
+
+                              Message desconexion = new Message();
+                              desconexion.what = pantallaConsultaSaldoLectura.DISPOSITIVO_DESCONECTADO;
+                              pantallaConsultaSaldoLectura.respuesta.sendMessage(desconexion);
+                          }catch (Exception e){ }
+
+                          break;
+
+                      case TRANSFERENCIA:
+                          try{
+                              //Se envia un mensaje al handler de la retiroSinTarjetaPin para que se muestre el popUp de dispositivo desconectado
+
+                              Message desconexion = new Message();
+                              desconexion.what = pantallaTransferenciaLectura.DISPOSITIVO_DESCONECTADO;
+                              pantallaTransferenciaLectura.respuesta.sendMessage(desconexion);
+                          }catch (Exception e){ }
+
+                          break;
+
+                      case TARJETA_EMPRESARIAL:
+
+                          try{
+                              //Se envia un mensaje al handler de la pago tarjeta empresarial para que se muestre el popUp de dispositivo desconectado
+
+                              Message desconexion = new Message();
+                              desconexion.what = PantallaTarjetaEmpresarialLectura.DISPOSITIVO_DESCONECTADO;
+                              PantallaTarjetaEmpresarialLectura.respuesta.sendMessage(desconexion);
+                          }catch (Exception e){ }
+
+                          break;
+
+
+                  }
+
 
                   try{
                       //Se envia un mensaje al handler de la retiroSinTarjetaPin para que se muestre el popUp de dispositivo desconectado
@@ -572,48 +656,76 @@ public class MetodosSDKNewland {
                       pantallaRetiroSinTarjetaPin.respuesta.sendMessage(desconexion);
                   }catch (Exception e){ }
 
-                  try{
-                      //Se envia un mensaje al handler de la retiroSinTarjetaPin para que se muestre el popUp de dispositivo desconectado
 
-                      Message desconexion = new Message();
-                      desconexion.what = pantallaConsultaSaldoLectura.DISPOSITIVO_DESCONECTADO;
-                      pantallaConsultaSaldoLectura.respuesta.sendMessage(desconexion);
-                  }catch (Exception e){ }
 
               }
 
               //Error lectura de tarjeta fallida
               else if (errInfo.equals("Fail to obtain card information")){
 
-                  //Lectura de tarjeta fallida en Retiro con Tarjeta
 
-                  try{
-                      //Se envia un mensaje al handler de la clase retiro con tarjeta, para que se muestre el popUp de transaccion cancelada
+                  switch (codigoTransaccion){
 
-                      Message errorLectura = new Message();
-                      errorLectura.what = PantallaRetiroConTarjetaLoader.ERROR_DE_LECTURA;
-                      PantallaRetiroConTarjetaLoader.respuesta.sendMessage(errorLectura);
-                  }catch (Exception e){ }
+                      case RETIRO:
 
-                  //Lectura de tarjeta fallida en Consulta de Saldo
+                          //Lectura de tarjeta fallida en Retiro con Tarjeta
+                          try{
+                              //Se envia un mensaje al handler de la clase retiro con tarjeta, para que se muestre el popUp de transaccion cancelada
 
-                  try{
-                      //Se envia un mensaje al handler de la clase retiro con tarjeta, para que se muestre el popUp de transaccion cancelada
+                              Message errorLectura = new Message();
+                              errorLectura.what = PantallaRetiroConTarjetaLoader.ERROR_DE_LECTURA;
+                              PantallaRetiroConTarjetaLoader.respuesta.sendMessage(errorLectura);
+                          }catch (Exception e){ }
 
-                      Message errorLectura = new Message();
-                      errorLectura.what = pantallaConsultaSaldoLectura.ERROR_DE_LECTURA;
-                      pantallaConsultaSaldoLectura.respuesta.sendMessage(errorLectura);
-                  }catch (Exception e){ }
+                          break;
 
-                  //Lectura de tarjeta fallida en Transferencia
+                      case CONSULTA_SALDO:
 
-                  try{
-                      //Se envia un mensaje al handler de la clase transferencia, para que se muestre el popUp de transaccion cancelada
+                          //Lectura de tarjeta fallida en Consulta de Saldo
 
-                      Message errorLectura = new Message();
-                      errorLectura.what = pantallaTransferenciaLectura.ERROR_DE_LECTURA;
-                      pantallaTransferenciaLectura.respuesta.sendMessage(errorLectura);
-                  }catch (Exception e){ }
+                          try{
+                              //Se envia un mensaje al handler de la clase retiro con tarjeta, para que se muestre el popUp de transaccion cancelada
+
+                              Message errorLectura = new Message();
+                              errorLectura.what = pantallaConsultaSaldoLectura.ERROR_DE_LECTURA;
+                              pantallaConsultaSaldoLectura.respuesta.sendMessage(errorLectura);
+                          }catch (Exception e){ }
+
+                          break;
+
+                      case TRANSFERENCIA:
+
+                          //Lectura de tarjeta fallida en Transferencia
+
+                          try{
+                              //Se envia un mensaje al handler de la clase transferencia, para que se muestre el popUp de transaccion cancelada
+
+                              Message errorLectura = new Message();
+                              errorLectura.what = pantallaTransferenciaLectura.ERROR_DE_LECTURA;
+                              pantallaTransferenciaLectura.respuesta.sendMessage(errorLectura);
+                          }catch (Exception e){ }
+
+                          break;
+
+                      case TARJETA_EMPRESARIAL:
+
+                          //Lectura de tarjeta fallida en Transferencia
+
+                          try{
+                              //Se envia un mensaje al handler de la clase transferencia, para que se muestre el popUp de transaccion cancelada
+
+                              Message errorLectura = new Message();
+                              errorLectura.what = PantallaTarjetaEmpresarialLectura.ERROR_DE_LECTURA;
+                              PantallaTarjetaEmpresarialLectura.respuesta.sendMessage(errorLectura);
+                          }catch (Exception e){ }
+
+                          break;
+                  }
+
+
+
+
+
               }
 
               //Error lectura de pin fallida
@@ -628,35 +740,62 @@ public class MetodosSDKNewland {
 
               else if(errInfo.equalsIgnoreCase("Canceled by the user")){
 
-                  try{
-                      //Se envia un mensaje al handler de la clase retiro con tarjeta, indicando que el usuario cancelo la transaccion
-                      Message usuarioCancela = new Message();
-                      usuarioCancela.what = PantallaRetiroConTarjetaLoader.CANCELADO_POR_USUARIO;
-                      PantallaRetiroConTarjetaLoader.respuesta.sendMessage(usuarioCancela);
-                  }catch (Exception e){ }
+                  switch (codigoTransaccion){
+                      case RETIRO:
+                          try{
+                              //Se envia un mensaje al handler de la clase retiro con tarjeta, indicando que el usuario cancelo la transaccion
+                              Message usuarioCancela = new Message();
+                              usuarioCancela.what = PantallaRetiroConTarjetaLoader.CANCELADO_POR_USUARIO;
+                              PantallaRetiroConTarjetaLoader.respuesta.sendMessage(usuarioCancela);
+                          }catch (Exception e){ }
 
-                  try{
-                      //Se envia un mensaje al handler de la clase consulta saldo, indicando que el usuario cancelo la transaccion
-                      Message usuarioCancela = new Message();
-                      usuarioCancela.what = pantallaConsultaSaldoLectura.CANCELADO_POR_USUARIO;
-                      pantallaConsultaSaldoLectura.respuesta.sendMessage(usuarioCancela);
-                  }catch (Exception e){ }
+                          break;
 
-                  try{
-                      //Se envia un mensaje al handler de la clase transferencia, indicando que el usuario cancelo la transaccion
-                      Message usuarioCancela = new Message();
-                      usuarioCancela.what = pantallaTransferenciaLectura.CANCELADO_POR_USUARIO;
-                      pantallaTransferenciaLectura.respuesta.sendMessage(usuarioCancela);
-                  }catch (Exception e){ }
+                      case CONSULTA_SALDO:
 
-                  try{
-                      //Se envia un mensaje al handler de la clase retiro sin tarjeta, indicando que el usuario cancelo la transaccion
-                      Message usuarioCancela = new Message();
-                      usuarioCancela.what = pantallaRetiroSinTarjetaPin.CANCELADO_POR_USUARIO;
-                      pantallaRetiroSinTarjetaPin.respuesta.sendMessage(usuarioCancela);
-                  }catch (Exception e){ }
+                          try{
+                              //Se envia un mensaje al handler de la clase consulta saldo, indicando que el usuario cancelo la transaccion
+                              Message usuarioCancela = new Message();
+                              usuarioCancela.what = pantallaConsultaSaldoLectura.CANCELADO_POR_USUARIO;
+                              pantallaConsultaSaldoLectura.respuesta.sendMessage(usuarioCancela);
+                          }catch (Exception e){ }
+
+                          break;
 
 
+                      case TRANSFERENCIA:
+                          try{
+                              //Se envia un mensaje al handler de la clase transferencia, indicando que el usuario cancelo la transaccion
+                              Message usuarioCancela = new Message();
+                              usuarioCancela.what = pantallaTransferenciaLectura.CANCELADO_POR_USUARIO;
+                              pantallaTransferenciaLectura.respuesta.sendMessage(usuarioCancela);
+                          }catch (Exception e){ }
+                          break;
+
+                      case TARJETA_EMPRESARIAL:
+                          try{
+                              //Se envia un mensaje al handler de la clase pago factura empresarial, indicando que el usuario cancelo la transaccion
+                              Message usuarioCancela = new Message();
+                              usuarioCancela.what = PantallaTarjetaEmpresarialLectura.CANCELADO_POR_USUARIO;
+                              PantallaTarjetaEmpresarialLectura.respuesta.sendMessage(usuarioCancela);
+                          }catch (Exception e){ }
+                          break;
+
+                      default:
+
+                          try{
+                              //Se envia un mensaje al handler de la clase retiro sin tarjeta, indicando que el usuario cancelo la transaccion
+                              Message usuarioCancela = new Message();
+                              usuarioCancela.what = pantallaRetiroSinTarjetaPin.CANCELADO_POR_USUARIO;
+                              pantallaRetiroSinTarjetaPin.respuesta.sendMessage(usuarioCancela);
+                          }catch (Exception e){ }
+
+                          break;
+                  }
+
+              } else if (errInfo.equals("Fail to check card state")){
+                  Log.d("ESTADO TARJETA",errInfo);
+                  estado = errInfo;
               }
 
         }
@@ -669,6 +808,10 @@ public class MetodosSDKNewland {
         @Override
         public void onCheckCardStateSucc(CARD_STATE card_state) {
             //  appendString("onCheckCardStateSucc = " + card_state.toString());
+            if (card_state.toString().equals("IC_CARD")){
+                Log.d("CHECKCARDSTATE",card_state.toString());
+                estado = card_state.toString();
+            }
         }
 
         @Override
@@ -718,7 +861,6 @@ public class MetodosSDKNewland {
 
 
         sharedPreferencesEditor = sharedPreferences.edit();
-
 
     }
 
@@ -773,6 +915,7 @@ public class MetodosSDKNewland {
         this.devices = lista;
     }
 
+
     /**Metodo que retorna un objeto de tipo CardDTO*/
 
     public CardDTO getDatosTarjeta(){
@@ -782,8 +925,9 @@ public class MetodosSDKNewland {
 
     /**Metodo de tipo void que funciona para habilitar la lectura de tarjetas en el dispositivos MPOS*/
 
-    public void readCard(String cantidadTransaccion, boolean cantidadActiva){
+    public void readCard(String cantidadTransaccion, boolean cantidadActiva, int codigo){
 
+        this.codigoTransaccion =codigo;
 
         if (cantidadActiva){
             ReadCardInfo paramsInfo = new ReadCardInfo();
@@ -845,6 +989,12 @@ public class MetodosSDKNewland {
     /**Metodo que retorna un String, para obtener el pinBlock */
     public String getPinBlockFinal(){
         return this.pinBlockFinal;
+    }
+
+    /**Metodo para verificar si se encuentra una tarjeta insertada en el dispositivo*/
+    public String checkCardState(){
+        nlPosManager.checkCardState();
+        return estado;
     }
 
 

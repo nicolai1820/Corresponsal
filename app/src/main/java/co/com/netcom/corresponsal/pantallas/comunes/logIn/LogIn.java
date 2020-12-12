@@ -93,7 +93,6 @@ public class LogIn extends AppCompatActivity {
         //Se crea la conexion con la interfaz grafica
         editText_User = (EditText) findViewById(R.id.editText_User);
         editText_Password = (EditText) findViewById(R.id.editText_Password);
-        textView_Dudas = (TextView) findViewById(R.id.textView_Dudas);
         textView_Password = (TextView) findViewById(R.id.editText_Password);
 
         //Se crea un elemento para verificar que los permisos esten activados
@@ -118,16 +117,6 @@ public class LogIn extends AppCompatActivity {
             }
         });
 
-
-        /** Se crea el evento click para el textview de tiene dudas?, el cual redirige a la pantalla de dudas.*/
-
-        textView_Dudas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"Redirige a pantalla dudas",Toast.LENGTH_LONG);
-
-            }
-        });
     }
 
 

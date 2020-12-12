@@ -92,7 +92,7 @@ public class PantallaRetiroConTarjetaLoader extends AppCompatActivity {
 
                         tarjeta = sdkNewland.getDatosTarjeta();
 
-                        Log.d("tarjeta",tarjeta.toString());
+                        Log.d("tarjeta RETIRO",tarjeta.toString());
 
 
                         break;}
@@ -101,6 +101,8 @@ public class PantallaRetiroConTarjetaLoader extends AppCompatActivity {
                         popUp.crearPopUp();
                         break;}
                     case ERROR_DE_LECTURA:{
+                        Log.d("RETIRO","ERROR RETIRO");
+
                         popUp.crearPopUpError("Transacción Cancelada",popUp.RETIRO_CON_TARJETA);
                         break;
                     }
@@ -112,7 +114,7 @@ public class PantallaRetiroConTarjetaLoader extends AppCompatActivity {
 
                                 @Override
                                 public void run() {
-                                    sdkNewland.readCard("0",false);
+                                    sdkNewland.readCard("0",false, sdkNewland.RETIRO);
                                 }
                             });
 
@@ -145,7 +147,7 @@ public class PantallaRetiroConTarjetaLoader extends AppCompatActivity {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    sdkNewland.readCard("0",false);
+                    sdkNewland.readCard("0",false, sdkNewland.RETIRO);
                 }
             }).start();
         }else{

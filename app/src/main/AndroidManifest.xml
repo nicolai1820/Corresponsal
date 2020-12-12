@@ -27,9 +27,18 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.transferencia.pantallaTransferenciaLectura"
-            android:windowSoftInputMode="adjustPan" android:screenOrientation="portrait"></activity>
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.consultaSaldo.pantallaConsultaSaldoLectura" android:screenOrientation="portrait"/>
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.tarjetaEmpresarial.PantallaTarjetaEmpresarialCantidad"></activity>
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.tarjetaEmpresarial.PantallaTarjetaEmpresarialLectura" />
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.transferencia.pantallaTransferenciaCantidad" />
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.transferencia.pantallaTransferenciaTipoCuentas" />
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.consultaSaldo.pantallaConsultaSaldoTipoCuenta" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.transferencia.pantallaTransferenciaLectura"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.consultaSaldo.pantallaConsultaSaldoLectura"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".pantallas.comunes.splash.SplashInicial"
             android:screenOrientation="portrait">

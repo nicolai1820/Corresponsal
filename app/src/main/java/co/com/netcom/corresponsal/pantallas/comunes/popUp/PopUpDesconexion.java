@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.consultaSaldo.pantallaConsultaSaldoLectura;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun;
+import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.tarjetaEmpresarial.PantallaTarjetaEmpresarialLectura;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.retiro.conTarjeta.PantallaRetiroConTarjetaLoader;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.retiro.sinTarjeta.pantallaRetiroSinTarjetaPin;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.transferencia.pantallaTransferenciaLectura;
@@ -30,7 +31,7 @@ public class PopUpDesconexion extends AppCompatActivity {
     public final static int RETIRO_SIN_TARJETA_PIN=2;
     public final static int CONSULTA_SALDO_LEER_TARJETA = 3;
     public final static int TRANSFERENCIA_LEER_TARJETA=4;
-
+    public final static int PAGO_FACTURA_EMPRESARIAL=5;
 
 
 
@@ -172,6 +173,19 @@ public class PopUpDesconexion extends AppCompatActivity {
                             Message lecturaNueva = new Message();
                             lecturaNueva.what = pantallaTransferenciaLectura.NUEVO_INTENTO;
                             pantallaTransferenciaLectura.respuesta.sendMessage(lecturaNueva);
+
+                        }catch (Exception e){ }
+
+                        break;
+
+                    case PAGO_FACTURA_EMPRESARIAL:
+                        alertDialog.dismiss();
+                        try{
+                            //Se envia un mensaje al handler de la clase retiro con tarjeta, para que se vuelva
+                            //a habilitar la lectura de la tarjeta nuevamente
+                            Message lecturaNueva = new Message();
+                            lecturaNueva.what = PantallaTarjetaEmpresarialLectura.NUEVO_INTENTO;
+                            PantallaTarjetaEmpresarialLectura.respuesta.sendMessage(lecturaNueva);
 
                         }catch (Exception e){ }
 

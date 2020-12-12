@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.core.comunicacion.CardDTO;
+import co.com.netcom.corresponsal.core.comunicacion.IntegradorC;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUpDesconexion;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun;
@@ -92,7 +93,12 @@ public class pantallaConsultaSaldoLectura extends AppCompatActivity {
 
                         tarjeta = sdkNewland.getDatosTarjeta();
 
-                        Log.d("tarjeta",tarjeta.toString());
+                        Log.d("TARJETA SALDO",tarjeta.toString());
+
+                        Intent i = new Intent(getApplicationContext(), pantallaConsultaSaldoTipoCuenta.class);
+                        i.putExtra("tarjeta",tarjeta);
+                        startActivity(i);
+                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 
 
                         break;}
@@ -106,6 +112,7 @@ public class pantallaConsultaSaldoLectura extends AppCompatActivity {
 
                     //Caso en el cual el dispositivo MPOS no pudo leer la tarjeta o el usuario cancelara la transacción
                     case ERROR_DE_LECTURA:{
+                        Log.d("CONSULTA SALDO","ERROR CONSULTA");
                         popUp.crearPopUpError("Transacción Cancelada",popUp.CONSULTA_SALDO_LEER_TARJETA);
                         break;
                     }
@@ -118,7 +125,7 @@ public class pantallaConsultaSaldoLectura extends AppCompatActivity {
 
                                 @Override
                                 public void run() {
-                                    sdkNewland.readCard("0",false);
+                                    sdkNewland.readCard("0",false,sdkNewland.CONSULTA_SALDO);
                                 }
                             });
 
@@ -152,7 +159,7 @@ public class pantallaConsultaSaldoLectura extends AppCompatActivity {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    sdkNewland.readCard("0",false);
+                    sdkNewland.readCard("0",false,sdkNewland.CONSULTA_SALDO);
 
                 }
             }).start();

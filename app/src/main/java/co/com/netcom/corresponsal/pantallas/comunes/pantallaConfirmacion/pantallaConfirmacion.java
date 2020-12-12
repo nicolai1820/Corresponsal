@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
 
+import co.com.netcom.corresponsal.core.comunicacion.CardDTO;
 import co.com.netcom.corresponsal.core.comunicacion.DatosComision;
 import co.com.netcom.corresponsal.core.comunicacion.DatosRecaudo;
 import co.com.netcom.corresponsal.core.comunicacion.IntegradorC;
@@ -52,6 +53,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
     private String valorGiro;
     private DatosComision datosComision;
     private DatosRecaudo datosRecaudo;
+    private CardDTO tarjeta;
 
 
 
@@ -86,13 +88,18 @@ public class pantallaConfirmacion extends AppCompatActivity {
         tipoDocumento = i.getStringArrayList("tipoDocumento");
         transaccion = i.getInt("transaccion");
 
-
+        //Se obtienen los valores si es un giro
         valorGiro = i.getString("valorGiro");
         datosComision = new DatosComision();
         datosComision = i.getParcelable("datosComision");
 
         datosRecaudo = new DatosRecaudo();
         datosRecaudo = i.getParcelable("datosRecaudo");
+
+        //Se obtiene los valores ed la tarjeta
+        tarjeta = new CardDTO();
+        tarjeta = i.getParcelable("tarjeta");
+
 
         //Se crea el header con el titulo que se rescato del intent
         header = new Header(tituloActivity);
@@ -155,7 +162,8 @@ public class pantallaConfirmacion extends AppCompatActivity {
             //Se agregan los TextViews al LinearLayout
             linearLayoutConfirmacion.addView(referencia);
             linearLayoutConfirmacion.addView(linearLayout);
-        }else {
+        }
+        else {
 
             for (int j = 0; j < titulos.length; j++) {
 
@@ -231,6 +239,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
             intento.putExtra("valores", valores);
             intento.putExtra("tipoDocumento",tipoDocumento);
             intento.putExtra("tipoDeCuenta",tipoDeCuenta);
+            intento.putExtra("tarjeta",tarjeta);
             startActivity(intento);
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 
@@ -420,6 +429,12 @@ public class pantallaConfirmacion extends AppCompatActivity {
                     break;
                 }
                 case CodigosTransacciones.CORRESPONSAL_CONSULTA_SALDO:{
+
+                    for(int i =0; i<tipoDeCuenta.size();i++){
+                        datosTransaccion.add(tipoDeCuenta.get(i));
+                    }
+
+
                     break;
                 }
                 //listo
