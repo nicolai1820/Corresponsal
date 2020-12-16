@@ -16,9 +16,9 @@ import co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantall
 
 public class pantallaRetiroSinTarjetaCantidad extends AppCompatActivity {
     Header header = new Header("<b>Retiro sin tarjeta</b>");
-    private EditText retiroSinTarjetaCantidad;
+    private EditText retiroSinTarjetaCantidad, retiroSinTarjetaNumeroCuenta;
     private ArrayList<String> valores = new ArrayList<String>();
-    private String titulos [] = {"Cantidad"};
+    private String titulos [] = {"Número de cuenta","Cantidad"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,20 +31,25 @@ public class pantallaRetiroSinTarjetaCantidad extends AppCompatActivity {
         //Se crea la conexion con la interfaz grafica
 
         retiroSinTarjetaCantidad = (EditText) findViewById(R.id.editText_RetiroSinTarjetaCantidad);
+        retiroSinTarjetaNumeroCuenta = (EditText) findViewById(R.id.editText_RetiroSinTarjetaNumeroCuenta);
     }
 
     /**Metodo retiroSinTarjetaContinuar de tipo void, recibe como parametro un View para poder ser implementado por el
      * button_retiroSinTarjetaContinuar,este hace un intent a la activity pantalla confirmacion, para que el usuario verifique la
-     * cantidad digitada*/
+     * cantidad digitada y el número de cuenta.*/
 
     public void retiroSinTarjetaContinuar(View view){
 
         String cantidadRetiroSinTarjeta_string = retiroSinTarjetaCantidad.getText().toString();
+        String numeroDeCuenta_string = retiroSinTarjetaNumeroCuenta.getText().toString();
 
-        if(cantidadRetiroSinTarjeta_string.isEmpty()){
+        if(numeroDeCuenta_string.isEmpty()){
+            Toast.makeText(getApplicationContext(),"Debe ingresar el número de cuenta",Toast.LENGTH_SHORT).show();
+        } else if(cantidadRetiroSinTarjeta_string.isEmpty()){
             Toast.makeText(getApplicationContext(),"Debe ingresar la cantidad",Toast.LENGTH_SHORT).show();
         } else {
 
+            valores.add(numeroDeCuenta_string);
             valores.add(cantidadRetiroSinTarjeta_string);
 
             //Se realiza el intent a la activity confirmar valores

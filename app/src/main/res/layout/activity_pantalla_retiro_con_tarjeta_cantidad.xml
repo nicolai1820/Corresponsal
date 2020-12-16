@@ -33,19 +33,6 @@
                android:textSize="19dp"
                android:fontFamily="@font/quicksand_regular"/>
 
-           <Spinner
-               android:id="@+id/spinner_tipoCuentaRetiroConTarjeta"
-               android:layout_width="match_parent"
-               android:layout_height="49dp"
-               android:layout_marginStart="36dp"
-               android:layout_marginTop="68dp"
-               android:layout_marginEnd="45dp"
-               android:paddingStart="23dp"
-               android:background="@null"
-               android:foreground="@drawable/spinner_style"
-               android:overlapAnchor="false"
-               />
-           
            <EditText
                android:id="@+id/editText_pantallaRetiroConTarjetaCantidad"
                android:textSize="19dp"
@@ -53,14 +40,19 @@
                android:textColorHint="@color/azul"
                android:paddingStart="23dp"
                android:hint="@string/editText_pantallaRetiroConTarjetaCantidad"
-               android:layout_marginTop="20dp"
+               android:layout_marginTop="68dp"
                android:background="@drawable/input_form"
                android:layout_marginEnd="45dp"
                android:layout_marginStart="36dp"
                android:layout_width="match_parent"
                android:layout_height="49dp"
                android:inputType="number"
-               android:imeOptions="actionDone"/>
+               android:numeric="integer"
+               android:imeOptions="actionDone"
+               android:textColor="@color/azul"
+               />
+
+
 
            
            <Button

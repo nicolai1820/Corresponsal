@@ -57,10 +57,13 @@
                 android:hint="@string/editText_PagoFacturasManualNumeroCuentaRecaudadora"
                 android:textColorHint="@color/azul"
                 android:inputType="number"
+                android:numeric="integer"
                 android:fontFamily="@font/quicksand_bold"
                 android:textSize="21dp"
                 android:paddingStart="23dp"
-                android:background="@drawable/input_form"/>
+                android:background="@drawable/input_form"
+                android:textColor="@color/azul"
+                />
 
             <EditText
                 android:id="@+id/editText_PagoFacturasManualCuentaRecaudadoraNumeroReferencia"
@@ -72,11 +75,14 @@
                 android:hint="@string/editText_PagoFacturasManualCuentaRecaudadoraNumeroReferencia"
                 android:textColorHint="@color/azul"
                 android:inputType="number"
+                android:numeric="integer"
                 android:fontFamily="@font/quicksand_bold"
                 android:textSize="21dp"
                 android:paddingStart="23dp"
                 android:background="@drawable/input_form"
-                android:imeOptions="actionDone"/>
+                android:imeOptions="actionDone"
+                android:textColor="@color/azul"
+                />
 
             <Button
                 android:id="@+id/button_PagoFacturasManualCuentaRecaudadoraVamos"

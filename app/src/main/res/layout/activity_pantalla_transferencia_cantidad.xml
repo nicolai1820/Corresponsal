@@ -15,6 +15,7 @@
     
     <ScrollView
         android:layout_below="@id/contenedorHeaderPantallaTransferenciaCantidad"
+        android:layout_above="@id/menuTransferencia"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         
@@ -22,8 +23,8 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            
-            
+
+
             <TextView
                 android:layout_width="225dp"
                 android:layout_height="wrap_content"
@@ -33,23 +34,37 @@
                 android:text="@string/textView_pantallaTransferenciaTipoDeCuentaNumeroYMonto"
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="40dp"/>
+            <Spinner
+                android:id="@+id/spinner_tipoCuentaDestinoTransferencia"
+                android:layout_width="match_parent"
+                android:layout_marginEnd="36dp"
+                android:layout_height="49dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="87dp"
+                android:paddingStart="23dp"
+                android:background="@null"
+                android:foreground="@drawable/spinner_style"
+                android:overlapAnchor="false"
+                />
 
             <EditText
-            android:id="@+id/editText_NumeroCuentaDestinoTransferencia"
-            android:textSize="19dp"
-            android:textColorHint="@color/azul"
-            android:textColor="@color/azul"
-            android:fontFamily="@font/quicksand_bold"
-            android:hint="@string/editText_pantallaTransferenciaTipoDeCuentaNumeroYMontoCuenta"
-            android:layout_marginTop="87dp"
-            android:paddingStart="23dp"
-            android:layout_marginEnd="36dp"
-            android:layout_marginStart="36dp"
-            android:background="@drawable/input_form"
-            android:layout_width="match_parent"
-            android:layout_height="49dp"
+                android:id="@+id/editText_NumeroCuentaDestinoTransferencia"
+                android:textSize="19dp"
+                android:textColorHint="@color/azul"
+                android:textColor="@color/azul"
+                android:fontFamily="@font/quicksand_bold"
+                android:hint="@string/editText_pantallaTransferenciaTipoDeCuentaNumeroYMontoCuenta"
+                android:layout_marginTop="20dp"
+                android:paddingStart="23dp"
+                android:layout_marginEnd="36dp"
+                android:layout_marginStart="36dp"
+                android:background="@drawable/input_form"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
                 android:inputType="number"
-            />
+                android:numeric="integer"
+
+                />
 
 
             <EditText
@@ -59,7 +74,7 @@
                 android:textColor="@color/azul"
                 android:fontFamily="@font/quicksand_bold"
                 android:hint="@string/editText_pantallaTransferenciaTipoDeCuentaNumeroYMontoMonto"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:paddingStart="23dp"
                 android:layout_marginEnd="36dp"
                 android:layout_marginStart="36dp"
@@ -68,6 +83,7 @@
                 android:layout_height="49dp"
                 android:imeOptions="actionDone"
                 android:inputType="number"
+                android:numeric="integer"
                 />
             
             <Button
@@ -91,7 +107,24 @@
         </LinearLayout>
         
     </ScrollView>
-    
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/menuTransferencia"
+        android:background="@drawable/menu_fondo"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:itemIconTint="@color/azul"
+        app:itemTextColor="@color/azul"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:menu="@menu/menu_home"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp"
+        app:itemIconSize="35dp"
+        app:labelVisibilityMode="unlabeled" />
     
 
 </RelativeLayout>

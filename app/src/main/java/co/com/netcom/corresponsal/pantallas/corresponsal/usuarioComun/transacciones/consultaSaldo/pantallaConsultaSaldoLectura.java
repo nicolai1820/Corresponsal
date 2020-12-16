@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -159,7 +160,10 @@ public class pantallaConsultaSaldoLectura extends AppCompatActivity {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
+                    getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                     sdkNewland.readCard("0",false,sdkNewland.CONSULTA_SALDO);
+
 
                 }
             }).start();

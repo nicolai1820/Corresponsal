@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pantallas.corresponsal.administrador.inicio.pantallaCupo"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.inicio.cupoTarjeta.pantallaCupo"
     android:background="@drawable/fondo">
 
     <FrameLayout

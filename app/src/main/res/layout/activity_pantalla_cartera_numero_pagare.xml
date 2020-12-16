@@ -46,10 +46,12 @@
                 android:background="@drawable/input_form"
                 android:hint="@string/editText_CarteraNumeroPagare"
                 android:inputType="number"
+                android:numeric="integer"
                 android:fontFamily="@font/quicksand_bold"
                 android:textSize="21dp"
                 android:textColorHint="@color/azul"
                 android:textAlignment="center"
+                android:textColor="@color/azul"
                 />
             <EditText
                 android:id="@+id/editText_CarteraCantidad"
@@ -61,11 +63,13 @@
                 android:background="@drawable/input_form"
                 android:hint="@string/editText_CarteraCantidad"
                 android:inputType="number"
+                android:numeric="integer"
                 android:fontFamily="@font/quicksand_bold"
                 android:textSize="21dp"
                 android:textColorHint="@color/azul"
                 android:textAlignment="center"
                 android:imeOptions="actionDone"
+                android:textColor="@color/azul"
                 />
 
             <Button

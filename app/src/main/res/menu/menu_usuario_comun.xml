@@ -5,6 +5,17 @@
         android:id="@+id/home_user"
         android:icon="@drawable/home_icon"
         android:title="Inicio" />
+
+    <item
+        android:id="@+id/cupoTarjeta"
+        android:icon="@drawable/credit_card"
+        android:title="Cupo"/>
+
+    <item
+        android:id="@+id/transacciones_menu"
+        android:icon="@drawable/transacciones"
+        android:title="Transacciones"/>
+
     <item
         android:id="@+id/information_user"
         android:icon="@drawable/warning_icon"

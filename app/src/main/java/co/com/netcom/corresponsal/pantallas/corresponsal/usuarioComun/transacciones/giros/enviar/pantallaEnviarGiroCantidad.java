@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -23,14 +25,30 @@ public class pantallaEnviarGiroCantidad extends AppCompatActivity {
     private pantallaConfirmacion confirmacion;
     private ArrayList<String> valores = new ArrayList<String>();
     private String titulos [] = {"Valor del Giro","Valor de comisión","Valor total del giro","Iva"};
+    private Switch terminos_switch_enviar;
+    private boolean terminos_boolean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_enviar_giro_cantidad);
 
+        terminos_boolean =false;
+
         //Se realiza la conexion con los elementos de la interfaz grafica
         cantidad = (EditText) findViewById(R.id.editText_CantidadGirosEnviar);
+        terminos_switch_enviar = (Switch) findViewById(R.id.switch_EnviarGiro);
+
+        //metodo del switch para asignar el estado de los terminos y condiciones
+        terminos_switch_enviar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(terminos_switch_enviar.isChecked()){
+                    terminos_boolean = true;
+                } else {
+                    terminos_boolean =false;
+                }
+            }});
 
         //Se crea el header con el respectivo titulo de la actividad
         getSupportFragmentManager().beginTransaction().replace(R.id.contenedorHeaderGirosEnviar,header).commit();
@@ -58,7 +76,10 @@ public class pantallaEnviarGiroCantidad extends AppCompatActivity {
 
             Toast.makeText(getApplicationContext(),"Debe ingresar una cantidad",Toast.LENGTH_LONG).show();
 
-        } else {
+        } else if(!terminos_boolean){
+            Toast.makeText(getApplicationContext(),"Debe aceptar los terminos y condiciones",Toast.LENGTH_LONG).show();
+        }
+        else {
 
             numeroItems = integradorC.verificarComisionEnvioGiro(cantidad_string,datosComision);
 

@@ -47,24 +47,4 @@
     </ScrollView>
 
 
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/menuTranferencia"
-        android:background="@drawable/menu_fondo"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        app:itemIconTint="@color/azul"
-        app:itemTextColor="@color/azul"
-        android:layout_alignParentBottom="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:menu="@menu/menu_home"
-        android:paddingLeft="60dp"
-        android:paddingRight="60dp"
-        app:itemIconSize="35dp"
-        app:labelVisibilityMode="unlabeled"
-        />
-
 </RelativeLayout>

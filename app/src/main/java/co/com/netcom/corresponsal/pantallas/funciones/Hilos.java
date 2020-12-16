@@ -62,41 +62,7 @@ public class Hilos extends AppCompatActivity {
                     String resultado = null;
 
                     //funcion en c retiro con tarjeta
-                    Log.d("Case 2", "resultado " + resultado);
-
-                }).start();
-                break;
-            }
-
-            case CodigosTransacciones.CORRESPONSAL_RETIRO_CON_TARJETA:{
-                new Thread(() -> {
-                    String resultado = null;
-
-                    ////funcion en c retiro con tarjeta
-                    Log.d("Case 2", "resultado " + resultado);
-
-                }).start();
-                break;
-            }
-
-            case CodigosTransacciones.CORRESPONSAL_CONSULTA_SALDO:{
-                new Thread(() -> {
-                    String resultado = null;
-
-                    //resultado = integradorC.enviarDeposito(datos[0],datos[1],Integer.parseInt(datos[3]));
-                    Log.d("Case 2", "resultado " + resultado);
-
-                }).start();
-                break;
-            }
-
-            case CodigosTransacciones.CORRESPONSAL_TRANSFERENCIA:{
-                new Thread(() -> {
-                    String resultado = null;
-
-                    //resultado = integradorC.enviarDeposito(datos[0],datos[1],Integer.parseInt(datos[3]));
-                    Log.d("Case 2", "resultado " + resultado);
-
+                    resultado = integradorC.enviarRetiroSinTarjeta(datos.get(1).toString(), datos.get(0).toString(), datos.get(2).toString());
                 }).start();
                 break;
             }
@@ -107,18 +73,6 @@ public class Hilos extends AppCompatActivity {
                     String resultado = null;
 
                     resultado = integradorC.enviarPagoPoducto(datos.get(1).toString(),datos.get(2).toString(),Integer.parseInt(datos.get(0).toString()));
-                    Log.d("Case 2", "resultado " + resultado);
-
-                }).start();
-                break;
-            }
-
-            //Necesitan PAN Virtual
-            case CodigosTransacciones.CORRESPONSAL_RECARGAS:{
-                new Thread(() -> {
-                    String resultado = null;
-
-                    //resultado = integradorC.enviarDeposito(datos[0],datos[1],Integer.parseInt(datos[3]));
                     Log.d("Case 2", "resultado " + resultado);
 
                 }).start();
@@ -152,12 +106,13 @@ public class Hilos extends AppCompatActivity {
                 break;
             }
 
+            //Listo
             case CodigosTransacciones.CORRESPONSAL_PAGO_FACTURA_TARJETA_EMPRESARIAL:{
                 new Thread(() -> {
                     String resultado = null;
 
-                    //resultado = integradorC.enviarDeposito(datos[0],datos[1],Integer.parseInt(datos[3]));
-                    Log.d("Case 2", "resultado " + resultado);
+                    resultado = integradorC.enviarRecaudoTarjetaEmpresarial(datos.get(0).toString(),datos.get(1).toString());
+                    Log.d("TARJETA EMPRESARIAL", "resultado " + resultado);
 
                 }).start();
                 break;
@@ -207,6 +162,7 @@ public class Hilos extends AppCompatActivity {
                 break;
             }
 
+            //Listo para Nequi
             case CodigosTransacciones.CORRESPONSAL_CONSULTA_FACTURAS:{
 
                 new Thread(() -> {
@@ -317,6 +273,72 @@ public class Hilos extends AppCompatActivity {
 
 
     public void transaccionesConTarjeta(int transaccion, ArrayList datos, CardDTO tarjeta){
+
+        switch (transaccion){
+            //Listo
+            case CodigosTransacciones.CORRESPONSAL_CONSULTA_SALDO:{
+                new Thread(() -> {
+                    String resultado = null;
+
+                    resultado = integradorC.enviarConsultaSaldoBclObj(tarjeta);
+                    Log.d("CONSULTA SALDO", "resultado " + resultado);
+
+                }).start();
+                break;
+            }
+
+
+            //Listo
+            case CodigosTransacciones.CORRESPONSAL_RETIRO_CON_TARJETA:{
+                new Thread(() -> {
+                    String resultado = null;
+                    int otraCuenta;
+                    String numeroCuenta;
+
+                    //Si el arreglo es mayor a 2, se escogio otra cuenta.
+                    if (datos.size()>3){
+                         otraCuenta = 1;
+                         numeroCuenta = datos.get(2).toString();
+                    }else{
+                        otraCuenta = 0;
+                        numeroCuenta = "0";
+                    }
+
+
+                    resultado = integradorC.enviarRetiroTarjetaBCLObj(tarjeta, datos.get(0).toString(), otraCuenta, numeroCuenta);
+                    ////funcion en c retiro con tarjeta
+                    Log.d("RETIRO CON TARJETA", "resultado " + resultado);
+
+                }).start();
+                break;
+            }
+
+            //Listo
+            case CodigosTransacciones.CORRESPONSAL_TRANSFERENCIA:{
+                new Thread(() -> {
+                    String resultado = null;
+                    int otraCuentaOrigen;
+                    String numeroCuentaOrigen;
+
+                    if (datos.size()>6){
+                        otraCuentaOrigen=1;
+                        numeroCuentaOrigen = datos.get(4).toString();
+                    }else{
+                        otraCuentaOrigen = 0;
+                        numeroCuentaOrigen = "00000";
+                    }
+
+                    resultado = integradorC.enviarTransferencia(tarjeta, "10", datos.get(5).toString(), datos.get(1).toString(), numeroCuentaOrigen, datos.get(2).toString());
+
+
+                    Log.d("Transferencia", "resultado " + resultado);
+
+                }).start();
+                break;
+            }
+
+
+        }
 
 
     }

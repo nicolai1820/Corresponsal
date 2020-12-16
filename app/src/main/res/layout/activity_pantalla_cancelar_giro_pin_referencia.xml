@@ -46,11 +46,14 @@
                 android:background="@drawable/input_form"
                 android:fontFamily="@font/quicksand_bold"
                 android:inputType="number"
+                android:numeric="integer"
                 android:paddingStart="23dp"
                 android:textColorHint="@color/azul"
                 android:textSize="21dp"
                 android:hint="@string/editText_CancelarGiroPinReferencia"
-                android:imeOptions="actionDone"/>
+                android:imeOptions="actionDone"
+                android:textColor="@color/azul"
+                />
 
             <Button
                 android:id="@+id/button_CancelarGirosPinReferenciaContinuar"

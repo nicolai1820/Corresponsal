@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.retiro.conTarjeta.PantallaRetiroConTarjetaTipoDeCuenta"
+    android:background="@drawable/fondo">
+
+    <FrameLayout
+        android:id="@+id/contenedorHeaderPantallaRetiroConTarjetaTipoDeCuenta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/contenedorHeaderPantallaRetiroConTarjetaTipoDeCuenta">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="36dp"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="@string/textView_pantallaRetiroConTarjetaTipoDeCuenta"
+                android:textColor="@color/azul"
+                android:textSize="19dp"
+                android:fontFamily="@font/quicksand_regular"/>
+
+
+            <Spinner
+                android:id="@+id/spinner_tipoCuentaRetiroConTarjeta"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="68dp"
+                android:layout_marginEnd="45dp"
+                android:paddingStart="23dp"
+                android:background="@null"
+                android:foreground="@drawable/spinner_style"
+                android:overlapAnchor="false"
+                />
+
+            <EditText
+                android:id="@+id/editText_pantallaRetiroConTarjetaOtraCuenta"
+                android:textSize="19dp"
+                android:fontFamily="@font/quicksand_bold"
+                android:textColorHint="@color/azul"
+                android:paddingStart="23dp"
+                android:hint="@string/editText_pantallaRetiroConTarjetaTipoDeCuentaOtraCuenta"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="45dp"
+                android:background="@drawable/input_form"
+                android:layout_marginStart="36dp"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:inputType="number"
+                android:numeric="integer"
+                android:imeOptions="actionDone"
+                android:textColor="@color/azul"
+                android:visibility="invisible"
+                />
+
+
+
+            <Button
+                android:onClick="continuarTipoDeCuentaRetiroConTarjeta"
+                android:id="@+id/button_RetiroConTarjetaTipoDeCuentaContinuar"
+                android:layout_marginTop="100dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="138dp"
+                android:layout_height="67dp"
+                android:background="@drawable/boton_inicio"
+                android:textAllCaps="false"
+                android:text="@string/button_pantallaRetiroConTarjetaTipoDeCuentaContinuar"
+                android:textColor="@color/blanco"
+                android:fontFamily="@font/quicksand_regular"
+                android:textSize="20dp"
+                android:layout_marginBottom="15dp"/>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</RelativeLayout>

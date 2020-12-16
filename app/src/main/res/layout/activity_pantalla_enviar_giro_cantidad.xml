@@ -47,11 +47,46 @@
                 android:background="@drawable/input_form"
                 android:hint="@string/editText_CantidadGirosEnviar"
                 android:inputType="number"
+                android:numeric="integer"
                 android:fontFamily="@font/quicksand_bold"
                 android:textSize="21dp"
                 android:textColorHint="@color/azul"
                 android:paddingStart="23dp"
-                android:imeOptions="actionDone"/>
+                android:imeOptions="actionDone"
+                android:textColor="@color/azul"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                >
+                <TextView
+                    android:id="@+id/textView_terminosEnviarGiro"
+                    android:layout_width="190dp"
+                    android:layout_height="20dp"
+                    android:textColor="@color/azul"
+                    android:textSize="17dp"
+                    android:fontFamily="@font/roboto_light"
+                    android:text="@string/textView_terminos"
+                    android:layout_marginTop="35dp"/>
+
+
+                <Switch
+                    android:id="@+id/switch_EnviarGiro"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:thumb="@drawable/sw_thumb"
+                    android:track="@drawable/sw_track"
+                    android:gravity="center"
+                    android:scaleX="1.3"
+                    android:scaleY="1.3"
+                    android:layout_marginBottom="10dp"
+                    />
+
+            </LinearLayout>
 
         <Button
             android:id="@+id/button_ContinuarGirosEnviar"
@@ -63,7 +98,7 @@
             android:text="@string/button_ContinuarGirosEnviar"
             android:fontFamily="@font/quicksand_regular"
             android:textSize="20dp"
-            android:layout_marginTop="152dp"
+            android:layout_marginTop="120dp"
             android:layout_gravity="center_horizontal"
             android:onClick="continuarCantidad"
             android:layout_marginBottom="15dp"/>

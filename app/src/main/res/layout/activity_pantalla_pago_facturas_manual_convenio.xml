@@ -42,6 +42,7 @@
                 android:layout_height="49dp"
                 android:background="@drawable/input_form"
                 android:inputType="number"
+                android:numeric="integer"
                 android:layout_marginStart="36dp"
                 android:layout_marginEnd="45dp"
                 android:layout_marginTop="101dp"
@@ -49,7 +50,9 @@
                 android:textColorHint="@color/azul"
                 android:gravity="center"
                 android:textSize="21dp"
-                android:fontFamily="@font/quicksand_bold"/>
+                android:fontFamily="@font/quicksand_bold"
+                android:textColor="@color/azul"
+                />
 
             <EditText
                 android:id="@+id/editText_PagoFacturasManualNumeroReferencia"
@@ -57,6 +60,7 @@
                 android:layout_height="49dp"
                 android:background="@drawable/input_form"
                 android:inputType="number"
+                android:numeric="integer"
                 android:layout_marginStart="36dp"
                 android:layout_marginEnd="45dp"
                 android:layout_marginTop="13dp"
@@ -65,7 +69,9 @@
                 android:gravity="center"
                 android:textSize="21dp"
                 android:fontFamily="@font/quicksand_bold"
-                android:imeOptions="actionDone"/>
+                android:imeOptions="actionDone"
+                android:textColor="@color/azul"
+                />
 
             <Button
                 android:layout_marginBottom="15dp"

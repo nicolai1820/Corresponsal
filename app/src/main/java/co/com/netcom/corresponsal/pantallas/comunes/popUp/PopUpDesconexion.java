@@ -10,6 +10,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -40,6 +41,7 @@ public class PopUpDesconexion extends AppCompatActivity {
     private Context context;
     private Activity activity;
     private AlertDialog alertDialog;
+    private AlertDialog alertDialogLoginFallido;
 
     /**Constructor de la clase PopUpDesconexion, recibo como parametro el contexto de la actividad donde se inicializa*/
     public PopUpDesconexion(Context contexto){
@@ -67,8 +69,10 @@ public class PopUpDesconexion extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(context, pantallaInicialUsuarioComun.class);
+                i.putExtra("Fragmento",1);
                 context.startActivity(i);
                 activity.overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+
 
             }
         });
@@ -247,6 +251,47 @@ public class PopUpDesconexion extends AppCompatActivity {
         //Se muestra el Dialogo al usuario con su correspondiente ubicacion en la pantalla
         alertDialogUsuarioCancela.show();
         alertDialogUsuarioCancela.getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);//
+
+    }
+
+
+
+
+
+    /**Metodo de tipo void, el cual se encarga de crear un pop up para informar que el login fallo */
+    public void crearPopUpLoginFallido(String mensaje){
+
+        //Se hace la respectiva conexión con el frontEnd del pop up
+        LayoutInflater li = LayoutInflater.from(context);
+        View view = li.inflate(R.layout.activity_pop_up_desconexion, null);
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        alertDialogBuilder.setView(view);
+        alertDialogBuilder.setCancelable(false);
+
+        //Se genera la conexión con el boton del pop up
+        TextView textViewErrorServidor = view.findViewById(R.id.textView_PopUp);
+        Button btnAceptar= view.findViewById(R.id.button_PopUpSalir);
+        btnAceptar.setText("Aceptar");
+        textViewErrorServidor.setText(mensaje);
+
+
+
+        //Se crea el evento click para el boton del pop up, el cual redirige al inicio de la aplicacion
+        btnAceptar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialogLoginFallido.dismiss();
+            }
+        });
+
+        //Se crea el correspondiente Dialog que se mostrara al usuario
+         alertDialogLoginFallido = alertDialogBuilder.create();
+        //Se agrega esta linea para que no tenga fondo por defecto el dialog
+        alertDialogLoginFallido.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        //Se muestra el Dialogo al usuario con su correspondiente ubicacion en la pantalla
+        alertDialogLoginFallido.show();
+        alertDialogLoginFallido.getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);//
 
     }
 

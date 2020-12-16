@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import co.com.netcom.corresponsal.R;
+import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.cupoTarjeta.pantallaCupo;
 
 public class pantallaInicialAdministrador extends AppCompatActivity {
 
@@ -20,7 +21,7 @@ public class pantallaInicialAdministrador extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_inicial_administrador);
 
-
+/*
         getSupportFragmentManager().beginTransaction().replace(R.id.contenedorFragmentAdmin, new pantallaServiciosAdministrador()).commit();
 
        menuAdmin = (BottomNavigationView) findViewById(R.id.menuAdmin);
@@ -57,7 +58,7 @@ public class pantallaInicialAdministrador extends AppCompatActivity {
 
                 return true;
             }
-        });
+        });*/
 
 
 

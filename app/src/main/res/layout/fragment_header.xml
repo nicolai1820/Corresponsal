@@ -26,21 +26,23 @@
         />
 
     <TextView
+        android:gravity="center_vertical"
         android:id="@+id/tituloHeader"
-        android:layout_width="165dp"
-        android:layout_height="55dp"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
         android:layout_marginStart="14dp"
-        android:layout_marginEnd="10dp"
         android:layout_marginTop="55dp"
+        android:layout_marginEnd="10dp"
+        android:autoSizeMaxTextSize="25dp"
+        android:autoSizeMinTextSize="18dp"
+        android:autoSizeTextType="uniform"
         android:fontFamily="@font/quicksand_bold"
         android:textColor="@color/azul"
-        android:autoSizeMinTextSize="21dp"
-        android:autoSizeMaxTextSize="25dp"
-        android:autoSizeTextType="uniform"
-
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.031"
         app:layout_constraintStart_toEndOf="@+id/imageViewHeader"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
     </TextView>
 

@@ -4,14 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
@@ -21,12 +22,10 @@ public class PantallaRetiroConTarjetaCantidad extends AppCompatActivity {
 
 
     private Header header = new Header("<b>Retiro Con Tarjeta</b>");
-    private Spinner spinner_tipoCuentaRetiroConTarjeta;
     private EditText editText_pantallaRetiroConTarjetaCantidad;
-    private String [] titulos={"Tipo De Cuenta","Cantidad"};
+    private String [] titulos={"Cantidad"};
     private ArrayList<String> valores = new ArrayList<String>();
-    private ArrayList<String> tipoDeCuenta = new ArrayList<String>();
-    private String tipoCuenta;
+
 
 
 
@@ -40,55 +39,22 @@ public class PantallaRetiroConTarjetaCantidad extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.contenedorHeaderPantallaRetiroConTarjetaCantidad,header).commit();
 
         //Se crea la conexion con la interfaz grafica
-
         editText_pantallaRetiroConTarjetaCantidad = (EditText) findViewById(R.id.editText_pantallaRetiroConTarjetaCantidad);
-        spinner_tipoCuentaRetiroConTarjeta = findViewById(R.id.spinner_tipoCuentaRetiroConTarjeta);
-
-        //se crea un arreglo con los valores del spinner
-        String [] opciones = {"Tipo de Cuenta", "Ahorros","Corriente"};
-        ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(opciones));
-
-
-        //Se agregan las opciones al spinner
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplication(), R.layout.spinner_elements_style, arrayList){
-
-            //Se deshabilita la primera opcion del spinner
-            @Override
-            public boolean isEnabled(int position){
-                if(position == 0) {
-                    return false;
-                }
-                else {
-                    return true;
-                }
-            }
-        };
-        spinner_tipoCuentaRetiroConTarjeta.setAdapter(adapter);
 
     }
 
     public void continuarRetiroConTarjeta(View view){
 
         String cantidad = editText_pantallaRetiroConTarjetaCantidad.getText().toString();
-        String seleccionCuenta = spinner_tipoCuentaRetiroConTarjeta.getSelectedItem().toString();
 
 
-        if (seleccionCuenta.equals("Tipo de cuenta")){
-            Toast.makeText(getApplicationContext(),"Debe seleccionar un tipo de cuenta",Toast.LENGTH_SHORT).show();
-        }else if(cantidad.isEmpty()){
+
+      if(cantidad.isEmpty()){
             Toast.makeText(getApplicationContext(),"Debe ingresar una cantidad", Toast.LENGTH_SHORT).show();
         }else{
 
-            if(seleccionCuenta.equals("Ahorros")){
-                tipoCuenta = "10";
-            }else{
-                tipoCuenta = "20";
-            }
 
-            valores.add(seleccionCuenta);
             valores.add(cantidad);
-            tipoDeCuenta.add(tipoCuenta);
-
 
             //Se realiza el intent a la activity confirmar valores
             Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);
@@ -100,7 +66,6 @@ public class PantallaRetiroConTarjetaCantidad extends AppCompatActivity {
             i.putExtra("terminos",false);
             i.putExtra("clase","co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.retiro.conTarjeta.PantallaRetiroConTarjetaLoader");
             i.putExtra("contador", 0);
-            i.putExtra("tipoDeCuenta", tipoDeCuenta);
             i.putExtra("transaccion", "");
             startActivity(i);
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
@@ -124,7 +89,6 @@ public class PantallaRetiroConTarjetaCantidad extends AppCompatActivity {
     @Override
     protected void onRestart() {
         valores.clear();
-        tipoDeCuenta.clear();
         super.onRestart();
     }
 

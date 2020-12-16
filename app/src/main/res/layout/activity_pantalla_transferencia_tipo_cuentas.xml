@@ -46,20 +46,27 @@
                 android:overlapAnchor="false"
                 />
 
-
-            <Spinner
-                android:id="@+id/spinner_tipoCuentaDestinoTransferencia"
-                android:layout_width="match_parent"
-                android:layout_marginEnd="45dp"
-                android:layout_height="49dp"
-                android:layout_marginStart="36dp"
-                android:layout_marginTop="23dp"
+            <EditText
+                android:id="@+id/editText_PantallaTransferenciaTipoCuentasOtraCuenta"
+                android:textSize="19dp"
+                android:fontFamily="@font/quicksand_bold"
+                android:textColorHint="@color/azul"
                 android:paddingStart="23dp"
-                android:background="@null"
-                android:foreground="@drawable/spinner_style"
-                android:overlapAnchor="false"
+                android:hint="@string/editText_PantallaTransferenciaTipoCuentasOtraCuenta"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="45dp"
+                android:background="@drawable/input_form"
+                android:layout_marginStart="36dp"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:inputType="number"
+                android:numeric="integer"
+                android:imeOptions="actionDone"
+                android:textColor="@color/azul"
+                android:visibility="invisible"
                 />
-            
+
+
             <Button
                 android:onClick="continuarTipoCuentaTransferencia"
                 android:id="@+id/button_ContinuarTipoCuentaTransferencia"

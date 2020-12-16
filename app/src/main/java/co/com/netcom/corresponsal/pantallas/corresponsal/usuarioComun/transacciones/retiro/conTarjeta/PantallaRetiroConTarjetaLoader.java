@@ -47,7 +47,6 @@ public class PantallaRetiroConTarjetaLoader extends AppCompatActivity {
     public static Handler respuesta;
     private PopUpDesconexion popUp;
 
-
     public final static int PROCESO_EXISTOSO =1;
     public final static int DISPOSITIVO_DESCONECTADO =2;
     public final static int ERROR_DE_LECTURA =3;
@@ -93,7 +92,7 @@ public class PantallaRetiroConTarjetaLoader extends AppCompatActivity {
                         tarjeta = sdkNewland.getDatosTarjeta();
 
                         Log.d("tarjeta RETIRO",tarjeta.toString());
-
+                        metodoIntent();
 
                         break;}
                     case DISPOSITIVO_DESCONECTADO:{
@@ -147,6 +146,8 @@ public class PantallaRetiroConTarjetaLoader extends AppCompatActivity {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
+                    getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                     sdkNewland.readCard("0",false, sdkNewland.RETIRO);
                 }
             }).start();
@@ -157,10 +158,18 @@ public class PantallaRetiroConTarjetaLoader extends AppCompatActivity {
 
     }
 
+    private void metodoIntent(){
+
+        Intent i = new Intent(this,PantallaRetiroConTarjetaTipoDeCuenta.class);
+        i.putExtra("valores",valores);
+        i.putExtra("contador", contador);
+        i.putExtra("tarjeta",tarjeta);
+        startActivity(i);
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+
+    }
 
     /** Se sobreescribe el metodo nativo onBackPressed para que el usuario no pueda retroceder dentro de la aplicación*/
-
-
     @Override
     public void onBackPressed() {
 

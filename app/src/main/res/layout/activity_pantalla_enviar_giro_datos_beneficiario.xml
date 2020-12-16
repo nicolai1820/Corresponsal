@@ -57,9 +57,12 @@
                 android:fontFamily="@font/quicksand_bold"
                 android:hint="@string/editText_DocumentoBeneficiarioEnviarGiro"
                 android:inputType="number"
+                android:numeric="integer"
                 android:paddingStart="23dp"
                 android:textColorHint="@color/azul"
-                android:textSize="21dp">
+                android:textSize="21dp"
+                android:textColor="@color/azul"
+                >
 
             </EditText>
 
@@ -74,10 +77,13 @@
                 android:fontFamily="@font/quicksand_bold"
                 android:hint="@string/editText_NumeroDeCelularBeneficiarioEnviarGiro"
                 android:inputType="number"
+                android:numeric="integer"
                 android:paddingStart="23dp"
                 android:textColorHint="@color/azul"
                 android:textSize="21dp"
-                android:imeOptions="actionDone">
+                android:imeOptions="actionDone"
+                android:textColor="@color/azul"
+                >
 
             </EditText>
 

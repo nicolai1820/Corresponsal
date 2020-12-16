@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -25,11 +27,15 @@ public class pantallaCancelarGiroDatosGirador extends AppCompatActivity {
     private String [] titulos={"Número de documento"};
     private ArrayList<String> valores = new ArrayList<String>();
     private ArrayList<String> tipoDocumento = new ArrayList<String>();
+    private boolean terminos_boolean;
+    private Switch terminos_switch_Cancelar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_cancelar_giro_datos_girador);
+
+        terminos_boolean =false;
 
         //Se crea el header de la actividad con el correspondiente titulo
         getSupportFragmentManager().beginTransaction().replace(R.id.contenedorHeaderCancelarGiroDatosGirador,header).commit();
@@ -38,6 +44,18 @@ public class pantallaCancelarGiroDatosGirador extends AppCompatActivity {
         //Se crea la conexion con los elementos de la interfaz grafica
         spinner_tipoDocumentoGiradorCancelarGiro = (Spinner) findViewById(R.id.spinner_tipoDocumentoGiradorCancelarGiro);
         editText_tipoDocumentoGiradorCancelarGiro = (EditText) findViewById(R.id.editText_DocumentoGiradorCancelarGiro);
+        terminos_switch_Cancelar = (Switch) findViewById(R.id.switch_CancelarGiro);
+
+        //metodo del switch para asignar el estado de los terminos y condiciones
+        terminos_switch_Cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(terminos_switch_Cancelar.isChecked()){
+                    terminos_boolean = true;
+                } else {
+                    terminos_boolean =false;
+                }
+            }});
 
         //se crea un arreglo con los valores del spinner
         String [] opciones = {"Tipo de documento", "Tarjeta de identidad","Cedula de ciudadania", "Pasaporte"};
@@ -80,6 +98,8 @@ public class pantallaCancelarGiroDatosGirador extends AppCompatActivity {
         }else if (tipoDocumento_String.equals("Tipo de Documento")){
             Toast.makeText(getApplicationContext(),"Debe seleccionar un tipo de documento",Toast.LENGTH_LONG).show();
 
+        }else  if(!terminos_boolean){
+            Toast.makeText(getApplicationContext(),"Debe aceptar los terminos y condiciones",Toast.LENGTH_LONG).show();
         } else {
 
             valores.add(numeroDocumentoGirador_string);

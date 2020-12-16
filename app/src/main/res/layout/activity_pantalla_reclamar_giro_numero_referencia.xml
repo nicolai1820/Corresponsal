@@ -47,8 +47,11 @@
              android:layout_marginTop="110dp"
              android:paddingStart="23dp"
              android:inputType="number"
+             android:numeric="integer"
              android:background="@drawable/input_form"
              android:imeOptions="actionDone"
+             android:textColor="@color/azul"
+
              />
             
             

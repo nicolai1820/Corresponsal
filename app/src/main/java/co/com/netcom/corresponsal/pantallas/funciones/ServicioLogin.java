@@ -29,6 +29,8 @@ import okhttp3.Response;
 
 public class ServicioLogin {
 
+    private String respuestaServidor;
+
     private static String urlToken = "https://192.168.215.12:9544/oauth2/token";
     private static String urlLogin = "https://192.168.215.12:8520/netcom/merchant/api/users/sessions";
     private Context context;
@@ -111,6 +113,7 @@ public class ServicioLogin {
             String jsonData = response.body().string();
             JSONObject Jobject = new JSONObject(jsonData);
             Log.d("RESPUESTA",Jobject.toString());
+            respuestaServidor = Jobject.getString("descriptionState");
             return Jobject.getString("loginState");
 
         } catch (IOException | JSONException e) {
@@ -145,5 +148,11 @@ public class ServicioLogin {
         }
         return sslContext;
     }
+
+    public String getRespuestaServidor(){
+        return this.respuestaServidor;
+    }
+
+
 
 }

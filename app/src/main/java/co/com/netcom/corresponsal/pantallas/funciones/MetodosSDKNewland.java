@@ -1,6 +1,5 @@
 package co.com.netcom.corresponsal.pantallas.funciones;
 
-import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
@@ -33,7 +32,7 @@ import com.newland.mtype.util.ISOUtils;
 
 import co.com.netcom.corresponsal.core.comunicacion.CardDTO;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.consultaSaldo.pantallaConsultaSaldoLectura;
-import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaAjustesUsuarioComun;
+import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.ajustes.pantallaAjustesUsuarioComun;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.tarjetaEmpresarial.PantallaTarjetaEmpresarialLectura;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.retiro.conTarjeta.PantallaRetiroConTarjetaLoader;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.retiro.sinTarjeta.pantallaRetiroSinTarjetaPin;
@@ -960,7 +959,7 @@ public class MetodosSDKNewland {
             paramsInfo.setCashback(new BigDecimal("0.00"));
             BigDecimal totalAmount = new BigDecimal("0.00");
             totalAmount =paramsInfo.getAmout().add(paramsInfo.getCashback());
-            String strAmountDisplay = String.format("INSERT/SWIPE/WAVE");
+            String strAmountDisplay = String.format("Total : \n INSERT/SWIPE/WAVE");
             paramsInfo.setText(strAmountDisplay);
             paramsInfo.setCipherTag(cipherTag);
             paramsInfo.setPlainTag(plainTag);
@@ -983,6 +982,8 @@ public class MetodosSDKNewland {
 
     public void pinBlock(){
         String strTotalAmountDisplay  = String.format("Total : %s\n      ENTER PIN", 1);
+
+        //Se hace llamado al servicio que retorna el pan
         nlPosManager.startPinInput(PinManageType.DUKPT,DEFAULT_PIN_WK_INDEX,"pan",6,"60",strTotalAmountDisplay);
     }
 

@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -24,9 +26,16 @@ public class pantallaTransferenciaTipoCuentas extends AppCompatActivity {
     private Header header;
     private CardDTO tarjeta;
     private ArrayList<String> valores = new ArrayList<String>();
+    private ArrayList<String> valoresRespaldo = new ArrayList<String>();
     private ArrayList<String> tipoDeCuenta = new ArrayList<String>();
-    private String [] titulos={"Tipo de cuenta origen","Tipo de cuenta destino"};
-    private Spinner spinner_tipoCuentaOrigenTransferencia,spinner_tipoCuentaDestinoTransferencia;
+    private ArrayList<String> tipoDeCuentaRespaldo = new ArrayList<String>();
+    private int contador;
+    private int contadorRespaldo;
+    private String [] titulos={"Tipo de cuenta origen"};
+    private String [] titulosOtraCuenta={"Tipo de cuenta origen","Número cuenta origen"};
+    private Spinner spinner_tipoCuentaOrigenTransferencia;
+    private EditText editText_PantallaTransferenciaTipoCuentasOtraCuenta;
+    private String tipoCuentaOrigen ="0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,16 +50,11 @@ public class pantallaTransferenciaTipoCuentas extends AppCompatActivity {
 
         //Se hace la conexión con la interfaz grafica
         spinner_tipoCuentaOrigenTransferencia = findViewById(R.id.spinner_tipoCuentaOrigenTransferencia);
-        spinner_tipoCuentaDestinoTransferencia = findViewById(R.id.spinner_tipoCuentaDestinoTransferencia);
-
-
-        //se crea un arreglo con los valores del spinner
-        String [] opciones = {"Tipo de Cuenta", "Ahorros","Corriente"};
-        ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(opciones));
+        editText_PantallaTransferenciaTipoCuentasOtraCuenta = findViewById(R.id.editText_PantallaTransferenciaTipoCuentasOtraCuenta);
 
 
         //Se agregan las opciones al spinner de cuenta origen
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplication(), R.layout.spinner_elements_style, arrayList){
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplication(), R.layout.spinner_elements_style, getResources().getStringArray(R.array.array_TiposDeCuenta)){
 
             //Se deshabilita la primera opcion del spinner
             @Override
@@ -65,32 +69,45 @@ public class pantallaTransferenciaTipoCuentas extends AppCompatActivity {
         };
         spinner_tipoCuentaOrigenTransferencia.setAdapter(adapter);
 
-
-
-        //Se agregan las opciones al spinner de cuenta destino
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getApplication(), R.layout.spinner_elements_style, arrayList){
-
-            //Se deshabilita la primera opcion del spinner
+        //Se habilita y deshabilita el campo numero otra cuenta dependiendo de la seleccion del spinner
+        spinner_tipoCuentaOrigenTransferencia.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public boolean isEnabled(int position){
-                if(position == 0) {
-                    return false;
-                }
-                else {
-                    return true;
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position==3){
+                    editText_PantallaTransferenciaTipoCuentasOtraCuenta.setVisibility(View.VISIBLE);
+                } else {
+                    editText_PantallaTransferenciaTipoCuentasOtraCuenta.setVisibility(View.INVISIBLE);
+
                 }
             }
-        };
-        spinner_tipoCuentaDestinoTransferencia.setAdapter(adapter2);
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         //Se rescatan los extras que vienen de la pantalla anterior
-        Bundle i = getIntent().getExtras();
+        Bundle extras = getIntent().getExtras();
 
         tarjeta = new CardDTO();
-        tarjeta = i.getParcelable("tarjeta");
+        tarjeta = extras.getParcelable("tarjeta");
+        valores = extras.getStringArrayList("valores");
+        contador = extras.getInt("contador");
+        tipoDeCuenta = extras.getStringArrayList("tipoDeCuenta");
+
+        //Se capturan los datos de respaldo
+        for(int i =0; i< valores.size();i++){
+            valoresRespaldo.add(valores.get(i));
+        }
+        for(int i =0; i< tipoDeCuenta.size();i++){
+            tipoDeCuentaRespaldo.add(tipoDeCuenta.get(i));
+        }
+        contadorRespaldo = contador;
 
         Log.d("CUENTAS TRANSFERENCIA",tarjeta.toString());
+
+
     }
 
     /**Metodo de tipo void, que recibe como parametro un elemento de tipo View, para poder ser implementado por el boton
@@ -100,52 +117,66 @@ public class pantallaTransferenciaTipoCuentas extends AppCompatActivity {
     public void continuarTipoCuentaTransferencia(View view){
 
         String seleccionCuentaOrigen = spinner_tipoCuentaOrigenTransferencia.getSelectedItem().toString();
-        String seleccionCuentaDestino = spinner_tipoCuentaDestinoTransferencia.getSelectedItem().toString();
+        String numeroOtraCuenta = editText_PantallaTransferenciaTipoCuentasOtraCuenta.getText().toString();
 
-        String tipoCuentaOrigen ="";
-        String tipoCuentaDestino ="";
 
         //Se verifica que los campos no esten vacios
         if (seleccionCuentaOrigen.equalsIgnoreCase("Tipo de cuenta")) {
             Toast.makeText(getApplicationContext(), "Debe seleccionar el tipo de cuenta de origen", Toast.LENGTH_SHORT).show();
-        }else if(seleccionCuentaDestino.equalsIgnoreCase("Tipo de cuenta")){
-            Toast.makeText(getApplicationContext(), "Debe seleccionar el tipo de cuenta de destino", Toast.LENGTH_SHORT).show();
+        }else if (seleccionCuentaOrigen.equalsIgnoreCase("otra cuenta")&& numeroOtraCuenta.isEmpty()){
+            Toast.makeText(getApplicationContext(), "Debe ingresar el número de cuenta de origen", Toast.LENGTH_SHORT).show();
+
         }
         else{
-            if(seleccionCuentaOrigen.equals("Ahorros")){
-                tipoCuentaOrigen = "10";
-            }else{
-                tipoCuentaOrigen = "20";
+            if (seleccionCuentaOrigen.equalsIgnoreCase("otra cuenta")){
+
+                valores.add(seleccionCuentaOrigen);
+                valores.add(numeroOtraCuenta);
+                tipoDeCuenta.add(tipoCuentaOrigen);
+
+                //Se realiza el intent a la activity confirmar valores
+                Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);
+
+                i.putExtra("titulo","<b>Transferencia</b>");
+                i.putExtra("descripcion","Por favor confirme el tipo y número de cuenta origen");
+                i.putExtra("titulos",titulosOtraCuenta);
+                i.putExtra("valores",valores);
+                i.putExtra("terminos",false);
+                i.putExtra("clase","");
+                i.putExtra("contador", contador);
+                i.putExtra("tipoDeCuenta", tipoDeCuenta);
+                i.putExtra("transaccion", "");
+                i.putExtra("tarjeta",tarjeta);
+                startActivity(i);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+            } else{
+                if(seleccionCuentaOrigen.equals("Ahorros")){
+                    tipoCuentaOrigen = "10";
+                }else{
+                    tipoCuentaOrigen = "20";
+                }
+
+
+                valores.add(seleccionCuentaOrigen);
+                tipoDeCuenta.add(tipoCuentaOrigen);
+
+                //Se realiza el intent a la activity confirmar valores
+                Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);
+
+                i.putExtra("titulo","<b>Transferencia</b>");
+                i.putExtra("descripcion","Por favor confirme el tipo de cuenta origen");
+                i.putExtra("titulos",titulos);
+                i.putExtra("valores",valores);
+                i.putExtra("terminos",false);
+                i.putExtra("clase","");
+                i.putExtra("contador", contador);
+                i.putExtra("tipoDeCuenta", tipoDeCuenta);
+                i.putExtra("transaccion", "");
+                i.putExtra("tarjeta",tarjeta);
+                startActivity(i);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
 
-            if(seleccionCuentaDestino.equals("Ahorros")){
-                tipoCuentaDestino = "10";
-            }else{
-                tipoCuentaDestino = "20";
-            }
-
-            valores.add(seleccionCuentaOrigen);
-            tipoDeCuenta.add(tipoCuentaOrigen);
-
-            valores.add(seleccionCuentaDestino);
-            tipoDeCuenta.add(tipoCuentaDestino);
-
-
-            //Se realiza el intent a la activity confirmar valores
-            Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);
-
-            i.putExtra("titulo","<b>Transferencia</b>");
-            i.putExtra("descripcion","Por favor confirme los tipos de cuenta");
-            i.putExtra("titulos",titulos);
-            i.putExtra("valores",valores);
-            i.putExtra("terminos",false);
-            i.putExtra("clase","co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.transferencia.pantallaTransferenciaCantidad");
-            i.putExtra("contador", 0);
-            i.putExtra("tipoDeCuenta", tipoDeCuenta);
-            i.putExtra("transaccion", "");
-            i.putExtra("tarjeta",tarjeta);
-            startActivity(i);
-            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
         }
     }
 
@@ -167,6 +198,16 @@ public class pantallaTransferenciaTipoCuentas extends AppCompatActivity {
     protected void onRestart() {
         valores.clear();
         tipoDeCuenta.clear();
+
+        for(int i =0; i< valoresRespaldo.size();i++){
+            this.valores.add(valoresRespaldo.get(i));
+        }
+
+        for(int i =0; i< tipoDeCuentaRespaldo.size();i++){
+            this.tipoDeCuenta.add(tipoDeCuentaRespaldo.get(i));
+        }
+
+        this.contador =contadorRespaldo;
         super.onRestart();
     }
 }

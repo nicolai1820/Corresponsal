@@ -44,18 +44,15 @@ public class pantallaConsultaSaldoTipoCuenta extends AppCompatActivity {
         spinner_ConsultaSaldo = findViewById(R.id.spinner_tipoDeCuentaConsultaSaldo);
 
 
-        //se crea un arreglo con los valores del spinner
-        String [] opciones = {"Tipo de Cuenta", "Ahorros","Corriente"};
-        ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(opciones));
-
 
         //Se agregan las opciones al spinner
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplication(), R.layout.spinner_elements_style, arrayList){
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplication(), R.layout.spinner_elements_style, getResources().getStringArray(R.array.array_TiposDeCuentaConsultaSaldo)){
 
             //Se deshabilita la primera opcion del spinner
             @Override
             public boolean isEnabled(int position){
                 if(position == 0) {
+
                     return false;
                 }
                 else {

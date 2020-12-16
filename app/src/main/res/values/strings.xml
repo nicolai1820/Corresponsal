@@ -169,6 +169,7 @@
 
     <string name="textView_RetiroSinTarjetaCantidad">Ingrese la cantidad a retirar.</string>
     <string name="editText_RetiroSinTarjetaCantidad">Cantidad</string>
+    <string name="editText_RetiroSinTarjetaNumeroCuenta">Número de cuenta</string>
     <string name="button_RetiroSinTarjetaContinuar">Continuar</string>
 
     <!--> Strings Activity Pantalla Retiro Sin Tarjeta Pin</!-->
@@ -208,8 +209,13 @@
     <string name="button_pantallaRetiroConTarjetaCantidadContinuar">Continuar</string>
 
     <!-->String Activity Loader RetiroCon Tarjeta </!-->
-
     <string name="textView_pantallaRetiroConTarjetaLoader">Inserte, deslice o acerque la tarjeta.</string>
+
+    <!-->String Activity Pantalla Retiro Con Tarjeta Tipo de cuenta </!-->
+    <string name="textView_pantallaRetiroConTarjetaTipoDeCuenta">Seleccione el tipo de cuenta.</string>
+    <string name="editText_pantallaRetiroConTarjetaTipoDeCuentaOtraCuenta">Número otra cuenta</string>
+    <string name="button_pantallaRetiroConTarjetaTipoDeCuentaContinuar">Continuar</string>
+
 
     <!-->String Pop up </!-->
 
@@ -226,13 +232,13 @@
     <string name="button_pantallaAdministacionUsuarioEliminar">Eliminar</string>
     <string name="button_pantallaAdministracionUsuarioListar">Lista de Usuarios</string>
 
-    <!-->String Activity Pantalla inicial administrador</!-->
+    <!-->String Activity Pantalla informacion</!-->
 
     <string name="textView_SaludoAdministrado">¡Hola Admin!</string>
     <string name="textView_bienvenidaAdministrador">Bienvenido a Pygree la app corresponsal de Bancolombia</string>
-    <string name="button_pantallaInicialAdministradorPreguntasFrecuentes">FAQ</string>
-    <string name="button_pantallaInicialAdministradorSoporte">Soporte</string>
-    <string name="button_pantallaInicialAdministradorCerrarSesion">Cerrar sesión</string>
+    <string name="button_pantallaInformacionPreguntasFrecuentes">FAQ</string>
+    <string name="button_pantallaInformacionSoporte">Soporte</string>
+    <string name="button_pantallaInformacionDuplicado">Duplicado</string>
 
     <!-->String Activity Pantalla Cupo</!-->
     <string name="textView_Cupo">El cupo de la tarjeta es:</string>
@@ -254,6 +260,8 @@
 
     <!-->String Activity TransferenciaTipoDeCuenta</!-->
     <string name="textView_pantallaTransferenciaTipoCuenta">Seleccione tipo de cuenta y tipo de cuenta destino.</string>
+    <string name="editText_PantallaTransferenciaTipoCuentasOtraCuenta">Número otra cuenta</string>
+
     <string name="button_pantallaTransferenciaTipoCuentaContinuar">Continuar</string>
 
     <!-->String Activity TransferenciaTipoDeCuentaNumeroYMonto</!-->
@@ -270,6 +278,34 @@
     <string name="textView_PantallaTarjetaEmpresarialCantidad">Ingrese la cantidad a cancelar.</string>
     <string name="editText_PantallaTarjetaEmpresarialCantidad">Cantidad</string>
     <string name="button_PantallaTarjetaEmpresarialContinuar">Continuar</string>
+
+
+    <string-array name="array_TiposDeCuenta">
+        <item>Tipo de cuenta</item>
+        <item>Ahorros</item>
+        <item>Corriente</item>
+        <item>Crédito</item>
+        <item>Otra cuenta</item>
+    </string-array>
+
+    <string-array name="array_TiposDeCuentaConsultaSaldo">
+        <item>Tipo de cuenta</item>
+        <item>Ahorros</item>
+        <item>Corriente</item>
+    </string-array>
+
+    <string-array name="array_TiposDeCuentaTranferenciaDestino">
+        <item>Tipo de cuenta</item>
+        <item>Ahorros</item>
+        <item>Corriente</item>
+    </string-array>
+
+    <string-array name="array_TiposDeCuentaTransferenciaOrigen">
+        <item>Tipo de cuenta</item>
+        <item>Ahorros</item>
+        <item>Corriente</item>
+        <item>Otra cuenta</item>
+    </string-array>
 
 
     <!--> __________________________________________________________________Proyecto APOS _____________________________________________________________________________________________________</!-->

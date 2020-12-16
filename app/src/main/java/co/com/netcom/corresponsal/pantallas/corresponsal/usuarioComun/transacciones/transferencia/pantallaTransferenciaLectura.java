@@ -9,8 +9,11 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
 
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.core.comunicacion.CardDTO;
@@ -21,12 +24,15 @@ import co.com.netcom.corresponsal.pantallas.funciones.MetodosSDKNewland;
 
 public class pantallaTransferenciaLectura extends AppCompatActivity {
 
-    private BottomNavigationView menuTransferencia;
     private Header header;
     private CardDTO tarjeta;
     private MetodosSDKNewland sdkNewland;
     public static Handler respuesta;
     private PopUpDesconexion popUp;
+    private int contador;
+    private ArrayList<String> tipoDeCuenta = new ArrayList<String>();
+    private ArrayList<String> valores = new ArrayList<String>();
+
 
     public final static int PROCESO_EXISTOSO =1;
     public final static int DISPOSITIVO_DESCONECTADO =2;
@@ -53,26 +59,15 @@ public class pantallaTransferenciaLectura extends AppCompatActivity {
         popUp = new PopUpDesconexion(pantallaTransferenciaLectura.this);
 
         //Se inicializa el objeto para usar los métodos del sdk de newland
-
         sdkNewland = new MetodosSDKNewland(pantallaTransferenciaLectura.this);
 
+        //Se rescatan los intents de la clase anterior.
 
-        //Se crea la conexión con el menu de la interfaz grafica
-        menuTransferencia = (BottomNavigationView) findViewById(R.id.menuTranferencia);
+        Bundle extras = getIntent().getExtras();
+        valores = extras.getStringArrayList("valores");
+        contador = extras.getInt("contador");
+        tipoDeCuenta = extras.getStringArrayList("tipoDeCuenta");
 
-        //Se crea el evento click de la barra de navegacion
-
-        menuTransferencia.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
-                if(menuItem.getItemId() == R.id.home_general){
-                    Intent i = new Intent(getApplicationContext(), pantallaInicialUsuarioComun.class);
-                    startActivity(i);
-                    overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
-                }
-                return true;
-            }});
 
         respuesta = new Handler() {
 
@@ -88,6 +83,10 @@ public class pantallaTransferenciaLectura extends AppCompatActivity {
 
                         Intent i = new Intent(getApplicationContext(), pantallaTransferenciaTipoCuentas.class);
                         i.putExtra("tarjeta",tarjeta);
+                        i.putExtra("valores",valores);
+                        i.putExtra("contador", contador);
+                        i.putExtra("tipoDeCuenta", tipoDeCuenta);
+
                         startActivity(i);
                         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 
@@ -147,7 +146,8 @@ public class pantallaTransferenciaLectura extends AppCompatActivity {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-
+                    getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                     sdkNewland.readCard("0",false, sdkNewland.TRANSFERENCIA);
 
                 }

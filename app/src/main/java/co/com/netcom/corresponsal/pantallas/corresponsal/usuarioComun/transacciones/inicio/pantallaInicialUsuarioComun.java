@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.IpSecManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -18,6 +18,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.core.comunicacion.IntegradorC;
 import co.com.netcom.corresponsal.core.comunicacion.ParametrosC;
+import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.ajustes.pantallaAjustesUsuarioComun;
+import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.cupoTarjeta.pantallaCupo;
+import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.informacion.pantallaInformacionUsuarioComun;
+import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.servicios.pantallaServiciosUsuarioComun;
+import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.transacciones.pantallaTransacciones;
 import co.com.netcom.corresponsal.pantallas.funciones.MetodosSDKNewland;
 
 public class pantallaInicialUsuarioComun extends AppCompatActivity {
@@ -28,7 +33,7 @@ public class pantallaInicialUsuarioComun extends AppCompatActivity {
     private String terminalInicializado;
     private MetodosSDKNewland metodosSDKNewland;
     private String direcciónAutoconexion;
-
+    private int fragmento;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -39,8 +44,22 @@ public class pantallaInicialUsuarioComun extends AppCompatActivity {
         //Se realiza la conexion con la interfaz grafica
         menuUser = (BottomNavigationView) findViewById(R.id.menuUser);
 
-        //Se inicializa el fragment con la pantalla de servicios
-        getSupportFragmentManager().beginTransaction().replace(R.id.contenedorFragmentUser, new pantallaServiciosUsuarioComun()).commit();
+        Bundle i = getIntent().getExtras();
+        try {
+             fragmento = i.getInt("Fragmento",0);
+        }catch (Exception e){}
+
+        Log.d("FRAGMENTO",String.valueOf(fragmento));
+        if (fragmento==1){
+            //Se inicializa el fragment con la pantalla de servicios
+            getSupportFragmentManager().beginTransaction().replace(R.id.contenedorFragmentUser, new pantallaAjustesUsuarioComun()).commit();
+
+        }else{
+            //Se inicializa el fragment con la pantalla de servicios
+            getSupportFragmentManager().beginTransaction().replace(R.id.contenedorFragmentUser, new pantallaServiciosUsuarioComun()).commit();
+
+        }
+
 
         //Se crea el evento click de los elementos de la barra de navegacion
         menuUser.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -62,6 +81,13 @@ public class pantallaInicialUsuarioComun extends AppCompatActivity {
                     case R.id.settings_user:
                         selectedFragment = new pantallaAjustesUsuarioComun();
 
+                        break;
+                    case R.id.cupoTarjeta:
+                        selectedFragment = new pantallaCupo();
+                        break;
+
+                    case R.id.transacciones_menu:
+                        selectedFragment = new pantallaTransacciones();
                         break;
 
                     default:
@@ -85,7 +111,7 @@ public class pantallaInicialUsuarioComun extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("dispositivos", Context.MODE_PRIVATE);
         direcciónAutoconexion = sharedPreferences.getString("DireccionUltimaConexion",null);
 
-        if (direcciónAutoconexion!=null){
+        if (direcciónAutoconexion!=null && !metodosSDKNewland.isConnected()){
             new Thread(new Runnable() {
                 @Override
                 public void run() {

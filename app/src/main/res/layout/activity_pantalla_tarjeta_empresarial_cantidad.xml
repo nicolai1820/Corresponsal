@@ -49,6 +49,7 @@
                 android:layout_height="49dp"
                 android:imeOptions="actionDone"
                 android:inputType="number"
+                android:numeric="integer"
                 />
 
             <Button

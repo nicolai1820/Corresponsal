@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -49,7 +50,9 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManagerFactory;
 
+import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUpDesconexion;
 import co.com.netcom.corresponsal.pantallas.comunes.tipoDeUsuario.pantallaTipoDeUsuario;
+import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun;
 import co.com.netcom.corresponsal.pantallas.funciones.CodificarBase64;
 
 import co.com.netcom.corresponsal.R;
@@ -74,6 +77,7 @@ public class LogIn extends AppCompatActivity {
     private String contrasenaEncriptada;
     private String estadoConexion= null;
     private ServicioLogin servicioLogin=null;
+    private PopUpDesconexion popUp;
 
 
 
@@ -82,6 +86,8 @@ public class LogIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
+        //Se cre el objeto para crear los pop up
+        popUp = new PopUpDesconexion(LogIn.this);
 
         //Se crea el objeto para convertir a base 64 y sha 512
         base64 = new CodificarBase64();
@@ -108,6 +114,17 @@ public class LogIn extends AppCompatActivity {
                 Log.d("PERMISOS","Si hay permisos");
         }
 
+
+      /*  editText_User.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                if(event.getAction() == KeyEvent.ACTION_UP&& event.getKeyCode() == KeyEvent.KEYCODE_SPACE){
+                    return true;
+                }
+                return false;
+            }
+        });*/
 
         /** Se crea el evento click para el textview de recuperar contraseña, el cual lo lleva a la pantalla de recuperacion*/
         textView_Password.setOnClickListener(new View.OnClickListener() {
@@ -188,20 +205,14 @@ public class LogIn extends AppCompatActivity {
                 startActivity(i);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }else{
-                Toast.makeText(this,"Contraseña Incorrecta",Toast.LENGTH_SHORT).show();
+                popUp.crearPopUpLoginFallido(base64.decodificarBase64(servicioLogin.getRespuestaServidor()));
             }*/
 
-            Intent i = new Intent(this, pantallaTipoDeUsuario.class);
+            Intent i = new Intent(this, pantallaInicialUsuarioComun.class);
             startActivity(i);
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 
         }
     }
-
-
-
-
-    /**/
-
 
 }
