@@ -23,6 +23,8 @@ public class pantallaTarjetaCreditoProductosBCO extends AppCompatActivity {
     private ArrayList<String> valores = new ArrayList<String>();
     private CodigosTransacciones codigo = new CodigosTransacciones();
     private String origen ="1";
+    private ArrayList<Integer> iconos = new ArrayList<Integer>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,9 @@ public class pantallaTarjetaCreditoProductosBCO extends AppCompatActivity {
             valores.add(numeroTarjeta_string);
             valores.add(cantidad_string);
 
+            iconos.add(3);
+            iconos.add(1);
+
             //Se realiza el intent a la activity confirmar valores
             Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);
 
@@ -70,6 +75,7 @@ public class pantallaTarjetaCreditoProductosBCO extends AppCompatActivity {
             i.putExtra("terminos",false);
             i.putExtra("clase","");
             i.putExtra("contador", 1);
+            i.putExtra("iconos",iconos);
             i.putExtra("transaccion", codigo.CORRESPONSAL_PAGO_PRODUCTOS);
             startActivity(i);
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);

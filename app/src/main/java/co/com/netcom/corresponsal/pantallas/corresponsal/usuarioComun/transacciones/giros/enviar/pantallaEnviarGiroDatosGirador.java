@@ -26,6 +26,7 @@ public class pantallaEnviarGiroDatosGirador extends AppCompatActivity {
     private ArrayList<String> valores = new ArrayList<String>();
     private ArrayList<String> tipoDocumento = new ArrayList<String>();
     private ArrayList<String> valoresRespaldo = new ArrayList<String>();
+    private ArrayList<Integer> iconos = new ArrayList<Integer>();
     private String [] titulos={"Número de documento","Número de celular."};
     private int contador;
     private int contadorRespaldo;
@@ -106,6 +107,8 @@ public class pantallaEnviarGiroDatosGirador extends AppCompatActivity {
             valores.add(numeroCelular);
             tipoDocumento.add(documento);
 
+            iconos.add(3);
+            iconos.add(3);
 
             //Se realiza el intent a la activity confirmar valores
             Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);
@@ -114,6 +117,7 @@ public class pantallaEnviarGiroDatosGirador extends AppCompatActivity {
             i.putExtra("titulos",titulos);
             i.putExtra("valores",valores);
             i.putExtra("terminos",false);
+            i.putExtra("iconos",iconos);
             i.putExtra("clase","co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.giros.enviar.pantallaEnviarGiroDatosBeneficiario");
             i.putExtra("contador", contador);
             i.putExtra("tipoDocumento", tipoDocumento);

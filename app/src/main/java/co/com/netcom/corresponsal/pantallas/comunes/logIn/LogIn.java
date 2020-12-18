@@ -8,9 +8,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -32,37 +30,13 @@ import java.util.regex.Pattern;
 */
 
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.security.KeyManagementException;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.security.cert.CertificateException;
-import java.security.cert.CertificateFactory;
-
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.TrustManagerFactory;
-
-import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUpDesconexion;
-import co.com.netcom.corresponsal.pantallas.comunes.tipoDeUsuario.pantallaTipoDeUsuario;
+import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun;
 import co.com.netcom.corresponsal.pantallas.funciones.CodificarBase64;
 
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.funciones.CodificarSHA512;
 import co.com.netcom.corresponsal.pantallas.funciones.ServicioLogin;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class LogIn extends AppCompatActivity {
 
@@ -77,7 +51,7 @@ public class LogIn extends AppCompatActivity {
     private String contrasenaEncriptada;
     private String estadoConexion= null;
     private ServicioLogin servicioLogin=null;
-    private PopUpDesconexion popUp;
+    private PopUp popUp;
 
 
 
@@ -87,7 +61,7 @@ public class LogIn extends AppCompatActivity {
         setContentView(R.layout.activity_log_in);
 
         //Se cre el objeto para crear los pop up
-        popUp = new PopUpDesconexion(LogIn.this);
+        popUp = new PopUp(LogIn.this);
 
         //Se crea el objeto para convertir a base 64 y sha 512
         base64 = new CodificarBase64();
@@ -99,7 +73,7 @@ public class LogIn extends AppCompatActivity {
         //Se crea la conexion con la interfaz grafica
         editText_User = (EditText) findViewById(R.id.editText_User);
         editText_Password = (EditText) findViewById(R.id.editText_Password);
-        textView_Password = (TextView) findViewById(R.id.editText_Password);
+        textView_Password = (TextView) findViewById(R.id.textView_PasswordLogin);
 
         //Se crea un elemento para verificar que los permisos esten activados
         int permisoUbicacionCoarse = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
@@ -126,11 +100,12 @@ public class LogIn extends AppCompatActivity {
             }
         });*/
 
-        /** Se crea el evento click para el textview de recuperar contraseña, el cual lo lleva a la pantalla de recuperacion*/
+        /** Se crea el evento click para el textview de recuperar contraseña, el cual crea un pop up donde se recibe el usuario
+         * para posteriormente consumir el servicio de recuperar contraseña.*/
         textView_Password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"Redirige a recuperar password",Toast.LENGTH_LONG);
+                popUp.crearPopUpRecuperarContrasena();
             }
         });
 

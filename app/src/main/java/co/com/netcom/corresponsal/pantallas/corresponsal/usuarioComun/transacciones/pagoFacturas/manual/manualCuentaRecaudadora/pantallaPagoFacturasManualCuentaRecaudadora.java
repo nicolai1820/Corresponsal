@@ -26,6 +26,7 @@ public class pantallaPagoFacturasManualCuentaRecaudadora extends AppCompatActivi
     private ArrayList<String> valores = new ArrayList<String>();
     private ArrayList<String> tipoDeCuenta= new ArrayList<String>();
     private String [] titulos={"Cuenta recaudadora","Número de referencia"};
+    private ArrayList<Integer> iconos = new ArrayList<Integer>();
     private CodigosTransacciones codigo = new CodigosTransacciones();
 
     @Override
@@ -85,6 +86,9 @@ public class pantallaPagoFacturasManualCuentaRecaudadora extends AppCompatActivi
             valores.add(numeroReferencia_string);
             tipoDeCuenta.add(seleccion_tipoCuenta);
 
+            iconos.add(3);
+            iconos.add(3);
+
             //Se realiza el intent a la activity confirmar valores
             Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);
 
@@ -96,6 +100,7 @@ public class pantallaPagoFacturasManualCuentaRecaudadora extends AppCompatActivi
             i.putExtra("clase","");
             i.putExtra("contador", 0);
             i.putExtra("tipoDeCuenta", tipoDeCuenta);
+            i.putExtra("iconos",iconos);
             i.putExtra("transaccion", codigo.CORRESPONSAL_PAGO_FACTURA_MANUAL);
             startActivity(i);
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);

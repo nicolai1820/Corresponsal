@@ -6,18 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion;
-import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUpDesconexion;
+import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
 import co.com.netcom.corresponsal.pantallas.funciones.CodigosTransacciones;
 import co.com.netcom.corresponsal.pantallas.funciones.MetodosSDKNewland;
 
@@ -33,7 +30,7 @@ public class pantallaRetiroSinTarjetaPin extends AppCompatActivity {
     private CodigosTransacciones codigo = new CodigosTransacciones();
     private MetodosSDKNewland sdkNewland;
     public static Handler respuesta;
-    private PopUpDesconexion popUp;
+    private PopUp popUp;
     private String pinBlock;
 
     public final static int PROCESO_EXISTOSO =1;
@@ -65,7 +62,7 @@ public class pantallaRetiroSinTarjetaPin extends AppCompatActivity {
 
         //Se inicializa los objetos que manejan el sdk del mpos y el que se encarga de generar los pop ups
         sdkNewland = new MetodosSDKNewland(getApplicationContext());
-        popUp = new PopUpDesconexion(this);
+        popUp = new PopUp(this);
 
 
         //Se crea el correspondiente handler, para manejar el flujo de forma correcta en la aplicación

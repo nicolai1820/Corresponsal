@@ -33,6 +33,7 @@ public class pantallaTransferenciaTipoCuentas extends AppCompatActivity {
     private int contadorRespaldo;
     private String [] titulos={"Tipo de cuenta origen"};
     private String [] titulosOtraCuenta={"Tipo de cuenta origen","Número cuenta origen"};
+    private ArrayList<Integer> iconos = new ArrayList<Integer>();
     private Spinner spinner_tipoCuentaOrigenTransferencia;
     private EditText editText_PantallaTransferenciaTipoCuentasOtraCuenta;
     private String tipoCuentaOrigen ="0";
@@ -134,6 +135,9 @@ public class pantallaTransferenciaTipoCuentas extends AppCompatActivity {
                 valores.add(numeroOtraCuenta);
                 tipoDeCuenta.add(tipoCuentaOrigen);
 
+                iconos.add(2);
+                iconos.add(3);
+
                 //Se realiza el intent a la activity confirmar valores
                 Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);
 
@@ -146,6 +150,7 @@ public class pantallaTransferenciaTipoCuentas extends AppCompatActivity {
                 i.putExtra("contador", contador);
                 i.putExtra("tipoDeCuenta", tipoDeCuenta);
                 i.putExtra("transaccion", "");
+                i.putExtra("iconos",iconos);
                 i.putExtra("tarjeta",tarjeta);
                 startActivity(i);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
@@ -160,6 +165,7 @@ public class pantallaTransferenciaTipoCuentas extends AppCompatActivity {
                 valores.add(seleccionCuentaOrigen);
                 tipoDeCuenta.add(tipoCuentaOrigen);
 
+                iconos.add(2);
                 //Se realiza el intent a la activity confirmar valores
                 Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);
 
@@ -172,6 +178,7 @@ public class pantallaTransferenciaTipoCuentas extends AppCompatActivity {
                 i.putExtra("contador", contador);
                 i.putExtra("tipoDeCuenta", tipoDeCuenta);
                 i.putExtra("transaccion", "");
+                i.putExtra("iconos",iconos);
                 i.putExtra("tarjeta",tarjeta);
                 startActivity(i);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);

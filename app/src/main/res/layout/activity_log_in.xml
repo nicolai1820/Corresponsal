@@ -72,22 +72,22 @@
         android:onClick="inicioSesion"/>
 
     <TextView
-        android:id="@+id/textView_Password"
+        android:id="@+id/textView_PasswordLogin"
         android:layout_width="150dp"
         android:layout_height="18dp"
-        android:layout_marginTop="525dp"
-        android:gravity="center_horizontal"
-        android:layout_marginBottom="269dp"
+        android:layout_marginTop="36dp"
+        android:clickable="true"
         android:fontFamily="@font/roboto_regular"
+        android:gravity="center_horizontal"
         android:text="@string/textView_Password"
         android:textColor="@color/azul"
         android:textSize="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button_Start"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_Password"
+        app:layout_constraintVertical_bias="0.033" />
 
     <ImageView
         android:id="@+id/imageView3"

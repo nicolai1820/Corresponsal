@@ -19,9 +19,10 @@ public class pantallaCarteraNumeroPagare extends AppCompatActivity {
 
     private Header header = new Header("<b>Pago productos banco.</b>");
     private EditText editTextCarteraNumeroPagare, editText_CarteraCantidad;
-    private String [] titulos={"Número de pagaré"};
+    private String [] titulos={"Número de pagaré","Cantidad"};
     private ArrayList<String> valores = new ArrayList<String>();
     private CodigosTransacciones codigo = new CodigosTransacciones();
+    private ArrayList<Integer> iconos = new ArrayList<Integer>();
     private String origen ="2";
 
     @Override
@@ -58,6 +59,9 @@ public class pantallaCarteraNumeroPagare extends AppCompatActivity {
             valores.add(numeroPagare_string);
             valores.add(cantidad_String);
 
+            iconos.add(3);
+            iconos.add(1);
+
             //Se realiza el intent a la activity confirmar valores
             Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);
 
@@ -67,7 +71,8 @@ public class pantallaCarteraNumeroPagare extends AppCompatActivity {
             i.putExtra("valores", valores);
             i.putExtra("terminos", false);
             i.putExtra("clase", "");
-            i.putExtra("contador", 0);
+            i.putExtra("contador", 1);
+            i.putExtra("iconos",iconos);
             i.putExtra("transaccion", codigo.CORRESPONSAL_PAGO_PRODUCTOS);
             startActivity(i);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);

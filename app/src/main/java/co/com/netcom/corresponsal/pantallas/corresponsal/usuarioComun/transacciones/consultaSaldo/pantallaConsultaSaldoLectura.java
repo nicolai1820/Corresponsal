@@ -13,13 +13,10 @@ import android.view.WindowManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.ArrayList;
-
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.core.comunicacion.CardDTO;
-import co.com.netcom.corresponsal.core.comunicacion.IntegradorC;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
-import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUpDesconexion;
+import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun;
 import co.com.netcom.corresponsal.pantallas.funciones.MetodosSDKNewland;
 
@@ -39,7 +36,7 @@ public class pantallaConsultaSaldoLectura extends AppCompatActivity {
     private CardDTO tarjeta;
     private MetodosSDKNewland sdkNewland;
     public static Handler respuesta;
-    private PopUpDesconexion popUp;
+    private PopUp popUp;
     private BottomNavigationView menuConsultaSaldos;
 
 
@@ -56,7 +53,7 @@ public class pantallaConsultaSaldoLectura extends AppCompatActivity {
         tarjeta = new CardDTO();
 
         //Se inicializa el objeto para crear los pop up
-        popUp = new PopUpDesconexion(pantallaConsultaSaldoLectura.this);
+        popUp = new PopUp(pantallaConsultaSaldoLectura.this);
 
         //Se inicializa el objeto para usar los métodos del sdk de newland
 

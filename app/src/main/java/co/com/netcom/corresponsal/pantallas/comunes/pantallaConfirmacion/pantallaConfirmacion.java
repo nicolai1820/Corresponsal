@@ -48,12 +48,17 @@ public class pantallaConfirmacion extends AppCompatActivity {
     private ArrayList<String> tipoDocumento = new ArrayList<String>();
     private ArrayList<String> tipoDeCuenta = new ArrayList<String>();
     private ArrayList<String> datosTransaccion = new ArrayList<String>();
+    private ArrayList<Integer> iconos = new ArrayList<Integer>();
     private Hilos hiloTransacciones;
 
     private String valorGiro;
     private DatosComision datosComision;
     private DatosRecaudo datosRecaudo;
     private CardDTO tarjeta;
+
+    private final static int ICONO_DINERO =1;
+    private final static int ICONO_CUENTA =2;
+    private final static int ICONO_NUMERO =3;
 
 
 
@@ -87,6 +92,9 @@ public class pantallaConfirmacion extends AppCompatActivity {
 
         tipoDocumento = i.getStringArrayList("tipoDocumento");
         transaccion = i.getInt("transaccion");
+        iconos = i.getIntegerArrayList("iconos");
+
+
 
         //Se obtienen los valores si es un giro
         valorGiro = i.getString("valorGiro");
@@ -133,13 +141,40 @@ public class pantallaConfirmacion extends AppCompatActivity {
             LinearLayout linearLayout = new LinearLayout(getBaseContext());
             linearLayout.setOrientation(LinearLayout.HORIZONTAL);
 
-            //Se agrega el icono
+            LinearLayout.LayoutParams paramImage = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            paramImage.setMargins(0,20,0,20);
             TextView icono = new TextView(getBaseContext());
-            icono.setBackgroundResource(R.drawable.boton_inicio);
-            icono.setText("#");
-            icono.setTextColor(getResources().getColor(R.color.blanco));
-            icono.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
-            icono.setTextSize(21);
+
+            if (iconos.get(1) == ICONO_DINERO){
+                try {
+                    //Se agrega el icono
+
+                    icono.setBackgroundResource(R.drawable.icon_money);
+                    icono.setTextColor(getResources().getColor(R.color.blanco));
+                    icono.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
+                    icono.setTextSize(21);
+                    icono.setLayoutParams(paramImage);
+                }catch (Exception e){}
+            }else if (iconos.get(1) == ICONO_CUENTA){
+                try {
+                    //Se agrega el icono
+                    icono.setBackgroundResource(R.drawable.icon_cuenta);
+                    icono.setTextColor(getResources().getColor(R.color.blanco));
+                    icono.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
+                    icono.setTextSize(21);
+                    icono.setLayoutParams(paramImage);
+                }catch (Exception e){}
+            }else {
+                try {
+                    //Se agrega el icono
+                    icono.setBackgroundResource(R.drawable.icon_number);
+                    icono.setTextColor(getResources().getColor(R.color.blanco));
+                    icono.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
+                    icono.setTextSize(21);
+                    icono.setLayoutParams(paramImage);
+                }catch (Exception e){}
+            }
+
 
 
             TextView referencia = new TextView(getBaseContext());
@@ -180,11 +215,35 @@ public class pantallaConfirmacion extends AppCompatActivity {
 
                 //Se agrega el icono
                 TextView icono = new TextView(getBaseContext());
-                icono.setBackgroundResource(R.drawable.icon_number);
-                icono.setTextColor(getResources().getColor(R.color.blanco));
-                icono.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
-                icono.setTextSize(21);
-                icono.setLayoutParams(paramImage);
+
+                Log.d("REFENCIA ICONO",String.valueOf(iconos.get(j).intValue()));
+
+                try {
+                    if (iconos.get(j) == ICONO_DINERO){
+                        //Se agrega el icono
+                        icono.setBackgroundResource(R.drawable.icon_money);
+                        icono.setTextColor(getResources().getColor(R.color.blanco));
+                        icono.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
+                        icono.setTextSize(21);
+                        icono.setLayoutParams(paramImage);
+                    }else if (iconos.get(j) == ICONO_CUENTA){
+                        //Se agrega el icono
+                        icono.setBackgroundResource(R.drawable.icon_cuenta);
+                        icono.setTextColor(getResources().getColor(R.color.blanco));
+                        icono.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
+                        icono.setTextSize(21);
+                        icono.setLayoutParams(paramImage);
+                    }else if (iconos.get(j) == ICONO_NUMERO){
+                        //Se agrega el icono
+                        icono.setBackgroundResource(R.drawable.icon_number);
+                        icono.setTextColor(getResources().getColor(R.color.blanco));
+                        icono.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
+                        icono.setTextSize(21);
+                        icono.setLayoutParams(paramImage);
+                    }
+                }catch (Exception e){}
+
+
 
                 //Se agrega el titulo
                 TextView referencia = new TextView(getBaseContext());
@@ -459,8 +518,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
 
                     break;
                 }
-
-                //Faltaria agregar otra cuenta
+                //listo
                 case CodigosTransacciones.CORRESPONSAL_RETIRO_CON_TARJETA:{
                     for (int i=0;i < valores.size();i++){
                         datosTransaccion.add(valores.get(i));
@@ -601,7 +659,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
 
                     break;
                 }
-                //Faltaria agregar otra cuenta
+                //Listo
                 case CodigosTransacciones.CORRESPONSAL_TRANSFERENCIA:{
                     for (int i=0;i < valores.size();i++){
                         datosTransaccion.add(valores.get(i));
@@ -631,7 +689,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
                     }.start();
                     break;
                 }
-                //listo para recargas y cancelar giro, falta facturas
+                //listo para recargas,  creo que funciona para facturas
                 case CodigosTransacciones.CORRESPONSAL_CONSULTA_FACTURAS:{
                     for (int i=0;i < valores.size();i++){
                         datosTransaccion.add(valores.get(i));

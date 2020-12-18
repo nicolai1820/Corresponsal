@@ -39,6 +39,8 @@ public class ServicioLogin {
         this.context = contexto;
     }
 
+    /**Metodo cerrarSesion de tipo void que consume el servicio rest para solicitar el token*/
+
     public String solicitarToken(){
 
         //Metodo para funcionar con cualquier ssl
@@ -78,6 +80,10 @@ public class ServicioLogin {
         }
     }
 
+    /**Metodo cerrarSesion, retorna un String, que determina si la respuesta del servidor fue fallida o exitosa, recibe como parametros un String
+     * el cual es el token que requieren todos los servicios, un String el cual es el usuario y otro String el cual es la contraseña, este metodo,
+     * se encarga de consumir el servicio de Login*/
+
     public String Login(String usuario,String contrasena, String token){
 
         //Se debe sobreescribir este metodo para que acepte cualquier certificado seguro.
@@ -113,7 +119,7 @@ public class ServicioLogin {
             String jsonData = response.body().string();
             JSONObject Jobject = new JSONObject(jsonData);
             Log.d("RESPUESTA",Jobject.toString());
-            respuestaServidor = Jobject.getString("descriptionState");
+            respuestaServidor = Jobject.getString("responseCode");
             return Jobject.getString("loginState");
 
         } catch (IOException | JSONException e) {
@@ -149,6 +155,46 @@ public class ServicioLogin {
         return sslContext;
     }
 
+    /**Metodo cerrarSesion, retorna un entero, que determina si la respuesta del servidor fue fallida o exitosa, recibe como parametro un String
+     * el cual es el token que requieren todos los servicios. Este metodo se encarga de consumir el servicio rest de cerrarSesion*/
+
+    public int cerrarSesion(String token){
+
+        //Se debe sobreescribir este metodo para que acepte cualquier certificado seguro.
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.hostnameVerifier(new HostnameVerifier() {
+            @Override
+            public boolean verify(String hostname, SSLSession session) {
+                return true;
+            }
+        });
+
+        OkHttpClient client = builder.sslSocketFactory(getSLLContext().getSocketFactory()).build();
+
+        MediaType mediaType = MediaType.parse("application/json");
+        RequestBody body = RequestBody.create(mediaType, "");
+        Request request = new Request.Builder()
+                .url("https://192.168.215.12:8520/netcom/merchant/api/users/MzQy/sessions")
+                .method("DELETE", body)
+                .addHeader("Content-Type", "application/json")
+                .addHeader("Authorization", "Bearer e47ce13e-a0f3-3214-bb60-237a80a87cd7")
+                .build();
+
+       try {
+           Response response = client.newCall(request).execute();
+
+           String jsonData = response.body().string();
+           JSONObject Jobject = new JSONObject(jsonData);
+           Log.d("RESPUESTA",Jobject.toString());
+           return Integer.parseInt(Jobject.getString("responseCode"));
+
+       }catch (IOException | JSONException e) {
+            throw new RuntimeException(e);        }
+    }
+
+
+    /**Metodo getRespuestaServidor que retorna un String, se encarga de retornar la variable que captura la descripción del proceso del servicio
+     * de login.*/
     public String getRespuestaServidor(){
         return this.respuestaServidor;
     }

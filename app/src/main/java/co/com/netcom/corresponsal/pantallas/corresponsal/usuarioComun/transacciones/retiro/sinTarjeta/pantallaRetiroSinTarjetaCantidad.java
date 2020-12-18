@@ -18,6 +18,7 @@ public class pantallaRetiroSinTarjetaCantidad extends AppCompatActivity {
     Header header = new Header("<b>Retiro sin tarjeta</b>");
     private EditText retiroSinTarjetaCantidad, retiroSinTarjetaNumeroCuenta;
     private ArrayList<String> valores = new ArrayList<String>();
+    private ArrayList<Integer> iconos = new ArrayList<Integer>();
     private String titulos [] = {"Número de cuenta","Cantidad"};
 
     @Override
@@ -52,6 +53,8 @@ public class pantallaRetiroSinTarjetaCantidad extends AppCompatActivity {
             valores.add(numeroDeCuenta_string);
             valores.add(cantidadRetiroSinTarjeta_string);
 
+            iconos.add(3);
+            iconos.add(1);
             //Se realiza el intent a la activity confirmar valores
             Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);
             i.putExtra("titulo","<b>Retiro sin tarjeta.</b>");
@@ -61,6 +64,7 @@ public class pantallaRetiroSinTarjetaCantidad extends AppCompatActivity {
             i.putExtra("terminos",false);
             i.putExtra("clase","co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.retiro.sinTarjeta.pantallaRetiroSinTarjetaPin");
             i.putExtra("contador",0);
+            i.putExtra("iconos",iconos);
             startActivity(i);
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 

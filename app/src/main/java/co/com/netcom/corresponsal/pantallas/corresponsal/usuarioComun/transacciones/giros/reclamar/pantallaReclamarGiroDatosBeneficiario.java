@@ -27,6 +27,7 @@ public class pantallaReclamarGiroDatosBeneficiario extends AppCompatActivity {
     private ArrayList<String> valores = new ArrayList<>();
     private ArrayList<String> tipoDocumento = new ArrayList<>();
     String titulos [] = {"Número de documento","Valor del giro"};
+    private ArrayList<Integer> iconos = new ArrayList<Integer>();
     private EditText editText_DocumentoBeneficiarioReclamarGiro,editText_MontoReclamarGiro;
     private Spinner spinner_tipoDocumentoBeneficiarioReclamarGiro;
 
@@ -108,8 +109,10 @@ public class pantallaReclamarGiroDatosBeneficiario extends AppCompatActivity {
 
             valores.add(documentoBeneficiarioReclamarGiro);
             valores.add(montoReclamarGiro);
-
             tipoDocumento.add(documento_string);
+
+            iconos.add(3);
+            iconos.add(1);
 
             Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);
 
@@ -120,6 +123,7 @@ public class pantallaReclamarGiroDatosBeneficiario extends AppCompatActivity {
             i.putExtra("tipoDocumento",tipoDocumento);
             i.putExtra("terminos",false);
             i.putExtra("contador",0);
+            i.putExtra("iconos",iconos);
             i.putExtra("clase","co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.giros.reclamar.pantallaReclamarGiroNumeroReferencia");
             startActivity(i);
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);

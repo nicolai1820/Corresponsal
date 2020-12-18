@@ -28,6 +28,7 @@ public class pantallaConsultaSaldoTipoCuenta extends AppCompatActivity {
     private String [] titulos={"Tipo de cuenta"};
     private CodigosTransacciones codigo = new CodigosTransacciones();
     private Spinner spinner_ConsultaSaldo;
+    private ArrayList<Integer> iconos = new ArrayList<Integer>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +98,7 @@ public class pantallaConsultaSaldoTipoCuenta extends AppCompatActivity {
 
             tipoDeCuenta.add(tipoCuenta);
             valores.add(seleccion);
+            iconos.add(2);
 
             //Se realiza el intent a la activity confirmar valores
             Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);
@@ -109,6 +111,7 @@ public class pantallaConsultaSaldoTipoCuenta extends AppCompatActivity {
             i.putExtra("clase","");
             i.putExtra("contador", 0);
             i.putExtra("tipoDeCuenta", tipoDeCuenta);
+            i.putExtra("iconos",iconos);
             i.putExtra("transaccion", codigo.CORRESPONSAL_CONSULTA_SALDO);
             startActivity(i);
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);

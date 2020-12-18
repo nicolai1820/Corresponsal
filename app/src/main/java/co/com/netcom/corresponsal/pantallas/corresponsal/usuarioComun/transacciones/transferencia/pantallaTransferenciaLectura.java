@@ -1,6 +1,5 @@
 package co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.transferencia;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,18 +7,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.WindowManager;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.core.comunicacion.CardDTO;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
-import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUpDesconexion;
-import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun;
+import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
 import co.com.netcom.corresponsal.pantallas.funciones.MetodosSDKNewland;
 
 public class pantallaTransferenciaLectura extends AppCompatActivity {
@@ -28,7 +23,7 @@ public class pantallaTransferenciaLectura extends AppCompatActivity {
     private CardDTO tarjeta;
     private MetodosSDKNewland sdkNewland;
     public static Handler respuesta;
-    private PopUpDesconexion popUp;
+    private PopUp popUp;
     private int contador;
     private ArrayList<String> tipoDeCuenta = new ArrayList<String>();
     private ArrayList<String> valores = new ArrayList<String>();
@@ -56,7 +51,7 @@ public class pantallaTransferenciaLectura extends AppCompatActivity {
         tarjeta = new CardDTO();
 
         //Se inicializa el objeto para crear los pop up
-        popUp = new PopUpDesconexion(pantallaTransferenciaLectura.this);
+        popUp = new PopUp(pantallaTransferenciaLectura.this);
 
         //Se inicializa el objeto para usar los métodos del sdk de newland
         sdkNewland = new MetodosSDKNewland(pantallaTransferenciaLectura.this);

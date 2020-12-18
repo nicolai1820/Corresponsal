@@ -28,6 +28,7 @@ public class pantallaRecargaCelular extends AppCompatActivity {
     private String tipoCuenta = "NEQUI";
     private String convenioNequi = "63703";
     private String [] titulos={"Número de Celular"};
+    private ArrayList<Integer> iconos = new ArrayList<Integer>();
     private ArrayList<String> valores = new ArrayList<String>();
     private CodigosTransacciones codigo = new CodigosTransacciones();
     private BottomNavigationView menuRecargas;
@@ -75,6 +76,7 @@ public class pantallaRecargaCelular extends AppCompatActivity {
             valores.add(convenioNequi);
             valores.add(celular_String);
 
+            iconos.add(3);
             //Se realiza el intent a la activity confirmar valores
             Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);
 
@@ -85,6 +87,7 @@ public class pantallaRecargaCelular extends AppCompatActivity {
             i.putExtra("terminos",false);
             i.putExtra("clase","");
             i.putExtra("contador", 2);
+            i.putExtra("iconos",iconos);
             i.putExtra("transaccion", codigo.CORRESPONSAL_CONSULTA_FACTURAS);
             startActivity(i);
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);

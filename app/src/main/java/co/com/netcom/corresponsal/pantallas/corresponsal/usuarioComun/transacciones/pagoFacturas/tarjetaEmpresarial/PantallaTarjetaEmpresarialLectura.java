@@ -11,7 +11,7 @@ import android.util.Log;
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.core.comunicacion.CardDTO;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
-import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUpDesconexion;
+import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
 import co.com.netcom.corresponsal.pantallas.funciones.MetodosSDKNewland;
 
 public class PantallaTarjetaEmpresarialLectura extends AppCompatActivity {
@@ -20,7 +20,7 @@ public class PantallaTarjetaEmpresarialLectura extends AppCompatActivity {
     private CardDTO tarjeta;
     private MetodosSDKNewland sdkNewland;
     public static Handler respuesta;
-    private PopUpDesconexion popUp;
+    private PopUp popUp;
 
     public final static int PROCESO_EXISTOSO =1;
     public final static int DISPOSITIVO_DESCONECTADO =2;
@@ -43,7 +43,7 @@ public class PantallaTarjetaEmpresarialLectura extends AppCompatActivity {
         tarjeta = new CardDTO();
 
         //Se inicializa el objeto para crear los pop up
-        popUp = new PopUpDesconexion(PantallaTarjetaEmpresarialLectura.this);
+        popUp = new PopUp(PantallaTarjetaEmpresarialLectura.this);
 
         //Se inicializa el objeto para usar los métodos del sdk de newland
 

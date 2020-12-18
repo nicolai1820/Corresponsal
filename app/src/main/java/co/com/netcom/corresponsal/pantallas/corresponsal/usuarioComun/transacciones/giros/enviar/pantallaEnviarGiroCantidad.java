@@ -25,6 +25,7 @@ public class pantallaEnviarGiroCantidad extends AppCompatActivity {
     private pantallaConfirmacion confirmacion;
     private ArrayList<String> valores = new ArrayList<String>();
     private String titulos [] = {"Valor del Giro","Valor de comisión","Valor total del giro","Iva"};
+    private ArrayList<Integer> iconos = new ArrayList<Integer>();
     private Switch terminos_switch_enviar;
     private boolean terminos_boolean;
 
@@ -95,6 +96,11 @@ public class pantallaEnviarGiroCantidad extends AppCompatActivity {
                 valores.add(montoEnvio);
                 valores.add(datosComision.getValorIvaComision());
 
+                iconos.add(1);
+                iconos.add(1);
+                iconos.add(1);
+                iconos.add(1);
+
              /*confirmacion = new pantallaConfirmacion("Enviar Giro","Por favor confirme los datos del girador.",
                 titulos,valores,false, pantallaInicialUsuarioComun.class);*/
 
@@ -107,6 +113,7 @@ public class pantallaEnviarGiroCantidad extends AppCompatActivity {
                 i.putExtra("terminos",false);
                 i.putExtra("clase","co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.giros.enviar.pantallaEnviarGiroDatosGirador");
                 i.putExtra("contador",0);
+                i.putExtra("iconos",iconos);
                 startActivity(i);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }else{

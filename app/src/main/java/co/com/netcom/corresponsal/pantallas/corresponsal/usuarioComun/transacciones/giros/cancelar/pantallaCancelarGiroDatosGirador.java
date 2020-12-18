@@ -27,6 +27,7 @@ public class pantallaCancelarGiroDatosGirador extends AppCompatActivity {
     private String [] titulos={"Número de documento"};
     private ArrayList<String> valores = new ArrayList<String>();
     private ArrayList<String> tipoDocumento = new ArrayList<String>();
+    private ArrayList<Integer> iconos = new ArrayList<Integer>();
     private boolean terminos_boolean;
     private Switch terminos_switch_Cancelar;
 
@@ -105,6 +106,8 @@ public class pantallaCancelarGiroDatosGirador extends AppCompatActivity {
             valores.add(numeroDocumentoGirador_string);
             tipoDocumento.add(tipoDocumento_String);
 
+            iconos.add(3);
+
             //Se realiza el intent a la activity confirmar valores
             Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);
 
@@ -115,6 +118,7 @@ public class pantallaCancelarGiroDatosGirador extends AppCompatActivity {
             i.putExtra("terminos",false);
             i.putExtra("clase","co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.giros.cancelar.pantallaCancelarGiroDatosBeneficiario");
             i.putExtra("contador", 0);
+            i.putExtra("iconos",iconos);
             i.putExtra("tipoDocumento", tipoDocumento);
             startActivity(i);
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);

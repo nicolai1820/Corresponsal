@@ -21,10 +21,12 @@ public class pantallaRecargaCantidad extends AppCompatActivity {
 
     private Header header;
     private EditText cantidad;
-    private String [] titulos={"Número de Celular","Cantidad"};
+    private String [] titulos={"Cantidad"};
     private ArrayList<String> valores = new ArrayList<String>();
     private CodigosTransacciones codigo = new CodigosTransacciones();
     private DatosRecaudo datosRecaudo;
+    private ArrayList<Integer> iconos = new ArrayList<Integer>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +54,8 @@ public class pantallaRecargaCantidad extends AppCompatActivity {
 
             valores.add(cantidad_String);
             datosRecaudo.setValorApagar(cantidad_String);
+
+            iconos.add(1);
 
             //Se realiza el intent a la activity confirmar valores
             Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);

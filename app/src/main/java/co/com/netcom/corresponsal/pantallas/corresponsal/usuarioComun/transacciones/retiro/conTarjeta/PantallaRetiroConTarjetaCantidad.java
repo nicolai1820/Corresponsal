@@ -24,6 +24,7 @@ public class PantallaRetiroConTarjetaCantidad extends AppCompatActivity {
     private Header header = new Header("<b>Retiro Con Tarjeta</b>");
     private EditText editText_pantallaRetiroConTarjetaCantidad;
     private String [] titulos={"Cantidad"};
+    private ArrayList<Integer> iconos = new ArrayList<Integer>();
     private ArrayList<String> valores = new ArrayList<String>();
 
 
@@ -55,7 +56,7 @@ public class PantallaRetiroConTarjetaCantidad extends AppCompatActivity {
 
 
             valores.add(cantidad);
-
+            iconos.add(1);
             //Se realiza el intent a la activity confirmar valores
             Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);
 
@@ -66,6 +67,7 @@ public class PantallaRetiroConTarjetaCantidad extends AppCompatActivity {
             i.putExtra("terminos",false);
             i.putExtra("clase","co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.retiro.conTarjeta.PantallaRetiroConTarjetaLoader");
             i.putExtra("contador", 0);
+            i.putExtra("iconos",iconos);
             i.putExtra("transaccion", "");
             startActivity(i);
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);

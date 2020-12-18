@@ -28,6 +28,7 @@ public class PantallaRetiroConTarjetaTipoDeCuenta extends AppCompatActivity {
     private String tipoCuenta="0";
     private String [] titulos={"Tipo de cuenta"};
     private String [] titulosOtraCuenta={"Tipo de cuenta","Número de cuenta"};
+    private ArrayList<Integer> iconos = new ArrayList<Integer>();
     private EditText editText_pantallaRetiroConTarjetaOtraCuenta;
     private int contador;
     private int contadorRespaldo;
@@ -115,6 +116,9 @@ public class PantallaRetiroConTarjetaTipoDeCuenta extends AppCompatActivity {
                 valores.add(seleccionCuenta);
                 valores.add(otraCuenta);
                 tipoDeCuenta.add(tipoCuenta);
+
+                iconos.add(2);
+                iconos.add(3);
                 //Se realiza el intent a la activity confirmar valores
                 Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);
 
@@ -127,6 +131,7 @@ public class PantallaRetiroConTarjetaTipoDeCuenta extends AppCompatActivity {
                 i.putExtra("contador", contador);
                 i.putExtra("transaccion", "");
                 i.putExtra("tarjeta",tarjeta);
+                i.putExtra("iconos",iconos);
                 startActivity(i);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 
@@ -143,6 +148,8 @@ public class PantallaRetiroConTarjetaTipoDeCuenta extends AppCompatActivity {
                 valores.add(seleccionCuenta);
                 tipoDeCuenta.add(tipoCuenta);
 
+                iconos.add(2);
+
                 //Se realiza el intent a la activity confirmar valores
                 Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);
 
@@ -153,6 +160,7 @@ public class PantallaRetiroConTarjetaTipoDeCuenta extends AppCompatActivity {
                 i.putExtra("terminos",false);
                 i.putExtra("clase","");
                 i.putExtra("contador", contador);
+                i.putExtra("iconos",iconos);
                 i.putExtra("tipoDeCuenta", tipoDeCuenta);
                 i.putExtra("transaccion", "");
                 i.putExtra("tarjeta",tarjeta);

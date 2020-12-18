@@ -32,6 +32,7 @@ public class pantallaTransferenciaCantidad extends AppCompatActivity {
     private EditText editText_NumeroCuentaDestinoTransferencia, editText_CantidadTransferencia;
     private Spinner spinner_tipoCuentaDestinoTransferencia;
     private String tipoCuentaDestino ="0";
+    private ArrayList<Integer> iconos = new ArrayList<Integer>();
     private BottomNavigationView menuTransferencia;
 
 
@@ -111,6 +112,10 @@ public class pantallaTransferenciaCantidad extends AppCompatActivity {
             valores.add(numeroCuentaDestino);
             valores.add(cantidad);
 
+            iconos.add(2);
+            iconos.add(3);
+            iconos.add(1);
+
             tipoDeCuenta.add(tipoCuentaDestino);
 
             Log.d("VALORES",valores.toString());
@@ -126,6 +131,7 @@ public class pantallaTransferenciaCantidad extends AppCompatActivity {
             i.putExtra("terminos",false);
             i.putExtra("clase","co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.transferencia.pantallaTransferenciaLectura");
             i.putExtra("contador", 0);
+            i.putExtra("iconos",iconos);
             i.putExtra("tipoDeCuenta", tipoDeCuenta);
             i.putExtra("transaccion", "");
             startActivity(i);

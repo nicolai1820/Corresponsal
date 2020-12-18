@@ -24,6 +24,7 @@ public class PantallaTarjetaEmpresarialCantidad extends AppCompatActivity {
     private ArrayList<String> valores = new ArrayList<String>();
     private int contador;
     private String [] titulos={"Cantidad"};
+    private ArrayList<Integer> iconos = new ArrayList<Integer>();
     private EditText editText_TarjetaEmpresarialCantidad;
 
     @Override
@@ -63,6 +64,7 @@ public class PantallaTarjetaEmpresarialCantidad extends AppCompatActivity {
 
             valores.add(cantidad);
 
+            iconos.add(1);
             Log.d("VALORES",valores.toString());
             Log.d("TARJETA",tarjeta.toString());
 
@@ -77,6 +79,7 @@ public class PantallaTarjetaEmpresarialCantidad extends AppCompatActivity {
             i.putExtra("clase","");
             i.putExtra("contador", contador);
             i.putExtra("tarjeta",tarjeta);
+            i.putExtra("iconos",iconos);
             i.putExtra("transaccion", CodigosTransacciones.CORRESPONSAL_PAGO_FACTURA_TARJETA_EMPRESARIAL);
             startActivity(i);
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);

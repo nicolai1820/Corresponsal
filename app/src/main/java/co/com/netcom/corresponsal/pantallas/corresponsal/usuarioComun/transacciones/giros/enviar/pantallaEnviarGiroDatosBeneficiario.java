@@ -29,6 +29,7 @@ public class pantallaEnviarGiroDatosBeneficiario extends AppCompatActivity {
     private ArrayList<String> valoresRespaldo = new ArrayList<String>();
     private ArrayList<String> tipoDocumento = new ArrayList<String>();
     private ArrayList<String> tipoDocumentoRespaldo = new ArrayList<String>();
+    private ArrayList<Integer> iconos = new ArrayList<Integer>();
     private String [] titulos={"Número de documento","Número de celular."};
     private int contador;
     private int contadorRespaldo;
@@ -105,10 +106,12 @@ public class pantallaEnviarGiroDatosBeneficiario extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Debe seleccionar el tipo de documento",Toast.LENGTH_LONG).show();
         }
         else {
-
             valores.add(numeroDocumento);
             valores.add(numeroCelular);
             tipoDocumento.add(documento_string);
+
+            iconos.add(3);
+            iconos.add(3);
 
             //Se realiza el intent a la activity confirmar valores
             Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);
@@ -119,6 +122,7 @@ public class pantallaEnviarGiroDatosBeneficiario extends AppCompatActivity {
             i.putExtra("terminos",false);
             i.putExtra("clase","");
             i.putExtra("contador", contador);
+            i.putExtra("iconos",iconos);
             i.putExtra("tipoDocumento", tipoDocumento);
             i.putExtra("transaccion", codigo.CORRESPONSAL_ENVIO_GIRO);
             startActivity(i);

@@ -2,28 +2,19 @@ package co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacci
 
 import android.Manifest;
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
 import android.os.Message;
-import android.os.RemoteException;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
@@ -33,15 +24,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.listView.ListViewDispositivos;
-import co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion;
 import co.com.netcom.corresponsal.pantallas.funciones.MetodosSDKNewland;
 
 public class pantallaAjustesUsuarioComun extends Fragment {
@@ -98,125 +85,131 @@ public class pantallaAjustesUsuarioComun extends Fragment {
             @Override
             public void onClick(View v) {
 
-                //Loader de buscando dispositivos
-                AlertDialog.Builder loader = new AlertDialog.Builder(getActivity());
+                if (newlandSDK.isConnected()){
+                    Toast.makeText(getActivity(),"Ya tiene un dispositivo conectado",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    //Loader de buscando dispositivos
+                    AlertDialog.Builder loader = new AlertDialog.Builder(getActivity());
 
-                LayoutInflater inflater = getActivity().getLayoutInflater();
+                    LayoutInflater inflater = getActivity().getLayoutInflater();
 
-                loader.setView(R.layout.loader_buscando_dispositivos);
-                loader.setCancelable(false);
-
-
-                AlertDialog dialog = loader.create();
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                Log.d("OPEN"," se abrio el loader");
-
-                dialog.show();
-
-                //Loader de conectando dispositivos
-                AlertDialog.Builder loader2 = new AlertDialog.Builder(getActivity());
-
-                LayoutInflater inflater2 = getActivity().getLayoutInflater();
-
-                loader2.setView(inflater2.inflate(R.layout.loader_conectando_dispositivo,null));
-                loader2.setCancelable(false);
-
-                AlertDialog dialog2 = loader2.create();
-                dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                Log.d("OPEN"," se abrio el loader");
+                    loader.setView(R.layout.loader_buscando_dispositivos);
+                    loader.setCancelable(false);
 
 
-                procesoTransacion = new Handler() {
+                    AlertDialog dialog = loader.create();
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    Log.d("OPEN", " se abrio el loader");
 
-                    @Override
-                    public void handleMessage(Message msg) {
-                        super.handleMessage(msg);
-                        switch (msg.what) {
-                            case 1: {
-                                dialog2.dismiss();
-                                Toast.makeText(getActivity(),"Conexión Exitosa",Toast.LENGTH_LONG).show();
+                    dialog.show();
 
-                                break;}
-                            case 2:{
-                                    Toast.makeText(getActivity(),"Conexión Fallida",Toast.LENGTH_SHORT).show();
-                                break;}
-                            case 3:{
-                                //Se utiliza para conectar al mpos que se elija de la lista.
+                    //Loader de conectando dispositivos
+                    AlertDialog.Builder loader2 = new AlertDialog.Builder(getActivity());
 
-                               dispositivos= newlandSDK.getDevices();
-                               Log.d("DISPOSITIVOS",newlandSDK.getDevices().toString());
+                    LayoutInflater inflater2 = getActivity().getLayoutInflater();
+
+                    loader2.setView(inflater2.inflate(R.layout.loader_conectando_dispositivo, null));
+                    loader2.setCancelable(false);
+
+                    AlertDialog dialog2 = loader2.create();
+                    dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    Log.d("OPEN", " se abrio el loader");
 
 
-                                if (dispositivos.size()<=0){
-                                    dialog.dismiss();
-                                    listViewDispositivos.setAdapter(null);
-                                    Toast.makeText(getActivity(),"No se encontraron dispositivos",Toast.LENGTH_SHORT).show();
-                                }else {
+                    procesoTransacion = new Handler() {
 
+                        @Override
+                        public void handleMessage(Message msg) {
+                            super.handleMessage(msg);
+                            switch (msg.what) {
+                                case 1: {
+                                    dialog2.dismiss();
+                                    Toast.makeText(getActivity(), "Conexión Exitosa", Toast.LENGTH_LONG).show();
 
-
-                                    String [] listaDispositivos = new String[dispositivos.size()];
-                                    listaDispositivos = dispositivos.toArray(listaDispositivos);
-                                    String [] nombres = new String [dispositivos.size()];
-                                    String [] direcciones=new String [dispositivos.size()];
-
-                                    for (int i=0;i< dispositivos.size();i++){
-
-                                        String[] childItems = listaDispositivos[i].split("\n");
-                                        nombres[i] = childItems[0];
-                                        direcciones[i] = childItems[1];
-                                    }
-
-                                    for (int i=0;i<nombres.length;i++){
-                                        Log.d("NOMBRES",nombres[i]);
-                                        Log.d("DIRECCIONES",direcciones[i]);
-                                    }
-
-
-                                    ListViewDispositivos adapter = new ListViewDispositivos(getActivity(),nombres,direcciones);
-                                    listViewDispositivos.setAdapter(adapter);
-
-                                    listViewDispositivos.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-                                        @Override
-                                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                            Log.d("DIRECCION",direcciones[position]);
-
-                                                    dialog2.show();
-
-                                            new Thread(new Runnable() {
-                                                @Override
-                                                public void run() {
-                                                    newlandSDK.connectDevice(60,direcciones[position]);
-
-                                                }
-                                            }).start();
-                                        }
-                                    });
-
-                                    dialog.dismiss();
+                                    break;
                                 }
-                                break;  }
+                                case 2: {
+                                    Toast.makeText(getActivity(), "Conexión Fallida", Toast.LENGTH_SHORT).show();
+                                    break;
+                                }
+                                case 3: {
+                                    //Se utiliza para conectar al mpos que se elija de la lista.
+
+                                    dispositivos = newlandSDK.getListDevices();
+                                    Log.d("DISPOSITIVOS", newlandSDK.getListDevices().toString());
 
 
-                            default:
-                                break;
+                                    if (dispositivos.size() <= 0) {
+                                        dialog.dismiss();
+                                        listViewDispositivos.setAdapter(null);
+                                        Toast.makeText(getActivity(), "No se encontraron dispositivos", Toast.LENGTH_SHORT).show();
+                                    } else {
+
+
+                                        String[] listaDispositivos = new String[dispositivos.size()];
+                                        listaDispositivos = dispositivos.toArray(listaDispositivos);
+                                        String[] nombres = new String[dispositivos.size()];
+                                        String[] direcciones = new String[dispositivos.size()];
+
+                                        for (int i = 0; i < dispositivos.size(); i++) {
+
+                                            String[] childItems = listaDispositivos[i].split("\n");
+                                            nombres[i] = childItems[0];
+                                            direcciones[i] = childItems[1];
+                                        }
+
+                                        for (int i = 0; i < nombres.length; i++) {
+                                            Log.d("NOMBRES", nombres[i]);
+                                            Log.d("DIRECCIONES", direcciones[i]);
+                                        }
+
+
+                                        ListViewDispositivos adapter = new ListViewDispositivos(getActivity(), nombres, direcciones);
+                                        listViewDispositivos.setAdapter(adapter);
+
+                                        listViewDispositivos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                            @Override
+                                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                                Log.d("DIRECCION", direcciones[position]);
+
+                                                dialog2.show();
+
+                                                new Thread(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        newlandSDK.connectDevice(60, direcciones[position]);
+
+                                                    }
+                                                }).start();
+                                            }
+                                        });
+
+                                        dialog.dismiss();
+                                    }
+                                    break;
+                                }
+
+
+                                default:
+                                    break;
+                            }
                         }
-                    }
 
-                };
-
-
-                //Se realiza la busqueda de dispostivos
-                Thread t = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        newlandSDK.scanDevice();
-                    }
-                });
-
-                t.start();
+                    };
 
 
+                    //Se realiza la busqueda de dispostivos
+                    Thread t = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            newlandSDK.scanDevice();
+                        }
+                    });
+
+                    t.start();
+
+                }
             }
         });
 

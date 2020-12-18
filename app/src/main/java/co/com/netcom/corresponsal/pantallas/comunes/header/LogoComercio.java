@@ -51,17 +51,11 @@ public class LogoComercio extends Fragment {
         estadoActivo = vista.findViewById(R.id.imageViewActivo);
         estadoInactivo = vista.findViewById(R.id.imageViewInactivo);
 
-       // sdkNewland = new MetodosSDKNewland(getActivity());
-
-
-
-
-
         // Inflate the layout for this fragment
         return vista;
     }
 
-    @Override
+   /* @Override
     public void onResume() {
         estado = new Handler() {
 
@@ -93,5 +87,5 @@ public class LogoComercio extends Fragment {
 
         };
         super.onResume();
-    }
+    }*/
 }

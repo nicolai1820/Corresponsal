@@ -46,7 +46,7 @@ public class MetodosSDKNewland {
     private NLPosManager nlPosManager;
     private BluetoothAdapter bluetoothAdapter;
     private BluetoothManager bluetoothManager;
-    private ArrayList<String> devices = new ArrayList<>();;
+    private ArrayList<String> listDevices = new ArrayList<>();;
     private CardDTO datosTarjeta;
     private static List<Integer> cipherTag;
     private static List<Integer> plainTag;
@@ -181,7 +181,7 @@ public class MetodosSDKNewland {
             String sSubCadena = devInfo.getAddress().substring(0,5);
 
             if (sSubCadena.equals("08:00")){
-                devices.add(devInfo.getName() + "\n" + devInfo.getAddress());
+                listDevices.add(devInfo.getName() + "\n" + devInfo.getAddress());
                 Log.d("AGREGUE",devInfo.getAddress());
 
             }
@@ -193,12 +193,12 @@ public class MetodosSDKNewland {
             //appendString("discoverComplete, "+ devInfoList);
 
             try{
-                setDevices(devices);
                 Message apagarLeds = new Message();
                 apagarLeds.what = 3;
                 pantallaAjustesUsuarioComun.procesoTransacion.sendMessage(apagarLeds);
             }catch (Exception e){}
-            Log.d("LISTA", devices.toString());
+            Log.d("LISTA", listDevices.toString());
+            setListDevices(listDevices);
 
         }
 
@@ -867,13 +867,15 @@ public class MetodosSDKNewland {
     /**Metodo de tipo void, el cual se encarga de realizar la busqueda de dispositivos bluetooth*/
 
     public void scanDevice()  {
-        if (bluetoothAdapter.isEnabled()) {
-            devices.clear();
-            nlPosManager.scanBlueDevice(TIMEOUT);
-        } else {
-            Toast.makeText(context,"Active Bluetooth",Toast.LENGTH_SHORT).show();
 
-        }
+            if (bluetoothAdapter.isEnabled()) {
+                listDevices.clear();
+                nlPosManager.scanBlueDevice(TIMEOUT);
+            } else {
+                Toast.makeText(context,"Active Bluetooth",Toast.LENGTH_SHORT).show();
+
+            }
+
     }
 
 
@@ -903,15 +905,16 @@ public class MetodosSDKNewland {
 
     /**Metodo que retorna un ArrayList de tipo String el cual contiene la lista de dispositivos encontrados*/
 
-    public ArrayList<String> getDevices(){
+    public ArrayList<String> getListDevices(){
+        Log.d("LISTA2", listDevices.toString());
 
-        return this.devices;
+        return this.listDevices;
     }
 
     /**Metodo void de tipo set para la lista de dispositivos*/
 
-    public void setDevices(ArrayList<String> lista ){
-        this.devices = lista;
+    public void setListDevices(ArrayList<String> lista ){
+        this.listDevices = lista;
     }
 
 

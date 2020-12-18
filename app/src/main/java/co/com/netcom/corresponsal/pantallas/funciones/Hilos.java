@@ -42,6 +42,8 @@ public class Hilos extends AppCompatActivity {
                    //resultado = integradorC.enviarDeposito(datos.get(0).toString(),datos.get(1).toString(),Integer.parseInt(datos.get(2).toString()));
                    resultado = integradorC.enviarDeposito(datos.get(0).toString(),datos.get(1).toString(),Integer.parseInt(datos.get(2).toString()));
 
+                   //Hacer intent dependiendo de la respuesta
+
                    Log.d("RESULTADO DEPOSITO",resultado);
                 }).start();
 
@@ -63,6 +65,8 @@ public class Hilos extends AppCompatActivity {
 
                     //funcion en c retiro con tarjeta
                     resultado = integradorC.enviarRetiroSinTarjeta(datos.get(1).toString(), datos.get(0).toString(), datos.get(2).toString());
+                    //Hacer intent dependiendo de la respuesta
+
                 }).start();
                 break;
             }
@@ -74,6 +78,7 @@ public class Hilos extends AppCompatActivity {
 
                     resultado = integradorC.enviarPagoPoducto(datos.get(1).toString(),datos.get(2).toString(),Integer.parseInt(datos.get(0).toString()));
                     Log.d("Case 2", "resultado " + resultado);
+                    //Hacer intent dependiendo de la respuesta
 
                 }).start();
                 break;
@@ -85,6 +90,7 @@ public class Hilos extends AppCompatActivity {
                     String resultado = null;
 
                     resultado = integradorC.realizarReclamacionGiro(datos.get(2).toString(),datos.get(3).toString(),datos.get(0).toString(),datos.get(1).toString());
+                    //Hacer intent dependiendo de la respuesta
 
                     Log.d("RESULTADO RECLAMAR GIRO",resultado);
                 }).start();
@@ -101,6 +107,7 @@ public class Hilos extends AppCompatActivity {
                     datosComision.setValorIvaComision(datos.get(3).toString());
                     resultado = integradorC.realizarEnvioGiroCnb(datosComision, datos.get(8).toString(), datos.get(9).toString(), datos.get(4).toString(), datos.get(6).toString(), datos.get(2).toString(), datos.get(5).toString(), datos.get(7).toString());
                     Log.d("Case 2", "resultado " + resultado);
+                    //Hacer intent dependiendo de la respuesta
 
                 }).start();
                 break;
@@ -113,11 +120,13 @@ public class Hilos extends AppCompatActivity {
 
                     resultado = integradorC.enviarRecaudoTarjetaEmpresarial(datos.get(0).toString(),datos.get(1).toString());
                     Log.d("TARJETA EMPRESARIAL", "resultado " + resultado);
+                    //Hacer intent dependiendo de la respuesta
 
                 }).start();
                 break;
             }
 
+            //No esta
             case CodigosTransacciones.CORRESPONSAL_PAGO_FACTURAS_LECTOR:{
                 new Thread(() -> {
                     String resultado = null;
@@ -208,35 +217,28 @@ public class Hilos extends AppCompatActivity {
                         }
 
                     }else{
+                        //Facturas Normales
 
-                        //  if (datos.get(2).equals("00") || datos.get(2).equals("NEQUI")) {
-                        //  datosRecaudo.setCodigoConvenio(datos.get(0).toString());
-                        // } else {
-                        //    datosRecaudo.setCuentaRecaudadora(datos.get(0).toString());
-                        //}
-                        // datosRecaudo.setNumeroFactura(datos.get(1).toString());
-                        // datosRecaudo.setTipoRecaudo(datos.get(2).toString());
-                        //resultado = integradorC.enviarConsultaRecaudoManual(datosRecaudo);
-                        //if (resultado == null) {
+                        datosRecaudo.setCuentaRecaudadora(datos.get(0).toString());
+                        datosRecaudo.setNumeroFactura(datos.get(1).toString());
+                        datosRecaudo.setTipoRecaudo(datos.get(2).toString());
+                        resultado = integradorC.enviarConsultaRecaudoManual(datosRecaudo);
+                        if (resultado == null) {
                             //PANTALLA RESULTADO TRANSACCION
                             //mostrarResultado(false, "PAGO FACTURA MANUAL ERROR", resultado, false);
-                       // } else {
-                         //   if (resultado.equals("OK")) {
-                                //INTENT A ACTIVITY DONDE SE HACE LA RECARGA A NEQUI
-                            /*Intent intento = new Intent(getApplicationContext(), CorresponsalFacturasPagoActivity.class);
-                            if (valores[2].equals("NEQUI")) {
-                                intento.putExtra("celular", valores[1]);
-                                intento.putExtra("isNequi", true);
+                        } else {
+                            if (resultado.equals("OK")) {
+                                //INTENT A ACTIVITY cantidad factura
+                                //Intent intento = new Intent(getApplicationContext(), CorresponsalFacturasPagoActivity.class);
 
-                            }
-                            Log.d(TAG, "recaudo  " + datosRecaudo.getValorFactura());
-                            intento.putExtra("datosRecaudo", datosRecaudo);
-                            startActivity(intento);*/
-                     //       } else {
+                                //Log.d(TAG, "recaudo  " + datosRecaudo.getValorFactura());
+                                //intento.putExtra("datosRecaudo", datosRecaudo);
+                                //startActivity(intento);
+                            } else {
                                 //PANTALLA RESULTADO TRANSACCION
-                                // resultadoTransaccion(resultado);
-                       //     }
-                       // }
+                                 //resultadoTransaccion(resultado);
+                            }
+                        }
                     }
 
                 }).start();
@@ -253,6 +255,7 @@ public class Hilos extends AppCompatActivity {
             String resultado = null;
             Log.d("HILO CANCELAR", "LLegue a la clase hilos");
             resultado = integradorC.realizarCancelacionGiro(datosComision,datos.get(3).toString(),datos.get(4).toString(),datos.get(0).toString(),datos.get(1).toString());
+            //Hacer intent dependiendo de la respuesta
 
             Log.d("RESULT",resultado);
         }).start();
@@ -265,6 +268,7 @@ public class Hilos extends AppCompatActivity {
             String resultado = null;
             Log.d("HILO CANCELAR", "LLegue a la clase hilos");
             resultado = integradorC.enviarPagoRecaudoLector(datosRecaudo.getNumeroFactura(), datosRecaudo);
+            //Hacer intent dependiendo de la respuesta
 
             Log.d("RESULT",resultado);
         }).start();
@@ -282,6 +286,8 @@ public class Hilos extends AppCompatActivity {
 
                     resultado = integradorC.enviarConsultaSaldoBclObj(tarjeta);
                     Log.d("CONSULTA SALDO", "resultado " + resultado);
+
+                    //Hacer intent dependiendo de la respuesta
 
                 }).start();
                 break;
@@ -306,7 +312,7 @@ public class Hilos extends AppCompatActivity {
 
 
                     resultado = integradorC.enviarRetiroTarjetaBCLObj(tarjeta, datos.get(0).toString(), otraCuenta, numeroCuenta);
-                    ////funcion en c retiro con tarjeta
+                    //Hacer intent dependiendo de la respuesta
                     Log.d("RETIRO CON TARJETA", "resultado " + resultado);
 
                 }).start();
@@ -329,6 +335,7 @@ public class Hilos extends AppCompatActivity {
                     }
 
                     resultado = integradorC.enviarTransferencia(tarjeta, "10", datos.get(5).toString(), datos.get(1).toString(), numeroCuentaOrigen, datos.get(2).toString());
+                    //Hacer intent dependiendo de la respuesta
 
 
                     Log.d("Transferencia", "resultado " + resultado);

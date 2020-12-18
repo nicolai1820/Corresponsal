@@ -23,6 +23,7 @@ public class pantallaReclamarGiroNumeroReferencia extends AppCompatActivity {
     private ArrayList<String> valoresRespaldo = new ArrayList<String>();
     private ArrayList<String> tipoDocumento = new ArrayList<String>();
     private ArrayList<String> tipoDocumentoRespaldo = new ArrayList<String>();
+    private ArrayList<Integer> iconos = new ArrayList<Integer>();
     private String [] titulos={"Número de referencia"};
     private int contador;
     private int contadorRespaldo;
@@ -66,6 +67,7 @@ public class pantallaReclamarGiroNumeroReferencia extends AppCompatActivity {
         } else{
 
             valores.add(numeroReferencia);
+            iconos.add(3);
             //Se realiza el intent a la activity confirmar valores
             Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);
             i.putExtra("titulo","<b>Reclamar Giro</b>");
@@ -76,6 +78,7 @@ public class pantallaReclamarGiroNumeroReferencia extends AppCompatActivity {
             i.putExtra("clase","");
             i.putExtra("contador", contador);
             i.putExtra("tipoDocumento", tipoDocumento);
+            i.putExtra("iconos",iconos);
             i.putExtra("transaccion", codigo.CORRESPONSAL_RECLAMACION_GIRO);
             startActivity(i);
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);

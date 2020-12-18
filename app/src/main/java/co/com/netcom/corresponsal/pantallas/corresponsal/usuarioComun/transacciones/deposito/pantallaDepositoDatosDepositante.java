@@ -28,9 +28,10 @@ public class pantallaDepositoDatosDepositante extends AppCompatActivity {
     private Header header = new Header("<b>Depósito</b>");
     private Spinner spinner_tipoCuentaDepositoDatosDepositante;
     private EditText editText_DepositoDatosDepositanteNumeroCuenta,editText_DepositoDatosDepositanteCantidad;
-    private String [] titulos={"Número de cuenta","Cantidad"};
+    private String [] titulos={"Cuenta","Número de cuenta","Cantidad"};
     private ArrayList<String> valores = new ArrayList<String>();
     private ArrayList<String> tipoDeCuenta = new ArrayList<String>();
+    private ArrayList<Integer> iconos = new ArrayList<Integer>();
     private BottomNavigationView menuDeposito;
     private CodigosTransacciones codigo = new CodigosTransacciones();
 
@@ -115,9 +116,14 @@ public class pantallaDepositoDatosDepositante extends AppCompatActivity {
                  tipoCuenta = "20";
             }
 
+            valores.add(seleccion);
             valores.add(numeroDeCuenta_string);
             valores.add(cantidad_string);
             tipoDeCuenta.add(tipoCuenta);
+
+            iconos.add(2);
+            iconos.add(3);
+            iconos.add(1);
 
             //Se realiza el intent a la activity confirmar valores
             Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);
@@ -130,6 +136,7 @@ public class pantallaDepositoDatosDepositante extends AppCompatActivity {
             i.putExtra("clase","");
             i.putExtra("contador", 0);
             i.putExtra("tipoDeCuenta", tipoDeCuenta);
+            i.putExtra("iconos",iconos);
             i.putExtra("transaccion", codigo.CORRESPONSAL_DEPOSITO);
             startActivity(i);
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);

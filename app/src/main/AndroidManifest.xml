@@ -27,13 +27,29 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.retiro.conTarjeta.PantallaRetiroConTarjetaTipoDeCuenta" android:screenOrientation="portrait"></activity>
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.duplicado.pantallaInicialDuplicado" android:screenOrientation="portrait" />
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.tarjetaEmpresarial.PantallaTarjetaEmpresarialCantidad" android:screenOrientation="portrait" />
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.tarjetaEmpresarial.PantallaTarjetaEmpresarialLectura"  android:screenOrientation="portrait"/>
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.transferencia.pantallaTransferenciaCantidad" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.transferencia.pantallaTransferenciaTipoCuentas"  android:screenOrientation="portrait"/>
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.consultaSaldo.pantallaConsultaSaldoTipoCuenta" android:screenOrientation="portrait" />
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.pantallaCantidadPagoFacturas"></activity>
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.retiro.conTarjeta.PantallaRetiroConTarjetaTipoDeCuenta"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.duplicado.pantallaInicialDuplicado"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.tarjetaEmpresarial.PantallaTarjetaEmpresarialCantidad"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.tarjetaEmpresarial.PantallaTarjetaEmpresarialLectura"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.transferencia.pantallaTransferenciaCantidad"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.transferencia.pantallaTransferenciaTipoCuentas"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pantallas.corresponsal.usuarioComun.transacciones.consultaSaldo.pantallaConsultaSaldoTipoCuenta"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".pantallas.corresponsal.usuarioComun.transacciones.transferencia.pantallaTransferenciaLectura"
             android:screenOrientation="portrait"
@@ -143,7 +159,7 @@
             android:name=".pantallas.comunes.logIn.LogIn"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".pantallas.comunes.popUp.PopUpDesconexion"
+            android:name=".pantallas.comunes.popUp.PopUp"
             android:screenOrientation="portrait" />
         <activity
             android:name=".PruebaC"

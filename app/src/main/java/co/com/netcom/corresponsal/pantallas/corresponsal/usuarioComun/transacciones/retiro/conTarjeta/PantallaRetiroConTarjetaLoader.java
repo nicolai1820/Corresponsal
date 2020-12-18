@@ -2,37 +2,19 @@ package co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacci
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.core.comunicacion.CardDTO;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
-import co.com.netcom.corresponsal.pantallas.comunes.header.LogoComercio;
-import co.com.netcom.corresponsal.pantallas.comunes.listView.ListViewDispositivos;
-import co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion;
-import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUpDesconexion;
-import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun;
+import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
 import co.com.netcom.corresponsal.pantallas.funciones.MetodosSDKNewland;
 
 public class PantallaRetiroConTarjetaLoader extends AppCompatActivity {
@@ -45,7 +27,7 @@ public class PantallaRetiroConTarjetaLoader extends AppCompatActivity {
     private CardDTO tarjeta;
     private MetodosSDKNewland sdkNewland;
     public static Handler respuesta;
-    private PopUpDesconexion popUp;
+    private PopUp popUp;
 
     public final static int PROCESO_EXISTOSO =1;
     public final static int DISPOSITIVO_DESCONECTADO =2;
@@ -73,7 +55,7 @@ public class PantallaRetiroConTarjetaLoader extends AppCompatActivity {
         sdkNewland = new MetodosSDKNewland(getApplicationContext());
 
         //Se inicializa el objeto para crear los pop up
-        popUp = new PopUpDesconexion(this);
+        popUp = new PopUp(this);
 
         //Se inicializa el objeto para guardar los tipos de tarjeta
         tarjeta = new CardDTO();
