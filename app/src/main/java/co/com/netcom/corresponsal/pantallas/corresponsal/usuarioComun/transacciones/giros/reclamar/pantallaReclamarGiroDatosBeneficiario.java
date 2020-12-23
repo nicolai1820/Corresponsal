@@ -26,7 +26,7 @@ public class pantallaReclamarGiroDatosBeneficiario extends AppCompatActivity {
     private Header header = new Header("<b>Reclamar Giro</b>");
     private ArrayList<String> valores = new ArrayList<>();
     private ArrayList<String> tipoDocumento = new ArrayList<>();
-    String titulos [] = {"Número de documento","Valor del giro"};
+    String titulos [] = {"Tipo de documento","Número de documento","Valor del giro"};
     private ArrayList<Integer> iconos = new ArrayList<Integer>();
     private EditText editText_DocumentoBeneficiarioReclamarGiro,editText_MontoReclamarGiro;
     private Spinner spinner_tipoDocumentoBeneficiarioReclamarGiro;
@@ -107,10 +107,12 @@ public class pantallaReclamarGiroDatosBeneficiario extends AppCompatActivity {
         }
         else {
 
+            valores.add(documento_string);
             valores.add(documentoBeneficiarioReclamarGiro);
             valores.add(montoReclamarGiro);
             tipoDocumento.add(documento_string);
 
+            iconos.add(3);
             iconos.add(3);
             iconos.add(1);
 

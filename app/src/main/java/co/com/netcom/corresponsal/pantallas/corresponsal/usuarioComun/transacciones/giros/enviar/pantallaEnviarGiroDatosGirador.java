@@ -27,7 +27,7 @@ public class pantallaEnviarGiroDatosGirador extends AppCompatActivity {
     private ArrayList<String> tipoDocumento = new ArrayList<String>();
     private ArrayList<String> valoresRespaldo = new ArrayList<String>();
     private ArrayList<Integer> iconos = new ArrayList<Integer>();
-    private String [] titulos={"Número de documento","Número de celular."};
+    private String [] titulos={"Tipo de documento","Número de documento","Número de celular."};
     private int contador;
     private int contadorRespaldo;
 
@@ -103,10 +103,12 @@ public class pantallaEnviarGiroDatosGirador extends AppCompatActivity {
         }else {
 
             //Los datos ingresados se agregan al arreglo de datos.
+            valores.add(documento);
             valores.add(numeroDocumento);
             valores.add(numeroCelular);
             tipoDocumento.add(documento);
 
+            iconos.add(3);
             iconos.add(3);
             iconos.add(3);
 

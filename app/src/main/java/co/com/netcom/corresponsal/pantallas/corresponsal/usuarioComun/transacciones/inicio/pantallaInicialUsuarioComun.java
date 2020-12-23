@@ -106,6 +106,8 @@ public class pantallaInicialUsuarioComun extends AppCompatActivity {
             }
         });
 
+
+        //Se intenta conectar al ultimo dispositivo al cual se conecto
         metodosSDKNewland = new MetodosSDKNewland(pantallaInicialUsuarioComun.this);
 
         SharedPreferences sharedPreferences = getSharedPreferences("dispositivos", Context.MODE_PRIVATE);

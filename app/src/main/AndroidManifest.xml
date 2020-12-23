@@ -27,7 +27,8 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.pantallaCantidadPagoFacturas"></activity>
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.retiro.sinTarjeta.PantallaRetiroSinTarjetaLoader" android:screenOrientation="portrait"></activity>
+        <activity android:name=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.pantallaCantidadPagoFacturas" android:screenOrientation="portrait"/>
         <activity
             android:name=".pantallas.corresponsal.usuarioComun.transacciones.retiro.conTarjeta.PantallaRetiroConTarjetaTipoDeCuenta"
             android:screenOrientation="portrait" />

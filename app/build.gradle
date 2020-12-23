@@ -110,13 +110,11 @@ dependencies {
     implementation files('libs\\NLmeSdk-1.4.12-debug.jar')
 
     //peticiones http
-    //implementation 'com.android.volley:volley:1.1.1'
     implementation 'com.squareup.okhttp3:okhttp:3.14.6'
 
 
     //gif
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
-
 
 }
 

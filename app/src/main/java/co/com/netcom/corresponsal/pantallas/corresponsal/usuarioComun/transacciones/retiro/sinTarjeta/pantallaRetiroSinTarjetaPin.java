@@ -24,7 +24,6 @@ public class pantallaRetiroSinTarjetaPin extends AppCompatActivity {
     private Header header = new Header("<b>Retiro sin tarjeta.</b>");
     private ArrayList<String> valores = new ArrayList<String>();
     private ArrayList<String> valoresRespaldo = new ArrayList<String>();
-    private String [] titulos={"Pin"};
     private int contador;
     private int contadorRespaldo;
     private CodigosTransacciones codigo = new CodigosTransacciones();
@@ -79,17 +78,10 @@ public class pantallaRetiroSinTarjetaPin extends AppCompatActivity {
 
                         valores.add(pinBlock);
 
-                        //Se realiza el intent a la activity confirmar valores
-                        Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);
-                        i.putExtra("titulo","<b>Retiro sin tarjeta</b>");
-                        i.putExtra("descripcion","Por favor confirme el pin ingresado");
-                        i.putExtra("titulos",titulos);
+                        // pantalla loader transaccion pin
+
+                        Intent i = new Intent(getApplicationContext(), PantallaRetiroSinTarjetaLoader.class);
                         i.putExtra("valores",valores);
-                        i.putExtra("terminos",false);
-                        i.putExtra("clase","");
-                        i.putExtra("contador", contador);
-                        i.putExtra("transaccion", "");
-                        i.putExtra("transaccion", codigo.CORRESPONSAL_RETIRO_SIN_TARJETA);
                         startActivity(i);
                         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 

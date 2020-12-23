@@ -7,6 +7,8 @@
     tools:context=".pantallas.comunes.logIn.LogIn"
     android:background="@drawable/fondo">
 
+
+
     <EditText
         android:id="@+id/editText_User"
         android:layout_width="match_parent"
@@ -28,7 +30,6 @@
         app:layout_constraintTop_toTopOf="parent"
         android:textColor="@color/azul"
         />
-
     <EditText
         android:id="@+id/editText_Password"
         android:layout_width="match_parent"

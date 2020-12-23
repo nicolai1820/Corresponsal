@@ -49,12 +49,14 @@
                 android:overlapAnchor="false"
                 />
 
+
+
             <EditText
                 android:id="@+id/editText_DepositoDatosDepositanteNumeroCuenta"
                 android:layout_width="match_parent"
                 android:layout_height="49dp"
-                android:layout_marginStart="36dp"
                 android:layout_marginTop="21dp"
+                android:layout_marginStart="36dp"
                 android:background="@drawable/input_form"
                 android:fontFamily="@font/quicksand_bold"
                 android:hint="@string/editText_DepositoDatosDepositanteNumeroCuenta"

@@ -25,6 +25,7 @@ public class pantallaPagoFacturasManualCuentaRecaudadora extends AppCompatActivi
     private EditText editText_PagoFacturasManualNumeroCuentaRecaudadora,editText_PagoFacturasManualCuentaRecaudadoraNumeroReferencia;
     private ArrayList<String> valores = new ArrayList<String>();
     private ArrayList<String> tipoDeCuenta= new ArrayList<String>();
+    private String tipoCuenta="";
     private String [] titulos={"Cuenta recaudadora","Número de referencia"};
     private ArrayList<Integer> iconos = new ArrayList<Integer>();
     private CodigosTransacciones codigo = new CodigosTransacciones();
@@ -82,9 +83,14 @@ public class pantallaPagoFacturasManualCuentaRecaudadora extends AppCompatActivi
             Toast.makeText(getApplicationContext(),"Debe seleccionar un tipo de cuenta",Toast.LENGTH_SHORT).show();
         } else{
 
+            if (seleccion_tipoCuenta.equalsIgnoreCase("Ahorros")){
+                tipoCuenta="10";
+            }else{
+                tipoCuenta="20";
+            }
             valores.add(numeroCuentaRecaudadora_string);
             valores.add(numeroReferencia_string);
-            tipoDeCuenta.add(seleccion_tipoCuenta);
+            tipoDeCuenta.add(tipoCuenta);
 
             iconos.add(3);
             iconos.add(3);
@@ -101,7 +107,7 @@ public class pantallaPagoFacturasManualCuentaRecaudadora extends AppCompatActivi
             i.putExtra("contador", 0);
             i.putExtra("tipoDeCuenta", tipoDeCuenta);
             i.putExtra("iconos",iconos);
-            i.putExtra("transaccion", codigo.CORRESPONSAL_PAGO_FACTURA_MANUAL);
+            i.putExtra("transaccion", codigo.CORRESPONSAL_CONSULTA_FACTURAS);
             startActivity(i);
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 

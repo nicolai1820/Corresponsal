@@ -5,18 +5,12 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import co.com.netcom.corresponsal.R;
-import co.com.netcom.corresponsal.pantallas.comunes.listView.ListViewDispositivos;
-import co.com.netcom.corresponsal.pantallas.funciones.MetodosSDKNewland;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,8 +22,6 @@ public class LogoComercio extends Fragment {
     private View vista;
     private ImageView estadoActivo, estadoInactivo;
     public static Handler estado;
-    private MetodosSDKNewland sdkNewland;
-
 
     public LogoComercio() {
         // Required empty public constructor
@@ -55,7 +47,9 @@ public class LogoComercio extends Fragment {
         return vista;
     }
 
-   /* @Override
+
+
+    /* @Override
     public void onResume() {
         estado = new Handler() {
 

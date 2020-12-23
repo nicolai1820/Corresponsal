@@ -312,8 +312,8 @@
     <string name="editText_PopUpRecuperarContrasena">Usuario.</string>
     <string name="button_PopUpRecuperarContrasenaAceptar">Aceptar</string>
     <string name="button_PopUpRecuperarContrasenaCancelar">Cancelar</string>
-    
-    
+
+
     <string name="editText_CantidadPagoFacturas">Cantidad</string>
     <string name="button_ContinuarCantidadPagoFacturas">Continuar</string>
 

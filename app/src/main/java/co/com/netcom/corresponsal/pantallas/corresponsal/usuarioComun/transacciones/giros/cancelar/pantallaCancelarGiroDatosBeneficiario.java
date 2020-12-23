@@ -22,7 +22,7 @@ public class pantallaCancelarGiroDatosBeneficiario extends AppCompatActivity {
     private Header header = new Header("<b>Cancelar Giro</b>");
     private Spinner spinner_tipoDocumentoBeneficiarioCancelarGiro;
     private EditText editText_tipoDocumentoBeneficiarioCancelarGiro;
-    private String [] titulos={"Número de documento"};
+    private String [] titulos={"Tipo de documento","Número de documento"};
     private ArrayList<String> valores = new ArrayList<String>();
     private ArrayList<String> valoresRespaldo = new ArrayList<String>();
     private ArrayList<Integer> iconos = new ArrayList<Integer>();
@@ -101,9 +101,11 @@ public class pantallaCancelarGiroDatosBeneficiario extends AppCompatActivity {
 
         } else {
 
+            valores.add(tipoDocumento_String);
             valores.add(numeroDocumentoGirador_string);
             tipoDocumento.add(tipoDocumento_String);
 
+            iconos.add(3);
             iconos.add(3);
             //Se realiza el intent a la activity confirmar valores
             Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);

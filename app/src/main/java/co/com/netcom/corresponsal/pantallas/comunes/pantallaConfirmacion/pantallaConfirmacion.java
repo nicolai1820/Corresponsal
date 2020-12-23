@@ -7,7 +7,6 @@ import androidx.core.content.res.ResourcesCompat;
 import co.com.netcom.corresponsal.core.comunicacion.CardDTO;
 import co.com.netcom.corresponsal.core.comunicacion.DatosComision;
 import co.com.netcom.corresponsal.core.comunicacion.DatosRecaudo;
-import co.com.netcom.corresponsal.core.comunicacion.IntegradorC;
 import co.com.netcom.corresponsal.pantallas.funciones.CodigosTransacciones;
 
 import android.app.AlertDialog;
@@ -20,8 +19,6 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -40,7 +37,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
     private LinearLayout linearLayoutConfirmacion;
     private Class<?>  actividad;
     private String [] titulos;
-    ArrayList<String> valores = new ArrayList<String>();
+    private ArrayList<String> valores = new ArrayList<String>();
     private Typeface quicksandBold;
     private Typeface quicksandRegular;
     private int contador;
@@ -339,7 +336,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
                         @Override
                         public void run() {
 
-                            hiloTransacciones.transacciones(transaccion,datosTransaccion);
+                            hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion);
                             try {
                                 // code runs in a thread
                                 runOnUiThread(new Runnable() {
@@ -374,7 +371,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
                         @Override
                         public void run() {
 
-                            hiloTransacciones.transacciones(transaccion,datosTransaccion);
+                            hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion);
                             try {
                                 // code runs in a thread
                                 runOnUiThread(new Runnable() {
@@ -409,7 +406,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
                         @Override
                         public void run() {
 
-                            hiloTransacciones.transacciones(transaccion,datosTransaccion);
+                            hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion);
                             try {
                                 // code runs in a thread
                                 runOnUiThread(new Runnable() {
@@ -442,7 +439,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
                         @Override
                         public void run() {
 
-                            hiloTransacciones.transacciones(transaccion,datosTransaccion);
+                            hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion);
                             try {
                                 // code runs in a thread
                                 runOnUiThread(new Runnable() {
@@ -459,7 +456,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
                     }.start();
                     break;
                 }
-                //listo
+                //listo pero no lo estoy usando, revisar
                 case CodigosTransacciones.CORRESPONSAL_CANCELACION_GIRO:{
 
                     new Thread() {
@@ -484,7 +481,8 @@ public class pantallaConfirmacion extends AppCompatActivity {
 
                     break;
                 }
-                //listo
+
+                //listo ------- veriricar porque no se confirman valores
                 case CodigosTransacciones.CORRESPONSAL_RETIRO_SIN_TARJETA:{
 
                     for (int i=0;i < valores.size();i++){
@@ -498,7 +496,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
                         @Override
                         public void run() {
 
-                            hiloTransacciones.transacciones(transaccion,datosTransaccion);
+                            hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion);
                             try {
                                 // code runs in a thread
                                 runOnUiThread(new Runnable() {
@@ -610,7 +608,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
                         @Override
                         public void run() {
 
-                            hiloTransacciones.transacciones(transaccion,datosTransaccion);
+                            hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion);
                             try {
                                 // code runs in a thread
                                 runOnUiThread(new Runnable() {
@@ -640,7 +638,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
                         @Override
                         public void run() {
 
-                            hiloTransacciones.transacciones(transaccion,datosTransaccion);
+                            hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion);
                             try {
                                 // code runs in a thread
                                 runOnUiThread(new Runnable() {
@@ -695,11 +693,17 @@ public class pantallaConfirmacion extends AppCompatActivity {
                         datosTransaccion.add(valores.get(i));
                     }
 
+                    try {
+                        for (int i=0;i < tipoDeCuenta.size();i++){
+                            datosTransaccion.add(tipoDeCuenta.get(i));
+                        }
+                    }catch (Exception e){}
+
                     new Thread() {
                         @Override
                         public void run() {
 
-                            hiloTransacciones.transacciones(transaccion,datosTransaccion);
+                            hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion);
                             try {
                                 // code runs in a thread
                                 runOnUiThread(new Runnable() {

@@ -30,7 +30,7 @@ public class pantallaEnviarGiroDatosBeneficiario extends AppCompatActivity {
     private ArrayList<String> tipoDocumento = new ArrayList<String>();
     private ArrayList<String> tipoDocumentoRespaldo = new ArrayList<String>();
     private ArrayList<Integer> iconos = new ArrayList<Integer>();
-    private String [] titulos={"Número de documento","Número de celular."};
+    private String [] titulos={"Tipo de documento","Número de documento","Número de celular."};
     private int contador;
     private int contadorRespaldo;
     private CodigosTransacciones codigo = new CodigosTransacciones();
@@ -106,10 +106,12 @@ public class pantallaEnviarGiroDatosBeneficiario extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Debe seleccionar el tipo de documento",Toast.LENGTH_LONG).show();
         }
         else {
+            valores.add(documento_string);
             valores.add(numeroDocumento);
             valores.add(numeroCelular);
             tipoDocumento.add(documento_string);
 
+            iconos.add(3);
             iconos.add(3);
             iconos.add(3);
 

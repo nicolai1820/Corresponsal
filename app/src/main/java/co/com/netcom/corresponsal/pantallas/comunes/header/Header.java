@@ -25,7 +25,6 @@ public class Header extends Fragment {
     private ImageView logo;
     private LogoComercio logoComercioImage;
 
-
     /**Metodo constructor que recibo como parametro un String, el cual va a ser el titulo del header*/
 
      public Header(String contenidoTitulo) {
@@ -48,9 +47,10 @@ public class Header extends Fragment {
         titulo = (TextView) vista.findViewById(R.id.tituloHeader);
         logo = (ImageView) vista.findViewById(R.id.imageViewHeader);
 
-        logoComercioImage = new LogoComercio();
 
+        logoComercioImage = new LogoComercio();
         getFragmentManager().beginTransaction().replace(R.id.frameLayoutLogoComercio , logoComercioImage).commit();
+
         //Se asigna el String recibido como parametro en el constructor como titulo
         titulo.setText(Html.fromHtml(titulo_string));
 

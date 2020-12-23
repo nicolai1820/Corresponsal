@@ -24,7 +24,7 @@ public class pantallaCancelarGiroDatosGirador extends AppCompatActivity {
     private Header header = new Header("<b>Cancelar Giro</b>");
     private Spinner spinner_tipoDocumentoGiradorCancelarGiro;
     private EditText editText_tipoDocumentoGiradorCancelarGiro;
-    private String [] titulos={"Número de documento"};
+    private String [] titulos={"Tipo de documento","Número de documento"};
     private ArrayList<String> valores = new ArrayList<String>();
     private ArrayList<String> tipoDocumento = new ArrayList<String>();
     private ArrayList<Integer> iconos = new ArrayList<Integer>();
@@ -103,9 +103,11 @@ public class pantallaCancelarGiroDatosGirador extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Debe aceptar los terminos y condiciones",Toast.LENGTH_LONG).show();
         } else {
 
+            valores.add(tipoDocumento_String);
             valores.add(numeroDocumentoGirador_string);
             tipoDocumento.add(tipoDocumento_String);
 
+            iconos.add(3);
             iconos.add(3);
 
             //Se realiza el intent a la activity confirmar valores

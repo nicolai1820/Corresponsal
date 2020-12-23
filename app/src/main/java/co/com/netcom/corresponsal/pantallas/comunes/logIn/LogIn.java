@@ -8,6 +8,8 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -88,18 +90,6 @@ public class LogIn extends AppCompatActivity {
                 Log.d("PERMISOS","Si hay permisos");
         }
 
-
-      /*  editText_User.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-
-                if(event.getAction() == KeyEvent.ACTION_UP&& event.getKeyCode() == KeyEvent.KEYCODE_SPACE){
-                    return true;
-                }
-                return false;
-            }
-        });*/
-
         /** Se crea el evento click para el textview de recuperar contraseña, el cual crea un pop up donde se recibe el usuario
          * para posteriormente consumir el servicio de recuperar contraseña.*/
         textView_Password.setOnClickListener(new View.OnClickListener() {
@@ -108,6 +98,32 @@ public class LogIn extends AppCompatActivity {
                 popUp.crearPopUpRecuperarContrasena();
             }
         });
+
+
+        //Se crea este filtro para que el usuario no digite espacios en los editText
+
+        InputFilter textFilter = new InputFilter() {
+
+            @Override
+
+            public CharSequence filter (CharSequence source, int start, int end, Spanned dest, int dstart, int dend){
+
+                StringBuilder sbText = new StringBuilder(source);
+                String text = sbText.toString();
+
+                if (text.contains(" ")) {
+
+                    return text.substring(start,end-1).toString();
+                }
+                return source;
+            }
+        };
+
+        //Se agrega el filtro para que no se acepten espacios en el editext
+        editText_User.setFilters(new InputFilter[]{textFilter});
+        editText_Password.setFilters(new InputFilter[]{textFilter});
+
+
 
     }
 
@@ -189,5 +205,7 @@ public class LogIn extends AppCompatActivity {
 
         }
     }
+
+
 
 }

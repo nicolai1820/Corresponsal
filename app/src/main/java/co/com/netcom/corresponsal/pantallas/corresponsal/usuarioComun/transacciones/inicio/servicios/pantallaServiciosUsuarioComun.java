@@ -19,12 +19,14 @@ import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.consultaSaldo.pantallaConsultaSaldoLectura;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.deposito.pantallaDepositoDatosDepositante;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.giros.pantallaInicialGiros;
+import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.pantallaInicialPagoFacturas;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.pagoProductosBCO.pantallaInicialPagoProductosBCO;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.recargas.pantallaRecargaCelular;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.retiro.PantallaInicialRetiro;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.transferencia.pantallaTransferenciaCantidad;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.transferencia.pantallaTransferenciaLectura;
+import co.com.netcom.corresponsal.pantallas.funciones.MetodosSDKNewland;
 
 public class pantallaServiciosUsuarioComun extends Fragment {
 
@@ -44,7 +46,6 @@ public class pantallaServiciosUsuarioComun extends Fragment {
         getFragmentManager().beginTransaction().replace(R.id.contenedorHeaderServiciosUsuario,header).commit();
 
         // Se crea la conexion con la interfaz gráfica de el fragmento.
-
         vista = inflater.inflate(R.layout.fragment_pantalla_servicios_usuario_comun, container, false);
 
         giros = (Button) vista.findViewById(R.id.button_Giros);
@@ -169,8 +170,5 @@ public class pantallaServiciosUsuarioComun extends Fragment {
         return vista;
 
     }
-
-
-
 
 }

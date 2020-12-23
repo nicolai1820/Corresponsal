@@ -30,6 +30,7 @@ public class pantallaRecargaCelular extends AppCompatActivity {
     private String [] titulos={"Número de Celular"};
     private ArrayList<Integer> iconos = new ArrayList<Integer>();
     private ArrayList<String> valores = new ArrayList<String>();
+    private ArrayList<String> tipoDeCuenta = new ArrayList<String>();
     private CodigosTransacciones codigo = new CodigosTransacciones();
     private BottomNavigationView menuRecargas;
 
@@ -72,9 +73,11 @@ public class pantallaRecargaCelular extends AppCompatActivity {
             Toast.makeText(this,"Debe ingresar el número",Toast.LENGTH_SHORT).show();
         }else {
 
-            valores.add(tipoCuenta);
             valores.add(convenioNequi);
             valores.add(celular_String);
+
+            tipoDeCuenta.add(tipoCuenta);
+
 
             iconos.add(3);
             //Se realiza el intent a la activity confirmar valores
@@ -86,8 +89,9 @@ public class pantallaRecargaCelular extends AppCompatActivity {
             i.putExtra("valores",valores);
             i.putExtra("terminos",false);
             i.putExtra("clase","");
-            i.putExtra("contador", 2);
+            i.putExtra("contador", 1);
             i.putExtra("iconos",iconos);
+            i.putExtra("tipoDeCuenta",tipoDeCuenta);
             i.putExtra("transaccion", codigo.CORRESPONSAL_CONSULTA_FACTURAS);
             startActivity(i);
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
