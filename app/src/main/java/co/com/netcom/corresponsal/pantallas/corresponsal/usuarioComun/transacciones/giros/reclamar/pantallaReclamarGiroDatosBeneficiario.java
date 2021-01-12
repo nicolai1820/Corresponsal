@@ -112,7 +112,7 @@ public class pantallaReclamarGiroDatosBeneficiario extends AppCompatActivity {
             valores.add(montoReclamarGiro);
             tipoDocumento.add(documento_string);
 
-            iconos.add(3);
+            iconos.add(4);
             iconos.add(3);
             iconos.add(1);
 

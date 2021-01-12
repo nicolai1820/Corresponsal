@@ -14,12 +14,14 @@ import androidx.annotation.Nullable;
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.duplicado.pantallaInicialDuplicado;
+import co.com.netcom.corresponsal.pantallas.funciones.Servicios;
 
 public class pantallaInformacionUsuarioComun extends Fragment {
 
 
-    private Button preguntasFrecuentes,soporte, duplicado;
+    private Button preguntasFrecuentes,soporte, duplicado, cerrarSesion;
     private Header header = new Header("<b> Información </b>");
+    private Servicios servicio = new Servicios(getActivity());
 
     @Nullable
     @Override
@@ -59,6 +61,14 @@ public class pantallaInformacionUsuarioComun extends Fragment {
                 Intent i = new Intent(getContext(), pantallaInicialDuplicado.class);
                 startActivity(i);
                 getActivity().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+            }
+        });
+
+        /**Evento click del boton  cerrar sesión, cierra sesión frente al servidor*/
+        cerrarSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                servicio.cerrarSesion(servicio.getToken());
             }
         });
 

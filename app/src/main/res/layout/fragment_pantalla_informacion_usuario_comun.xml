@@ -89,12 +89,28 @@
                 android:layout_height="117dp"
                 android:background="@drawable/input_form"
                 android:textAllCaps="false"
+                android:drawableTop="@drawable/duplicado"
                 android:textSize="19dp"
                 android:fontFamily="@font/quicksand_bold"
                 android:paddingTop="25dp"
                 android:paddingBottom="15dp"
                 android:text="@string/button_pantallaInformacionDuplicado"
                 android:textColor="@color/azul"/>
+
+            <Button
+                android:id="@+id/button_cerrarSesion"
+                android:layout_width="161dp"
+                android:layout_height="67dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="38dp"
+                android:background="@drawable/boton_inicio"
+                android:textColor="@color/blanco"
+                android:fontFamily="@font/quicksand_regular"
+                android:textSize="20dp"
+                android:text="@string/button_pantallaInformacionCerrarSesion"
+                android:textAllCaps="false"
+                />
+
 
         </LinearLayout>
 

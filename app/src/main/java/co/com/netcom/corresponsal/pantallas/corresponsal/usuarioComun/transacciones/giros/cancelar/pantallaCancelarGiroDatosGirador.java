@@ -107,7 +107,7 @@ public class pantallaCancelarGiroDatosGirador extends AppCompatActivity {
             valores.add(numeroDocumentoGirador_string);
             tipoDocumento.add(tipoDocumento_String);
 
-            iconos.add(3);
+            iconos.add(4);
             iconos.add(3);
 
             //Se realiza el intent a la activity confirmar valores

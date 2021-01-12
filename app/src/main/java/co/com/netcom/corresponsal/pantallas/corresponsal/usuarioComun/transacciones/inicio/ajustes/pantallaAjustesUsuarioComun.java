@@ -130,7 +130,9 @@ public class pantallaAjustesUsuarioComun extends Fragment {
                                     break;
                                 }
                                 case 2: {
-                                    Toast.makeText(getActivity(), "Conexión Fallida", Toast.LENGTH_SHORT).show();
+                                    try {
+                                        Toast.makeText(getActivity(), "Conexión Fallida", Toast.LENGTH_SHORT).show();
+                                    }catch (Exception e){}
                                     break;
                                 }
                                 case 3: {

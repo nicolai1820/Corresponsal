@@ -56,6 +56,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
     private final static int ICONO_DINERO =1;
     private final static int ICONO_CUENTA =2;
     private final static int ICONO_NUMERO =3;
+    private final static int ICONO_TIPO_DOCUMENTO=4;
 
 
 
@@ -134,6 +135,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
     * tomando como referencia los arreglos que se rescatan del intent.*/
     public void generarTextView(){
 
+        //Caso especifico cancelacion giro
         if(transaccion == CodigosTransacciones.CORRESPONSAL_CANCELACION_GIRO){
             LinearLayout linearLayout = new LinearLayout(getBaseContext());
             linearLayout.setOrientation(LinearLayout.HORIZONTAL);
@@ -156,6 +158,15 @@ public class pantallaConfirmacion extends AppCompatActivity {
                 try {
                     //Se agrega el icono
                     icono.setBackgroundResource(R.drawable.icon_cuenta);
+                    icono.setTextColor(getResources().getColor(R.color.blanco));
+                    icono.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
+                    icono.setTextSize(21);
+                    icono.setLayoutParams(paramImage);
+                }catch (Exception e){}
+            }else if (iconos.get(1) == ICONO_TIPO_DOCUMENTO){
+                try {
+                    //Se agrega el icono
+                    icono.setBackgroundResource(R.drawable.identificacion);
                     icono.setTextColor(getResources().getColor(R.color.blanco));
                     icono.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
                     icono.setTextSize(21);
@@ -194,8 +205,8 @@ public class pantallaConfirmacion extends AppCompatActivity {
             //Se agregan los TextViews al LinearLayout
             linearLayoutConfirmacion.addView(referencia);
             linearLayoutConfirmacion.addView(linearLayout);
-        }
-        else {
+        } else {
+            //Todas las transacciones excepto cancelar giro
 
             for (int j = 0; j < titulos.length; j++) {
 
@@ -237,6 +248,14 @@ public class pantallaConfirmacion extends AppCompatActivity {
                         icono.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
                         icono.setTextSize(21);
                         icono.setLayoutParams(paramImage);
+                    }else if (iconos.get(j) == ICONO_TIPO_DOCUMENTO){
+                            //Se agrega el icono
+                            icono.setBackgroundResource(R.drawable.identificacion);
+                            icono.setTextColor(getResources().getColor(R.color.blanco));
+                            icono.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
+                            icono.setTextSize(21);
+                            icono.setLayoutParams(paramImage);
+
                     }
                 }catch (Exception e){}
 
@@ -309,7 +328,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
 
             LayoutInflater inflater = this.getLayoutInflater();
 
-            loader.setView(inflater.inflate(R.layout.loader,null));
+            loader.setView(inflater.inflate(R.layout.loader_procesando_transaccion,null));
             loader.setCancelable(false);
 
             AlertDialog dialog = loader.create();

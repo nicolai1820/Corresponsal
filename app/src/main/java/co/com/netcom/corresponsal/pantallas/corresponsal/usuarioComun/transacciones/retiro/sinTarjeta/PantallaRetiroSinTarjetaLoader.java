@@ -2,13 +2,18 @@ package co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacci
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.WindowManager;
 
 import java.util.ArrayList;
 
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
+import co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion;
 import co.com.netcom.corresponsal.pantallas.funciones.CodigosTransacciones;
 import co.com.netcom.corresponsal.pantallas.funciones.Hilos;
 
@@ -33,6 +38,19 @@ public class PantallaRetiroSinTarjetaLoader extends AppCompatActivity {
 
         Bundle i = getIntent().getExtras();
         valores = i.getStringArrayList("valores");
+
+        //Se crea el loader que se mostrara mientras se procesa la transaccion
+        AlertDialog.Builder loader = new AlertDialog.Builder(PantallaRetiroSinTarjetaLoader.this);
+
+        LayoutInflater inflater = this.getLayoutInflater();
+
+        loader.setView(inflater.inflate(R.layout.loader_procesando_transaccion,null));
+        loader.setCancelable(false);
+
+        AlertDialog dialog = loader.create();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+
 
         //Se agrega para que no puedan salir de la transaccion mientras se procesa
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,

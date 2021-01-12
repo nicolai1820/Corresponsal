@@ -189,7 +189,7 @@
     <string name="textView_terminos">*Terminos y condiciones</string>
 
     <!--> Strings Activity Pantalla Recargas</!-->
-    <string name="textView_RecargasCelular">Ingrese el número de Celular</string>
+    <string name="textView_RecargasCelular">Ingrese el número del Nequi a recargar</string>
     <string name="editText_RecargasCelular">Celular</string>
     <string name="button_RecargasContinuar">Continuar</string>
 
@@ -239,6 +239,7 @@
     <string name="button_pantallaInformacionPreguntasFrecuentes">FAQ</string>
     <string name="button_pantallaInformacionSoporte">Soporte</string>
     <string name="button_pantallaInformacionDuplicado">Duplicado</string>
+    <string name="button_pantallaInformacionCerrarSesion">Cerrar sesión</string>
 
     <!-->String Activity Pantalla Cupo</!-->
     <string name="textView_Cupo">El cupo de la tarjeta es:</string>

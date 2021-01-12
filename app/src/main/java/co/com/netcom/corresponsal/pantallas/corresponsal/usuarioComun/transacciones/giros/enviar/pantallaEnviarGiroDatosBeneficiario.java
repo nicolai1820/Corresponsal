@@ -111,7 +111,7 @@ public class pantallaEnviarGiroDatosBeneficiario extends AppCompatActivity {
             valores.add(numeroCelular);
             tipoDocumento.add(documento_string);
 
-            iconos.add(3);
+            iconos.add(4);
             iconos.add(3);
             iconos.add(3);
 

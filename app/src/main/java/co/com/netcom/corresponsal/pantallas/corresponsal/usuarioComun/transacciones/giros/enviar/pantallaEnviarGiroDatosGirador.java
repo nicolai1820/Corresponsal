@@ -108,7 +108,7 @@ public class pantallaEnviarGiroDatosGirador extends AppCompatActivity {
             valores.add(numeroCelular);
             tipoDocumento.add(documento);
 
-            iconos.add(3);
+            iconos.add(4);
             iconos.add(3);
             iconos.add(3);
 

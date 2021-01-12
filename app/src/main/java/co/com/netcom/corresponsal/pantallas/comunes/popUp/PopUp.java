@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Message;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -313,6 +315,26 @@ public class PopUp extends AppCompatActivity {
         Button btnAceptar= view.findViewById(R.id.button_PopUpRecuperarContrasenaAceptar);
         Button btnCancelar= view.findViewById(R.id.button_PopUpRecuperarContrasenaCancelar);
 
+        //Se crea este filtro para que el usuario no digite espacios en los editText
+        InputFilter textFilter = new InputFilter() {
+
+            @Override
+
+            public CharSequence filter (CharSequence source, int start, int end, Spanned dest, int dstart, int dend){
+
+                StringBuilder sbText = new StringBuilder(source);
+                String text = sbText.toString();
+
+                if (text.contains(" ")) {
+
+                    return text.substring(start,end-1).toString();
+                }
+                return source;
+            }
+        };
+
+        //Se agrega el filtro para que no se acepten espacios en el editext
+        usuario.setFilters(new InputFilter[]{textFilter});
 
 
         //Se crea el evento click para el boton del pop up, el cual redirige al inicio de la aplicacion

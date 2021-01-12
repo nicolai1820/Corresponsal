@@ -18,7 +18,8 @@
             android:layout_gravity="center"
             android:indeterminateTint="@color/azul"
             android:scaleY="1.2"
-            android:scaleX="1.2"/>
+            android:scaleX="1.2"
+            />
 
 
 

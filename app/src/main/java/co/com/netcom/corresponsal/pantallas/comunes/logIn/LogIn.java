@@ -38,7 +38,7 @@ import co.com.netcom.corresponsal.pantallas.funciones.CodificarBase64;
 
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.funciones.CodificarSHA512;
-import co.com.netcom.corresponsal.pantallas.funciones.ServicioLogin;
+import co.com.netcom.corresponsal.pantallas.funciones.Servicios;
 
 public class LogIn extends AppCompatActivity {
 
@@ -52,7 +52,7 @@ public class LogIn extends AppCompatActivity {
     private String usuarioEncriptado;
     private String contrasenaEncriptada;
     private String estadoConexion= null;
-    private ServicioLogin servicioLogin=null;
+    private Servicios servicioLogin=null;
     private PopUp popUp;
 
 
@@ -70,7 +70,7 @@ public class LogIn extends AppCompatActivity {
         sha512 = new CodificarSHA512();
 
         //Se cre el objeto para hacer las peticiones http
-        servicioLogin = new ServicioLogin(getApplicationContext());
+        servicioLogin = new Servicios(getApplicationContext());
 
         //Se crea la conexion con la interfaz grafica
         editText_User = (EditText) findViewById(R.id.editText_User);
