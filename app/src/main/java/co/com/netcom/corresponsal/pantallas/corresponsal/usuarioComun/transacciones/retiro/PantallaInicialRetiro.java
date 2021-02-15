@@ -15,8 +15,9 @@ import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.retiro.conTarjeta.PantallaRetiroConTarjetaCantidad;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.retiro.sinTarjeta.pantallaRetiroSinTarjetaCantidad;
+import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
 
-public class PantallaInicialRetiro extends AppCompatActivity {
+public class PantallaInicialRetiro extends BaseActivity {
 
     private Header header = new Header("<b>Retiro</b>");
     private BottomNavigationView menuRetiro;

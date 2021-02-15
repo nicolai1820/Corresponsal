@@ -13,8 +13,9 @@ import java.util.ArrayList;
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion;
+import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
 
-public class pantallaRetiroSinTarjetaCantidad extends AppCompatActivity {
+public class pantallaRetiroSinTarjetaCantidad extends BaseActivity {
     Header header = new Header("<b>Retiro sin tarjeta</b>");
     private EditText retiroSinTarjetaCantidad, retiroSinTarjetaNumeroCuenta;
     private ArrayList<String> valores = new ArrayList<String>();

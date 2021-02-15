@@ -22,8 +22,9 @@ import co.com.netcom.corresponsal.core.comunicacion.CardDTO;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun;
+import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
 
-public class pantallaTransferenciaCantidad extends AppCompatActivity {
+public class pantallaTransferenciaCantidad extends BaseActivity {
 
     private Header header;
     private ArrayList<String> valores = new ArrayList<String>();

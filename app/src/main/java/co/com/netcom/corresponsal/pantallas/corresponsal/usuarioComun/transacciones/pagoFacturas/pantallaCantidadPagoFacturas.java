@@ -16,8 +16,9 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.core.comunicacion.DatosRecaudo;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
+import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
 
-public class pantallaCantidadPagoFacturas extends AppCompatActivity {
+public class pantallaCantidadPagoFacturas extends BaseActivity {
 
 
 

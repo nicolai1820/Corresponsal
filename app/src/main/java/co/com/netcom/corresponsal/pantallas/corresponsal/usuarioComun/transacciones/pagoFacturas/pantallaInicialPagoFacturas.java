@@ -15,8 +15,9 @@ import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.manual.pantallaPagoFacturasManual;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.tarjetaEmpresarial.PantallaTarjetaEmpresarialLectura;
+import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
 
-public class pantallaInicialPagoFacturas extends AppCompatActivity {
+public class pantallaInicialPagoFacturas extends BaseActivity {
 
     private Header header = new Header("<b>Pago de facturas</b>");
     private BottomNavigationView menuFacturas;

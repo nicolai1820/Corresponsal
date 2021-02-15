@@ -13,9 +13,10 @@ import java.util.ArrayList;
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion;
+import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
 import co.com.netcom.corresponsal.pantallas.funciones.CodigosTransacciones;
 
-public class pantallaPagoFacturasManualConvenio extends AppCompatActivity {
+public class pantallaPagoFacturasManualConvenio extends BaseActivity {
 
     private Header header = new Header("<b>Código de convenio</b>");
     private EditText editText_PagoFacturasManualCodigoConvenio, editText_PagoFacturasManualNumeroReferencia;

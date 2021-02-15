@@ -13,9 +13,10 @@ import java.util.ArrayList;
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion;
+import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
 import co.com.netcom.corresponsal.pantallas.funciones.CodigosTransacciones;
 
-public class pantallaTarjetaCreditoProductosBCO extends AppCompatActivity {
+public class pantallaTarjetaCreditoProductosBCO extends BaseActivity {
 
     private Header header = new Header("<b>Pago productos banco.</b>");
     private EditText editText_TarjetaDeCreditoPagoProductosBCONumero, editText_TarjetaDeCreditoPagoProductosBCOCantidad;

@@ -12,8 +12,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun;
+import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
 
-public class pantallaInicialDuplicado extends AppCompatActivity {
+public class pantallaInicialDuplicado extends BaseActivity {
 
     private Header header = new Header("<b>Duplicado<b/>");
     private BottomNavigationView menuDuplicado;

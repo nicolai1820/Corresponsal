@@ -15,8 +15,9 @@ import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.pagoProductosBCO.cartera.pantallaCarteraNumeroPagare;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.pagoProductosBCO.tarjetaCredito.pantallaTarjetaCreditoProductosBCO;
+import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
 
-public class pantallaInicialPagoProductosBCO extends AppCompatActivity {
+public class pantallaInicialPagoProductosBCO extends BaseActivity {
 
     private Header header = new Header("<b>Pago productos banco.</b>");
     private BottomNavigationView menuPagosBCO;

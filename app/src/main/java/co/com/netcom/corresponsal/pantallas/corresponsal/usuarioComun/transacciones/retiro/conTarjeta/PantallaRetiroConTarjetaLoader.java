@@ -15,9 +15,10 @@ import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.core.comunicacion.CardDTO;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
+import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
 import co.com.netcom.corresponsal.pantallas.funciones.MetodosSDKNewland;
 
-public class PantallaRetiroConTarjetaLoader extends AppCompatActivity {
+public class PantallaRetiroConTarjetaLoader extends BaseActivity {
 
 
     private Header header = new Header("<b>Retiro Con Tarjeta</b>");

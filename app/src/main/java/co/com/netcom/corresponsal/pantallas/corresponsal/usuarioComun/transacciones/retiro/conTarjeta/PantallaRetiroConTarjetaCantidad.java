@@ -17,8 +17,9 @@ import java.util.ArrayList;
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion;
+import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
 
-public class PantallaRetiroConTarjetaCantidad extends AppCompatActivity {
+public class PantallaRetiroConTarjetaCantidad extends BaseActivity {
 
 
     private Header header = new Header("<b>Retiro Con Tarjeta</b>");

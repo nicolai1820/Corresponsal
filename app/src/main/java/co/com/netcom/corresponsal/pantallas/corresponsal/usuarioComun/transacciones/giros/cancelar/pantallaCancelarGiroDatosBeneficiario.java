@@ -16,8 +16,9 @@ import java.util.Arrays;
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion;
+import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
 
-public class pantallaCancelarGiroDatosBeneficiario extends AppCompatActivity {
+public class pantallaCancelarGiroDatosBeneficiario extends BaseActivity {
 
     private Header header = new Header("<b>Cancelar Giro</b>");
     private Spinner spinner_tipoDocumentoBeneficiarioCancelarGiro;

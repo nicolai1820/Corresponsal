@@ -16,9 +16,10 @@ import java.util.Arrays;
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion;
+import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
 import co.com.netcom.corresponsal.pantallas.funciones.CodigosTransacciones;
 
-public class pantallaPagoFacturasManualCuentaRecaudadora extends AppCompatActivity {
+public class pantallaPagoFacturasManualCuentaRecaudadora extends BaseActivity {
 
     private Header header = new Header("<b>Cuenta recaudadora</b>");
     private Spinner spinner_tipoDeCuentaCuentaRecaudadora;

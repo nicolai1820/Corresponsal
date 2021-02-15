@@ -19,9 +19,10 @@ import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun;
+import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
 import co.com.netcom.corresponsal.pantallas.funciones.CodigosTransacciones;
 
-public class pantallaRecargaCelular extends AppCompatActivity {
+public class pantallaRecargaCelular extends BaseActivity {
 
     private Header header;
     private EditText celular;

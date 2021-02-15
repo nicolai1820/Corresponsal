@@ -14,10 +14,11 @@ import java.util.ArrayList;
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion;
+import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
 import co.com.netcom.corresponsal.pantallas.funciones.CodigosTransacciones;
 import co.com.netcom.corresponsal.pantallas.funciones.Hilos;
 
-public class PantallaRetiroSinTarjetaLoader extends AppCompatActivity {
+public class PantallaRetiroSinTarjetaLoader extends BaseActivity {
     private ArrayList<String> valores = new ArrayList<String>();
     private Header header = new Header("<b>Retiro sin tarjeta.</b>");
     private Hilos hilos;

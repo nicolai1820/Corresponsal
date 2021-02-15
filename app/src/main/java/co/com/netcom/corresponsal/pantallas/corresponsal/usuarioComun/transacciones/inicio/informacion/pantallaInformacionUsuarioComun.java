@@ -1,6 +1,8 @@
 package co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.informacion;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,7 @@ import androidx.annotation.Nullable;
 
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
+import co.com.netcom.corresponsal.pantallas.comunes.logIn.LogIn;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.duplicado.pantallaInicialDuplicado;
 import co.com.netcom.corresponsal.pantallas.funciones.Servicios;
 
@@ -21,8 +24,9 @@ public class pantallaInformacionUsuarioComun extends Fragment {
 
     private Button preguntasFrecuentes,soporte, duplicado, cerrarSesion;
     private Header header = new Header("<b> Información </b>");
-    private Servicios servicio = new Servicios(getActivity());
-
+    private Servicios servicio;
+    private Thread hilo;
+    private String respuesta="";
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -37,6 +41,9 @@ public class pantallaInformacionUsuarioComun extends Fragment {
         preguntasFrecuentes = view.findViewById(R.id.button_preguntasFrecuentes);
         soporte = view.findViewById(R.id.button_soporte);
         duplicado = view.findViewById(R.id.button_duplicadoRecibo);
+        cerrarSesion = view.findViewById(R.id.button_cerrarSesion);
+        servicio= new Servicios(getActivity());
+
 
         /**Evento click del boton preguntas frecuentes, redirige a la pantalla de preuntas frecuentes.*/
         preguntasFrecuentes.setOnClickListener(new View.OnClickListener() {
@@ -68,9 +75,32 @@ public class pantallaInformacionUsuarioComun extends Fragment {
         cerrarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                servicio.cerrarSesion(servicio.getToken());
+
+              hilo=  new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        respuesta = servicio.cerrarSesion(getActivity(),servicio.getToken());
+                    }
+                });
+
+                hilo.start();
+                try {
+                    hilo.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                if (respuesta.equals("MQ==")){
+                    Intent i = new Intent(getActivity(), LogIn.class);
+                    startActivity(i);
+                    getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                }else {
+
+                }
             }
         });
+
+
 
         return view;
     }

@@ -18,9 +18,10 @@ import co.com.netcom.corresponsal.core.comunicacion.CardDTO;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun;
+import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
 import co.com.netcom.corresponsal.pantallas.funciones.MetodosSDKNewland;
 
-public class pantallaConsultaSaldoLectura extends AppCompatActivity {
+public class pantallaConsultaSaldoLectura extends BaseActivity {
 
     public final static int PROCESO_EXISTOSO =1;
     public final static int DISPOSITIVO_DESCONECTADO =2;

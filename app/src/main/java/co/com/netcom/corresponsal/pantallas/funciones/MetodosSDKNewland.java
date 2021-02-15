@@ -485,6 +485,10 @@ public class MetodosSDKNewland {
            datosTarjeta.setKsnPinBlock(Dump.getHexDump(cardInfoEntity.getPinKsn()));
            datosTarjeta.setUltimosCuatro(track2[0].substring(17));
 
+           
+
+
+
 
 
 
@@ -902,6 +906,7 @@ public class MetodosSDKNewland {
     public boolean isConnected(){
 
         return  nlPosManager.isConnected();
+
     }
 
     /**Metodo que retorna un ArrayList de tipo String el cual contiene la lista de dispositivos encontrados*/

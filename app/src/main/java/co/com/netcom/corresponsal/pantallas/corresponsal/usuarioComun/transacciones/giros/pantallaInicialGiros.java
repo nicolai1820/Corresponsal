@@ -16,8 +16,9 @@ import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transaccio
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.giros.enviar.pantallaEnviarGiroCantidad;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.giros.reclamar.pantallaReclamarGiroDatosBeneficiario;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun;
+import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
 
-public class pantallaInicialGiros extends AppCompatActivity {
+public class pantallaInicialGiros extends BaseActivity {
     private Header header = new Header("<b>Giros</b>");
     private BottomNavigationView menuGiros;
 

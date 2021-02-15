@@ -17,9 +17,10 @@ import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.core.comunicacion.CardDTO;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion;
+import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
 import co.com.netcom.corresponsal.pantallas.funciones.CodigosTransacciones;
 
-public class pantallaConsultaSaldoTipoCuenta extends AppCompatActivity {
+public class pantallaConsultaSaldoTipoCuenta extends BaseActivity {
 
     private Header header;
     private CardDTO tarjeta;

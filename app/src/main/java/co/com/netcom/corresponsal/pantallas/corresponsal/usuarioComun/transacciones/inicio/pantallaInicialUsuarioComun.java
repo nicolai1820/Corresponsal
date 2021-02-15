@@ -23,9 +23,10 @@ import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transaccio
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.informacion.pantallaInformacionUsuarioComun;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.servicios.pantallaServiciosUsuarioComun;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.transacciones.pantallaTransacciones;
+import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
 import co.com.netcom.corresponsal.pantallas.funciones.MetodosSDKNewland;
 
-public class pantallaInicialUsuarioComun extends AppCompatActivity {
+public class pantallaInicialUsuarioComun extends BaseActivity {
 
 
     private IntegradorC integradorC;

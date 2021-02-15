@@ -17,9 +17,10 @@ import co.com.netcom.corresponsal.core.comunicacion.DatosComision;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun;
+import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
 import co.com.netcom.corresponsal.pantallas.funciones.Hilos;
 
-public class pantallaCancelarGiroCantidad extends AppCompatActivity {
+public class pantallaCancelarGiroCantidad extends BaseActivity {
 
     ArrayList<String> valores = new ArrayList<String>();
     private String valorGiro;

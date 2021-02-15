@@ -17,8 +17,9 @@ import co.com.netcom.corresponsal.core.comunicacion.DatosComision;
 import co.com.netcom.corresponsal.core.comunicacion.IntegradorC;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion;
+import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
 
-public class pantallaEnviarGiroCantidad extends AppCompatActivity {
+public class pantallaEnviarGiroCantidad extends BaseActivity {
 
     private Header header = new Header("<b>Enviar Giros</b>");
     private EditText cantidad;

@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.InputFilter;
@@ -15,22 +16,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-//import com.android.volley.Request;
-//import com.android.volley.Response;
-//import com.android.volley.VolleyError;
-//import com.android.volley.toolbox.StringRequest;
-//import com.android.volley.toolbox.Volley;
-
-/*
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.regex.Pattern;
-*/
-
 
 import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun;
@@ -54,7 +39,9 @@ public class LogIn extends AppCompatActivity {
     private String estadoConexion= null;
     private Servicios servicioLogin=null;
     private PopUp popUp;
-
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor sharedPreferencesEditor;
+    private int sesion;
 
 
     @Override
@@ -76,6 +63,20 @@ public class LogIn extends AppCompatActivity {
         editText_User = (EditText) findViewById(R.id.editText_User);
         editText_Password = (EditText) findViewById(R.id.editText_Password);
         textView_Password = (TextView) findViewById(R.id.textView_PasswordLogin);
+
+        sharedPreferences = getSharedPreferences("User",MODE_PRIVATE);
+        sharedPreferencesEditor = sharedPreferences.edit();
+
+        //se trata de rescartar el intent en caso de que se cierre por timeout
+        Bundle i = getIntent().getExtras();
+        try {
+            sesion = i.getInt("sesion",0);
+        }catch (Exception e){}
+
+        //se crea popUp sesion cerrada por timeout
+        if (sesion==1){
+            popUp.crearPopUpLoginFallido("Sesión cerrada por time out.");
+        }
 
         //Se crea un elemento para verificar que los permisos esten activados
         int permisoUbicacionCoarse = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
@@ -151,7 +152,7 @@ public class LogIn extends AppCompatActivity {
            Log.d("USUARIODECO",base64.decodificarBase64(usuarioEncriptado));
 
             //Se crea hilo para hacer la petición al servidor del token
-           /* solicitudToken =  new Thread(new Runnable() {
+            solicitudToken =  new Thread(new Runnable() {
                 @Override
                 public void run() {
                     token = servicioLogin.solicitarToken();
@@ -192,16 +193,19 @@ public class LogIn extends AppCompatActivity {
             //Log.d("ESTADO",base64.decodificarBase64(estadoConexion));
 
             if (Integer.parseInt(estadoConexion)==1){
-                Intent i = new Intent(this, pantallaTipoDeUsuario.class);
+                sharedPreferencesEditor.putString("Usuario",servicioLogin.getUserId());
+                sharedPreferencesEditor.commit();
+
+                Intent i = new Intent(this, pantallaInicialUsuarioComun.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }else{
                 popUp.crearPopUpLoginFallido(base64.decodificarBase64(servicioLogin.getRespuestaServidor()));
-            }*/
+            }
 
-            Intent i = new Intent(this, pantallaInicialUsuarioComun.class);
+            /*Intent i = new Intent(this, pantallaInicialUsuarioComun.class);
             startActivity(i);
-            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);*/
 
         }
     }

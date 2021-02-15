@@ -10,8 +10,9 @@ import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.manual.manualConvenio.pantallaPagoFacturasManualConvenio;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.manual.manualCuentaRecaudadora.pantallaPagoFacturasManualCuentaRecaudadora;
+import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
 
-public class pantallaPagoFacturasManual extends AppCompatActivity {
+public class pantallaPagoFacturasManual extends BaseActivity {
 
     private Header header = new Header("<b>Pago de facturas</b>");
 
