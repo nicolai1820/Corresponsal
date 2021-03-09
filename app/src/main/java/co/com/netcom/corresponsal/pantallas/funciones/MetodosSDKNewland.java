@@ -472,7 +472,7 @@ public class MetodosSDKNewland {
 
            //Se obtiene el track dos y se hace el Split en el caracter correspondiente.
 
-           track2 = Dump.getHexDump(cardInfoEntity.getStrTrack2()).split("D");
+            track2 = Dump.getHexDump(cardInfoEntity.getStrTrack2()).split("D");
            bin = track2[0].substring(0,7);
 
            datosTarjeta.setTrack1(Dump.getHexDump(cardInfoEntity.getStrTrack1()));
@@ -485,7 +485,7 @@ public class MetodosSDKNewland {
            datosTarjeta.setKsnPinBlock(Dump.getHexDump(cardInfoEntity.getPinKsn()));
            datosTarjeta.setUltimosCuatro(track2[0].substring(17));
 
-           
+
 
 
 
