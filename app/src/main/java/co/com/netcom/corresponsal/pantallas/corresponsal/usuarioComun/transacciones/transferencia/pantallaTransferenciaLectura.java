@@ -35,7 +35,7 @@ public class pantallaTransferenciaLectura extends BaseActivity {
     public final static int ERROR_DE_LECTURA =3;
     public final static int NUEVO_INTENTO =4;
     public final static int CANCELADO_POR_USUARIO=5;
-
+    public final static int CONTACTLESS=6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +128,9 @@ public class pantallaTransferenciaLectura extends BaseActivity {
                     }
                     case CANCELADO_POR_USUARIO:
                         popUp.crearPopUpCanceladaUsuario();
+                        break;
+                    case CONTACTLESS:
+                        popUp.crearPopUpContactless("Transacción no soportada por Contactless");
                         break;
                     default:
                         break;

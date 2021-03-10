@@ -1,19 +1,19 @@
 The target system is: Android - 1 - i686
 The host system is: Darwin - 19.6.0 - x86_64
 Determining if the C compiler works passed with the following output:
-Change Dir: /Users/netcom/Desktop/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/CMakeTmp
+Change Dir: /Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/CMakeTmp
 
-Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_2db0d"
-[1/2] Building C object CMakeFiles/cmTC_2db0d.dir/testCCompiler.c.o
-[2/2] Linking C executable cmTC_2db0d
+Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_fd218"
+[1/2] Building C object CMakeFiles/cmTC_fd218.dir/testCCompiler.c.o
+[2/2] Linking C executable cmTC_fd218
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: /Users/netcom/Desktop/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/CMakeTmp
+Change Dir: /Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/CMakeTmp
 
-Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_d3132"
-[1/2] Building C object CMakeFiles/cmTC_d3132.dir/CMakeCCompilerABI.c.o
-[2/2] Linking C executable cmTC_d3132
+Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_a6c98"
+[1/2] Building C object CMakeFiles/cmTC_a6c98.dir/CMakeCCompilerABI.c.o
+[2/2] Linking C executable cmTC_a6c98
 Android (5900059 based on r365631c) clang version 9.0.8 (https://android.googlesource.com/toolchain/llvm-project 207d7abc1a2abf3ef8d4301736d6a7ebc224a290) (based on LLVM 9.0.8svn)
 Target: i686-none-linux-android22
 Thread model: posix
@@ -23,16 +23,16 @@ Found candidate GCC installation: /Users/netcom/Library/Android/sdk/ndk/21.0.611
 Selected GCC installation: /Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x
 Candidate multilib: .;@m32
 Selected multilib: .;@m32
- "/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld" --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -pie -z noexecstack --warn-shared-textrel -z now -z relro --hash-style=both --enable-new-dtags --eh-frame-hdr -m elf_i386 -dynamic-linker /system/bin/linker -o cmTC_d3132 /Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/22/crtbegin_dynamic.o -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/9.0.8/lib/linux/i386 -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/22 -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib --exclude-libs libgcc_real.a --exclude-libs libatomic.a --build-id --fatal-warnings --no-undefined --gc-sections CMakeFiles/cmTC_d3132.dir/CMakeCCompilerABI.c.o -lgcc -ldl -lc -lgcc -ldl /Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/22/crtend_android.o
+ "/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld" --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -pie -z noexecstack --warn-shared-textrel -z now -z relro --hash-style=both --enable-new-dtags --eh-frame-hdr -m elf_i386 -dynamic-linker /system/bin/linker -o cmTC_a6c98 /Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/22/crtbegin_dynamic.o -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/9.0.8/lib/linux/i386 -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/22 -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib --exclude-libs libgcc_real.a --exclude-libs libatomic.a --build-id --fatal-warnings --no-undefined --gc-sections CMakeFiles/cmTC_a6c98.dir/CMakeCCompilerABI.c.o -lgcc -ldl -lc -lgcc -ldl /Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/22/crtend_android.o
 
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(i686-linux-android-ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /Users/netcom/Desktop/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_d3132"]
-  ignore line: [[1/2] Building C object CMakeFiles/cmTC_d3132.dir/CMakeCCompilerABI.c.o]
-  ignore line: [[2/2] Linking C executable cmTC_d3132]
+  ignore line: [Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_a6c98"]
+  ignore line: [[1/2] Building C object CMakeFiles/cmTC_a6c98.dir/CMakeCCompilerABI.c.o]
+  ignore line: [[2/2] Linking C executable cmTC_a6c98]
   ignore line: [Android (5900059 based on r365631c) clang version 9.0.8 (https://android.googlesource.com/toolchain/llvm-project 207d7abc1a2abf3ef8d4301736d6a7ebc224a290) (based on LLVM 9.0.8svn)]
   ignore line: [Target: i686-none-linux-android22]
   ignore line: [Thread model: posix]
@@ -44,7 +44,7 @@ Parsed C implicit link information from above output:
   ignore line: [@m32]
   ignore line: [Selected multilib: .]
   ignore line: [@m32]
-  link line: [ "/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld" --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -pie -z noexecstack --warn-shared-textrel -z now -z relro --hash-style=both --enable-new-dtags --eh-frame-hdr -m elf_i386 -dynamic-linker /system/bin/linker -o cmTC_d3132 /Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/22/crtbegin_dynamic.o -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/9.0.8/lib/linux/i386 -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/22 -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib --exclude-libs libgcc_real.a --exclude-libs libatomic.a --build-id --fatal-warnings --no-undefined --gc-sections CMakeFiles/cmTC_d3132.dir/CMakeCCompilerABI.c.o -lgcc -ldl -lc -lgcc -ldl /Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/22/crtend_android.o]
+  link line: [ "/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld" --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -pie -z noexecstack --warn-shared-textrel -z now -z relro --hash-style=both --enable-new-dtags --eh-frame-hdr -m elf_i386 -dynamic-linker /system/bin/linker -o cmTC_a6c98 /Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/22/crtbegin_dynamic.o -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/9.0.8/lib/linux/i386 -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/22 -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib --exclude-libs libgcc_real.a --exclude-libs libatomic.a --build-id --fatal-warnings --no-undefined --gc-sections CMakeFiles/cmTC_a6c98.dir/CMakeCCompilerABI.c.o -lgcc -ldl -lc -lgcc -ldl /Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/22/crtend_android.o]
     arg [/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld] ==> ignore
     arg [--sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot] ==> ignore
     arg [-pie] ==> ignore
@@ -60,7 +60,7 @@ Parsed C implicit link information from above output:
     arg [-dynamic-linker] ==> ignore
     arg [/system/bin/linker] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_d3132] ==> ignore
+    arg [cmTC_a6c98] ==> ignore
     arg [/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/22/crtbegin_dynamic.o] ==> ignore
     arg [-L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/9.0.8/lib/linux/i386] ==> dir [/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/9.0.8/lib/linux/i386]
     arg [-L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x] ==> dir [/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x]
@@ -76,7 +76,7 @@ Parsed C implicit link information from above output:
     arg [--fatal-warnings] ==> ignore
     arg [--no-undefined] ==> ignore
     arg [--gc-sections] ==> ignore
-    arg [CMakeFiles/cmTC_d3132.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTC_a6c98.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [-ldl] ==> lib [dl]
     arg [-lc] ==> lib [c]
@@ -99,11 +99,11 @@ Parsed C implicit link information from above output:
 
 
 Detecting C [-std=c11] compiler features compiled with the following output:
-Change Dir: /Users/netcom/Desktop/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/CMakeTmp
+Change Dir: /Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/CMakeTmp
 
-Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_84bf2"
-[1/2] Building C object CMakeFiles/cmTC_84bf2.dir/feature_tests.c.o
-[2/2] Linking C executable cmTC_84bf2
+Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_4c996"
+[1/2] Building C object CMakeFiles/cmTC_4c996.dir/feature_tests.c.o
+[2/2] Linking C executable cmTC_4c996
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -113,11 +113,11 @@ Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja
 
 
 Detecting C [-std=c99] compiler features compiled with the following output:
-Change Dir: /Users/netcom/Desktop/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/CMakeTmp
+Change Dir: /Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/CMakeTmp
 
-Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_6570f"
-[1/2] Building C object CMakeFiles/cmTC_6570f.dir/feature_tests.c.o
-[2/2] Linking C executable cmTC_6570f
+Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_cddf3"
+[1/2] Building C object CMakeFiles/cmTC_cddf3.dir/feature_tests.c.o
+[2/2] Linking C executable cmTC_cddf3
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -127,11 +127,11 @@ Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja
 
 
 Detecting C [-std=c90] compiler features compiled with the following output:
-Change Dir: /Users/netcom/Desktop/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/CMakeTmp
+Change Dir: /Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/CMakeTmp
 
-Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_85049"
-[1/2] Building C object CMakeFiles/cmTC_85049.dir/feature_tests.c.o
-[2/2] Linking C executable cmTC_85049
+Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_16ad7"
+[1/2] Building C object CMakeFiles/cmTC_16ad7.dir/feature_tests.c.o
+[2/2] Linking C executable cmTC_16ad7
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -139,19 +139,19 @@ Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja
     Feature record: C_FEATURE:0c_static_assert
     Feature record: C_FEATURE:0c_variadic_macros
 Determining if the CXX compiler works passed with the following output:
-Change Dir: /Users/netcom/Desktop/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/CMakeTmp
+Change Dir: /Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/CMakeTmp
 
-Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_72bfe"
-[1/2] Building CXX object CMakeFiles/cmTC_72bfe.dir/testCXXCompiler.cxx.o
-[2/2] Linking CXX executable cmTC_72bfe
+Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_9e09f"
+[1/2] Building CXX object CMakeFiles/cmTC_9e09f.dir/testCXXCompiler.cxx.o
+[2/2] Linking CXX executable cmTC_9e09f
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: /Users/netcom/Desktop/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/CMakeTmp
+Change Dir: /Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/CMakeTmp
 
-Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_1ede8"
-[1/2] Building CXX object CMakeFiles/cmTC_1ede8.dir/CMakeCXXCompilerABI.cpp.o
-[2/2] Linking CXX executable cmTC_1ede8
+Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_e94e9"
+[1/2] Building CXX object CMakeFiles/cmTC_e94e9.dir/CMakeCXXCompilerABI.cpp.o
+[2/2] Linking CXX executable cmTC_e94e9
 Android (5900059 based on r365631c) clang version 9.0.8 (https://android.googlesource.com/toolchain/llvm-project 207d7abc1a2abf3ef8d4301736d6a7ebc224a290) (based on LLVM 9.0.8svn)
 Target: i686-none-linux-android22
 Thread model: posix
@@ -161,16 +161,16 @@ Found candidate GCC installation: /Users/netcom/Library/Android/sdk/ndk/21.0.611
 Selected GCC installation: /Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x
 Candidate multilib: .;@m32
 Selected multilib: .;@m32
- "/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld" --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -pie -z noexecstack --warn-shared-textrel -z now -z relro --hash-style=both --enable-new-dtags --eh-frame-hdr -m elf_i386 -dynamic-linker /system/bin/linker -o cmTC_1ede8 /Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/22/crtbegin_dynamic.o -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/9.0.8/lib/linux/i386 -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/22 -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib --exclude-libs libgcc_real.a --exclude-libs libatomic.a --build-id --fatal-warnings --no-undefined --gc-sections CMakeFiles/cmTC_1ede8.dir/CMakeCXXCompilerABI.cpp.o -Bstatic -lc++ -Bdynamic -lm -lgcc -ldl -lc -lgcc -ldl /Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/22/crtend_android.o
+ "/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld" --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -pie -z noexecstack --warn-shared-textrel -z now -z relro --hash-style=both --enable-new-dtags --eh-frame-hdr -m elf_i386 -dynamic-linker /system/bin/linker -o cmTC_e94e9 /Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/22/crtbegin_dynamic.o -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/9.0.8/lib/linux/i386 -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/22 -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib --exclude-libs libgcc_real.a --exclude-libs libatomic.a --build-id --fatal-warnings --no-undefined --gc-sections CMakeFiles/cmTC_e94e9.dir/CMakeCXXCompilerABI.cpp.o -Bstatic -lc++ -Bdynamic -lm -lgcc -ldl -lc -lgcc -ldl /Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/22/crtend_android.o
 
 
 Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(i686-linux-android-ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /Users/netcom/Desktop/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_1ede8"]
-  ignore line: [[1/2] Building CXX object CMakeFiles/cmTC_1ede8.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [[2/2] Linking CXX executable cmTC_1ede8]
+  ignore line: [Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_e94e9"]
+  ignore line: [[1/2] Building CXX object CMakeFiles/cmTC_e94e9.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [[2/2] Linking CXX executable cmTC_e94e9]
   ignore line: [Android (5900059 based on r365631c) clang version 9.0.8 (https://android.googlesource.com/toolchain/llvm-project 207d7abc1a2abf3ef8d4301736d6a7ebc224a290) (based on LLVM 9.0.8svn)]
   ignore line: [Target: i686-none-linux-android22]
   ignore line: [Thread model: posix]
@@ -182,7 +182,7 @@ Parsed CXX implicit link information from above output:
   ignore line: [@m32]
   ignore line: [Selected multilib: .]
   ignore line: [@m32]
-  link line: [ "/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld" --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -pie -z noexecstack --warn-shared-textrel -z now -z relro --hash-style=both --enable-new-dtags --eh-frame-hdr -m elf_i386 -dynamic-linker /system/bin/linker -o cmTC_1ede8 /Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/22/crtbegin_dynamic.o -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/9.0.8/lib/linux/i386 -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/22 -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib --exclude-libs libgcc_real.a --exclude-libs libatomic.a --build-id --fatal-warnings --no-undefined --gc-sections CMakeFiles/cmTC_1ede8.dir/CMakeCXXCompilerABI.cpp.o -Bstatic -lc++ -Bdynamic -lm -lgcc -ldl -lc -lgcc -ldl /Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/22/crtend_android.o]
+  link line: [ "/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld" --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -pie -z noexecstack --warn-shared-textrel -z now -z relro --hash-style=both --enable-new-dtags --eh-frame-hdr -m elf_i386 -dynamic-linker /system/bin/linker -o cmTC_e94e9 /Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/22/crtbegin_dynamic.o -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/9.0.8/lib/linux/i386 -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/22 -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib -L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib --exclude-libs libgcc_real.a --exclude-libs libatomic.a --build-id --fatal-warnings --no-undefined --gc-sections CMakeFiles/cmTC_e94e9.dir/CMakeCXXCompilerABI.cpp.o -Bstatic -lc++ -Bdynamic -lm -lgcc -ldl -lc -lgcc -ldl /Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/22/crtend_android.o]
     arg [/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld] ==> ignore
     arg [--sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot] ==> ignore
     arg [-pie] ==> ignore
@@ -198,7 +198,7 @@ Parsed CXX implicit link information from above output:
     arg [-dynamic-linker] ==> ignore
     arg [/system/bin/linker] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_1ede8] ==> ignore
+    arg [cmTC_e94e9] ==> ignore
     arg [/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/22/crtbegin_dynamic.o] ==> ignore
     arg [-L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/9.0.8/lib/linux/i386] ==> dir [/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/9.0.8/lib/linux/i386]
     arg [-L/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x] ==> dir [/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x]
@@ -214,7 +214,7 @@ Parsed CXX implicit link information from above output:
     arg [--fatal-warnings] ==> ignore
     arg [--no-undefined] ==> ignore
     arg [--gc-sections] ==> ignore
-    arg [CMakeFiles/cmTC_1ede8.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTC_e94e9.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-Bstatic] ==> ignore
     arg [-lc++] ==> lib [c++]
     arg [-Bdynamic] ==> ignore
@@ -241,11 +241,11 @@ Parsed CXX implicit link information from above output:
 
 
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
-Change Dir: /Users/netcom/Desktop/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/CMakeTmp
+Change Dir: /Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/CMakeTmp
 
-Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_8be11"
-[1/2] Building CXX object CMakeFiles/cmTC_8be11.dir/feature_tests.cxx.o
-[2/2] Linking CXX executable cmTC_8be11
+Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_f812e"
+[1/2] Building CXX object CMakeFiles/cmTC_f812e.dir/feature_tests.cxx.o
+[2/2] Linking CXX executable cmTC_f812e
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -308,11 +308,11 @@ Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja
 
 
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
-Change Dir: /Users/netcom/Desktop/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/CMakeTmp
+Change Dir: /Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/CMakeTmp
 
-Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_99ec1"
-[1/2] Building CXX object CMakeFiles/cmTC_99ec1.dir/feature_tests.cxx.o
-[2/2] Linking CXX executable cmTC_99ec1
+Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_befa9"
+[1/2] Building CXX object CMakeFiles/cmTC_befa9.dir/feature_tests.cxx.o
+[2/2] Linking CXX executable cmTC_befa9
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -375,11 +375,11 @@ Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja
 
 
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
-Change Dir: /Users/netcom/Desktop/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/CMakeTmp
+Change Dir: /Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/CMakeTmp
 
-Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_c97b1"
-[1/2] Building CXX object CMakeFiles/cmTC_c97b1.dir/feature_tests.cxx.o
-[2/2] Linking CXX executable cmTC_c97b1
+Run Build Command:"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_18c22"
+[1/2] Building CXX object CMakeFiles/cmTC_18c22.dir/feature_tests.cxx.o
+[2/2] Linking CXX executable cmTC_18c22
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers

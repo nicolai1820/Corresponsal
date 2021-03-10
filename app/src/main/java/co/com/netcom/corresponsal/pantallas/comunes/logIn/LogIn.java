@@ -135,7 +135,7 @@ public class LogIn extends AppCompatActivity {
     public void inicioSesion(View v){
 
         //Se capturan los datos ingresados por el usuario
-        String user = editText_User.getText().toString();
+      /*  String user = editText_User.getText().toString();
         String password = editText_Password.getText().toString();
 
         //Se verifica que los campos no esten vacios
@@ -201,13 +201,13 @@ public class LogIn extends AppCompatActivity {
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }else{
                 popUp.crearPopUpLoginFallido(base64.decodificarBase64(servicioLogin.getRespuestaServidor()));
-            }
+            }*/
 
-            /*Intent i = new Intent(this, pantallaInicialUsuarioComun.class);
+            Intent i = new Intent(this, pantallaInicialUsuarioComun.class);
             startActivity(i);
-            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);*/
+            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 
-        }
+       // }
     }
 
 

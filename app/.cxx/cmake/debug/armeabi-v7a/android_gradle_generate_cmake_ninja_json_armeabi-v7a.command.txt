@@ -1,10 +1,10 @@
 Executable : /Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/cmake
 arguments : 
--H/Users/netcom/Desktop/CorresponsalApp/app
--B/Users/netcom/Desktop/CorresponsalApp/app/.cxx/cmake/debug/armeabi-v7a
+-H/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app
+-B/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/debug/armeabi-v7a
 -DANDROID_ABI=armeabi-v7a
 -DANDROID_PLATFORM=android-22
--DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/Users/netcom/Desktop/CorresponsalApp/app/build/intermediates/cmake/debug/obj/armeabi-v7a
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/build/intermediates/cmake/debug/obj/armeabi-v7a
 -DCMAKE_BUILD_TYPE=Debug
 -DANDROID_NDK=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669
 -DCMAKE_CXX_FLAGS=

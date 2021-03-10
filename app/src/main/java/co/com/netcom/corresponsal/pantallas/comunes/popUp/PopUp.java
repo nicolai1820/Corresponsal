@@ -88,7 +88,7 @@ public class PopUp extends AppCompatActivity {
 
         //Se muestra el Dialogo al usuario con su correspondiente ubicacion en la pantalla
         alertDialogDesconexion.show();
-        alertDialogDesconexion.getWindow().setLayout(500, LinearLayout.LayoutParams.WRAP_CONTENT);//
+        alertDialogDesconexion.getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);//
 
     }
 
@@ -254,7 +254,7 @@ public class PopUp extends AppCompatActivity {
 
         //Se muestra el Dialogo al usuario con su correspondiente ubicacion en la pantalla
         alertDialogUsuarioCancela.show();
-        alertDialogUsuarioCancela.getWindow().setLayout(500, LinearLayout.LayoutParams.WRAP_CONTENT);//
+        alertDialogUsuarioCancela.getWindow().setLayout(800, LinearLayout.LayoutParams.WRAP_CONTENT);//
 
     }
 
@@ -372,8 +372,48 @@ public class PopUp extends AppCompatActivity {
 
         //Se muestra el Dialogo al usuario con su correspondiente ubicacion en la pantalla
         alertDialogRecuperarContrasena.show();
-        alertDialogRecuperarContrasena.getWindow().setLayout(600,LinearLayout.LayoutParams.WRAP_CONTENT);
+        alertDialogRecuperarContrasena.getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
 
+
+    }
+
+    /**Metodo de tipo void, el cual se encarga de crear un pop up para informar que el login fallo */
+    public void crearPopUpContactless(String mensaje){
+
+        //Se hace la respectiva conexión con el frontEnd del pop up
+        LayoutInflater li = LayoutInflater.from(context);
+        View view = li.inflate(R.layout.activity_pop_up_error, null);
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        alertDialogBuilder.setView(view);
+        alertDialogBuilder.setCancelable(false);
+
+        //Se genera la conexión con el boton del pop up
+        TextView textViewErrorServidor = view.findViewById(R.id.textView_PopUp);
+        Button btnAceptar= view.findViewById(R.id.button_PopUpSalir);
+        btnAceptar.setText("Aceptar");
+        textViewErrorServidor.setText(mensaje);
+
+
+
+        //Se crea el evento click para el boton del pop up, el cual redirige al inicio de la aplicacion
+        btnAceptar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(context, pantallaInicialUsuarioComun.class);
+                context.startActivity(i);
+                activity.overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+            }
+        });
+
+        //Se crea el correspondiente Dialog que se mostrara al usuario
+        alertDialogLoginFallido = alertDialogBuilder.create();
+        //Se agrega esta linea para que no tenga fondo por defecto el dialog
+        alertDialogLoginFallido.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        //Se muestra el Dialogo al usuario con su correspondiente ubicacion en la pantalla
+        alertDialogLoginFallido.show();
+        alertDialogLoginFallido.getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);//
 
     }
 }

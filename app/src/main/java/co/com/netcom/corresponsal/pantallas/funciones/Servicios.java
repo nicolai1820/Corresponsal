@@ -16,6 +16,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
+import java.util.prefs.Preferences;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
@@ -34,6 +35,10 @@ public class Servicios {
 
     private static String urlToken = "https://192.168.215.12:9544/oauth2/token";
     private static String urlLogin = "https://192.168.215.12:8520/netcom/merchant/api/users/sessions";
+
+    private static String urlBaseServicios ="https://192.168.215.12:8520/";
+    private static String apiLogin ="netcom/merchant/api/users/sessions";
+    private static String apiParametricas ="netcom/merchant/api/parametrics/new";
 
     private Context context;
     private String token;
@@ -83,7 +88,8 @@ public class Servicios {
             token = Jobject.getString("access_token");
             tokenRefresh = Jobject.getString("refresh_token");
             if (!token.isEmpty()){
-                setToken(token);
+                PreferencesUsuario preferences = new PreferencesUsuario("Token",context);
+                preferences.setToken(token);
                 setTokenRefresh(tokenRefresh);
             }
 
@@ -121,7 +127,7 @@ public class Servicios {
 
             Request request = new Request.Builder()
 
-                .url(urlLogin)
+                .url(urlBaseServicios+urlLogin)
                 .method("POST", body)
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Accept", "text/*;q=0.3, text/html;q=0.7, text/html;level=1,text/html;level=2;q=0.4, */*;q=0.5")
@@ -265,7 +271,8 @@ public class Servicios {
             token = Jobject.getString("access_token");
             tokenRefresh = Jobject.getString("refresh_token");
             if (!token.isEmpty()){
-                setToken(token);
+                PreferencesUsuario preferences = new PreferencesUsuario("Token",context);
+                preferences.setToken(token);
                 setTokenRefresh(tokenRefresh);
             }
 
@@ -273,6 +280,52 @@ public class Servicios {
             throw new RuntimeException(e);        }
     }
 
+    /**Metodo obtenerParametricas, se encarga de solicitar las parametricas del comercio, luego de que se inicio sesión*/
+
+    public void obtenerParametricas(String usuario,Context context){
+        //Se debe sobreescribir este metodo para que acepte cualquier certificado seguro.
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.hostnameVerifier(new HostnameVerifier() {
+            @Override
+            public boolean verify(String hostname, SSLSession session) {
+                return true;
+            }
+        });
+
+        //Objeto SharedPreferences
+        PreferencesUsuario prefs = new PreferencesUsuario("Token",context);
+
+        OkHttpClient client = builder.sslSocketFactory(getSLLContext().getSocketFactory()).build();
+
+        MediaType mediaType = MediaType.parse("application/json");
+        RequestBody body = RequestBody.create(mediaType, "{\n\t\"userId\": \""+usuario+"\",\n\t\"configAppVersion\": \"MA\",\n\t\"taxsVersion\": \"MA\",\n\t\"prefixesVersion\": \"MA\",\n\t\"binPrivadoVersion\": \"MA\",\n\t\"authorizersVersion\": \"MA\",\n\t\"pspInfoVersion\": \"MA\",\n\t\"rechargeInfoVersion\": \"MA\",\n\t\"configureMposVersion\": \"MA\",\n\t\"genericDataVersion\": \"MA\"\n}");
+        Request request = new Request.Builder()
+                .url(urlBaseServicios+apiParametricas)
+                .method("POST", body)
+                .addHeader("Content-Type", "application/json")
+                .addHeader("Accept", "text/*;q=0.3, text/html;q=0.7, text/html;level=1,text/html;level=2;q=0.4, */*;q=0.5")
+                .addHeader("Authorization", prefs.getToken())
+                .build();
+        try {
+            Response response = client.newCall(request).execute();
+
+            String jsonData = response.body().string();
+            JSONObject Jobject = new JSONObject(jsonData);
+            Log.d("RESPUESTA",Jobject.toString());
+
+            try{
+                PreferencesUsuario prefs_parametricas = new PreferencesUsuario("Parametricas",context);
+                prefs_parametricas.setParametricas(Jobject);
+            }catch(Exception e){
+                Log.d("ERROR","Hubo un error en las parametricas");
+            }
+
+
+
+        } catch (IOException | JSONException e) {
+            throw new RuntimeException(e);        }
+
+    }
 
     /**Metodo getRespuestaServidor que retorna un String, se encarga de retornar la variable que captura la descripción del proceso del servicio
      * de login.*/
@@ -280,18 +333,13 @@ public class Servicios {
         return this.respuestaServidor;
     }
 
-    /**Metodo getToken que retorna un String, se encarga de retornar el token para poder realizar transacciones*/
-    public String getToken(){ return this.token =sharedPreferences.getString("Token",null);}
+
 
     /**Metodo getToken que retorna un String, se encarga de retornar el token para refrescar el token*/
-    public String getTokenRefresh(){return this.token =sharedPreferences.getString("TokenRefresh",null);}
+    public String getTokenRefresh(){
+        return this.token =sharedPreferences.getString("TokenRefresh",null);}
 
-    /**Metodo para setear el token en el sharedpreferences*/
-    public void setToken(String token) {
-        this.token = token;
-        sharedPreferencesEditor.putString("Token",token);
-        sharedPreferencesEditor.commit();
-    }
+
 
     /**Metodo para setear el token en el sharedpreferences*/
     public void setTokenRefresh(String tokenRefresh) {
@@ -304,5 +352,6 @@ public class Servicios {
     public String getUserId(){
         return this.UserId;
     }
+
 
 }
