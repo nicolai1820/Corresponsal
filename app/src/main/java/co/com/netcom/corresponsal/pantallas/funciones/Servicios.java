@@ -36,10 +36,11 @@ public class Servicios {
     private static String urlToken = "https://192.168.215.12:9544/oauth2/token";
     private static String urlLogin = "https://192.168.215.12:8520/netcom/merchant/api/users/sessions";
 
+    private static String urlBaseToken = "https://192.168.215.12:9544/";
     private static String urlBaseServicios ="https://192.168.215.12:8520/";
     private static String apiLogin ="netcom/merchant/api/users/sessions";
     private static String apiParametricas ="netcom/merchant/api/parametrics/new";
-    private static String apiRefreshToken ="/netcom/merchant/api/users/MTY3OTk/sessions";
+    private static String apiRefreshToken ="netcom/merchant/api/users/userID/sessions";
 
 
 
@@ -130,7 +131,7 @@ public class Servicios {
 
             Request request = new Request.Builder()
 
-                .url(urlBaseServicios+urlLogin)
+                .url(urlBaseServicios+apiLogin)
                 .method("POST", body)
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Accept", "text/*;q=0.3, text/html;q=0.7, text/html;level=1,text/html;level=2;q=0.4, */*;q=0.5")
@@ -140,6 +141,7 @@ public class Servicios {
             Response response = client2.newCall(request).execute();
 
             String jsonData = response.body().string();
+            Log.d("RESP",jsonData);
             JSONObject Jobject = new JSONObject(jsonData);
             Log.d("RESPUESTA",Jobject.toString());
             //String estado = Jobject.getString("responseCode");
@@ -153,6 +155,7 @@ public class Servicios {
             respuestaServidor = Jobject.getString("descriptionState");
             try {
                 UserId = Jobject.getString("userId");
+                sharedPreferencesEditor.putString("userId",UserId);
             }catch (Exception e){ }
 
             return Jobject.getString("loginState");
@@ -194,7 +197,7 @@ public class Servicios {
      * el cual es el token que requieren todos los servicios. Este metodo se encarga de consumir el servicio rest de cerrarSesion*/
 
     public String cerrarSesion(Context context, String token){
-
+        Log.d("token",token);
         //Se debe sobreescribir este metodo para que acepte cualquier certificado seguro.
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.hostnameVerifier(new HostnameVerifier() {
@@ -237,7 +240,7 @@ public class Servicios {
 
            return Jobject.getString("responseCode");
 
-       }catch (IOException | JSONException e) { throw new RuntimeException(e);}
+       }catch (IOException | JSONException e) { return "";}
     }
 
 
@@ -283,7 +286,7 @@ public class Servicios {
             throw new RuntimeException(e);        }
     }*/
 
-    public void refrescarToken(String token){
+    public void refrescarToken(String userId){
         //Se debe sobreescribir este metodo para que acepte cualquier certificado seguro.
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.hostnameVerifier(new HostnameVerifier() {
@@ -292,19 +295,20 @@ public class Servicios {
                 return true;
             }
         });
-
+        PreferencesUsuario prefs = new PreferencesUsuario("Token",context);
+        Log.d("Token Antiguo",prefs.getToken());
 
         OkHttpClient client = builder.sslSocketFactory(getSLLContext().getSocketFactory()).build();
 
         MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
         RequestBody body = RequestBody.create(mediaType, "");
         Request request = new Request.Builder()
-                .url(urlBaseServicios+apiRefreshToken)
+                .url(urlBaseToken+apiRefreshToken.replaceFirst("userID",userId))
                 .method("PUT", body)
                 .addHeader("Access-Control-Allow-Origin", "*")
                 .addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT")
                 .addHeader("Content-Type", "application/x-www-form-urlencoded")
-                .addHeader("Authorization", token)
+                .addHeader("Authorization", prefs.getToken())
                 .build();
 
         try {
@@ -313,16 +317,16 @@ public class Servicios {
             String jsonData = response.body().string();
             JSONObject Jobject = new JSONObject(jsonData);
             Log.d("RESPUESTA",Jobject.toString());
-            token = Jobject.getString("access_token");
-            tokenRefresh = Jobject.getString("refresh_token");
-            if (!token.isEmpty()){
-                PreferencesUsuario preferences = new PreferencesUsuario("Token",context);
-                preferences.setToken(token);
-                //setTokenRefresh(tokenRefresh);
+            CodificarBase64 base64 = new CodificarBase64();
+            if (base64.decodificarBase64(Jobject.getString("responseCode"))=="MQ=="){
+                Log.d("Refresh token","exitoso");
+            }else{
+                Log.d("Error","error");
+
             }
 
         }catch (IOException | JSONException e) {
-            throw new RuntimeException(e);        }
+                   }
     }
 
     /**Metodo obtenerParametricas, se encarga de solicitar las parametricas del comercio, luego de que se inicio sesión*/
@@ -340,6 +344,8 @@ public class Servicios {
         //Objeto SharedPreferences
         PreferencesUsuario prefs = new PreferencesUsuario("Token",context);
 
+        Log.d("UserId",usuario);
+        Log.d("Token",prefs.getToken());
         OkHttpClient client = builder.sslSocketFactory(getSLLContext().getSocketFactory()).build();
 
         MediaType mediaType = MediaType.parse("application/json");
@@ -353,6 +359,7 @@ public class Servicios {
                 .build();
         try {
             Response response = client.newCall(request).execute();
+            Log.d("RESPONSE",response.toString());
 
             String jsonData = response.body().string();
             JSONObject Jobject = new JSONObject(jsonData);
@@ -368,7 +375,7 @@ public class Servicios {
 
 
         } catch (IOException | JSONException e) {
-            throw new RuntimeException(e);        }
+                  }
 
     }
 

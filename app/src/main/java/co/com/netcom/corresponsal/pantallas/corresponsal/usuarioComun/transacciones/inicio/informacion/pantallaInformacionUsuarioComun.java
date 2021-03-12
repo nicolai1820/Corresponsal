@@ -19,6 +19,7 @@ import co.com.netcom.corresponsal.pantallas.comunes.logIn.LogIn;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.duplicado.pantallaInicialDuplicado;
 import co.com.netcom.corresponsal.pantallas.funciones.PreferencesUsuario;
 import co.com.netcom.corresponsal.pantallas.funciones.Servicios;
+import co.com.netcom.corresponsal.pantallas.funciones.TimeOutSesion;
 
 public class pantallaInformacionUsuarioComun extends Fragment {
 
@@ -93,6 +94,8 @@ public class pantallaInformacionUsuarioComun extends Fragment {
                 }
 
                 if (respuesta.equals("MQ==")){
+                    TimeOutSesion timeOutSesion = new TimeOutSesion();
+                    timeOutSesion.stopLogoutTimer();
                     Intent i = new Intent(getActivity(), LogIn.class);
                     startActivity(i);
                     getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);

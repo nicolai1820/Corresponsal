@@ -15,7 +15,9 @@ import java.util.concurrent.ExecutionException;
 public class TimeOutSesion extends Activity {
 
     public interface TimeOutSesionListener {
+
         void doLogout();
+
     }
 
     static long hora1, minutos1, segundos1, horainicial, hora2, minutos2, segundos2, segundahora, diferencia;
@@ -65,7 +67,7 @@ public class TimeOutSesion extends Activity {
                         public void run() {
                             PreferencesUsuario prefs = new PreferencesUsuario("Token",context);
 
-                            servicios.refrescarToken(prefs.getToken());
+                            servicios.refrescarToken(prefs.getUserID());
                         }
                     }).start();
                     /*Token t  = new Token(context);
@@ -91,6 +93,7 @@ public class TimeOutSesion extends Activity {
                         boolean foreGround = new ForegroundCheckTask().execute(context).get();
 
                         if (foreGround) {
+                            stopLogoutTimer();
                             logOutListener.doLogout();
                         }
 

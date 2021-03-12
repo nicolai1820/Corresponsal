@@ -30,6 +30,11 @@ public class PreferencesUsuario {
         return sharedPreferences.getString("Token",null);
     }
 
+    /**Metodo getToken que retorna un String, se encarga de retornar el token para poder realizar transacciones*/
+    public String getUserID(){
+        return sharedPreferences.getString("userId",null);
+    }
+
     /**Metodo setParametricas, el cual se encarga de guardar las parametricas dentro del shared preferences.*/
 
     public void setParametricas(JSONObject jsonObject) throws JSONException {
@@ -43,6 +48,7 @@ public class PreferencesUsuario {
         sharedPreferencesEditor.putString("rechargeInfo",jsonObject.getJSONObject("rechargeInfo").toString());
         sharedPreferencesEditor.putString("versions",jsonObject.getJSONObject("versions").toString());
         sharedPreferencesEditor.putString("appVersions",jsonObject.getJSONObject("appVersions").toString());
+        sharedPreferencesEditor.commit();
 
     }
 
