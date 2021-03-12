@@ -12,7 +12,7 @@ public class PreferencesUsuario {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor sharedPreferencesEditor;
 
-    PreferencesUsuario(String ruta,Context context){
+    public PreferencesUsuario(String ruta,Context context){
         this.ruta = ruta;
         sharedPreferences = context.getSharedPreferences(ruta,context.MODE_PRIVATE);
         sharedPreferencesEditor = sharedPreferences.edit();

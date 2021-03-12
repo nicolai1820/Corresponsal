@@ -17,6 +17,7 @@ import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.comunes.logIn.LogIn;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.duplicado.pantallaInicialDuplicado;
+import co.com.netcom.corresponsal.pantallas.funciones.PreferencesUsuario;
 import co.com.netcom.corresponsal.pantallas.funciones.Servicios;
 
 public class pantallaInformacionUsuarioComun extends Fragment {
@@ -79,7 +80,8 @@ public class pantallaInformacionUsuarioComun extends Fragment {
               hilo=  new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        respuesta = servicio.cerrarSesion(getActivity(),servicio.getToken());
+                        PreferencesUsuario pref = new PreferencesUsuario("Token",getContext());
+                        respuesta = servicio.cerrarSesion(getActivity(),pref.getToken());
                     }
                 });
 

@@ -113,7 +113,9 @@ public class pantallaInicialUsuarioComun extends BaseActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences("dispositivos", Context.MODE_PRIVATE);
         direcciónAutoconexion = sharedPreferences.getString("DireccionUltimaConexion",null);
-
+        try{
+            Log.d("AUTO",direcciónAutoconexion);
+        }catch(Exception e){}
         if (direcciónAutoconexion!=null && !metodosSDKNewland.isConnected()){
             new Thread(new Runnable() {
                 @Override

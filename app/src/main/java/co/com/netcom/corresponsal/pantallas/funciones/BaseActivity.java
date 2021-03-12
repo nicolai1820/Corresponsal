@@ -13,14 +13,14 @@ public class BaseActivity extends AppCompatActivity implements TimeOutSesion.Tim
     @Override
     protected void onStart() {
         super.onStart();
-        TimeOutSesion.startLogoutTimer(this, this);
+        //TimeOutSesion.startLogoutTimer(this, this);
         Log.e("TAG", "OnStart () &&& Starting timer");
     }
 
     @Override
     public void onUserInteraction() {
         super.onUserInteraction();
-        TimeOutSesion.startLogoutTimer(this, this);
+        //TimeOutSesion.startLogoutTimer(this, this);
         Log.e("TAG", "User interacting with screen");
     }
 

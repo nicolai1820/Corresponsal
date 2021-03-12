@@ -63,7 +63,9 @@ public class TimeOutSesion extends Activity {
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
-                            servicios.refrescarToken(servicios.getTokenRefresh());
+                            PreferencesUsuario prefs = new PreferencesUsuario("Token",context);
+
+                            servicios.refrescarToken(prefs.getToken());
                         }
                     }).start();
                     /*Token t  = new Token(context);

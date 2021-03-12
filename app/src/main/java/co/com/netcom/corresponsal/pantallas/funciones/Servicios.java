@@ -39,6 +39,9 @@ public class Servicios {
     private static String urlBaseServicios ="https://192.168.215.12:8520/";
     private static String apiLogin ="netcom/merchant/api/users/sessions";
     private static String apiParametricas ="netcom/merchant/api/parametrics/new";
+    private static String apiRefreshToken ="/netcom/merchant/api/users/MTY3OTk/sessions";
+
+
 
     private Context context;
     private String token;
@@ -90,7 +93,7 @@ public class Servicios {
             if (!token.isEmpty()){
                 PreferencesUsuario preferences = new PreferencesUsuario("Token",context);
                 preferences.setToken(token);
-                setTokenRefresh(tokenRefresh);
+                //setTokenRefresh(tokenRefresh);
             }
 
             return Jobject.getString("access_token");
@@ -239,7 +242,7 @@ public class Servicios {
 
 
     /**Metodo refrescarToken, se encarga de refrescar el token, para que la sesión no expire*/
-    public void refrescarToken(String to){
+/*    public void refrescarToken(String to){
 
 
         //Se debe sobreescribir este metodo para que acepte cualquier certificado seguro.
@@ -273,7 +276,49 @@ public class Servicios {
             if (!token.isEmpty()){
                 PreferencesUsuario preferences = new PreferencesUsuario("Token",context);
                 preferences.setToken(token);
-                setTokenRefresh(tokenRefresh);
+                //setTokenRefresh(tokenRefresh);
+            }
+
+        }catch (IOException | JSONException e) {
+            throw new RuntimeException(e);        }
+    }*/
+
+    public void refrescarToken(String token){
+        //Se debe sobreescribir este metodo para que acepte cualquier certificado seguro.
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.hostnameVerifier(new HostnameVerifier() {
+            @Override
+            public boolean verify(String hostname, SSLSession session) {
+                return true;
+            }
+        });
+
+
+        OkHttpClient client = builder.sslSocketFactory(getSLLContext().getSocketFactory()).build();
+
+        MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
+        RequestBody body = RequestBody.create(mediaType, "");
+        Request request = new Request.Builder()
+                .url(urlBaseServicios+apiRefreshToken)
+                .method("PUT", body)
+                .addHeader("Access-Control-Allow-Origin", "*")
+                .addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT")
+                .addHeader("Content-Type", "application/x-www-form-urlencoded")
+                .addHeader("Authorization", token)
+                .build();
+
+        try {
+            Response response = client.newCall(request).execute();
+
+            String jsonData = response.body().string();
+            JSONObject Jobject = new JSONObject(jsonData);
+            Log.d("RESPUESTA",Jobject.toString());
+            token = Jobject.getString("access_token");
+            tokenRefresh = Jobject.getString("refresh_token");
+            if (!token.isEmpty()){
+                PreferencesUsuario preferences = new PreferencesUsuario("Token",context);
+                preferences.setToken(token);
+                //setTokenRefresh(tokenRefresh);
             }
 
         }catch (IOException | JSONException e) {
@@ -334,19 +379,18 @@ public class Servicios {
     }
 
 
-
-    /**Metodo getToken que retorna un String, se encarga de retornar el token para refrescar el token*/
+    /**Metodo getToken que retorna un String, se encarga de retornar el token para refrescar el token*//*
     public String getTokenRefresh(){
         return this.token =sharedPreferences.getString("TokenRefresh",null);}
 
-
-
+   */
     /**Metodo para setear el token en el sharedpreferences*/
+    /*
     public void setTokenRefresh(String tokenRefresh) {
         this.tokenRefresh = tokenRefresh;
         sharedPreferencesEditor.putString("TokenRefresh",tokenRefresh);
         sharedPreferencesEditor.commit();
-    }
+    }*/
 
     /**Metodo para obtener el userId*/
     public String getUserId(){
