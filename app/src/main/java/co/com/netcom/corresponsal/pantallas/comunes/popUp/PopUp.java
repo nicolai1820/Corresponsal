@@ -37,22 +37,19 @@ public class PopUp extends AppCompatActivity {
     public final static int TRANSFERENCIA_LEER_TARJETA=4;
     public final static int PAGO_FACTURA_EMPRESARIAL=5;
 
-
-
-
-
     private Context context;
     private Activity activity;
     private AlertDialog alertDialog;
     private AlertDialog alertDialogLoginFallido;
     private AlertDialog alertDialogRecuperarContrasena;
+    private AlertDialog alertDialogGeneral;
+    private AlertDialog alertDialogErrorServidor;
 
     /**Constructor de la clase PopUpDesconexion, recibo como parametro el contexto de la actividad donde se inicializa*/
     public PopUp(Context contexto){
         this.context = contexto;
         this.activity = (Activity) contexto;
     }
-
 
     /**Metodo de tipo void, el cual se encarga de crear un pop up para informar que el dispositivo MPOS se encuentra desconectado. */
     public void crearPopUp(){
@@ -92,9 +89,7 @@ public class PopUp extends AppCompatActivity {
 
     }
 
-
     /**Metodo de tipo void que se encarga de crear un pop up con el correspondiente mensaje de error y permite intentar nuevamente la operación */
-
     public void crearPopUpError(String Error, int codigo){
 
         //Se hace la respectiva conexión con el frontEnd del pop up
@@ -217,6 +212,73 @@ public class PopUp extends AppCompatActivity {
 
     }
 
+    /**Metodo de tipo void que se encarga de crear un pop up para notificar que no hay internet*/
+    public void crearPopUpErrorInternet(){
+        //Se hace la respectiva conexión con el frontEnd del pop up
+        LayoutInflater li = LayoutInflater.from(context);
+        View view = li.inflate(R.layout.activity_pop_up_error, null);
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        alertDialogBuilder.setView(view);
+        alertDialogBuilder.setCancelable(false);
+
+        //Se genera la conexión con el boton del pop up
+        TextView textViewErrorServidor = view.findViewById(R.id.textView_PopUp);
+        Button btnAceptar= view.findViewById(R.id.button_PopUpSalir);
+        btnAceptar.setText("Aceptar");
+        textViewErrorServidor.setText("Verifica tu conexión a internet");
+
+        //Se crea el evento click para el boton del pop up, el cual redirige al inicio de la aplicacion
+        btnAceptar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialogGeneral.dismiss();
+            }
+        });
+
+        //Se crea el correspondiente Dialog que se mostrara al usuario
+        alertDialogGeneral = alertDialogBuilder.create();
+        //Se agrega esta linea para que no tenga fondo por defecto el dialog
+        alertDialogGeneral.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        //Se muestra el Dialogo al usuario con su correspondiente ubicacion en la pantalla
+        alertDialogGeneral.show();
+        alertDialogGeneral.getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);//
+
+    }
+
+    /**Metodo de tipo void que se encarga de crear un pop up para notificar que existe un error con la comunicaciòn al servidor*/
+    public void crearPopUpErrorServidor(){
+        //Se hace la respectiva conexión con el frontEnd del pop up
+        LayoutInflater li = LayoutInflater.from(context);
+        View view = li.inflate(R.layout.activity_pop_up_error, null);
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        alertDialogBuilder.setView(view);
+        alertDialogBuilder.setCancelable(false);
+
+        //Se genera la conexión con el boton del pop up
+        TextView textViewErrorServidor = view.findViewById(R.id.textView_PopUp);
+        Button btnAceptar= view.findViewById(R.id.button_PopUpSalir);
+        btnAceptar.setText("Aceptar");
+        textViewErrorServidor.setText("Ocurrio un error en la comunicación con el servidor");
+
+        //Se crea el evento click para el boton del pop up, el cual redirige al inicio de la aplicacion
+        btnAceptar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialogErrorServidor.dismiss();
+            }
+        });
+
+        //Se crea el correspondiente Dialog que se mostrara al usuario
+        alertDialogErrorServidor = alertDialogBuilder.create();
+        //Se agrega esta linea para que no tenga fondo por defecto el dialog
+        alertDialogErrorServidor.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        //Se muestra el Dialogo al usuario con su correspondiente ubicacion en la pantalla
+        alertDialogErrorServidor.show();
+        alertDialogErrorServidor.getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);//
+
+    }
 
     /**Metodo de tipo void, el cual se encarga de crear un pop up para informar que la transaccion la cancelo el usuario */
     public void crearPopUpCanceladaUsuario(){
@@ -257,10 +319,6 @@ public class PopUp extends AppCompatActivity {
         alertDialogUsuarioCancela.getWindow().setLayout(800, LinearLayout.LayoutParams.WRAP_CONTENT);//
 
     }
-
-
-
-
 
     /**Metodo de tipo void, el cual se encarga de crear un pop up para informar que el login fallo */
     public void crearPopUpLoginFallido(String mensaje){

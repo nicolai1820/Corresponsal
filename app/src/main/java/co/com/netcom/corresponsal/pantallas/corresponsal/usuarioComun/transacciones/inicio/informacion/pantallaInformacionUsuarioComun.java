@@ -81,8 +81,7 @@ public class pantallaInformacionUsuarioComun extends Fragment {
               hilo=  new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        PreferencesUsuario pref = new PreferencesUsuario("Token",getContext());
-                        respuesta = servicio.cerrarSesion(getActivity(),pref.getToken());
+                        respuesta = servicio.cerrarSesion();
                     }
                 });
 

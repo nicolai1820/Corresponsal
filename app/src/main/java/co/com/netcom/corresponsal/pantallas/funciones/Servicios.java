@@ -23,11 +23,13 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManagerFactory;
 
+import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okio.Buffer;
 
 public class Servicios {
 
@@ -46,16 +48,17 @@ public class Servicios {
 
     private Context context;
     private String token;
-    private String tokenRefresh;
-    private String UserId;
+   // private String UserId;
+/*    private String tokenRefresh;
+
     SharedPreferences sharedPreferences;
-    SharedPreferences.Editor sharedPreferencesEditor;
+    SharedPreferences.Editor sharedPreferencesEditor;*/
 
 
     public Servicios(Context contexto){
         this.context = contexto;
-        sharedPreferences = context.getSharedPreferences("Token",context.MODE_PRIVATE);
-        sharedPreferencesEditor = sharedPreferences.edit();
+        //sharedPreferences = context.getSharedPreferences("Token",context.MODE_PRIVATE);
+        //sharedPreferencesEditor = sharedPreferences.edit();
     }
 
     /**Metodo cerrarSesion de tipo void que consume el servicio rest para solicitar el token*/
@@ -90,9 +93,9 @@ public class Servicios {
             JSONObject Jobject = new JSONObject(jsonData);
 
             token = Jobject.getString("access_token");
-            tokenRefresh = Jobject.getString("refresh_token");
+            //tokenRefresh = Jobject.getString("refresh_token");
             if (!token.isEmpty()){
-                PreferencesUsuario preferences = new PreferencesUsuario("Token",context);
+                PreferencesUsuario preferences = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_TOKEN,context);
                 preferences.setToken(token);
                 //setTokenRefresh(tokenRefresh);
             }
@@ -100,7 +103,7 @@ public class Servicios {
             return Jobject.getString("access_token");
 
         } catch (Exception e){
-            throw new RuntimeException(e);
+          return "";
         }
     }
 
@@ -144,24 +147,30 @@ public class Servicios {
             Log.d("RESP",jsonData);
             JSONObject Jobject = new JSONObject(jsonData);
             Log.d("RESPUESTA",Jobject.toString());
-            //String estado = Jobject.getString("responseCode");
+            String estado = Jobject.getString("loginState");
 
-            /*if (estado.equals("MQ==")){
-                respuestaServidor = Jobject.getString("responseMessage");
+            Log.d("ESTADO",estado);
+
+           if(estado.equals("MQ==")){
+                //Se guarda la información que llega en el login
+                PreferencesUsuario prefs = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_INFO_USUARIO,context);
+                prefs.setUserId(Jobject.getString("userId"));
+                prefs.setEncryptionKey(Jobject.getString("encryptionKey"));
+            }else{
+                respuestaServidor = Jobject.getString("descriptionState");
             }
-            else if(estado.equals("MA==")){
-
-            }*/
-            respuestaServidor = Jobject.getString("descriptionState");
+           /* respuestaServidor = Jobject.getString("descriptionState");
             try {
-                UserId = Jobject.getString("userId");
-                sharedPreferencesEditor.putString("userId",UserId);
-            }catch (Exception e){ }
+                //UserId = Jobject.getString("userId");
+                //sharedPreferencesEditor.putString("userId",UserId);
+            }catch (Exception e){ }*/
 
             return Jobject.getString("loginState");
 
         } catch (IOException | JSONException e) {
-            throw new RuntimeException(e);        }
+            CodificarBase64 code = new CodificarBase64();
+            respuestaServidor=code.convertirBase64("Ambiente no disponible");
+          return code.convertirBase64("-2");}
 
     }
 
@@ -196,8 +205,8 @@ public class Servicios {
     /**Metodo cerrarSesion, retorna un entero, que determina si la respuesta del servidor fue fallida o exitosa, recibe como parametro un String
      * el cual es el token que requieren todos los servicios. Este metodo se encarga de consumir el servicio rest de cerrarSesion*/
 
-    public String cerrarSesion(Context context, String token){
-        Log.d("token",token);
+    public String cerrarSesion(){
+
         //Se debe sobreescribir este metodo para que acepte cualquier certificado seguro.
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.hostnameVerifier(new HostnameVerifier() {
@@ -207,10 +216,14 @@ public class Servicios {
             }
         });
 
-        SharedPreferences sharedPreferencesUser= context.getSharedPreferences("User",context.MODE_PRIVATE);
-        String usuario = sharedPreferencesUser.getString("Usuario",null);
+        PreferencesUsuario prefs_usuario = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_INFO_USUARIO,context);
+        String usuario = prefs_usuario.getUserId();
+
+        PreferencesUsuario prefs_token = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_TOKEN,context);
+        String token = prefs_token.getToken();
 
         Log.d("USERID",usuario);
+        Log.d("token",token);
 
         String [] direccion = urlLogin.split("users");
         String direccionFinal = direccion[0]+"users/"+usuario+direccion[1];
@@ -331,7 +344,7 @@ public class Servicios {
 
     /**Metodo obtenerParametricas, se encarga de solicitar las parametricas del comercio, luego de que se inicio sesión*/
 
-    public void obtenerParametricas(String usuario,Context context){
+    public void obtenerParametricas(){
         //Se debe sobreescribir este metodo para que acepte cualquier certificado seguro.
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.hostnameVerifier(new HostnameVerifier() {
@@ -342,14 +355,17 @@ public class Servicios {
         });
 
         //Objeto SharedPreferences
-        PreferencesUsuario prefs = new PreferencesUsuario("Token",context);
+        PreferencesUsuario prefs = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_TOKEN,context);
+        PreferencesUsuario prefs_userid = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_INFO_USUARIO,context);
 
-        Log.d("UserId",usuario);
+        String userId = prefs_userid.getUserId();
+
+        Log.d("UserId",userId);
         Log.d("Token",prefs.getToken());
         OkHttpClient client = builder.sslSocketFactory(getSLLContext().getSocketFactory()).build();
 
         MediaType mediaType = MediaType.parse("application/json");
-        RequestBody body = RequestBody.create(mediaType, "{\n\t\"userId\": \""+usuario+"\",\n\t\"configAppVersion\": \"MA\",\n\t\"taxsVersion\": \"MA\",\n\t\"prefixesVersion\": \"MA\",\n\t\"binPrivadoVersion\": \"MA\",\n\t\"authorizersVersion\": \"MA\",\n\t\"pspInfoVersion\": \"MA\",\n\t\"rechargeInfoVersion\": \"MA\",\n\t\"configureMposVersion\": \"MA\",\n\t\"genericDataVersion\": \"MA\"\n}");
+        RequestBody body = RequestBody.create(mediaType, "{\n\t\"userId\": \""+userId+"\",\n\t\"configAppVersion\": \"MA\",\n\t\"taxsVersion\": \"MA\",\n\t\"prefixesVersion\": \"MA\",\n\t\"binPrivadoVersion\": \"MA\",\n\t\"authorizersVersion\": \"MA\",\n\t\"pspInfoVersion\": \"MA\",\n\t\"rechargeInfoVersion\": \"MA\",\n\t\"configureMposVersion\": \"MA\",\n\t\"genericDataVersion\": \"MA\"\n}");
         Request request = new Request.Builder()
                 .url(urlBaseServicios+apiParametricas)
                 .method("POST", body)
@@ -357,6 +373,21 @@ public class Servicios {
                 .addHeader("Accept", "text/*;q=0.3, text/html;q=0.7, text/html;level=1,text/html;level=2;q=0.4, */*;q=0.5")
                 .addHeader("Authorization", prefs.getToken())
                 .build();
+
+        String a="";
+        try {
+            final Request copy = request.newBuilder().build();
+            final Buffer buffer = new Buffer();
+            copy.body().writeTo(buffer);
+          a = buffer.readUtf8();
+        } catch (final IOException e) {
+             a = "did not work";
+        }
+
+        Log.d("Body",a);
+        Log.d("Service",request.toString());
+        Log.d("Headers",request.headers().toString());
+
         try {
             Response response = client.newCall(request).execute();
             Log.d("RESPONSE",response.toString());
@@ -399,10 +430,10 @@ public class Servicios {
         sharedPreferencesEditor.commit();
     }*/
 
-    /**Metodo para obtener el userId*/
+/*    *//**Metodo para obtener el userId*//*
     public String getUserId(){
         return this.UserId;
-    }
+    }*/
 
 
 }
