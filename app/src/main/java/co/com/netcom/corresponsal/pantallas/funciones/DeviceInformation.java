@@ -6,19 +6,20 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.format.Formatter;
 
 import androidx.core.app.ActivityCompat;
 
-public class DeviceInformation {
+public class DeviceInformation implements LocationListener {
     private Context context;
-
    public DeviceInformation(Context contexto){
         this.context = contexto;
     }
@@ -47,8 +48,7 @@ public class DeviceInformation {
 
     /**Metodo getLatitude de tipo publico que retorna un booleano, sirve para obtener la latitud.*/
     public String getLatitude() {
-        LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-        Criteria criteria = new Criteria();
+
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
             ActivityCompat.requestPermissions((Activity) context,new String[]{
@@ -56,15 +56,18 @@ public class DeviceInformation {
                     Manifest.permission.ACCESS_FINE_LOCATION},0);
             return "";
         }else{
+            LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+            Criteria criteria = new Criteria();
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5, this);
             Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
             return String.valueOf(location.getLatitude());
+
         }
     }
 
     /**Metodo getLatitude de tipo publico que retorna un booleano, sirve para obtener la longitud.*/
     public String getLongitude(){
-        LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-        Criteria criteria = new Criteria();
+
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
             ActivityCompat.requestPermissions((Activity) context,new String[]{
@@ -72,8 +75,12 @@ public class DeviceInformation {
                     Manifest.permission.ACCESS_FINE_LOCATION},0);
             return "";
         }else{
+            LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+            Criteria criteria = new Criteria();
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5, this);
             Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
             return String.valueOf(location.getLongitude());
+
         }
     }
 
@@ -83,7 +90,23 @@ public class DeviceInformation {
     }
 
 
+    @Override
+    public void onLocationChanged(Location location) {
 
+    }
 
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
 
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+
+    }
 }
