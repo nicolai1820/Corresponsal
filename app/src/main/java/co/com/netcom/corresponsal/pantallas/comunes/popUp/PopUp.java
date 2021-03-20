@@ -10,6 +10,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Message;
 import android.text.InputFilter;
 import android.text.Spanned;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -85,7 +87,13 @@ public class PopUp extends AppCompatActivity {
 
         //Se muestra el Dialogo al usuario con su correspondiente ubicacion en la pantalla
         alertDialogDesconexion.show();
-        alertDialogDesconexion.getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);//
+
+        //Se obtienen las medidas de la pantalla del dispositivo
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        float dpHeight = displayMetrics.heightPixels;
+        float dpWidth = displayMetrics.widthPixels ;
+
+        alertDialogDesconexion.getWindow().setLayout((int)(dpWidth*0.7), LinearLayout.LayoutParams.WRAP_CONTENT);//
 
     }
 
@@ -208,7 +216,13 @@ public class PopUp extends AppCompatActivity {
 
         //Se muestra el Dialogo al usuario con su correspondiente ubicacion en la pantalla
         alertDialog.show();
-        alertDialog.getWindow().setLayout(600, LinearLayout.LayoutParams.WRAP_CONTENT);//
+
+        //Se obtienen las medidas de la pantalla
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        float dpHeight = displayMetrics.heightPixels;
+        float dpWidth = displayMetrics.widthPixels ;
+
+        alertDialog.getWindow().setLayout((int)(dpWidth*0.7), LinearLayout.LayoutParams.WRAP_CONTENT);//
 
     }
 
@@ -242,7 +256,13 @@ public class PopUp extends AppCompatActivity {
 
         //Se muestra el Dialogo al usuario con su correspondiente ubicacion en la pantalla
         alertDialogGeneral.show();
-        alertDialogGeneral.getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);//
+
+        //Se obtiene las medidas de la pantalla
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        float dpHeight = displayMetrics.heightPixels;
+        float dpWidth = displayMetrics.widthPixels ;
+
+        alertDialogGeneral.getWindow().setLayout((int)(dpWidth*0.7), LinearLayout.LayoutParams.WRAP_CONTENT);//
 
     }
 
@@ -276,7 +296,13 @@ public class PopUp extends AppCompatActivity {
 
         //Se muestra el Dialogo al usuario con su correspondiente ubicacion en la pantalla
         alertDialogErrorServidor.show();
-        alertDialogErrorServidor.getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);//
+
+        //Se obtienen la medidas de la pantalla del dispositivo
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        float dpHeight = displayMetrics.heightPixels;
+        float dpWidth = displayMetrics.widthPixels ;
+
+        alertDialogErrorServidor.getWindow().setLayout((int)(dpWidth*0.7), LinearLayout.LayoutParams.WRAP_CONTENT);//
 
     }
 
@@ -316,7 +342,13 @@ public class PopUp extends AppCompatActivity {
 
         //Se muestra el Dialogo al usuario con su correspondiente ubicacion en la pantalla
         alertDialogUsuarioCancela.show();
-        alertDialogUsuarioCancela.getWindow().setLayout(800, LinearLayout.LayoutParams.WRAP_CONTENT);//
+
+        //Se crea para ajustar el pop up al tamaño de la pantalla
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        float dpHeight = displayMetrics.heightPixels;
+        float dpWidth = displayMetrics.widthPixels ;
+
+        alertDialogUsuarioCancela.getWindow().setLayout((int)(dpWidth*0.7), LinearLayout.LayoutParams.WRAP_CONTENT);//
 
     }
 
@@ -336,7 +368,9 @@ public class PopUp extends AppCompatActivity {
         btnAceptar.setText("Aceptar");
         textViewErrorServidor.setText(mensaje);
 
-
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        float dpHeight = displayMetrics.heightPixels;
+        float dpWidth = displayMetrics.widthPixels ;
 
         //Se crea el evento click para el boton del pop up, el cual redirige al inicio de la aplicacion
         btnAceptar.setOnClickListener(new View.OnClickListener() {
@@ -353,7 +387,13 @@ public class PopUp extends AppCompatActivity {
 
         //Se muestra el Dialogo al usuario con su correspondiente ubicacion en la pantalla
         alertDialogLoginFallido.show();
-        alertDialogLoginFallido.getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);//
+
+
+        Log.d("heigh",String.valueOf(dpHeight));
+        Log.d("width",String.valueOf(dpWidth*0.9));
+
+        alertDialogLoginFallido.getWindow().setLayout((int)(dpWidth*0.7), LinearLayout.LayoutParams.WRAP_CONTENT);//
+
 
     }
 
@@ -471,7 +511,13 @@ public class PopUp extends AppCompatActivity {
 
         //Se muestra el Dialogo al usuario con su correspondiente ubicacion en la pantalla
         alertDialogLoginFallido.show();
-        alertDialogLoginFallido.getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);//
+        //Se obitenen las medidas de la pantalla
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        float dpHeight = displayMetrics.heightPixels;
+        float dpWidth = displayMetrics.widthPixels ;
+
+
+        alertDialogLoginFallido.getWindow().setLayout((int)(dpWidth*0.7), LinearLayout.LayoutParams.WRAP_CONTENT);//
 
     }
 }

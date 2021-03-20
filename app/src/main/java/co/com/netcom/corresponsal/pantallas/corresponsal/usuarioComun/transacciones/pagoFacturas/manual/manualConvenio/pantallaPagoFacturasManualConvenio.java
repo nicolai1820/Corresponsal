@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -41,6 +42,9 @@ public class pantallaPagoFacturasManualConvenio extends BaseActivity {
         editText_PagoFacturasManualCodigoConvenio = (EditText) findViewById(R.id.editText_PagoFacturasManualCodigoConvenio);
 
         editText_PagoFacturasManualNumeroReferencia = (EditText) findViewById(R.id.editText_PagoFacturasManualNumeroReferencia);
+
+        editText_PagoFacturasManualCodigoConvenio.setFilters(new InputFilter[]{new InputFilter.LengthFilter(15)});
+        editText_PagoFacturasManualNumeroReferencia.setFilters(new InputFilter[]{new InputFilter.LengthFilter(15)});
 
     }
 

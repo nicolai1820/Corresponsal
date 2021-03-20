@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -54,6 +55,8 @@ public class pantallaEnviarGiroCantidad extends BaseActivity {
 
         //Se crea el header con el respectivo titulo de la actividad
         getSupportFragmentManager().beginTransaction().replace(R.id.contenedorHeaderGirosEnviar,header).commit();
+        cantidad.setFilters(new InputFilter[]{new InputFilter.LengthFilter(15)});
+
     }
 
 

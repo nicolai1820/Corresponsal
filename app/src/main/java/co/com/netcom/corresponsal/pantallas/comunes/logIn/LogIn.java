@@ -1,5 +1,6 @@
 package co.com.netcom.corresponsal.pantallas.comunes.logIn;
 
+import androidx.annotation.UiThread;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -12,6 +13,8 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.util.Base64;
@@ -21,6 +24,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
@@ -50,6 +57,7 @@ public class LogIn extends AppCompatActivity {
     private Thread solicitudToken;
     private Thread solicitudInicioSesion;
     private Thread solicitarParametricas;
+    private UiThread loader;
     private String token;
     private String usuarioEncriptado;
     private String contrasenaEncriptada;
@@ -59,7 +67,8 @@ public class LogIn extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor sharedPreferencesEditor;
     private int sesion;
-
+    AlertDialog dialog;
+    public static Handler respuesta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,10 +147,128 @@ public class LogIn extends AppCompatActivity {
         };
 
         //Se agrega el filtro para que no se acepten espacios en el editext
-        editText_User.setFilters(new InputFilter[]{textFilter});
-        editText_Password.setFilters(new InputFilter[]{textFilter});
+        editText_User.setFilters(new InputFilter[]{textFilter,new InputFilter.LengthFilter(10)});
+        editText_Password.setFilters(new InputFilter[]{textFilter,new InputFilter.LengthFilter(15)});
+
+        //Se crea el Handler para verificar si mostrar o no el loader.
+
+        respuesta = new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                switch (msg.what) {
+                    case 1:
+
+                        //Este error deberia ocurrir unicamente cuando el servidor no responde
+                        if(token.isEmpty()){
+                            dialog.dismiss();
+                            PopUp popUp = new PopUp(LogIn.this);
+                            popUp.crearPopUpErrorServidor();
+                        }else{
+
+                  //Se cre hilo para hacer la petición del inicio de sesión.
+                         /*   solicitudInicioSesion = new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Log.d("HILO2","Segundo Hilo");
+                                    estadoConexion= base64.decodificarBase64(objetoServicios.Login(usuarioEncriptado,contrasenaEncriptada,token));
+                                    //Se envia un mensaje al handler de la clase consulta saldo, indicando que el usuario cancelo la transaccion
+                                    Message usuarioCancela = new Message();
+                                    usuarioCancela.what = 4;
+                                    LogIn.respuesta.sendMessage(usuarioCancela);
+                                }
+                            });
+
+                            solicitudInicioSesion.start();*/
+
+                            estadoConexion="1";
+                            Message usuarioCancela = new Message();
+                            usuarioCancela.what = 4;
+                            LogIn.respuesta.sendMessage(usuarioCancela);
+
+                  /*          try {
+                                solicitudInicioSesion.join();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }*/
+
+                            //Log.d("ESTADODECODIFICADO",estadoConexion);
+
+                            //Log.d("ESTADO",base64.decodificarBase64(estadoConexion));
 
 
+           /* Intent i = new Intent(this, pantallaInicialUsuarioComun.class);
+            startActivity(i);
+            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+*/
+                        }
+
+
+                        break;
+
+                    case 2:
+                        dialog.dismiss();
+
+                        break;
+                    case 3:
+                        dialog.dismiss();
+                        PopUp op = new PopUp(LogIn.this);
+                        op.crearPopUpLoginFallido("No se descargaron las parametricas");
+
+                        break;
+
+                        case 4:
+                            if (Integer.parseInt(estadoConexion)==1){
+                /*      EncripcionAES en = new EncripcionAES();
+
+                      try {
+                          PreferencesUsuario prefs_enc = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_INFO_USUARIO,this);
+                          CodificarBase64 b = new CodificarBase64();
+                          Log.d("AES", en.encrypt(b.decodificarBase64(prefs_enc.getEncryptionKey()),"Holis"));
+
+                          Log.d("AES LIMPIO",en.decrypt(b.decodificarBase64(prefs_enc.getEncryptionKey()), en.encrypt(b.decodificarBase64(prefs_enc.getEncryptionKey()),"Holis")));
+
+
+
+
+                      }catch (Exception e){
+                          Log.d("EXC",e.toString());
+                      }*/
+
+
+                                solicitarParametricas = new  Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        //objetoServicios.obtenerParametricas(objetoServicios.getUserId(),getApplicationContext());
+                                        objetoServicios.obtenerParametricas();
+
+                                    }
+                                });
+
+                                solicitarParametricas.start();
+               /*            try {
+                               solicitarParametricas.join();
+                           } catch (InterruptedException e) {
+                               e.printStackTrace();
+                           }*/
+
+                            }
+                            else{
+                                dialog.dismiss();
+                                popUp.crearPopUpLoginFallido(base64.decodificarBase64(objetoServicios.getRespuestaServidor()));
+                            }
+
+
+                            break;
+                    case 5:
+                           /* Intent i = new Intent(getApplicationContext(), pantallaInicialUsuarioComun.class);
+                                startActivity(i);
+                                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);*/
+                           break;
+                }
+            }
+
+        };
 
     }
 
@@ -166,20 +293,8 @@ public class LogIn extends AppCompatActivity {
                Toast.makeText(getApplicationContext(),"Debe Ingresar una contraseña",Toast.LENGTH_SHORT).show();
            }
            else{
+          if(internet){
 
-
-
-               if(ubicacion){
-                   Log.d("UUID",deviceInformation.getDeviceUUID());
-                   Log.d("IP",deviceInformation.getIpAddress());
-                   Log.d("Longitud",deviceInformation.getLongitude());
-                   Log.d("Latitud",deviceInformation.getLatitude());
-
-
-
-
-
-/*          if(internet){
                //Se crea el loader que se mostrara mientras se procesa la transaccion
                AlertDialog.Builder loader = new AlertDialog.Builder(LogIn.this);
 
@@ -188,115 +303,44 @@ public class LogIn extends AppCompatActivity {
                loader.setView(inflater.inflate(R.layout.loader_procesando_transaccion,null));
                loader.setCancelable(false);
 
-               AlertDialog dialog = loader.create();
+               dialog = loader.create();
                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
                Log.d("OPEN"," se abrio el loader");
                dialog.show();
 
-                   usuarioEncriptado=base64.convertirBase64(user);
-                   contrasenaEncriptada=base64.convertirBase64(sha512.codificarSHA512(password));
+              usuarioEncriptado=base64.convertirBase64(user);
+              contrasenaEncriptada=base64.convertirBase64(sha512.codificarSHA512(password));
 
-                   Log.d("USUARIODECO",base64.decodificarBase64(usuarioEncriptado));
+              Log.d("USUARIODECO",base64.decodificarBase64(usuarioEncriptado));
 
-                   //Se crea hilo para hacer la petición al servidor del token
-                   solicitudToken =  new Thread(new Runnable() {
-                       @Override
-                       public void run() {
-                           token = objetoServicios.solicitarToken();
-                           Log.d("TOKEN",token.toString());
+              //Se crea hilo para hacer la petición al servidor del token
+                  solicitudToken =  new Thread(new Runnable() {
+                      @Override
+                      public void run() {
+                         token = objetoServicios.solicitarToken();
+                          Log.d("TOKEN",token.toString());
+                          try{
+                              //Se envia un mensaje al handler de la clase consulta saldo, indicando que el usuario cancelo la transaccion
+                              Message usuarioCancela = new Message();
+                              usuarioCancela.what = 1;
+                              LogIn.respuesta.sendMessage(usuarioCancela);
+                          }catch (Exception e){ }
 
-                       }
-                   });
+                      }
+                  });
 
                    solicitudToken.start();
-                   try {
-                       solicitudToken.join();
+             /*      try {
+                       solicitudToken.wait();
+                       //solicitudToken.join();
                    } catch (InterruptedException e) {
                        e.printStackTrace();
                    }
-
-                   //Este error deberia ocurrir unicamente cuando el servidor no responde
-                   if(token.isEmpty()){
-                       dialog.dismiss();
-                       PopUp popUp = new PopUp(this);
-                       popUp.crearPopUpErrorServidor();
-                   }else{
-
-                       //Se cre hilo para hacer la petición del inicio de sesión.
-                       solicitudInicioSesion = new Thread(new Runnable() {
-                           @Override
-                           public void run() {
-                               Log.d("HILO2","Segundo Hilo");
-                               estadoConexion= base64.decodificarBase64(objetoServicios.Login(usuarioEncriptado,contrasenaEncriptada,token));
-
-                           }
-                       });
-
-                       solicitudInicioSesion.start();
-                       try {
-                           solicitudInicioSesion.join();
-                       } catch (InterruptedException e) {
-                           e.printStackTrace();
-                       }
-
-
-                       //Log.d("ESTADODECODIFICADO",base64.decodificarBase64(estadoConexion));
-
-
-                       //Log.d("ESTADO",base64.decodificarBase64(estadoConexion));
-                       if (Integer.parseInt(estadoConexion)==1){
-                           EncripcionAES en = new EncripcionAES();
-
-                           try {
-                               PreferencesUsuario prefs_enc = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_INFO_USUARIO,this);
-                               CodificarBase64 b = new CodificarBase64();
-                               Log.d("AES", en.encrypt(b.decodificarBase64(prefs_enc.getEncryptionKey()),"Holis"));
-
-                               Log.d("AES LIMPIO",en.decrypt(b.decodificarBase64(prefs_enc.getEncryptionKey()), en.encrypt(b.decodificarBase64(prefs_enc.getEncryptionKey()),"Holis")));
-
-
-
-
-                           }catch (Exception e){
-                               Log.d("EXC",e.toString());
-                           }
-
-
-                           solicitarParametricas = new  Thread(new Runnable() {
-                               @Override
-                               public void run() {
-                                   //objetoServicios.obtenerParametricas(objetoServicios.getUserId(),getApplicationContext());
-                                   objetoServicios.obtenerParametricas();
-
-                               }
-                           });
-
-                           solicitarParametricas.start();
-                           try {
-                               solicitarParametricas.join();
-                           } catch (InterruptedException e) {
-                               e.printStackTrace();
-                           }
-                           dialog.dismiss();
-
-                           Intent i = new Intent(this, pantallaInicialUsuarioComun.class);
-                           startActivity(i);
-                           overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
-                       }else{
-                           dialog.dismiss();
-
-                           popUp.crearPopUpLoginFallido(base64.decodificarBase64(objetoServicios.getRespuestaServidor()));
-                       }
 */
 
-           /* Intent i = new Intent(this, pantallaInicialUsuarioComun.class);
-            startActivity(i);
-            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
-*/
-                   //}
-
-               }else{
+               }
+          else{
                    Log.d("Internet Desactivado","No internet");
                    PopUp popUp = new PopUp(this);
                    popUp.crearPopUpErrorInternet();
@@ -304,7 +348,5 @@ public class LogIn extends AppCompatActivity {
            }
 
     }
-
-
 
 }

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.icu.text.UnicodeSetSpanner;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -63,6 +64,9 @@ public class pantallaRecargaCelular extends BaseActivity {
                 return true;
             }
         });
+
+        celular.setFilters(new InputFilter[]{new InputFilter.LengthFilter(10)});
+
     }
 
 

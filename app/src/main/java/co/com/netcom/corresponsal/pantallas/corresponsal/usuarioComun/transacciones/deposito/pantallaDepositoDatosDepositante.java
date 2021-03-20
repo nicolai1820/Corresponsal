@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -89,6 +90,9 @@ public class pantallaDepositoDatosDepositante extends BaseActivity {
             }
         };
         spinner_tipoCuentaDepositoDatosDepositante.setAdapter(adapter);
+
+        editText_DepositoDatosDepositanteNumeroCuenta.setFilters(new InputFilter[]{new InputFilter.LengthFilter(15)});
+        editText_DepositoDatosDepositanteCantidad.setFilters(new InputFilter[]{new InputFilter.LengthFilter(10)});
 
     }
 

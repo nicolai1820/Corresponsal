@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -79,6 +80,7 @@ public class pantallaCancelarGiroDatosGirador extends BaseActivity {
             }
         };
         spinner_tipoDocumentoGiradorCancelarGiro.setAdapter(adapter);
+        editText_tipoDocumentoGiradorCancelarGiro.setFilters(new InputFilter[]{new InputFilter.LengthFilter(15)});
 
     }
 

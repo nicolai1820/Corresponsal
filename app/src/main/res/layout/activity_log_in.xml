@@ -51,6 +51,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:imeOptions="actionDone"
         android:textColor="@color/azul"
+        android:maxLength="15"
         />
 
     <Button

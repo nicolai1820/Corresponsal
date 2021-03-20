@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -64,6 +65,10 @@ public class pantallaPagoFacturasManualCuentaRecaudadora extends BaseActivity {
             }
         };
         spinner_tipoDeCuentaCuentaRecaudadora.setAdapter(adapter);
+
+        editText_PagoFacturasManualNumeroCuentaRecaudadora.setFilters(new InputFilter[]{new InputFilter.LengthFilter(15)});
+        editText_PagoFacturasManualCuentaRecaudadoraNumeroReferencia.setFilters(new InputFilter[]{new InputFilter.LengthFilter(15)});
+
     }
 
     /**Metodo pagoFacturasManualCuentaRecaudadoraVamos de tipo void, recibo como parametro un View, para poder ser implementado por

@@ -77,7 +77,7 @@ public class DeviceInformation implements LocationListener {
         }else{
             LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
             Criteria criteria = new Criteria();
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5, this);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 1, this);
             Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
             return String.valueOf(location.getLongitude());
 

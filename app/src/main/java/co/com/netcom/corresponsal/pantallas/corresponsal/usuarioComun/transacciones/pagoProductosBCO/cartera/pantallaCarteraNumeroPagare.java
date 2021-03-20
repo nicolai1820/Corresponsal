@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -39,6 +40,10 @@ public class pantallaCarteraNumeroPagare extends BaseActivity {
         editTextCarteraNumeroPagare = (EditText) findViewById(R.id.editText_CarteraNumeroPagare);
 
         editText_CarteraCantidad = (EditText) findViewById(R.id.editText_CarteraCantidad);
+
+        editTextCarteraNumeroPagare.setFilters(new InputFilter[]{new InputFilter.LengthFilter(15)});
+        editText_CarteraCantidad.setFilters(new InputFilter[]{new InputFilter.LengthFilter(15)});
+
     }
 
 

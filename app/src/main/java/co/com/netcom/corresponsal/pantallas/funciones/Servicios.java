@@ -2,6 +2,7 @@ package co.com.netcom.corresponsal.pantallas.funciones;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Message;
 import android.util.Log;
 
 import org.json.JSONException;
@@ -16,6 +17,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
+import java.util.concurrent.TimeUnit;
 import java.util.prefs.Preferences;
 
 import javax.net.ssl.HostnameVerifier;
@@ -23,7 +25,9 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManagerFactory;
 
+import co.com.netcom.corresponsal.pantallas.comunes.logIn.LogIn;
 import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
+import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.consultaSaldo.pantallaConsultaSaldoLectura;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -75,7 +79,7 @@ public class Servicios {
         });
 
 
-        OkHttpClient client = builder.sslSocketFactory(getSLLContext().getSocketFactory()).build();
+        OkHttpClient client = builder.sslSocketFactory(getSLLContext().getSocketFactory()).callTimeout(30,TimeUnit.SECONDS).build();
         MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
         RequestBody body = RequestBody.create(mediaType, "client_id=CFGkFIU4JKhy9cjG6HnoctOg8aQa&client_secret=Tek1bEVvPXLNb7AI5fkVVbhToEMa&grant_type=password&username=admin&password=admin");
         Request request = new Request.Builder()
@@ -102,8 +106,10 @@ public class Servicios {
 
             return Jobject.getString("access_token");
 
+
         } catch (Exception e){
-          return "";
+
+            return "";
         }
     }
 
@@ -125,7 +131,7 @@ public class Servicios {
         Log.d("USUARIO SERVICIO",String.valueOf(usuario.length()));
         Log.d("CONTRASEÑA",contrasena);
 
-        OkHttpClient client2 = builder.sslSocketFactory(getSLLContext().getSocketFactory()).build();
+        OkHttpClient client2 = builder.sslSocketFactory(getSLLContext().getSocketFactory()).callTimeout(30,TimeUnit.SECONDS).build();
 
         MediaType mediaType = MediaType.parse("application/json");
         String body_string = "{\"user\": \""+usuario+"\",\"channel\": \"MQ==\",\"password\": \""+contrasena+"\",\"uuid\": \"NWEyODIxZTBiZTE4MDQ2NA==\",\"ipAddress\": \"MTcyLjE3LjEuMTI0\",\"version\":\"MjIx\"}";
@@ -356,16 +362,17 @@ public class Servicios {
 
         //Objeto SharedPreferences
         PreferencesUsuario prefs = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_TOKEN,context);
-        PreferencesUsuario prefs_userid = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_INFO_USUARIO,context);
+        //PreferencesUsuario prefs_userid = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_INFO_USUARIO,context);
 
-        String userId = prefs_userid.getUserId();
+        //String userId = prefs_userid.getUserId();
 
-        Log.d("UserId",userId);
+        //Log.d("UserId",userId);
         Log.d("Token",prefs.getToken());
-        OkHttpClient client = builder.sslSocketFactory(getSLLContext().getSocketFactory()).build();
+        OkHttpClient client = builder.sslSocketFactory(getSLLContext().getSocketFactory()).callTimeout(30, TimeUnit.SECONDS).build();
 
         MediaType mediaType = MediaType.parse("application/json");
-        RequestBody body = RequestBody.create(mediaType, "{\n\t\"userId\": \""+userId+"\",\n\t\"configAppVersion\": \"MA\",\n\t\"taxsVersion\": \"MA\",\n\t\"prefixesVersion\": \"MA\",\n\t\"binPrivadoVersion\": \"MA\",\n\t\"authorizersVersion\": \"MA\",\n\t\"pspInfoVersion\": \"MA\",\n\t\"rechargeInfoVersion\": \"MA\",\n\t\"configureMposVersion\": \"MA\",\n\t\"genericDataVersion\": \"MA\"\n}");
+        //RequestBody body = RequestBody.create(mediaType, "{\n\t\"userId\": \""+userId+"\",\n\t\"configAppVersion\": \"MA\",\n\t\"taxsVersion\": \"MA\",\n\t\"prefixesVersion\": \"MA\",\n\t\"binPrivadoVersion\": \"MA\",\n\t\"authorizersVersion\": \"MA\",\n\t\"pspInfoVersion\": \"MA\",\n\t\"rechargeInfoVersion\": \"MA\",\n\t\"configureMposVersion\": \"MA\",\n\t\"genericDataVersion\": \"MA\"\n}");
+        RequestBody body = RequestBody.create(mediaType, "{\n\t\"userId\": \""+"MTIyOTkw"+"\",\n\t\"configAppVersion\": \"MA\",\n\t\"taxsVersion\": \"MA\",\n\t\"prefixesVersion\": \"MA\",\n\t\"binPrivadoVersion\": \"MA\",\n\t\"authorizersVersion\": \"MA\",\n\t\"pspInfoVersion\": \"MA\",\n\t\"rechargeInfoVersion\": \"MA\",\n\t\"configureMposVersion\": \"MA\",\n\t\"genericDataVersion\": \"MA\"\n}");
         Request request = new Request.Builder()
                 .url(urlBaseServicios+apiParametricas)
                 .method("POST", body)
@@ -396,6 +403,11 @@ public class Servicios {
             JSONObject Jobject = new JSONObject(jsonData);
             Log.d("RESPUESTA",Jobject.toString());
 
+            //Se envia un mensaje al handler de la clase consulta saldo, indicando que el usuario cancelo la transaccion
+            Message usuarioCancela = new Message();
+            usuarioCancela.what = 5;
+            LogIn.respuesta.sendMessage(usuarioCancela);
+
             try{
                 PreferencesUsuario prefs_parametricas = new PreferencesUsuario("Parametricas",context);
                 prefs_parametricas.setParametricas(Jobject);
@@ -406,7 +418,12 @@ public class Servicios {
 
 
         } catch (IOException | JSONException e) {
-                  }
+            //Se envia un mensaje al handler de la clase consulta saldo, indicando que el usuario cancelo la transaccion
+            Message usuarioCancela = new Message();
+            usuarioCancela.what = 3;
+            LogIn.respuesta.sendMessage(usuarioCancela);
+
+        }
 
     }
 

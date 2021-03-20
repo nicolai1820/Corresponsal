@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -39,6 +40,9 @@ public class pantallaTarjetaCreditoProductosBCO extends BaseActivity {
         //se realiz ala respectiva conexion con la interfaz grafica
         editText_TarjetaDeCreditoPagoProductosBCONumero = (EditText) findViewById(R.id.editText_TarjetaDeCreditoPagoProductosBCONumero);
         editText_TarjetaDeCreditoPagoProductosBCOCantidad = (EditText) findViewById(R.id.editText_TarjetaDeCreditoPagoProductosBCOCantidad);
+
+        editText_TarjetaDeCreditoPagoProductosBCONumero.setFilters(new InputFilter[]{new InputFilter.LengthFilter(15)});
+        editText_TarjetaDeCreditoPagoProductosBCOCantidad.setFilters(new InputFilter[]{new InputFilter.LengthFilter(15)});
 
     }
 
