@@ -127,8 +127,8 @@ public class pantallaServiciosUsuarioComun extends Fragment {
             }
         });
 
-        scroll = vista.findViewById(R.id.ScrollViewServicios);
-        View scrollDown = vista.findViewById(R.id.scrollAbajo);
+      //  scroll = vista.findViewById(R.id.ScrollViewServicios);
+//        View scrollDown = vista.findViewById(R.id.scrollAbajo);
         /*scrollDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1053,7 +1053,11 @@ public class MetodosSDKNewland {
                 nlPosManager.scanBlueDevice(TIMEOUT);
             } else {
                 Toast.makeText(context,"Active Bluetooth",Toast.LENGTH_SHORT).show();
-
+                try{
+                    Message apagarLeds = new Message();
+                    apagarLeds.what = 4;
+                    pantallaAjustesUsuarioComun.procesoTransacion.sendMessage(apagarLeds);
+                }catch (Exception e){}
             }
 
     }

@@ -191,6 +191,8 @@ public class pantallaAjustesUsuarioComun extends Fragment {
                                     }
                                     break;
                                 }
+                                case 4:
+                                    dialog.dismiss();
 
 
                                 default:
@@ -200,16 +202,21 @@ public class pantallaAjustesUsuarioComun extends Fragment {
 
                     };
 
-
-                    //Se realiza la busqueda de dispostivos
-                    Thread t = new Thread(new Runnable() {
+                    getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             newlandSDK.scanDevice();
+
+                        }
+                    });
+                    //Se realiza la busqueda de dispostivos
+                  /*  Thread t = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
                         }
                     });
 
-                    t.start();
+                    t.start();*/
 
                 }
             }

@@ -6,6 +6,7 @@
     <string name="editText_password">Contraseña</string>
     <string name="btnLogin">Inicio</string>
     <string name="textView_Password">Olvidé mi contraseña</string>
+    <string name="textView_CambiarContrasena">Cambiar mi contraseña</string>
     <string name="textView_Dudas">¿Tienes dudas?</string>
 
     <!--> Strings Activity Deposito  </!-->
@@ -317,6 +318,19 @@
 
     <string name="editText_CantidadPagoFacturas">Cantidad</string>
     <string name="button_ContinuarCantidadPagoFacturas">Continuar</string>
+
+    <!-->String Activity Cambiar Contraseña</!-->
+    <string name="textView_CambioDeContrasena">Ingrese la contraseña enviada y reestablezca la nueva.</string>
+    <string name="editText_ContrasenaAntigua">Contraseña antigua</string>
+    <string name="editText_ContrasenaNueva">Contraseña nueva</string>
+    <string name="editText_ContrasenaNuevaConfirmacion">Confirmar contraseña</string>
+
+    <string name="textView_ContenidoContrasena">Tu contraseña debe contener:</string>
+    <string name="textView_CantidadCaracteres">8 o más caracteres</string>
+    <string name="textView_Letras">Letras mayúsculas y minúsculas</string>
+    <string name="textView_Numeros">Al menos un número</string>
+    <string name="button_ReestablecerContrasena">Reestablecer contraseña</string>
+
 
 
     <!--> __________________________________________________________________Proyecto APOS _____________________________________________________________________________________________________</!-->

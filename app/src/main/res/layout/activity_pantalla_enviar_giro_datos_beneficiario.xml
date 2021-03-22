@@ -1,112 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo"
     android:layout_gravity="center_horizontal"
-    >
+    app:layout_constrainedWidth="true"
+    app:layout_constrainedHeight="true"
+    android:background="@drawable/fondo">
 
     <FrameLayout
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline49"
+        app:layout_constraintEnd_toStartOf="@id/guideline51"
+        app:layout_constraintStart_toEndOf="@id/guideline50"
+        app:layout_constraintTop_toBottomOf="@id/guideline48"
         android:id="@+id/contenedorHeaderGirosDatosBeneficiario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <ScrollView
+    <TextView
+        app:layout_constraintVertical_bias="0.04"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline49"
+        app:layout_constraintEnd_toStartOf="@id/guideline51"
+        app:layout_constraintStart_toEndOf="@id/guideline50"
+        app:layout_constraintTop_toBottomOf="@id/contenedorHeaderGirosDatosBeneficiario"
+        android:id="@+id/textView_PantallaEnviarGiroBneficiario"
+        android:layout_width="167dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:fontFamily="@font/quicksand_regular"
+        android:text="@string/textView_DatosBeneficiarioEnviarGiro"
+        android:textColor="@color/azul"
+        android:textSize="21dp" />
+
+    <Spinner
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintVertical_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline49"
+        app:layout_constraintEnd_toStartOf="@id/guideline51"
+        app:layout_constraintStart_toEndOf="@id/guideline50"
+        app:layout_constraintTop_toBottomOf="@id/textView_PantallaEnviarGiroBneficiario"
+        android:id="@+id/spinner_tipoDocumentoBeneficiarioEnviarGiro"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/contenedorHeaderGirosDatosBeneficiario">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="167dp"
-                android:layout_height="55dp"
-                android:layout_marginStart="36dp"
-                android:layout_marginTop="28dp"
-                android:fontFamily="@font/quicksand_regular"
-                android:text="@string/textView_DatosBeneficiarioEnviarGiro"
-                android:textColor="@color/azul"
-                android:textSize="21dp" />
-
-            <Spinner
-                android:id="@+id/spinner_tipoDocumentoBeneficiarioEnviarGiro"
-                android:layout_width="match_parent"
-                android:layout_marginEnd="45dp"
-                android:layout_height="49dp"
-                android:layout_marginStart="36dp"
-                android:layout_marginTop="68dp"
-                android:paddingStart="23dp"
-                android:background="@null"
-                android:foreground="@drawable/spinner_style"
-                android:overlapAnchor="false"
-                />
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="45dp"
+        android:background="@null"
+        android:foreground="@drawable/spinner_style"
+        android:overlapAnchor="false"
+        android:paddingStart="23dp" />
 
 
-            <EditText
-                android:id="@+id/editText_DocumentoBeneficiarioEnviarGiro"
-                android:layout_width="match_parent"
-                android:layout_height="49dp"
-                android:layout_marginStart="36dp"
-                android:layout_marginEnd="45dp"
-                android:layout_marginTop="21dp"
-                android:background="@drawable/input_form"
-                android:fontFamily="@font/quicksand_bold"
-                android:hint="@string/editText_DocumentoBeneficiarioEnviarGiro"
-                android:inputType="number"
-                android:numeric="integer"
-                android:paddingStart="23dp"
-                android:textColorHint="@color/azul"
-                android:textSize="21dp"
-                android:textColor="@color/azul"
-                >
+    <EditText
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline49"
+        app:layout_constraintEnd_toStartOf="@id/guideline51"
+        app:layout_constraintStart_toEndOf="@id/guideline50"
+        app:layout_constraintTop_toBottomOf="@id/spinner_tipoDocumentoBeneficiarioEnviarGiro"
+        android:id="@+id/editText_DocumentoBeneficiarioEnviarGiro"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/input_form"
+        android:fontFamily="@font/quicksand_bold"
+        android:hint="@string/editText_DocumentoBeneficiarioEnviarGiro"
+        android:inputType="number"
+        android:numeric="integer"
+        android:paddingStart="23dp"
+        android:textColor="@color/azul"
+        android:textColorHint="@color/azul"
+        android:textSize="21dp">
 
-            </EditText>
+    </EditText>
 
-            <EditText
-                android:id="@+id/editText_NumeroCelularBeneficiarioEnviarGiro"
-                android:layout_width="match_parent"
-                android:layout_height="49dp"
-                android:layout_marginStart="36dp"
-                android:layout_marginEnd="45dp"
-                android:layout_marginTop="21dp"
-                android:background="@drawable/input_form"
-                android:fontFamily="@font/quicksand_bold"
-                android:hint="@string/editText_NumeroDeCelularBeneficiarioEnviarGiro"
-                android:inputType="number"
-                android:numeric="integer"
-                android:paddingStart="23dp"
-                android:textColorHint="@color/azul"
-                android:textSize="21dp"
-                android:imeOptions="actionDone"
-                android:textColor="@color/azul"
-                >
+    <EditText
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline49"
+        app:layout_constraintEnd_toStartOf="@id/guideline51"
+        app:layout_constraintStart_toEndOf="@id/guideline50"
+        app:layout_constraintTop_toBottomOf="@id/editText_DocumentoBeneficiarioEnviarGiro"
+        android:id="@+id/editText_NumeroCelularBeneficiarioEnviarGiro"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/input_form"
+        android:fontFamily="@font/quicksand_bold"
+        android:hint="@string/editText_NumeroDeCelularBeneficiarioEnviarGiro"
+        android:imeOptions="actionDone"
+        android:inputType="number"
+        android:numeric="integer"
+        android:paddingStart="23dp"
+        android:textColor="@color/azul"
+        android:textColorHint="@color/azul"
+        android:textSize="21dp">
 
-            </EditText>
+    </EditText>
 
-            <Button
-                android:id="@+id/button_ContinuarDatosBeneficiarioEnviarGiro"
-                android:layout_width="138dp"
-                android:layout_height="67dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="78dp"
-                android:background="@drawable/boton_inicio"
-                android:fontFamily="@font/quicksand_regular"
-                android:text="@string/button_ContinuarDatosBeneficiarioEnviarGiro"
-                android:textAllCaps="false"
-                android:textColor="@color/blanco"
-                android:textSize="20dp"
-                android:onClick="continuarDatosBeneficiario"
-                android:layout_marginBottom="15dp"/>
+    <Button
+        app:layout_constraintHeight_percent="0.095"
+        app:layout_constraintBottom_toTopOf="@id/guideline49"
+        app:layout_constraintVertical_bias="0.25"
+        app:layout_constraintEnd_toStartOf="@id/guideline51"
+        app:layout_constraintStart_toEndOf="@id/guideline50"
+        app:layout_constraintTop_toBottomOf="@id/editText_NumeroCelularBeneficiarioEnviarGiro"
+        android:id="@+id/button_ContinuarDatosBeneficiarioEnviarGiro"
+        android:layout_width="138dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/boton_inicio"
+        android:fontFamily="@font/quicksand_regular"
+        android:onClick="continuarDatosBeneficiario"
+        android:text="@string/button_ContinuarDatosBeneficiarioEnviarGiro"
+        android:textAllCaps="false"
+        android:textColor="@color/blanco"
+        android:textSize="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline48"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline49"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline51"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
 
 
-        </LinearLayout>
-
-
-    </ScrollView>
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

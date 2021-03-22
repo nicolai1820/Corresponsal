@@ -1,79 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.recargas.pantallaRecargaCantidad"
-    android:background="@drawable/fondo">
+    android:background="@drawable/fondo"
+    app:layout_constrainedWidth="true"
+    app:layout_constrainedHeight="true"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.recargas.pantallaRecargaCantidad">
 
 
     <FrameLayout
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline93"
+        app:layout_constraintEnd_toStartOf="@id/guideline95"
+        app:layout_constraintStart_toEndOf="@id/guideline94"
+        app:layout_constraintTop_toBottomOf="@id/guideline92"
         android:id="@+id/contenedorHeaderPantallaRecargaCantidad"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
-    <ScrollView
-        android:layout_below="@id/contenedorHeaderPantallaRecargaCantidad"
+    <TextView
+        app:layout_constraintVertical_bias="0.04"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline93"
+        app:layout_constraintEnd_toStartOf="@id/guideline95"
+        app:layout_constraintStart_toEndOf="@id/guideline94"
+        app:layout_constraintTop_toBottomOf="@id/contenedorHeaderPantallaRecargaCantidad"
+        android:id="@+id/textView_RecargasCantidad"
+        android:layout_width="210dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginEnd="45dp"
+        android:fontFamily="@font/quicksand_regular"
+        android:text="@string/textView_RecargasCantidad"
+        android:textColor="@color/azul"
+        android:textSize="21dp" />
+
+    <EditText
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintVertical_bias="0.25"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline93"
+        app:layout_constraintEnd_toStartOf="@id/guideline95"
+        app:layout_constraintStart_toEndOf="@id/guideline94"
+        app:layout_constraintTop_toBottomOf="@id/textView_RecargasCantidad"
+        android:id="@+id/editText_RecargasCantidad"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/input_form"
+        android:fontFamily="@font/quicksand_bold"
+        android:hint="@string/editText_RecargasCantidad"
+        android:imeOptions="actionDone"
+        android:inputType="number"
+        android:numeric="integer"
+        android:paddingStart="23dp"
+        android:textColor="@color/azul"
+        android:textColorHint="@color/azul"
+        android:textSize="21dp" />
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal">
+    <Button
+        app:layout_constraintBottom_toTopOf="@id/guideline93"
+        app:layout_constraintHeight_percent="0.095"
+        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintEnd_toStartOf="@id/guideline95"
+        app:layout_constraintStart_toEndOf="@id/guideline94"
+        app:layout_constraintTop_toBottomOf="@id/editText_RecargasCantidad"
+        android:id="@+id/button_RecargasCantidadContinuar"
+        android:layout_width="138dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/boton_inicio"
+        android:fontFamily="@font/quicksand_regular"
+        android:onClick="recargasCantidadVamos"
+        android:text="@string/button_RecargasVamos"
+        android:textAllCaps="false"
+        android:textColor="@color/blanco"
+        android:textSize="20dp" />
 
-            <TextView
-                android:id="@+id/textView_RecargasCantidad"
-                android:layout_width="210dp"
-                android:layout_height="55dp"
-                android:layout_marginEnd="45dp"
-                android:layout_marginStart="37dp"
-                android:layout_marginTop="33dp"
-                android:text="@string/textView_RecargasCantidad"
-                android:fontFamily="@font/quicksand_regular"
-                android:textColor="@color/azul"
-                android:textSize="21dp"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline92"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
 
-            <EditText
-                android:id="@+id/editText_RecargasCantidad"
-                android:layout_width="match_parent"
-                android:layout_height="49dp"
-                android:layout_marginStart="36dp"
-                android:layout_marginEnd="45dp"
-                android:layout_marginTop="150dp"
-                android:background="@drawable/input_form"
-                android:hint="@string/editText_RecargasCantidad"
-                android:inputType="number"
-                android:numeric="integer"
-                android:fontFamily="@font/quicksand_bold"
-                android:textSize="21dp"
-                android:textColorHint="@color/azul"
-                android:paddingStart="23dp"
-                android:imeOptions="actionDone"
-                android:textColor="@color/azul"
-                />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline93"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
 
-            <Button
-                android:id="@+id/button_RecargasCantidadContinuar"
-                android:layout_width="138dp"
-                android:layout_height="67dp"
-                android:background="@drawable/boton_inicio"
-                android:textAllCaps="false"
-                android:textColor="@color/blanco"
-                android:text="@string/button_RecargasVamos"
-                android:fontFamily="@font/quicksand_regular"
-                android:textSize="20dp"
-                android:layout_marginTop="152dp"
-                android:layout_gravity="center_horizontal"
-                android:onClick="recargasCantidadVamos"
-                android:layout_marginBottom="15dp"
-                />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline94"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline95"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
 
 
-        </LinearLayout>
-    </ScrollView>
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

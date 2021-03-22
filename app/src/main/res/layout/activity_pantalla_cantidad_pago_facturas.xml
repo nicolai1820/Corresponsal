@@ -1,84 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.pantallaCantidadPagoFacturas"
-    android:background="@drawable/fondo">
+    android:background="@drawable/fondo"
+    app:layout_constrainedWidth="true"
+    app:layout_constrainedHeight="true"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.pantallaCantidadPagoFacturas">
 
     <FrameLayout
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline23"
+        app:layout_constraintStart_toEndOf="@id/guideline22"
+        app:layout_constraintTop_toBottomOf="@id/guideline"
+        app:layout_constraintBottom_toTopOf="@id/guideline21"
         android:id="@+id/contenedorHeaderPantallaCantidadPagoFacturas"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <LinearLayout
+            app:layout_constraintHeight_percent="0.83"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintBottom_toTopOf="@id/guideline21"
+            app:layout_constraintEnd_toStartOf="@id/guideline23"
+            app:layout_constraintStart_toEndOf="@id/guideline22"
+            app:layout_constraintTop_toBottomOf="@id/contenedorHeaderPantallaCantidadPagoFacturas"
             android:id="@+id/LinearLayoutCantidadFactura"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView_Mensaje1CantidadFacturas"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/quicksand_regular"
-                android:textColor="@color/azul"
-                android:textSize="19dp"
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="20dp"
-                />
+                android:fontFamily="@font/quicksand_regular"
+                android:textColor="@color/azul"
+                android:textSize="19dp" />
 
             <TextView
                 android:id="@+id/textView_Mensaje2CantidadFacturas"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/quicksand_regular"
-                android:textColor="@color/azul"
-                android:textSize="19dp"
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="20dp"
-                />
+                android:fontFamily="@font/quicksand_regular"
+                android:textColor="@color/azul"
+                android:textSize="19dp" />
 
             <EditText
                 android:id="@+id/editText_CantidadPagoFacturas"
-                android:layout_marginTop="50dp"
                 android:layout_width="match_parent"
                 android:layout_height="49dp"
-                android:inputType="number"
-                android:background="@drawable/input_form"
                 android:layout_marginStart="36dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginEnd="36dp"
-                android:textColor="@color/azul"
+                android:background="@drawable/input_form"
                 android:fontFamily="@font/quicksand_bold"
-                android:textSize="20dp"
                 android:imeOptions="actionDone"
-                android:textColorHint="@color/azul"
+                android:inputType="number"
+                android:paddingStart="23dp"
                 android:text="@string/editText_CantidadPagoFacturas"
-                android:paddingStart="23dp"/>
+                android:textColor="@color/azul"
+                android:textColorHint="@color/azul"
+                android:textSize="20dp" />
 
             <Button
-                android:onClick="confirmarFactura"
                 android:id="@+id/button_ContinuarCantidadPagoFacturas"
-                android:text="@string/button_ContinuarCantidadPagoFacturas"
-                android:textSize="20dp"
-                android:fontFamily="@font/quicksand_regular"
-                android:textColor="@color/blanco"
-                android:textAllCaps="false"
-                android:layout_marginTop="60dp"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/boton_inicio"
                 android:layout_width="138dp"
-                android:layout_height="67dp"/>
-
-
+                android:layout_height="67dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="60dp"
+                android:background="@drawable/boton_inicio"
+                android:fontFamily="@font/quicksand_regular"
+                android:onClick="confirmarFactura"
+                android:text="@string/button_ContinuarCantidadPagoFacturas"
+                android:textAllCaps="false"
+                android:textColor="@color/blanco"
+                android:textSize="20dp" />
 
 
         </LinearLayout>
-    </ScrollView>
 
-</RelativeLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

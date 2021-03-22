@@ -17,7 +17,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:name=".App"
@@ -28,9 +28,8 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-
-
-        <activity android:name=".pantallas.funciones.BaseActivity"></activity>
+        <activity android:name=".pantallas.comunes.logIn.PantallaCambioContrasena"></activity>
+        <activity android:name=".pantallas.funciones.BaseActivity" />
         <activity
             android:name=".pantallas.corresponsal.usuarioComun.transacciones.retiro.sinTarjeta.PantallaRetiroSinTarjetaLoader"
             android:screenOrientation="portrait" />
@@ -166,7 +165,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".pantallas.comunes.logIn.LogIn"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".pantallas.comunes.popUp.PopUp"
             android:screenOrientation="portrait" />

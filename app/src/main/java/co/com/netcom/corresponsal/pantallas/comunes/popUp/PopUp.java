@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
 import android.os.Message;
 import android.text.InputFilter;
 import android.text.Spanned;
@@ -23,12 +24,15 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import co.com.netcom.corresponsal.R;
+import co.com.netcom.corresponsal.pantallas.comunes.logIn.LogIn;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.consultaSaldo.pantallaConsultaSaldoLectura;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.tarjetaEmpresarial.PantallaTarjetaEmpresarialLectura;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.retiro.conTarjeta.PantallaRetiroConTarjetaLoader;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.retiro.sinTarjeta.pantallaRetiroSinTarjetaPin;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.transferencia.pantallaTransferenciaLectura;
+import co.com.netcom.corresponsal.pantallas.funciones.CodificarBase64;
+import co.com.netcom.corresponsal.pantallas.funciones.Servicios;
 
 
 public class PopUp extends AppCompatActivity {
@@ -39,6 +43,7 @@ public class PopUp extends AppCompatActivity {
     public final static int TRANSFERENCIA_LEER_TARJETA=4;
     public final static int PAGO_FACTURA_EMPRESARIAL=5;
 
+
     private Context context;
     private Activity activity;
     private AlertDialog alertDialog;
@@ -46,11 +51,13 @@ public class PopUp extends AppCompatActivity {
     private AlertDialog alertDialogRecuperarContrasena;
     private AlertDialog alertDialogGeneral;
     private AlertDialog alertDialogErrorServidor;
+    private AlertDialog dialog;
 
     /**Constructor de la clase PopUpDesconexion, recibo como parametro el contexto de la actividad donde se inicializa*/
     public PopUp(Context contexto){
         this.context = contexto;
         this.activity = (Activity) contexto;
+
     }
 
     /**Metodo de tipo void, el cual se encarga de crear un pop up para informar que el dispositivo MPOS se encuentra desconectado. */
@@ -397,6 +404,51 @@ public class PopUp extends AppCompatActivity {
 
     }
 
+    /**Metodo de tipo void, el cual se encarga de crear un pop up para informar que el cierre de sesión fue fallido */
+    public void crearPopUpLogOutFallido(){
+
+        //Se hace la respectiva conexión con el frontEnd del pop up
+        LayoutInflater li = LayoutInflater.from(context);
+        View view = li.inflate(R.layout.activity_pop_up_error, null);
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        alertDialogBuilder.setView(view);
+        alertDialogBuilder.setCancelable(false);
+
+        //Se genera la conexión con el boton del pop up
+        TextView textViewErrorServidor = view.findViewById(R.id.textView_PopUp);
+        Button btnAceptar= view.findViewById(R.id.button_PopUpSalir);
+        btnAceptar.setText("Aceptar");
+        textViewErrorServidor.setText("Hubo un error al cerrar sesión");
+
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        float dpHeight = displayMetrics.heightPixels;
+        float dpWidth = displayMetrics.widthPixels ;
+
+        //Se crea el evento click para el boton del pop up, el cual redirige al inicio de la aplicacion
+        btnAceptar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialogLoginFallido.dismiss();
+            }
+        });
+
+        //Se crea el correspondiente Dialog que se mostrara al usuario
+        alertDialogLoginFallido = alertDialogBuilder.create();
+        //Se agrega esta linea para que no tenga fondo por defecto el dialog
+        alertDialogLoginFallido.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        //Se muestra el Dialogo al usuario con su correspondiente ubicacion en la pantalla
+        alertDialogLoginFallido.show();
+
+
+        Log.d("heigh",String.valueOf(dpHeight));
+        Log.d("width",String.valueOf(dpWidth*0.9));
+
+        alertDialogLoginFallido.getWindow().setLayout((int)(dpWidth*0.7), LinearLayout.LayoutParams.WRAP_CONTENT);//
+
+
+    }
+
     /**Metodo de tipo void, el cual se encarga de crear un pop up para recuperar la contraseña */
     public void crearPopUpRecuperarContrasena(){
 
@@ -405,13 +457,15 @@ public class PopUp extends AppCompatActivity {
         View view = li.inflate(R.layout.activity_pop_up_recuperar_contrasena, null);
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
         alertDialogBuilder.setView(view);
-        alertDialogBuilder.setCancelable(false);
+        alertDialogBuilder.setCancelable(true);
 
 
         //Se genera la conexión con el boton del pop up
         EditText usuario = view.findViewById(R.id.editText_PopUpRecuperarContrasenaUsuario);
         Button btnAceptar= view.findViewById(R.id.button_PopUpRecuperarContrasenaAceptar);
+/*
         Button btnCancelar= view.findViewById(R.id.button_PopUpRecuperarContrasenaCancelar);
+*/
 
         //Se crea este filtro para que el usuario no digite espacios en los editText
         InputFilter textFilter = new InputFilter() {
@@ -439,29 +493,70 @@ public class PopUp extends AppCompatActivity {
         btnAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 String usuario_string = usuario.getText().toString();
+                CodificarBase64 base64 = new CodificarBase64();
+                Servicios service = new Servicios(context);
 
                 if (usuario_string.isEmpty()){
-                    Toast.makeText(PopUp.this, "Debe ingresar un usuario", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Debe ingresar un usuario", Toast.LENGTH_SHORT).show();
                 }else{
-
-
                     alertDialogRecuperarContrasena.dismiss();
 
+                    Activity act = (Activity) context;
+
+                    //Se crea el loader que se mostrara mientras se procesa la transaccion
+                    AlertDialog.Builder loader = new AlertDialog.Builder(act);
+
+
+
+                    LayoutInflater inflater = act.getLayoutInflater();
+
+                    loader.setView(inflater.inflate(R.layout.loader_procesando_transaccion,null));
+                    loader.setCancelable(false);
+
+                    dialog = loader.create();
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                    Log.d("OPEN"," se abrio el loader");
+                    dialog.show();
+
+
+
+                    //Se crea hilo para hacer la petición al servidor del token
+                   Thread solicitudToken =  new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            String token = service.solicitarToken();
+                        }
+                    });
+
+                    solicitudToken.start();
+
+
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            service.obtenerContrasenaTemporal(base64.convertirBase64(usuario_string));
+                            dialog.dismiss();
+                        }
+                    }).start();
                 }
 
             }
         });
 
-        //Se crea el evento click para el boton del pop up, el cual redirige al inicio de la aplicacion
+   /*     //Se crea el evento click para el boton del pop up, el cual redirige al inicio de la aplicacion
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 alertDialogRecuperarContrasena.dismiss();
             }
-        });
+        });*/
+        //Se obitenen las medidas de la pantalla
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        float dpHeight = displayMetrics.heightPixels;
+        float dpWidth = displayMetrics.widthPixels ;
 
         //Se crea el correspondiente Dialog que se mostrara al usuario
         alertDialogRecuperarContrasena = alertDialogBuilder.create();
@@ -470,12 +565,12 @@ public class PopUp extends AppCompatActivity {
 
         //Se muestra el Dialogo al usuario con su correspondiente ubicacion en la pantalla
         alertDialogRecuperarContrasena.show();
-        alertDialogRecuperarContrasena.getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+        alertDialogRecuperarContrasena.getWindow().setLayout((int)(dpWidth*0.7),LinearLayout.LayoutParams.WRAP_CONTENT);
 
 
     }
 
-    /**Metodo de tipo void, el cual se encarga de crear un pop up para informar que el login fallo */
+    /**Metodo de tipo void, el cual se encarga de crear un pop up para informar que la transacción no es soportada por Contactless */
     public void crearPopUpContactless(String mensaje){
 
         //Se hace la respectiva conexión con el frontEnd del pop up

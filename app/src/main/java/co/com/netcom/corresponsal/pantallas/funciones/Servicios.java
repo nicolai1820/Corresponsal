@@ -47,6 +47,8 @@ public class Servicios {
     private static String apiLogin ="netcom/merchant/api/users/sessions";
     private static String apiParametricas ="netcom/merchant/api/parametrics/new";
     private static String apiRefreshToken ="netcom/merchant/api/users/userID/sessions";
+    private static String apiContrasenaTemporal ="netcom/merchant/api/users/forgot_password";
+    private static String apiCambioContrasena ="netcom/merchant/api/users/userId/passwords";
 
 
 
@@ -162,6 +164,7 @@ public class Servicios {
                 PreferencesUsuario prefs = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_INFO_USUARIO,context);
                 prefs.setUserId(Jobject.getString("userId"));
                 prefs.setEncryptionKey(Jobject.getString("encryptionKey"));
+
             }else{
                 respuestaServidor = Jobject.getString("descriptionState");
             }
@@ -420,7 +423,9 @@ public class Servicios {
         } catch (IOException | JSONException e) {
             //Se envia un mensaje al handler de la clase consulta saldo, indicando que el usuario cancelo la transaccion
             Message usuarioCancela = new Message();
-            usuarioCancela.what = 3;
+            //usuarioCancela.what = 3;
+            //Se pone en 5 para poder hacer Login
+            usuarioCancela.what = 5;
             LogIn.respuesta.sendMessage(usuarioCancela);
 
         }
@@ -453,4 +458,116 @@ public class Servicios {
     }*/
 
 
+    /**Metodo para Obtener contraseña temporal*/
+    public void obtenerContrasenaTemporal(String usuario){
+
+        //Metodo para funcionar con cualquier ssl
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.hostnameVerifier(new HostnameVerifier() {
+            @Override
+            public boolean verify(String hostname, SSLSession session) {
+                return true;
+            }
+        });
+
+        PreferencesUsuario prefs = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_TOKEN,context);
+        Log.d("TOKENCON",prefs.getToken());
+        Log.d("USER",usuario);
+        OkHttpClient client = builder.sslSocketFactory(getSLLContext().getSocketFactory()).callTimeout(30,TimeUnit.SECONDS).build();
+
+        MediaType mediaType = MediaType.parse("application/json");
+        RequestBody body = RequestBody.create(mediaType, "{\n    \"userName\": \""+usuario+"\"\n}");
+        Request request = new Request.Builder()
+                .url(urlBaseServicios+apiContrasenaTemporal)
+                .method("POST", body)
+                .addHeader("Authorization", "Bearer "+prefs.getToken())
+                .addHeader("Content-Type", "application/json")
+                .build();
+        String a="";
+        try {
+            final Request copy = request.newBuilder().build();
+            final Buffer buffer = new Buffer();
+            copy.body().writeTo(buffer);
+            a = buffer.readUtf8();
+        } catch (final IOException e) {
+            a = "did not work";
+        }
+
+        Log.d("Body",a);
+        Log.d("Service",request.toString());
+        Log.d("Headers",request.headers().toString());
+
+        try {
+            Response response = client.newCall(request).execute();
+
+            String jsonData = response.body().string();
+            Log.d("RESP",jsonData);
+            /*JSONObject Jobject = new JSONObject(jsonData);
+
+            return Jobject.getString("loginState");*/
+
+        } catch (IOException  e) {
+          /*  CodificarBase64 code = new CodificarBase64();
+            respuestaServidor=code.convertirBase64("Ambiente no disponible");
+            return code.convertirBase64("-2");*/}
+
+
+    }
+
+    /**Metodo para realizar el cambio de contraseña*/
+
+    public void cambiarContraseña(String contrasenaAntigua,String contrasenaNueva, String confirmacionContrasena){
+
+        PreferencesUsuario prefs = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_INFO_USUARIO,context);
+        PreferencesUsuario prefsToken = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_TOKEN,context);
+
+        //Metodo para funcionar con cualquier ssl
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.hostnameVerifier(new HostnameVerifier() {
+            @Override
+            public boolean verify(String hostname, SSLSession session) {
+                return true;
+            }
+        });
+
+        OkHttpClient client = builder.sslSocketFactory(getSLLContext().getSocketFactory()).callTimeout(30,TimeUnit.SECONDS).build();
+
+        MediaType mediaType = MediaType.parse("application/json");
+        RequestBody body = RequestBody.create(mediaType, "{\n\t\"currentPassword\": \""+contrasenaAntigua+"\",\n\t\"newPassword\": \""+contrasenaNueva+"\",\n\t\"confirmPassword\": \""+confirmacionContrasena+"\"\n}");
+        Request request = new Request.Builder()
+                .url(urlBaseServicios+apiCambioContrasena.replaceFirst("userId",prefs.getUserId()))
+                .method("POST", body)
+                .addHeader("Content-Type", "application/json")
+                .addHeader("Accept", "text/*;q=0.3, text/html;q=0.7, text/html;level=1,text/html;level=2;q=0.4, */*;q=0.5")
+                .addHeader("Authorization", "Bearer "+ prefsToken.getToken())
+                .build();
+
+        String a="";
+        try {
+            final Request copy = request.newBuilder().build();
+            final Buffer buffer = new Buffer();
+            copy.body().writeTo(buffer);
+            a = buffer.readUtf8();
+        } catch (final IOException e) {
+            a = "did not work";
+        }
+
+        Log.d("Body",a);
+        Log.d("Service",request.toString());
+        Log.d("Headers",request.headers().toString());
+
+        try {
+            Response response = client.newCall(request).execute();
+
+            String jsonData = response.body().string();
+            Log.d("RESP",jsonData);
+            /*JSONObject Jobject = new JSONObject(jsonData);
+
+            return Jobject.getString("loginState");*/
+
+        } catch (IOException  e) {
+          /*  CodificarBase64 code = new CodificarBase64();
+            respuestaServidor=code.convertirBase64("Ambiente no disponible");
+            return code.convertirBase64("-2");*/}
+    }
 }

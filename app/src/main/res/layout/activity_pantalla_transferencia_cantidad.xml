@@ -1,130 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.transferencia.pantallaTransferenciaCantidad"
-    android:background="@drawable/fondo">
+    android:background="@drawable/fondo"
+    app:layout_constrainedWidth="true"
+    app:layout_constrainedHeight="true"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.transferencia.pantallaTransferenciaCantidad">
 
 
     <FrameLayout
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline141"
+        app:layout_constraintEnd_toStartOf="@id/guideline143"
+        app:layout_constraintStart_toEndOf="@id/guideline142"
+        app:layout_constraintTop_toBottomOf="@id/guideline140"
         android:id="@+id/contenedorHeaderPantallaTransferenciaCantidad"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    
-    <ScrollView
-        android:layout_below="@id/contenedorHeaderPantallaTransferenciaCantidad"
-        android:layout_above="@id/menuTransferencia"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        android:layout_height="wrap_content" />
+
 
 
             <TextView
+                app:layout_constraintVertical_bias="0.04"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintBottom_toTopOf="@id/guideline141"
+                app:layout_constraintEnd_toStartOf="@id/guideline143"
+                app:layout_constraintStart_toEndOf="@id/guideline142"
+                app:layout_constraintTop_toBottomOf="@id/contenedorHeaderPantallaTransferenciaCantidad"
+                android:id="@+id/textView_PantallaTransferenciaCantidad"
                 android:layout_width="225dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/azul"
-                android:fontFamily="@font/quicksand_regular"
-                android:textSize="19dp"
-                android:text="@string/textView_pantallaTransferenciaTipoDeCuentaNumeroYMonto"
                 android:layout_marginStart="36dp"
-                android:layout_marginTop="40dp"/>
+                android:fontFamily="@font/quicksand_regular"
+                android:text="@string/textView_pantallaTransferenciaTipoDeCuentaNumeroYMonto"
+                android:textColor="@color/azul"
+                android:textSize="19dp" />
+
             <Spinner
+                app:layout_constraintHeight_percent="0.07"
+                app:layout_constraintVertical_bias="0.15"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintBottom_toTopOf="@id/guideline141"
+                app:layout_constraintEnd_toStartOf="@id/guideline143"
+                app:layout_constraintStart_toEndOf="@id/guideline142"
+                app:layout_constraintTop_toBottomOf="@id/textView_PantallaTransferenciaCantidad"
                 android:id="@+id/spinner_tipoCuentaDestinoTransferencia"
                 android:layout_width="match_parent"
-                android:layout_marginEnd="36dp"
-                android:layout_height="49dp"
+                android:layout_height="0dp"
                 android:layout_marginStart="36dp"
-                android:layout_marginTop="87dp"
-                android:paddingStart="23dp"
+                android:layout_marginEnd="36dp"
                 android:background="@null"
                 android:foreground="@drawable/spinner_style"
                 android:overlapAnchor="false"
-                />
+                android:paddingStart="23dp" />
 
             <EditText
+                app:layout_constraintHeight_percent="0.07"
+                app:layout_constraintVertical_bias="0.05"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintBottom_toTopOf="@id/guideline141"
+                app:layout_constraintEnd_toStartOf="@id/guideline143"
+                app:layout_constraintStart_toEndOf="@id/guideline142"
+                app:layout_constraintTop_toBottomOf="@id/spinner_tipoCuentaDestinoTransferencia"
                 android:id="@+id/editText_NumeroCuentaDestinoTransferencia"
-                android:textSize="19dp"
-                android:textColorHint="@color/azul"
-                android:textColor="@color/azul"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="36dp"
+                android:background="@drawable/input_form"
                 android:fontFamily="@font/quicksand_bold"
                 android:hint="@string/editText_pantallaTransferenciaTipoDeCuentaNumeroYMontoCuenta"
-                android:layout_marginTop="20dp"
-                android:paddingStart="23dp"
-                android:layout_marginEnd="36dp"
-                android:layout_marginStart="36dp"
-                android:background="@drawable/input_form"
-                android:layout_width="match_parent"
-                android:layout_height="49dp"
                 android:inputType="number"
                 android:numeric="integer"
+                android:paddingStart="23dp"
+                android:textColor="@color/azul"
+                android:textColorHint="@color/azul"
+                android:textSize="19dp"
 
                 />
 
 
             <EditText
+                app:layout_constraintHeight_percent="0.08"
+                app:layout_constraintVertical_bias="0.05"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintBottom_toTopOf="@id/guideline141"
+                app:layout_constraintEnd_toStartOf="@id/guideline143"
+                app:layout_constraintStart_toEndOf="@id/guideline142"
+                app:layout_constraintTop_toBottomOf="@id/editText_NumeroCuentaDestinoTransferencia"
                 android:id="@+id/editText_CantidadTransferencia"
-                android:textSize="19dp"
-                android:textColorHint="@color/azul"
-                android:textColor="@color/azul"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="36dp"
+                android:background="@drawable/input_form"
                 android:fontFamily="@font/quicksand_bold"
                 android:hint="@string/editText_pantallaTransferenciaTipoDeCuentaNumeroYMontoMonto"
-                android:layout_marginTop="20dp"
-                android:paddingStart="23dp"
-                android:layout_marginEnd="36dp"
-                android:layout_marginStart="36dp"
-                android:background="@drawable/input_form"
-                android:layout_width="match_parent"
-                android:layout_height="49dp"
                 android:imeOptions="actionDone"
                 android:inputType="number"
                 android:numeric="integer"
-                />
-            
+                android:paddingStart="23dp"
+                android:textColor="@color/azul"
+                android:textColorHint="@color/azul"
+                android:textSize="19dp" />
+
             <Button
-                android:onClick="continuarCantidadTransaccion"
+                app:layout_constraintBottom_toTopOf="@id/guideline141"
+                app:layout_constraintHeight_percent="0.095"
+                app:layout_constraintVertical_bias="0.35"
+                app:layout_constraintEnd_toStartOf="@id/guideline143"
+                app:layout_constraintStart_toEndOf="@id/guideline142"
+                app:layout_constraintTop_toBottomOf="@id/editText_CantidadTransferencia"
                 android:id="@+id/button_ContinuarCantidadTransferencia"
                 android:layout_width="138dp"
                 android:layout_height="67dp"
-                android:background="@drawable/boton_inicio"
                 android:layout_gravity="center_horizontal"
-                android:textAllCaps="false"
-                android:textSize="20dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/boton_inicio"
                 android:fontFamily="@font/quicksand_regular"
-                android:textColor="@color/blanco"
+                android:onClick="continuarCantidadTransaccion"
                 android:text="@string/button_pantallaTransferenciaTipoDeCuentaNumeroYMontoContinuar"
-                android:layout_marginTop="117dp"
-                android:layout_marginBottom="15dp"/>
+                android:textAllCaps="false"
+                android:textColor="@color/blanco"
+                android:textSize="20dp" />
 
-            
-            
-            
-        </LinearLayout>
-        
-    </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/menuTransferencia"
-        android:background="@drawable/menu_fondo"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/menu_fondo"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp"
+        app:itemIconSize="35dp"
         app:itemIconTint="@color/azul"
         app:itemTextColor="@color/azul"
-        android:layout_alignParentBottom="true"
+        app:labelVisibilityMode="unlabeled"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="parent"
-        app:menu="@menu/menu_home"
-        android:paddingLeft="60dp"
-        android:paddingRight="60dp"
-        app:itemIconSize="35dp"
-        app:labelVisibilityMode="unlabeled" />
-    
+        app:menu="@menu/menu_home" />
 
-</RelativeLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline140"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline141"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline142"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline143"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

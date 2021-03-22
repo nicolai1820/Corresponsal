@@ -51,7 +51,7 @@ import co.com.netcom.corresponsal.pantallas.funciones.Servicios;
 public class LogIn extends AppCompatActivity {
 
     private EditText editText_User,editText_Password;
-    private TextView textView_Password, textView_Dudas;
+    private TextView textView_Password, textView_CambiarContraseña;
     private CodificarBase64 base64;
     private CodificarSHA512 sha512;
     private Thread solicitudToken;
@@ -89,6 +89,7 @@ public class LogIn extends AppCompatActivity {
         editText_User = (EditText) findViewById(R.id.editText_User);
         editText_Password = (EditText) findViewById(R.id.editText_Password);
         textView_Password = (TextView) findViewById(R.id.textView_PasswordLogin);
+        textView_CambiarContraseña = findViewById(R.id.textView_CambiarContrasena);
 
         sharedPreferences = getSharedPreferences("User",MODE_PRIVATE);
         sharedPreferencesEditor = sharedPreferences.edit();
@@ -119,13 +120,31 @@ public class LogIn extends AppCompatActivity {
 
         /** Se crea el evento click para el textview de recuperar contraseña, el cual crea un pop up donde se recibe el usuario
          * para posteriormente consumir el servicio de recuperar contraseña.*/
-        textView_Password.setOnClickListener(new View.OnClickListener() {
+        textView_CambiarContraseña.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                popUp.crearPopUpRecuperarContrasena();
+
+                //popUp.crearPopUpRecuperarContrasena();
+                //Preguntar porque no se como se obtiene el userid, cuando no hay un inicio de sesión previo
+                Intent i = new Intent(getApplicationContext() , PantallaCambioContrasena.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
         });
 
+        /**Se cre el evento click para el text view olvide mi contraseña, el cual crea un pop up donde se recibo el usuario para
+         * posteriormente */
+
+        textView_Password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                popUp.crearPopUpRecuperarContrasena();
+             /*   Intent i = new Intent(getApplicationContext() , PantallaCambioContrasena.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);*/
+            }
+        });
 
         //Se crea este filtro para que el usuario no digite espacios en los editText
 
@@ -161,13 +180,17 @@ public class LogIn extends AppCompatActivity {
 
                         //Este error deberia ocurrir unicamente cuando el servidor no responde
                         if(token.isEmpty()){
+
+                      /*      PopUp popUp = new PopUp(LogIn.this);
+                            popUp.crearPopUpErrorServidor();*/
+                            Intent i = new Intent(getApplicationContext(), pantallaInicialUsuarioComun.class);
+                            startActivity(i);
+                            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                             dialog.dismiss();
-                            PopUp popUp = new PopUp(LogIn.this);
-                            popUp.crearPopUpErrorServidor();
                         }else{
 
                   //Se cre hilo para hacer la petición del inicio de sesión.
-                         /*   solicitudInicioSesion = new Thread(new Runnable() {
+                            solicitudInicioSesion = new Thread(new Runnable() {
                                 @Override
                                 public void run() {
                                     Log.d("HILO2","Segundo Hilo");
@@ -179,28 +202,13 @@ public class LogIn extends AppCompatActivity {
                                 }
                             });
 
-                            solicitudInicioSesion.start();*/
+                            solicitudInicioSesion.start();
 
-                            estadoConexion="1";
+                          /*  estadoConexion="1";
                             Message usuarioCancela = new Message();
                             usuarioCancela.what = 4;
-                            LogIn.respuesta.sendMessage(usuarioCancela);
+                            LogIn.respuesta.sendMessage(usuarioCancela);*/
 
-                  /*          try {
-                                solicitudInicioSesion.join();
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }*/
-
-                            //Log.d("ESTADODECODIFICADO",estadoConexion);
-
-                            //Log.d("ESTADO",base64.decodificarBase64(estadoConexion));
-
-
-           /* Intent i = new Intent(this, pantallaInicialUsuarioComun.class);
-            startActivity(i);
-            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
-*/
                         }
 
 
@@ -255,15 +263,20 @@ public class LogIn extends AppCompatActivity {
                             }
                             else{
                                 dialog.dismiss();
-                                popUp.crearPopUpLoginFallido(base64.decodificarBase64(objetoServicios.getRespuestaServidor()));
+                                //popUp.crearPopUpLoginFallido(base64.decodificarBase64(objetoServicios.getRespuestaServidor()));
+                                Intent i = new Intent(getApplicationContext(), pantallaInicialUsuarioComun.class);
+                                startActivity(i);
+                                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+
                             }
 
 
                             break;
                     case 5:
-                           /* Intent i = new Intent(getApplicationContext(), pantallaInicialUsuarioComun.class);
+                            Intent i = new Intent(getApplicationContext(), pantallaInicialUsuarioComun.class);
                                 startActivity(i);
-                                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);*/
+                                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                        dialog.dismiss();
                            break;
                 }
             }
@@ -331,13 +344,6 @@ public class LogIn extends AppCompatActivity {
                   });
 
                    solicitudToken.start();
-             /*      try {
-                       solicitudToken.wait();
-                       //solicitudToken.join();
-                   } catch (InterruptedException e) {
-                       e.printStackTrace();
-                   }
-*/
 
                }
           else{
@@ -349,4 +355,8 @@ public class LogIn extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
 }

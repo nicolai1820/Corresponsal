@@ -1,9 +1,15 @@
 package co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.informacion;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +22,9 @@ import androidx.annotation.Nullable;
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.comunes.logIn.LogIn;
+import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.duplicado.pantallaInicialDuplicado;
+import co.com.netcom.corresponsal.pantallas.funciones.DeviceInformation;
 import co.com.netcom.corresponsal.pantallas.funciones.PreferencesUsuario;
 import co.com.netcom.corresponsal.pantallas.funciones.Servicios;
 import co.com.netcom.corresponsal.pantallas.funciones.TimeOutSesion;
@@ -29,6 +37,10 @@ public class pantallaInformacionUsuarioComun extends Fragment {
     private Servicios servicio;
     private Thread hilo;
     private String respuesta="";
+    public static Handler respuestaCerrar;
+    AlertDialog dialog;
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -47,7 +59,34 @@ public class pantallaInformacionUsuarioComun extends Fragment {
         servicio= new Servicios(getActivity());
 
 
-        /**Evento click del boton preguntas frecuentes, redirige a la pantalla de preuntas frecuentes.*/
+        //Se crea el Handler para manejar la respuesta de los Hilos sin Join y evitar así que se bloquee el aplicativo
+
+        respuestaCerrar = new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                switch (msg.what) {
+                    case 1:
+
+                        if (respuesta.equals("MQ==")){
+                            dialog.dismiss();
+                            TimeOutSesion timeOutSesion = new TimeOutSesion();
+                            timeOutSesion.stopLogoutTimer();
+                            Intent i = new Intent(getActivity(), LogIn.class);
+                            startActivity(i);
+                            getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                        }else {
+                            PopUp pop = new PopUp(getActivity().getApplicationContext());
+                            pop.crearPopUpLogOutFallido();
+                        }
+                        break;
+                }
+            }
+        };
+
+
+
+                        /**Evento click del boton preguntas frecuentes, redirige a la pantalla de preuntas frecuentes.*/
         preguntasFrecuentes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,29 +117,44 @@ public class pantallaInformacionUsuarioComun extends Fragment {
             @Override
             public void onClick(View v) {
 
-              hilo=  new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        respuesta = servicio.cerrarSesion();
-                    }
-                });
+                //Se crea el loader
+                AlertDialog.Builder loader = new AlertDialog.Builder(getActivity());
+                LayoutInflater inflater = getActivity().getLayoutInflater();
 
-                hilo.start();
-                try {
-                    hilo.join();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                loader.setView(inflater.inflate(R.layout.loader_procesando_transaccion,null));
+                loader.setCancelable(false);
+
+                dialog = loader.create();
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                Log.d("OPEN"," se abrio el loader");
+                dialog.show();
+
+                //Se verifica que se posee conexión a internet
+
+                DeviceInformation device = new DeviceInformation(getActivity().getApplicationContext());
+
+                if(device.getInternetStatus()){
+                    hilo=  new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            respuesta = servicio.cerrarSesion();
+                            try{
+                                //Se envia un mensaje al handler para continuar el flujo de cierre de sesión
+                                Message cierreSesion = new Message();
+                                cierreSesion.what = 1;
+                                pantallaInformacionUsuarioComun.respuestaCerrar.sendMessage(cierreSesion);
+                            }catch (Exception e){ }
+
+                        }
+                    });
+                }else{
+
+                    PopUp popUp = new PopUp(getActivity().getApplicationContext());
+                    popUp.crearPopUpErrorInternet();
                 }
 
-                if (respuesta.equals("MQ==")){
-                    TimeOutSesion timeOutSesion = new TimeOutSesion();
-                    timeOutSesion.stopLogoutTimer();
-                    Intent i = new Intent(getActivity(), LogIn.class);
-                    startActivity(i);
-                    getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-                }else {
 
-                }
             }
         });
 

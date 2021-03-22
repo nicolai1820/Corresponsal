@@ -1,98 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context="co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion"
+    android:background="@drawable/fondo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion"
-    android:background="@drawable/fondo">
+    app:layout_constrainedWidth="true"
+    app:layout_constrainedHeight="true"
+    android:fillViewport="true"
+    >
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+>
 
     <FrameLayout
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline29"
+        app:layout_constraintEnd_toStartOf="@id/guideline31"
+        app:layout_constraintStart_toEndOf="@id/guideline30"
+        app:layout_constraintTop_toBottomOf="@id/guideline28"
         android:id="@+id/contenedorHeaderConfirmarValores"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
 
-    <ScrollView
+    <TextView
+        app:layout_constraintVertical_bias="0.04"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline29"
+        app:layout_constraintEnd_toStartOf="@id/guideline31"
+        app:layout_constraintStart_toEndOf="@id/guideline30"
+        app:layout_constraintTop_toBottomOf="@id/contenedorHeaderConfirmarValores"
+        android:id="@+id/textViewDescripcionValores"
+        android:layout_width="239dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:fontFamily="@font/quicksand_regular"
+        android:textColor="@color/azul"
+        android:textSize="21dp" />
+
+    <LinearLayout
+        app:layout_constraintVertical_bias="0.04"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline31"
+        app:layout_constraintStart_toEndOf="@id/guideline30"
+        app:layout_constraintBottom_toTopOf="@id/guideline29"
+        app:layout_constraintTop_toBottomOf="@id/textViewDescripcionValores"
+        android:id="@+id/linearLayoutConfirmacion"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/contenedorHeaderConfirmarValores">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:orientation="vertical"
-            >
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:background="@drawable/input_form"
+        android:orientation="vertical"
+        android:padding="10dp"></LinearLayout>
 
-            <TextView
-                android:id="@+id/textViewDescripcionValores"
-                android:layout_width="239dp"
-                android:layout_height="55dp"
-                android:layout_marginStart="37dp"
-                android:textColor="@color/azul"
-                android:layout_marginTop="33dp"
-                android:layout_marginBottom="32dp"
-                android:textSize="21dp"
-                android:fontFamily="@font/quicksand_regular"
-                />
-        <LinearLayout
-            android:id="@+id/linearLayoutConfirmacion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginEnd="36dp"
-            android:background="@drawable/input_form"
-            android:padding="10dp"
-            android:orientation="vertical">
-        </LinearLayout>
+    <LinearLayout
+        app:layout_constraintBottom_toTopOf="@id/guideline29"
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline31"
+        app:layout_constraintStart_toEndOf="@id/guideline30"
+        app:layout_constraintTop_toBottomOf="@id/linearLayoutConfirmacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal"
-            android:layout_marginBottom="10dp"
-            >
-            
-            <ImageButton
-                android:id="@+id/button_CancelarConfirmacion"
-                android:layout_width="67dp"
-                android:layout_height="67dp"
-                android:background="@drawable/boton_inicio"
-                android:drawableTint="@color/blanco"
+        <ImageButton
+            android:id="@+id/button_CancelarConfirmacion"
+            android:layout_width="67dp"
+            android:layout_height="67dp"
+            android:adjustViewBounds="true"
 
-                android:layout_marginTop="73dp"
-                android:padding="20dp"
-                android:scaleType="fitCenter"
-                android:adjustViewBounds="true"
-                android:src="@drawable/cancelar_giro_icon"
-                android:tint="@color/blanco"
-                android:onClick="cancelarValores"
-                />
+            android:background="@drawable/boton_inicio"
+            android:drawableTint="@color/blanco"
+            android:onClick="cancelarValores"
+            android:padding="20dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/cancelar_giro_icon"
+            android:tint="@color/blanco" />
 
-            
+
         <Button
             android:id="@+id/button_ContinuarConfirmarValores"
             android:layout_width="138dp"
             android:layout_height="67dp"
-            android:background="@drawable/boton_inicio"
-            android:textColor="@color/blanco"
-            android:textAllCaps="false"
-            android:textSize="20dp"
-            android:text="@string/button_ContinuarConfirmarValores"
             android:layout_marginStart="11dp"
-            android:layout_marginTop="73dp"
+            android:background="@drawable/boton_inicio"
             android:onClick="confirmarValores"
-            />
-        </LinearLayout>
+            android:text="@string/button_ContinuarConfirmarValores"
+            android:textAllCaps="false"
+            android:textColor="@color/blanco"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
 
 
-        </LinearLayout>
-
-
-
-    </ScrollView>
-
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

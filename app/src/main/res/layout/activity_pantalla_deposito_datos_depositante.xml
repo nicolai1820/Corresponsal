@@ -1,131 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.deposito.pantallaDepositoDatosDepositante"
     android:layout_gravity="center_horizontal"
-    android:background="@drawable/fondo">
+    android:background="@drawable/fondo"
+    app:layout_constrainedWidth="true"
+    app:layout_constrainedHeight="true"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.deposito.pantallaDepositoDatosDepositante">
 
     <FrameLayout
+        app:layout_constraintBottom_toTopOf="@id/guideline41"
+        app:layout_constraintEnd_toStartOf="@id/guideline43"
+        app:layout_constraintStart_toEndOf="@id/guideline42"
+        app:layout_constraintTop_toBottomOf="@id/guideline40"
         android:id="@+id/contenedorHeaderDepositoDatosDepositante"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <ScrollView
-        android:layout_below="@id/contenedorHeaderDepositoDatosDepositante"
-        android:layout_above="@+id/menuDeposito"
+
+    <TextView
+        app:layout_constraintBottom_toTopOf="@id/guideline41"
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline43"
+        app:layout_constraintStart_toEndOf="@id/guideline42"
+        app:layout_constraintTop_toBottomOf="@id/contenedorHeaderDepositoDatosDepositante"
+        android:id="@+id/textView_PantallaDepositoDepositante"
+        android:layout_width="167dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:fontFamily="@font/quicksand_regular"
+        android:text="@string/textView_DepositoDatosDepositante"
+        android:textColor="@color/azul"
+        android:textSize="21dp" />
+
+    <Spinner
+        app:layout_constraintBottom_toTopOf="@id/guideline41"
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintVertical_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline43"
+        app:layout_constraintStart_toEndOf="@id/guideline42"
+        app:layout_constraintTop_toBottomOf="@id/textView_PantallaDepositoDepositante"
+        android:id="@+id/spinner_tipoCuentaDepositoDatosDepositante"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="5dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:orientation="vertical">
-        
-            <TextView
-                android:layout_width="167dp"
-                android:layout_height="60dp"
-                android:textColor="@color/azul"
-                android:textSize="21dp"
-                android:layout_marginTop="38dp"
-                android:layout_marginStart="36dp"
-                android:fontFamily="@font/quicksand_regular"
-                android:text="@string/textView_DepositoDatosDepositante"/>
-
-            <Spinner
-                android:id="@+id/spinner_tipoCuentaDepositoDatosDepositante"
-                android:layout_width="match_parent"
-                android:layout_height="49dp"
-                android:layout_marginStart="36dp"
-                android:layout_marginTop="68dp"
-                android:layout_marginEnd="45dp"
-                android:paddingStart="23dp"
-                android:background="@null"
-                android:foreground="@drawable/spinner_style"
-                android:overlapAnchor="false"
-                />
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="45dp"
+        android:background="@null"
+        android:foreground="@drawable/spinner_style"
+        android:overlapAnchor="false"
+        android:paddingStart="23dp" />
 
 
+    <EditText
+        app:layout_constraintBottom_toTopOf="@id/guideline41"
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline43"
+        app:layout_constraintStart_toEndOf="@id/guideline42"
+        app:layout_constraintTop_toBottomOf="@id/spinner_tipoCuentaDepositoDatosDepositante"
+        android:id="@+id/editText_DepositoDatosDepositanteNumeroCuenta"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/input_form"
+        android:fontFamily="@font/quicksand_bold"
+        android:hint="@string/editText_DepositoDatosDepositanteNumeroCuenta"
+        android:inputType="number"
+        android:numeric="integer"
+        android:paddingStart="23dp"
+        android:textColor="@color/azul"
+        android:textColorHint="@color/azul"
+        android:textSize="21dp"
 
-            <EditText
-                android:id="@+id/editText_DepositoDatosDepositanteNumeroCuenta"
-                android:layout_width="match_parent"
-                android:layout_height="49dp"
-                android:layout_marginTop="21dp"
-                android:layout_marginStart="36dp"
-                android:background="@drawable/input_form"
-                android:fontFamily="@font/quicksand_bold"
-                android:hint="@string/editText_DepositoDatosDepositanteNumeroCuenta"
-                android:inputType="number"
-                android:numeric="integer"
-                android:paddingStart="23dp"
-                android:layout_marginEnd="45dp"
-                android:textColorHint="@color/azul"
-                android:textSize="21dp"
-                android:textColor="@color/azul"
-                />
+        />
 
-            <EditText
-                android:id="@+id/editText_DepositoDatosDepositanteCantidad"
-                android:layout_width="match_parent"
-                android:layout_height="49dp"
-                android:layout_marginStart="36dp"
-                android:layout_marginTop="21dp"
-                android:background="@drawable/input_form"
-                android:fontFamily="@font/quicksand_bold"
-                android:hint="@string/editText_DepositoDatosDepositanteCantidad"
-                android:inputType="number"
-                android:numeric="integer"
-                android:paddingStart="23dp"
-                android:layout_marginEnd="45dp"
-                android:textColorHint="@color/azul"
-                android:textSize="21dp"
-                android:imeOptions="actionDone"
-                android:textColor="@color/azul"
-                />
+    <EditText
+        app:layout_constraintBottom_toTopOf="@id/guideline41"
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline43"
+        app:layout_constraintStart_toEndOf="@id/guideline42"
+        app:layout_constraintTop_toBottomOf="@id/editText_DepositoDatosDepositanteNumeroCuenta"
+        android:id="@+id/editText_DepositoDatosDepositanteCantidad"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/input_form"
+        android:fontFamily="@font/quicksand_bold"
+        android:hint="@string/editText_DepositoDatosDepositanteCantidad"
+        android:imeOptions="actionDone"
+        android:inputType="number"
+        android:numeric="integer"
+        android:paddingStart="23dp"
+        android:textColor="@color/azul"
+        android:textColorHint="@color/azul"
+        android:textSize="21dp" />
 
-            <Button
-                android:id="@+id/button_ContinuarDatosDepositanteDeposito"
-                android:layout_width="138dp"
-                android:layout_height="67dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="69dp"
-                android:background="@drawable/boton_inicio"
-                android:fontFamily="@font/quicksand_regular"
-                android:text="@string/button_DepositoDatosDepositanteContinuar"
-                android:textAllCaps="false"
-                android:textColor="@color/blanco"
-                android:textSize="20dp"
-                android:onClick="continuarDatosDepositanteDeposito"
-                android:layout_marginBottom="15dp"/>
+    <Button
+        app:layout_constraintBottom_toTopOf="@id/guideline41"
+        app:layout_constraintHeight_percent="0.095"
+        app:layout_constraintVertical_bias="0.4"
+        app:layout_constraintEnd_toStartOf="@id/guideline43"
+        app:layout_constraintStart_toEndOf="@id/guideline42"
+        app:layout_constraintTop_toBottomOf="@id/editText_DepositoDatosDepositanteCantidad"
+        android:id="@+id/button_ContinuarDatosDepositanteDeposito"
+        android:layout_width="138dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/boton_inicio"
+        android:fontFamily="@font/quicksand_regular"
+        android:onClick="continuarDatosDepositanteDeposito"
+        android:text="@string/button_DepositoDatosDepositanteContinuar"
+        android:textAllCaps="false"
+        android:textColor="@color/blanco"
+        android:textSize="20dp" />
 
-
-
-        </LinearLayout>
-
-    </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        app:layout_constraintHeight_percent="0.10"
         android:id="@+id/menuDeposito"
-        android:background="@drawable/menu_fondo"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        app:itemIconTint="@color/azul"
-        app:itemTextColor="@color/azul"
+        android:layout_height="0dp"
         android:layout_alignParentBottom="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:menu="@menu/menu_home"
+        android:background="@drawable/menu_fondo"
         android:paddingLeft="60dp"
         android:paddingRight="60dp"
         app:itemIconSize="35dp"
+        app:itemIconTint="@color/azul"
+        app:itemTextColor="@color/azul"
         app:labelVisibilityMode="unlabeled"
-        />
+        app:layout_constraintBottom_toTopOf="@id/guideline41"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline43"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/guideline42"
+        app:layout_constraintTop_toBottomOf="@id/button_ContinuarDatosDepositanteDeposito"
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/menu_home" />
 
-</RelativeLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline41"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline43"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

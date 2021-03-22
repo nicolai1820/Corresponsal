@@ -1,98 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.recargas.pantallaRecargaCelular"
-    android:background="@drawable/fondo">
+    android:background="@drawable/fondo"
+    app:layout_constrainedWidth="true"
+    app:layout_constrainedHeight="true"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.recargas.pantallaRecargaCelular">
 
     <FrameLayout
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline97"
+        app:layout_constraintEnd_toStartOf="@id/guideline99"
+        app:layout_constraintStart_toEndOf="@id/guideline98"
+        app:layout_constraintTop_toBottomOf="@id/guideline96"
         android:id="@+id/contenedorHeaderPantallaRecargaCelular"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
-    <ScrollView
-        android:layout_above="@id/menuRecargas"
-        android:layout_below="@id/contenedorHeaderPantallaRecargaCelular"
+
+    <TextView
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.04"
+        app:layout_constraintBottom_toTopOf="@id/guideline97"
+        app:layout_constraintEnd_toStartOf="@id/guideline99"
+        app:layout_constraintStart_toEndOf="@id/guideline98"
+        app:layout_constraintTop_toBottomOf="@id/contenedorHeaderPantallaRecargaCelular"
+        android:id="@+id/textView_RecargasCelular"
+        android:layout_width="210dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginEnd="45dp"
+        android:fontFamily="@font/quicksand_regular"
+        android:text="@string/textView_RecargasCelular"
+        android:textColor="@color/azul"
+        android:textSize="21dp" />
+
+    <EditText
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintBottom_toTopOf="@id/guideline97"
+        app:layout_constraintEnd_toStartOf="@id/guideline99"
+        app:layout_constraintStart_toEndOf="@id/guideline98"
+        app:layout_constraintTop_toBottomOf="@id/textView_RecargasCelular"
+        android:id="@+id/editText_RecargasCelular"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/input_form"
+        android:fontFamily="@font/quicksand_bold"
+        android:hint="@string/editText_RecargasCelular"
+        android:imeOptions="actionDone"
+        android:inputType="number"
+        android:numeric="integer"
+        android:paddingStart="23dp"
+        android:textColor="@color/azul"
+        android:textColorHint="@color/azul"
+        android:textSize="21dp" />
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal">
+    <Button
+        app:layout_constraintBottom_toTopOf="@id/guideline97"
+        app:layout_constraintHeight_percent="0.095"
+        app:layout_constraintVertical_bias="0.35"
+        app:layout_constraintEnd_toStartOf="@id/guideline99"
+        app:layout_constraintStart_toEndOf="@id/guideline98"
+        app:layout_constraintTop_toBottomOf="@id/editText_RecargasCelular"
+        android:id="@+id/button_RecargasCelularContinuar"
+        android:layout_width="138dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/boton_inicio"
+        android:fontFamily="@font/quicksand_regular"
+        android:onClick="recargasCelularContinuar"
+        android:text="@string/button_RecargasContinuar"
+        android:textAllCaps="false"
+        android:textColor="@color/blanco"
+        android:textSize="20dp" />
 
-            <TextView
-                android:id="@+id/textView_RecargasCelular"
-                android:layout_width="210dp"
-                android:layout_height="55dp"
-                android:layout_marginEnd="45dp"
-                android:layout_marginStart="37dp"
-                android:layout_marginTop="33dp"
-                android:text="@string/textView_RecargasCelular"
-                android:fontFamily="@font/quicksand_regular"
-                android:textColor="@color/azul"
-                android:textSize="21dp"/>
-
-            <EditText
-                android:id="@+id/editText_RecargasCelular"
-                android:layout_width="match_parent"
-                android:layout_height="49dp"
-                android:layout_marginStart="36dp"
-                android:layout_marginEnd="45dp"
-                android:layout_marginTop="150dp"
-                android:background="@drawable/input_form"
-                android:hint="@string/editText_RecargasCelular"
-                android:inputType="number"
-                android:numeric="integer"
-                android:fontFamily="@font/quicksand_bold"
-                android:textSize="21dp"
-                android:textColorHint="@color/azul"
-                android:paddingStart="23dp"
-                android:imeOptions="actionDone"
-                android:textColor="@color/azul"
-                />
-
-            <Button
-                android:id="@+id/button_RecargasCelularContinuar"
-                android:layout_width="138dp"
-                android:layout_height="67dp"
-                android:background="@drawable/boton_inicio"
-                android:textAllCaps="false"
-                android:textColor="@color/blanco"
-                android:text="@string/button_RecargasContinuar"
-                android:fontFamily="@font/quicksand_regular"
-                android:textSize="20dp"
-                android:layout_marginTop="152dp"
-                android:layout_gravity="center_horizontal"
-                android:onClick="recargasCelularContinuar"
-                android:layout_marginBottom="15dp"
-                />
-
-
-        </LinearLayout>
-    </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/menuRecargas"
-        android:background="@drawable/menu_fondo"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        app:itemIconTint="@color/azul"
-        app:itemTextColor="@color/azul"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.10"
         android:layout_alignParentBottom="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:menu="@menu/menu_home"
+        android:background="@drawable/menu_fondo"
         android:paddingLeft="60dp"
         android:paddingRight="60dp"
         app:itemIconSize="35dp"
+        app:itemIconTint="@color/azul"
+        app:itemTextColor="@color/azul"
         app:labelVisibilityMode="unlabeled"
-        />
+        app:layout_constraintTop_toBottomOf="@id/button_RecargasCelularContinuar"
+        app:layout_constraintBottom_toTopOf="@id/guideline97"
+        app:layout_constraintStart_toEndOf="@id/guideline98"
+        app:layout_constraintEnd_toStartOf="@id/guideline99"
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/menu_home" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline96"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline97"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline98"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline99"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

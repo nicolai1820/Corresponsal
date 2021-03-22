@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import co.com.netcom.corresponsal.R;
@@ -85,8 +86,11 @@ public class pantallaEnviarGiroCantidad extends BaseActivity {
             Toast.makeText(getApplicationContext(),"Debe aceptar los terminos y condiciones",Toast.LENGTH_LONG).show();
         }
         else {
+            byte[] bytes = cantidad_string.getBytes(StandardCharsets.UTF_8);
 
-            numeroItems = integradorC.verificarComisionEnvioGiro(cantidad_string,datosComision);
+            String utf8EncodedString = new String(bytes, StandardCharsets.UTF_8);
+
+            numeroItems = integradorC.verificarComisionEnvioGiro(utf8EncodedString,datosComision);
 
             int valorComision = Integer.parseInt(datosComision.getValorComision());
 

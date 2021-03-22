@@ -1,95 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.duplicado.pantallaInicialDuplicado"
-    android:background="@drawable/fondo">
+    android:background="@drawable/fondo"
+    app:layout_constrainedWidth="true"
+    app:layout_constrainedHeight="true"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.duplicado.pantallaInicialDuplicado">
 
 
     <FrameLayout
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline57"
+        app:layout_constraintStart_toEndOf="@id/guideline58"
+        app:layout_constraintEnd_toStartOf="@id/guideline59"
+        app:layout_constraintTop_toBottomOf="@id/guideline56"
         android:id="@+id/contenedorHeaderDuplicado"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
-    <ScrollView
-        android:layout_below="@id/contenedorHeaderDuplicado"
+
+    <TextView
+        app:layout_constraintVertical_bias="0.04"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toBottomOf="@id/guideline57"
+        app:layout_constraintStart_toEndOf="@id/guideline58"
+        app:layout_constraintEnd_toStartOf="@id/guideline59"
+        app:layout_constraintTop_toBottomOf="@id/contenedorHeaderDuplicado"
+        android:id="@+id/textView_PantallaInicialDuplicado"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:fontFamily="@font/quicksand_regular"
+        android:text="@string/tetxtView_Duplicado"
+        android:textColor="@color/azul"
+        android:textSize="19dp" />
+
+    <Button
+        app:layout_constraintHeight_percent="0.165"
+        app:layout_constraintVertical_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/guideline58"
+        app:layout_constraintEnd_toStartOf="@id/guideline59"
+        app:layout_constraintBottom_toBottomOf="@id/guideline57"
+        app:layout_constraintTop_toBottomOf="@id/textView_PantallaInicialDuplicado"
+        android:id="@+id/button_UltimoRecibo"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/menuDuplicado">
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:background="@drawable/input_form"
+        android:drawableTop="@drawable/ultimo_recibo"
+        android:fontFamily="@font/quicksand_bold"
+        android:paddingTop="25dp"
+        android:paddingBottom="15dp"
+        android:text="@string/button_ultimoRecibo"
+        android:textAllCaps="false"
+        android:textColor="@color/azul"
+        android:textSize="19dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+    <Button
+        app:layout_constraintHeight_percent="0.165"
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline57"
+        app:layout_constraintStart_toEndOf="@id/guideline58"
+        app:layout_constraintEnd_toStartOf="@id/guideline59"
+        app:layout_constraintTop_toBottomOf="@id/button_UltimoRecibo"
+        android:id="@+id/button_OtroRecibo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/input_form"
+        android:drawableTop="@drawable/recibo"
+        android:fontFamily="@font/quicksand_bold"
+        android:paddingTop="25dp"
+        android:paddingBottom="15dp"
+        android:text="@string/button_otroRecibo"
+        android:textAllCaps="false"
+        android:textColor="@color/azul"
+        android:textSize="19dp" />
 
-            <TextView
-                android:layout_marginTop="40dp"
-                android:layout_marginStart="36dp"
-                android:layout_width="280dp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/azul"
-                android:fontFamily="@font/quicksand_regular"
-                android:text="@string/tetxtView_Duplicado"
-                android:textSize="19dp"/>
-
-            <Button
-                android:id="@+id/button_UltimoRecibo"
-                android:layout_width="match_parent"
-                android:layout_height="117dp"
-                android:layout_marginTop="90dp"
-                android:layout_marginEnd="36dp"
-                android:layout_marginStart="36dp"
-                android:background="@drawable/input_form"
-                android:drawableTop="@drawable/ultimo_recibo"
-                android:text="@string/button_ultimoRecibo"
-                android:paddingTop="25dp"
-                android:textAllCaps="false"
-                android:textColor="@color/azul"
-                android:fontFamily="@font/quicksand_bold"
-                android:textSize="19dp"
-                android:paddingBottom="15dp"/>
-
-            <Button
-                android:id="@+id/button_OtroRecibo"
-                android:layout_marginEnd="36dp"
-                android:layout_marginStart="36dp"
-                android:layout_width="match_parent"
-                android:layout_height="117dp"
-                android:background="@drawable/input_form"
-                android:layout_marginTop="12dp"
-                android:drawableTop="@drawable/recibo"
-                android:textSize="19dp"
-                android:fontFamily="@font/quicksand_bold"
-                android:text="@string/button_otroRecibo"
-                android:textAllCaps="false"
-                android:textColor="@color/azul"
-                android:paddingBottom="15dp"
-                android:paddingTop="25dp"
-                android:layout_marginBottom="15dp"/>
-
-
-        </LinearLayout>
-    </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/menuDuplicado"
-        android:background="@drawable/menu_fondo"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        app:itemIconTint="@color/azul"
-        app:itemTextColor="@color/azul"
+        android:layout_height="0dp"
         android:layout_alignParentBottom="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:menu="@menu/menu_home"
+        android:background="@drawable/menu_fondo"
         android:paddingLeft="60dp"
         android:paddingRight="60dp"
         app:itemIconSize="35dp"
-        app:labelVisibilityMode="unlabeled" />
+        app:itemIconTint="@color/azul"
+        app:itemTextColor="@color/azul"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/menu_home"
+        app:layout_constraintHeight_percent="0.10"
+        app:layout_constraintStart_toEndOf="@id/guideline58"
+        app:layout_constraintEnd_toStartOf="@id/guideline59"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintTop_toBottomOf="@id/button_OtroRecibo"
+        app:layout_constraintBottom_toTopOf="@id/guideline57"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline56"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline57"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline58"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline59"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

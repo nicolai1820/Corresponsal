@@ -19,10 +19,13 @@
             android:text="@string/textView_PopUpRecuperarContrasenaTitulo"
             android:layout_marginTop="10dp"
             android:textColor="@color/azul"
-            android:textSize="23dp"
+            android:autoSizeMaxTextSize="23dp"
+            android:autoSizeMinTextSize="18dp"
+            android:autoSizeTextType="uniform"
+            android:foregroundGravity="center_vertical"
             android:fontFamily="@font/quicksand_bold"
             android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:layout_gravity="center_horizontal"
             android:gravity="center"/>
 
@@ -49,7 +52,7 @@
     android:orientation="horizontal"
     android:layout_marginTop="20dp"
     >
-        <Button
+        <!--Button
             android:clickable="true"
             android:id="@+id/button_PopUpRecuperarContrasenaCancelar"
             android:layout_weight="1"
@@ -63,12 +66,14 @@
             android:textSize="19dp"
             android:fontFamily="@font/quicksand_regular"
             android:layout_gravity="center_horizontal"
-            />
+            /-->
 
             <Button
                 android:clickable="true"
                 android:id="@+id/button_PopUpRecuperarContrasenaAceptar"
                 android:layout_weight="1"
+                android:layout_marginEnd="40dp"
+                android:layout_marginStart="40dp"
                 android:layout_width="0dp"
                 android:layout_height="67dp"
                 android:textAllCaps="false"
