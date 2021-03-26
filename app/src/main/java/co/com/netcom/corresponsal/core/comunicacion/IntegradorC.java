@@ -743,4 +743,5 @@ public class IntegradorC {
     public native static void limpiarGlobalesC();
     public native String procesoAprobadoEmv(int tipoTransaccion);
     public native int validarInicializacionProgramada();
+    public native void cargarInformacionPanVirtual(String fiid, String tipoCuenta, String PanVirtual);
 }

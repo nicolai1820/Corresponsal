@@ -296,6 +296,7 @@ extern DatosVenta datosVentaBancolombia;
 extern uChar tokensP6[SIZE_TOKEN_P6 + 1];
 extern uChar tokensQF[SIZE_TOKEN_QF + 1];
 extern ResultISOUnpack globalresultadoUnpack;
+extern ResultISOPack globalresultadoIsoPack;
 extern DatosCnbBancolombia globalDatosBancolombia;
 
 #endif //POS_PIN_ANDROID_BANCOLOMBIA_H

@@ -1128,12 +1128,12 @@ int procesarGiros(DatosCnbBancolombia *datosGiros, int tipoTransaccion) {
 //	int globalsizeData = 0;
     char globalDataRecibida[512];
 
-    memset(&resultadoIsoPackMessage, 0x00, sizeof(resultadoIsoPackMessage));
+    memset(&globalresultadoIsoPack, 0x00, sizeof(globalresultadoIsoPack));
     memset(globalDataRecibida, 0x00, sizeof(globalDataRecibida));
 
-    resultadoIsoPackMessage = packISOMessage();
+    globalresultadoIsoPack = packISOMessage();
 
-    if (resultadoIsoPackMessage.responseCode > 0) {
+    /*if (resultadoIsoPackMessage.responseCode > 0) {
 
         if (tipoTransaccion != CONSULTA_CANCELAR_GIROS) {
 
@@ -1161,7 +1161,7 @@ int procesarGiros(DatosCnbBancolombia *datosGiros, int tipoTransaccion) {
                 imprimirDeclinadas(datosVentaBancolombia, "TIME OUT GENERAL");
             }
         }
-    }
+    }*/
 
     return resultadoTransaccion;
 }
@@ -1310,7 +1310,7 @@ DatosComision calculoComisionGiro(uChar *totalVenta) {
     DatosComision datosComisionAux;
 
     //llamar metodo Java que devuelva la fecha//
-
+    memset(&datosComisionAux, 0x00, sizeof(datosComisionAux));
     memset(valorFormato, 0x00, sizeof(valorFormato));
     memset(buffer, 0x00, sizeof(buffer));
     memset(fecha, 0x00, sizeof(fecha));
@@ -1605,7 +1605,7 @@ DatosComision verificarComision(char *monto) {
     int flujoMedio = 0;
     int resultadoCaja = 0;
     long valor = 0;
-    uChar linea3[25 + 1] = {0x00};
+    uChar linea3[50 + 1] = {0x00};
     uChar valorFormato[12 + 1] = {0x00};
     DatosComision datosComision;
 
@@ -1692,7 +1692,7 @@ int reclamacionGiro(char *tipoDocumento, char *tipoDocumentoAux, DatosComision d
 
     DatosCnbBancolombia datosReclamarGiro;// no hace nada quitarlo
     memset(&datosReclamarGiro, 0x00, sizeof(datosReclamarGiro));
-    do {
+  // do {
         armarTramaGiro(&datosReclamarGiro, RECLAMAR_GIROS, tipoDocumento,
                        tipoDocumentoAux,
                        datosComision);
@@ -1706,7 +1706,7 @@ int reclamacionGiro(char *tipoDocumento, char *tipoDocumentoAux, DatosComision d
             resultado = -1;
         }
 
-    } while (resultado == -2 && intentosVentas < MAX_INTENTOS_VENTA);
+    //} while (resultado == -2 && intentosVentas < MAX_INTENTOS_VENTA);
 
     if (resultado > 0) {
         if (resultadoCaja == 1 || flujoMedio == 1) {
@@ -1775,7 +1775,7 @@ enviarCancelacionGiro(char *tipoDocumento, char *tipoDocumentoAux, DatosComision
     int resultado = 0;
     int intentosVentas = 0;
     DatosCnbBancolombia datosReclamarGiro;
-    do {
+    //do {
         armarTramaGiro(&datosReclamarGiro, CANCELAR_GIROS, tipoDocumento,
                        tipoDocumentoAux,
                        datosComision);
@@ -1787,10 +1787,10 @@ enviarCancelacionGiro(char *tipoDocumento, char *tipoDocumentoAux, DatosComision
             //screenMessage("COMUNICACION", "REINTENTE", "TRANSACCION", "", 2 * 1000);
             resultado = -1;
         }
-    } while (resultado == -2 && intentosVentas < MAX_INTENTOS_VENTA);
+    //} while (resultado == -2 && intentosVentas < MAX_INTENTOS_VENTA);
 
-    if (resultado > 0) {
+    /*if (resultado > 0) {
         mostrarAprobacionBancolombia(&datosVentaBancolombia);
-    }
+    }*/
     return resultado;
 }

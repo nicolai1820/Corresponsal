@@ -93,7 +93,7 @@ void setearDatosBasicosJava(DatosBasicosVenta datosBasicos, JNIEnv *env, jobject
 
 DatosVenta globalTramaVenta;
 DatosCnbBancolombia globalDatosBancolombia;
-
+void generarStringRespuesta(char * respuesta);
 void
 setearParametrosObjetoComision(JNIEnv *env, DatosComision datosComision, jobject datos_comision);
 
@@ -262,8 +262,8 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_enviarDeposito(JNI
     char monto[12 + 1] = {0x00};
     char linea[100 + 1] = {0x00};
     char codigoAprobacion[20 + 1] = {0x00};
-    char respuesta[100 + 1] = {0x00};
-    char dataTerminal[100 + 1] = {0x00};
+    char respuesta[1024 + 1] = {0x00};
+    char dataAux1[512 + 1] = {0x00};
 
     parametroRecibido = (env)->GetStringUTFChars(numero_cuenta, JNI_FALSE);
     parametroRecibido2 = (env)->GetStringUTFChars(valor, JNI_FALSE);
@@ -273,7 +273,7 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_enviarDeposito(JNI
     setParameter(NII,"0160");
     setParameter(TIPO_CANAL,"02");
 
-    memset(&datosVentaBancolombia, 0x00, sizeof(datosVentaBancolombia));
+    memset(&datosVentaBancolombia, 0x00, sizeof(DatosVenta));
     memcpy(cuenta, parametroRecibido, strlen(parametroRecibido));
     memcpy(monto, parametroRecibido2, strlen(parametroRecibido2));
     int resultado = 0;
@@ -283,35 +283,12 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_enviarDeposito(JNI
     setParameter(HABILITACION_MODO_CNB, (char *) "4");//Temporal de android
 
     LOGI("Despues de set parameter habilitacion modo CNB");
-
-    if (realizarConexionTlS() > 0) {
-        LOGI("Verificando la conexion");
-        resultado = enviarDeposito(cuenta, monto, tipo_cuenta, codigoAprobacion);
-        cerrarConexion();
-        resultadoTransaccionBancolombia(resultado, respuesta, env, thiz);
-    } else {
-        strcpy(respuesta, "05;ERROR SIN CONEXION");
-    }
-
+    LOGI("Verificando la conexion");
+    resultado = enviarDeposito(cuenta, monto, tipo_cuenta, codigoAprobacion);
+    generarStringRespuesta(respuesta);
     return env->NewStringUTF(respuesta);
 }
-/*extern "C"
-JNIEXPORT jstring JNICALL
-Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_enviarDeposito(JNIEnv *env, jobject thiz) {
-    env2 = env;
-    instance2 = thiz;
 
-    const char *parametroRecibido;
-    const char *parametroRecibido2;
-
-    char respuesta[12 + 1] = {0x00};
-
-    int resultado = 0;
-
-        resultado = enviarDeposito();
-     sprintf(respuesta,"%d",resultado);
-    return env->NewStringUTF(respuesta);
-}*/
 
 extern "C"
 JNIEXPORT jstring JNICALL
@@ -328,7 +305,7 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_enviarPagoPoducto(
 
     char referencia[20 + 1] = {0x00};
     char monto[12 + 1] = {0x00};
-    char respuesta[100 + 1] = {0x00};
+    char respuesta[1024 + 1] = {0x00};
 
     parametroRecibido = (env)->GetStringUTFChars(referencia_producto, JNI_FALSE);
     parametroRecibido2 = (env)->GetStringUTFChars(valor, JNI_FALSE);
@@ -338,15 +315,11 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_enviarPagoPoducto(
     memset(&datosVentaBancolombia, 0x00, sizeof(datosVentaBancolombia));
     int resultado = 0;
     setParameter(HABILITACION_MODO_CNB, (char *) "4");//Temporal de android
-    if (realizarConexionTlS() > 0) {
-        resultado = enviarTransPago(referencia, monto, tipo_producto);
-        cerrarConexion();
-        strcpy(respuesta, globalTramaVenta.codigoAprobacion);
-        resultadoTransaccionBancolombia(resultado, respuesta, env, thiz);
-    } else {
-        strcpy(respuesta, "05;ERROR SIN CONEXION");
-    }
+    resultado = enviarTransPago(referencia, monto, tipo_producto);
+    strcpy(respuesta, globalTramaVenta.codigoAprobacion);
+    resultadoTransaccionBancolombia(resultado, respuesta, env, thiz);
 
+    generarStringRespuesta(respuesta);
 
     return env->NewStringUTF(respuesta);
 }extern "C"
@@ -359,7 +332,7 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_enviarConsultaSald
     int resultado = 0;
 
     char codigoAprobacion[20 + 1] = {0x00};
-    char respuesta[100 + 1] = {0x00};
+    char respuesta[1024 + 1] = {0x00};
 
     DatosTarjetaAndroid datosExternos;
     memset(&datosExternos, 0x00, sizeof(datosExternos));
@@ -367,14 +340,8 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_enviarConsultaSald
     datosExternos = obtenerDatosTarjeta(env, datos_tarjeta);
 
     setParameter(HABILITACION_MODO_CNB, (char *) "4");//Temporal de android
-    if (realizarConexionTlS() > 0) {
-        resultado = enviarTransaccionSaldoBCL(datosExternos, 3, codigoAprobacion);
-        cerrarConexion();
-        resultadoTransaccionBancolombia(resultado, respuesta, env, thiz);
-
-    } else {
-        strcpy(respuesta, "05;ERROR SIN CONEXION");
-    }
+    resultado = enviarTransaccionSaldoBCL(datosExternos, 3, codigoAprobacion);
+    generarStringRespuesta(respuesta);
 
     limpiarTokenMessage();
     return env->NewStringUTF(respuesta);
@@ -392,7 +359,7 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_enviarRetiroTarjet
     int resultado = 0;
 
     char codigoAprobacion[20 + 1] = {0x00};
-    char respuesta[100 + 1] = {0x00};
+    char respuesta[1024 + 1] = {0x00};
 
     const char *parametroMonto;
     const char *paramOtraCuenta;
@@ -405,20 +372,13 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_enviarRetiroTarjet
     datosExternos = obtenerDatosTarjeta(env, datos_tarjeta);
     memset(&datosVentaBancolombia, 0x00, sizeof(datosVentaBancolombia));
     setParameter(HABILITACION_MODO_CNB, (char *) "4");//Temporal de android
-    if (realizarConexionTlS() > 0) {
-        resultado = enviarTransaccionRetiroTarjetaBCL(datosExternos, 3, codigoAprobacion,
+    resultado = enviarTransaccionRetiroTarjetaBCL(datosExternos, 3, codigoAprobacion,
                                                       (char *) "10",
                                                       (char *) paramOtraCuenta,
                                                       (char *) parametroMonto,
                                                       otra_cuenta);
-        cerrarConexion();
-        resultadoTransaccionBancolombia(resultado, respuesta, env, thiz);
+    generarStringRespuesta(respuesta);
 
-    } else {
-        strcpy(respuesta, "05;ERROR SIN CONEXION");
-    }
-
-//    limpiarTokenMessage();
     return env->NewStringUTF(respuesta);
 }extern "C"
 JNIEXPORT jstring JNICALL
@@ -440,15 +400,9 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_enviarRetiroSinTar
     paramPinBlock = (env)->GetStringUTFChars(pinBlock, JNI_FALSE);
     memset(&datosVentaBancolombia, 0x00, sizeof(datosVentaBancolombia));
     LOGI("ON Retiro sin tarjeta ");
-    if (realizarConexionTlS() > 0) {
-        resultado = retiroEfectivo((char *) paramMonto, (char *) paramCuenta,
+    resultado = retiroEfectivo((char *) paramMonto, (char *) paramCuenta,
                                    (char *) paramPinBlock);
-        cerrarConexion();
-        resultadoTransaccionBancolombia(resultado, respuesta, env, thiz);
-
-    } else {
-        strcpy(respuesta, "05;ERROR SIN CONEXION");
-    }
+    generarStringRespuesta(respuesta);
     limpiarTokenMessage();
     return env->NewStringUTF(respuesta);
 }extern "C"
@@ -484,18 +438,12 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_enviarTransferenci
 
     setParameter(HABILITACION_MODO_CNB, (char *) "4");//Temporal de android
     memset(&datosVentaBancolombia, 0x00, sizeof(datosVentaBancolombia));
-    if (realizarConexionTlS() > 0) {
-        resultado = enviarTransferencia(datosExternos, (char *) paramTipo_cuenta_o,
+    resultado = enviarTransferencia(datosExternos, (char *) paramTipo_cuenta_o,
                                         (char *) paramtipo_cuenta_d,
                                         (char *) paramCuentaDestino, (char *) paramOtraCuenta,
                                         (char *) paramMonto);
-        cerrarConexion();
-        strcpy(codigoAprobacion, datosVentaBancolombia.codigoAprobacion);
-        resultadoTransaccionBancolombia(resultado, respuesta, env, thiz);
-    } else {
-        strcpy(respuesta, "05;ERROR SIN CONEXION");
-    }
-
+    strcpy(codigoAprobacion, datosVentaBancolombia.codigoAprobacion);
+    generarStringRespuesta(respuesta);
     limpiarTokenMessage();
     return env->NewStringUTF(respuesta);
 }
@@ -634,6 +582,7 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_enviarConsultaReca
     jstring jtokenP6;
 
     char codigoAprobacion[100 + 1] = {0x00};
+    char respuesta[1024 + 1] = {0x00};
     char cTipoRecaudo[20 + 1] = "1";
     const char *paramcodigoLeido;
 
@@ -642,22 +591,13 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_enviarConsultaReca
     paramcodigoLeido = (env)->GetStringUTFChars(codigo_leido, JNI_FALSE);
     memset(&datosVentaBancolombia, 0x00, sizeof(datosVentaBancolombia));
     setParameter(HABILITACION_MODO_CNB, (char *) "4");//Temporal de android
-    if (realizarConexionTlS() > 0) {
         resultado = enviarConsultaRecaudoLector(&datosExternos, (char *) paramcodigoLeido,
                                                 codigoAprobacion);
 
-        if (resultado < 1) {
-            cerrarConexion();
-            resultadoTransaccionBancolombia(resultado, codigoAprobacion, env, thiz);
-            return env->NewStringUTF(codigoAprobacion);
-        }
         if (strcmp(datosVentaBancolombia.codigoRespuesta, "00") != 0) {
             resultadoTransaccionBancolombia(resultado, codigoAprobacion, env, thiz);
         }
-    } else {
-        strcpy(codigoAprobacion, "05;ERROR SIN CONEXION");
-        return env->NewStringUTF(codigoAprobacion);
-    }
+
 
 
     jclass datosRecaudoClass = (env)->GetObjectClass(datos_recaudo);
@@ -683,10 +623,10 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_enviarConsultaReca
     (env)->SetObjectField(datos_recaudo, tipoRecaudo, jtipoRecaudo);
     (env)->SetIntField(datos_recaudo, indicadorValor, jindicadorValor);
     (env)->SetObjectField(datos_recaudo, tokenP6, jtokenP6);
+    generarStringRespuesta(respuesta);
+    std::string nameCPP(respuesta);
 
-    std::string nameCPP(codigoAprobacion);
-
-    return env->NewStringUTF(codigoAprobacion);
+    return env->NewStringUTF(respuesta);
 }extern "C"
 JNIEXPORT jstring JNICALL
 Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_enviarPagoRecaudoLector(JNIEnv *env,
@@ -723,9 +663,7 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_enviarPagoRecaudoL
 
     resultado = enviarRecaudo(datosToken, TRANSACCION_TEFF_RECAUDO_MANUAL,
                               (char *) paramTotal_venta);
-    cerrarConexion();
-    resultadoTransaccionBancolombia(resultado, respuesta, env, thiz);
-
+    generarStringRespuesta(respuesta);
     return env->NewStringUTF(respuesta);
 }extern "C"
 JNIEXPORT jstring JNICALL
@@ -737,6 +675,7 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_enviarConsultaReca
 
     int resultado = 0;
     char codigoAprobacion[100 + 1] = {0x00};
+    char respuesta[1024 + 1] = {0x00};
     const char *paramNumeroFactura;
     const char *paramCodigoConvenio;
     const char *paramTipoRecaudo;
@@ -794,10 +733,9 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_enviarConsultaReca
                strlen(paramCuentaRecaudadora));
     }
     memset(&datosVentaBancolombia, 0x00, sizeof(datosVentaBancolombia));
-    if (realizarConexionTlS() > 0) {
+
         resultado = enviarConsultaRecaudoManual(&datosExternos, codigoAprobacion);
         if (resultado < 0) {
-            cerrarConexion();
             resultadoTransaccionBancolombia(resultado, codigoAprobacion, env, thiz);
             return env->NewStringUTF(codigoAprobacion);
         }
@@ -805,10 +743,7 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_enviarConsultaReca
             resultadoTransaccionBancolombia(resultado, codigoAprobacion, env, thiz);
             cerrarConexion();
         }
-    } else {
-        strcpy(codigoAprobacion, "05;ERROR SIN CONEXION");
-        return env->NewStringUTF(codigoAprobacion);
-    }
+
     // Obtiene el valor de la propiedad de un objeto java desde C-JNI
     jfieldID indicadorBaseDatos = (env)->GetFieldID(datosRecaudoClass, "indicadorBaseDatos", "I");
     jfieldID valorFactura = (env)->GetFieldID(datosRecaudoClass, "valorFactura", "J");
@@ -832,10 +767,10 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_enviarConsultaReca
     (env)->SetObjectField(datos_recaudo, tokenP6, jtokenP6);
     (env)->SetObjectField(datos_recaudo, nombreConvenio, jNombreConvenio);
     (env)->SetIntField(datos_recaudo, indicadorValor, jindicadorValor);
-
+    generarStringRespuesta(respuesta);
     std::string nameCPP(codigoAprobacion);
 
-    return env->NewStringUTF(codigoAprobacion);
+    return env->NewStringUTF(respuesta);
 }
 
 void _guardarDirectorioJournals_(short tipoJournal, uChar *numeroRecibo, uChar *estadoTransaccion) {
@@ -1402,9 +1337,10 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_verificarComisionE
 
     datosComision = verificarComision((char *) paramMonto);
     numeroItems = verificarNumeroItemsDocumentos();
+    LOGI("cARGANDO linea 1410 ");
 
     setearParametrosObjetoComision(env, datosComision, datos_comision);
-
+    LOGI("cARGANDO linea 1413 ");
     return numeroItems;
 }
 extern "C"
@@ -1467,7 +1403,7 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_realizarEnvioGiroC
     const char *paramCelularBeneficiario;
 
     char codigoAprobacion[20 + 1] = {0x00};
-    char respuesta[100 + 1] = {0x00};
+    char respuesta[1024 + 1] = {0x00};
     DatosComision datosComision;
     memset(&datosComision, 0x00, sizeof(datosComision));
     datosComision = obtenerDatosComision(env, comision);
@@ -1492,16 +1428,10 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_realizarEnvioGiroC
     sprintf(datosVentaBancolombia.propina, "%ld", valor);
     //memset(datosComision.valorComision, 0x00, sizeof(datosComision.valorComision));
     //sprintf(datosComision.valorComision, "%ld", valor);
-    if (realizarConexionTlS() > 0) {
         resultado = realizarEnvioGiro((char *) paramTpd_girador, (char *) paramTpd_beneficiario,
                                       datosComision);
-        cerrarConexion();
         strcpy(codigoAprobacion, datosVentaBancolombia.codigoAprobacion);
-        resultadoTransaccionBancolombia(resultado, respuesta, env, thiz);
-
-    } else {
-        strcpy(respuesta, "05;ERROR SIN CONEXION");
-    }
+    generarStringRespuesta(respuesta);
 
     limpiarTokenMessage();
     return env->NewStringUTF(respuesta);
@@ -1521,7 +1451,7 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_realizarReclamacio
     const char *paramMonto;
     const char *paramReferenciaReclamacion;
     char codigoAprobacion[20 + 1] = {0x00};
-    char respuesta[100 + 1] = {0x00};
+    char respuesta[1024 + 1] = {0x00};
     uChar tipoDocumento[2 + 1] = {0x00};
 
     DatosComision datosComision;
@@ -1540,15 +1470,10 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_realizarReclamacio
            strlen((char *) paramDbeneficiario));
     memcpy(datosVentaBancolombia.totalVenta, (char *) paramMonto, strlen((char *) paramMonto));
 
-    if (realizarConexionTlS() > 0) {
         memcpy(tipoDocumento, "00", 2);
         resultado = reclamacionGiro(tipoDocumento, (char *) paramTpd_beneficiario, datosComision);
-        cerrarConexion();
         strcpy(codigoAprobacion, datosVentaBancolombia.codigoAprobacion);
-        resultadoTransaccionBancolombia(resultado, respuesta, env, thiz);
-    } else {
-        strcpy(respuesta, "05;ERROR SIN CONEXION");
-    }
+    generarStringRespuesta(respuesta);
 
     limpiarTokenMessage();
     return env->NewStringUTF(respuesta);
@@ -1579,7 +1504,7 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_realizaConsultaCan
 
     uChar tipoDocumento[2 + 1] = {0x00};
     uChar valorAPAgar[12 + 1] = {0x00};
-    uChar respuesta[100 + 1] = {0x00};
+    uChar respuesta[1024 + 1] = {0x00};
     char valorDevolucion[50 + 1] = {0x00};
     DatosComision datosComision;
     memset(&datosComision, 0x00, sizeof(datosComision));
@@ -1598,20 +1523,12 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_realizaConsultaCan
     memcpy(datosVentaBancolombia.aux1 + 15, (char *) paramDbeneficiario,
            strlen((char *) paramDbeneficiario));
 
-    if (realizarConexionTlS() > 0) {
         resultado = enviarConsultaCancelacionGiro(&datosComision, (char *) paramTpd_girador,
                                                   (char *) paramTpd_beneficiario, valorDevolucion);
-        if (resultado < 1) {
-            cerrarConexion();
-            resultadoTransaccionBancolombia(resultado, respuesta, env, thiz);
-            return env->NewStringUTF(respuesta);
-        }
-    } else {
-        strcpy(respuesta, "05;ERROR SIN CONEXION");
-        return env->NewStringUTF(respuesta);
-    }
 
 
+
+    generarStringRespuesta(respuesta);
     setearParametrosObjetoComision(env, datosComision, datos_comision);
     if (resultado > 0) {
         strcpy(respuesta, "00;");
@@ -1639,7 +1556,7 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_realizarCancelacio
     const char *paramMonto;
     char codigoAprobacion[20 + 1] = {0x00};
     char auxiliarAprobacion[6 + 1] = {0x00};
-    char respuesta[100 + 1] = {0x00};
+    char respuesta[1024 + 1] = {0x00};
     paramTpd_girador = (env)->GetStringUTFChars(tpd_girador, JNI_FALSE);
     paramTpd_beneficiario = (env)->GetStringUTFChars(tpd_beneficiario, JNI_FALSE);
     paramDbeneficiario = (env)->GetStringUTFChars(d_beneficiario, JNI_FALSE);
@@ -1654,9 +1571,7 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_realizarCancelacio
            strlen((char *) paramDbeneficiario));
     resultado = enviarCancelacionGiro((char *) paramTpd_girador, (char *) paramTpd_beneficiario,
                                       datosComision);
-    cerrarConexion();
-
-    resultadoTransaccionBancolombia(resultado, respuesta, env, thiz);
+    generarStringRespuesta(respuesta);
     limpiarTokenMessage();
 
     return env->NewStringUTF(respuesta);
@@ -1801,7 +1716,6 @@ setearParametrosObjetoComision(JNIEnv *env, DatosComision datosComision, jobject
                                                        "Ljava/lang/String;");
 
     //modificar la propieda de un objeto desde C-jni
-
     (env)->SetObjectField(datos_comision, montoMinimo,
                           env->NewStringUTF(datosComision.montoMaximo));
     (env)->SetObjectField(datos_comision, montoMaximo,
@@ -1814,14 +1728,23 @@ setearParametrosObjetoComision(JNIEnv *env, DatosComision datosComision, jobject
                           env->NewStringUTF(datosComision.porcentajeIva));
     (env)->SetObjectField(datos_comision, fechaInicio,
                           env->NewStringUTF(datosComision.fechaInicio));
+    LOGI("cARGANDO linea 1822 paso de la mitad ");
+
     (env)->SetObjectField(datos_comision, valorComision,
                           env->NewStringUTF(datosComision.valorComision));
+    LOGI("cARGANDO linea 1826 paso de la mitad ");
+
     (env)->SetObjectField(datos_comision, valorIvaComision,
                           env->NewStringUTF(datosComision.valorIvaComision));
+    LOGI("cARGANDO linea 1830 datosComision.referenciaCancelacion  %s",datosComision.referenciaCancelacion);
     (env)->SetObjectField(datos_comision, referenciaCancelacion,
                           env->NewStringUTF(datosComision.referenciaCancelacion));
+    LOGI("cARGANDO linea 1833 paso de la mitad ");
     (env)->SetObjectField(datos_comision, referenciaReclamacion,
                           env->NewStringUTF(datosComision.referenciaReclamacion));
+
+    LOGI("finalizo funcion ");
+
 }
 
 extern "C"
@@ -2883,7 +2806,11 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_escribirFile(JNIEn
     const char *paramData;
 
     paramData = (env)->GetStringUTFChars(data, JNI_FALSE);
+    LOGI("nombreDisco al intentar borrar %s  ",discoNetcom);
+
     borrarArchivo(discoNetcom, "/PARAMTERMINAL.txt");
+    LOGI("nombreDisco escribir file %s  ",discoNetcom);
+
     escribirArchivo(discoNetcom, "/PARAMTERMINAL.txt", (char *) paramData, tamano);
     return 0;
 }extern "C"
@@ -3013,4 +2940,30 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_procesoAprobadoEmv
 JNIEXPORT jint JNICALL
 Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_validarInicializacionProgramada(JNIEnv *env, jobject thiz) {
     return validarInicializacionProgramada();
+}
+extern "C"
+JNIEXPORT void JNICALL
+Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_cargarInformacionPanVirtual(JNIEnv *env, jobject thiz, jstring fiid,
+                                                                                          jstring tipo_cuenta, jstring pan_virtual) {
+    const char *paramFidd;
+    const char *paramTipoCuenta;
+    const char *paramPanVirtual;
+
+    paramFidd = (env)->GetStringUTFChars(fiid, JNI_FALSE);
+    paramTipoCuenta = (env)->GetStringUTFChars(tipo_cuenta, JNI_FALSE);
+    paramPanVirtual = (env)->GetStringUTFChars(pan_virtual, JNI_FALSE);
+    cargarInformacionPanVirtualCorresposal((char *)paramFidd, (char *) paramTipoCuenta,  (char *)paramPanVirtual);
+}
+
+void generarStringRespuesta(char * respuesta){
+    char dataAux1[1024 + 1] = {0x00};
+    char dataAux2[512 + 1] = {0x00};
+    _convertBCDToASCII_(dataAux1,globalresultadoIsoPack.isoPackMessage,globalresultadoIsoPack.totalBytes);
+    _convertBCDToASCII_(dataAux2,globalresultadoIsoPack.isoPackMessage + (globalresultadoIsoPack.totalBytes + 2)/2,globalresultadoIsoPack.totalBytes -2);
+    LOGI("ESTO ES RESULTADO AL dataAux1 %s",dataAux1);
+    LOGI("ESTO ES RESULTADO AL respuesta %s",dataAux2);
+    LOGI(" TAMNO %d",globalresultadoIsoPack.totalBytes);
+    strcpy(respuesta, dataAux1);
+    strcat(respuesta, dataAux2);
+    borrarArchivo(discoNetcom,(char *) TARJETA_CNB);
 }
