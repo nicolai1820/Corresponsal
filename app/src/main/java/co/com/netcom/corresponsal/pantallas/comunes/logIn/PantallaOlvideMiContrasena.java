@@ -100,12 +100,12 @@ public class PantallaOlvideMiContrasena extends AppCompatActivity {
                                         //Se envia un mensaje al handler de la clase consulta saldo, indicando que el usuario cancelo la transaccion
                                         Message usuarioCancela = new Message();
                                         usuarioCancela.what = 2;
-                                        LogIn.respuesta.sendMessage(usuarioCancela);
+                                        PantallaOlvideMiContrasena.respuesta.sendMessage(usuarioCancela);
                                     }else{
                                         //Se envia un mensaje al handler de la clase consulta saldo, indicando que el usuario cancelo la transaccion
                                         Message usuarioCancela = new Message();
                                         usuarioCancela.what = 3;
-                                        LogIn.respuesta.sendMessage(usuarioCancela);
+                                        PantallaOlvideMiContrasena.respuesta.sendMessage(usuarioCancela);
                                     }
 
                                 }
@@ -126,7 +126,7 @@ public class PantallaOlvideMiContrasena extends AppCompatActivity {
                     case 3:
                         dialog.dismiss();
                         PopUp popUp1 = new PopUp(PantallaOlvideMiContrasena.this);
-                        popUp1.crearPopUpLoginFallido("Se ha enviado la contraseña al correo");
+                        popUp1.crearPopUpEnvioContrasena("Se ha enviado la contraseña al correo");
                 }
             }
 
@@ -172,7 +172,7 @@ public class PantallaOlvideMiContrasena extends AppCompatActivity {
                             //Se envia un mensaje al handler de la clase consulta saldo, indicando que el usuario cancelo la transaccion
                             Message usuarioCancela = new Message();
                             usuarioCancela.what = 1;
-                            LogIn.respuesta.sendMessage(usuarioCancela);
+                            PantallaOlvideMiContrasena.respuesta.sendMessage(usuarioCancela);
                         }catch (Exception e){ }
 
                     }
@@ -188,5 +188,11 @@ public class PantallaOlvideMiContrasena extends AppCompatActivity {
         }
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        super.onBackPressed();
     }
 }

@@ -450,7 +450,7 @@ public class Servicios {
 
     /**Metodo para realizar el cambio de contraseña*/
 
-    public void cambiarContraseña(String contrasenaAntigua,String contrasenaNueva, String confirmacionContrasena){
+    public String cambiarContraseña(String contrasenaAntigua,String contrasenaNueva, String confirmacionContrasena){
 
         PreferencesUsuario prefs = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_INFO_USUARIO,context);
         PreferencesUsuario prefsToken = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_TOKEN,context);
@@ -494,15 +494,16 @@ public class Servicios {
             Response response = client.newCall(request).execute();
 
             String jsonData = response.body().string();
+            JSONObject Jobject = new JSONObject(jsonData);
+
             Log.d("RESP",jsonData);
-            /*JSONObject Jobject = new JSONObject(jsonData);
+            this.respuestaServidor = Jobject.getString("responseCode");
 
-            return Jobject.getString("loginState");*/
+            return Jobject.getString("responseCode");
 
-        } catch (IOException  e) {
-          /*  CodificarBase64 code = new CodificarBase64();
-            respuestaServidor=code.convertirBase64("Ambiente no disponible");
-            return code.convertirBase64("-2");*/}
+        } catch (IOException | JSONException e) {
+            return "MA==";
+        }
     }
 
 

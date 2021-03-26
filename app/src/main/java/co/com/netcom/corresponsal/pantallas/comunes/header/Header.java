@@ -70,7 +70,10 @@ public class Header extends Fragment {
                     startActivity(i);
                     Log.d("Actividad", getActivity().toString());
                     getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-                } else {
+                }else if(getActivity().getLocalClassName().equals("pantallas.comunes.logIn.PantallaCambioContrasena")){
+
+                }
+                else {
                     //Se hace el correspondiente intent a la pantalla inicial, con la correspondiente animacion
                     Intent i = new Intent(getContext(), pantallaInicialUsuarioComun.class);
                     startActivity(i);

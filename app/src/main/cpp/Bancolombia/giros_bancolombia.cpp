@@ -1310,6 +1310,7 @@ DatosComision calculoComisionGiro(uChar *totalVenta) {
     DatosComision datosComisionAux;
 
     //llamar metodo Java que devuelva la fecha//
+    memset(&datosComisionAux, 0x00, sizeof(datosComisionAux));
 
     memset(valorFormato, 0x00, sizeof(valorFormato));
     memset(buffer, 0x00, sizeof(buffer));

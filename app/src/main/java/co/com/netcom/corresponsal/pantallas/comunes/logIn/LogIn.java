@@ -135,6 +135,7 @@ public class LogIn extends AppCompatActivity {
         /**Se cre el evento click para el text view olvide mi contraseña, el cual crea un pop up donde se recibo el usuario para
          * posteriormente */
 
+        //Verificar Userid dentro de los preferences.
         textView_Password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -186,7 +187,7 @@ public class LogIn extends AppCompatActivity {
                         }else{
 
                   //Se cre hilo para hacer la petición del inicio de sesión.
-         /*                   solicitudInicioSesion = new Thread(new Runnable() {
+                            solicitudInicioSesion = new Thread(new Runnable() {
                                 @Override
                                 public void run() {
                                     Log.d("HILO2","Segundo Hilo");
@@ -199,13 +200,12 @@ public class LogIn extends AppCompatActivity {
                             });
 
                             solicitudInicioSesion.start();
-*/
 
-                            estadoConexion="1";
+                       /*     estadoConexion="1";
                             Message usuarioCancela = new Message();
                             usuarioCancela.what = 4;
                             LogIn.respuesta.sendMessage(usuarioCancela);
-
+*/
                         }
 
 
@@ -237,12 +237,17 @@ public class LogIn extends AppCompatActivity {
                                 solicitarParametricas.start();
 
                             }
-                            else{
-                                //dialog.dismiss();
-                                //popUp.crearPopUpLoginFallido(base64.decodificarBase64(objetoServicios.getRespuestaServidor()));
-                                Intent i = new Intent(getApplicationContext(), pantallaInicialUsuarioComun.class);
+                            else if(Integer.parseInt(estadoConexion)==3){
+                                Intent i = new Intent(getApplicationContext(), PantallaCambioContrasena.class);
                                 startActivity(i);
                                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                            }
+                            else{
+                                dialog.dismiss();
+                                popUp.crearPopUpLoginFallido(base64.decodificarBase64(objetoServicios.getRespuestaServidor()));
+                             /*   Intent i = new Intent(getApplicationContext(), pantallaInicialUsuarioComun.class);
+                                startActivity(i);
+                                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);*/
 
                             }
 
