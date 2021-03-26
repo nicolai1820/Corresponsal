@@ -57,6 +57,7 @@ public class LogIn extends AppCompatActivity {
     private Thread solicitudToken;
     private Thread solicitudInicioSesion;
     private Thread solicitarParametricas;
+    private Thread solicitarParametricasBanco;
     private UiThread loader;
     private String token;
     private String usuarioEncriptado;
@@ -139,11 +140,16 @@ public class LogIn extends AppCompatActivity {
         textView_Password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                PreferencesUsuario prefs_user = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_INFO_USUARIO,LogIn.this);
+                if(prefs_user.getUserId()!=null){
+                    // popUp.crearPopUpRecuperarContrasena();
+                    Intent i = new Intent(getApplicationContext() , PantallaOlvideMiContrasena.class);
+                    startActivity(i);
+                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                }else{
+                    popUp.crearPopUpGeneral("Debes iniciar sesión");
+                }
 
-               // popUp.crearPopUpRecuperarContrasena();
-               Intent i = new Intent(getApplicationContext() , PantallaOlvideMiContrasena.class);
-                startActivity(i);
-                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
         });
 
@@ -200,13 +206,7 @@ public class LogIn extends AppCompatActivity {
                             });
 
                             solicitudInicioSesion.start();
-
-                       /*     estadoConexion="1";
-                            Message usuarioCancela = new Message();
-                            usuarioCancela.what = 4;
-                            LogIn.respuesta.sendMessage(usuarioCancela);
-*/
-                        }
+                  }
 
 
                         break;
@@ -218,7 +218,7 @@ public class LogIn extends AppCompatActivity {
                     case 3:
                         dialog.dismiss();
                         PopUp op = new PopUp(LogIn.this);
-                        op.crearPopUpLoginFallido("No se descargaron las parametricas");
+                        op.crearPopUpLoginFallido("Error cargando las parametricas, intente nuevamente.");
 
                         break;
 
@@ -242,13 +242,14 @@ public class LogIn extends AppCompatActivity {
                                 startActivity(i);
                                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                             }
+                            else if(Integer.parseInt(estadoConexion)==4){
+                                Intent i = new Intent(getApplicationContext(), PantallaCambioContrasena.class);
+                                startActivity(i);
+                                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                            }
                             else{
                                 dialog.dismiss();
                                 popUp.crearPopUpLoginFallido(base64.decodificarBase64(objetoServicios.getRespuestaServidor()));
-                             /*   Intent i = new Intent(getApplicationContext(), pantallaInicialUsuarioComun.class);
-                                startActivity(i);
-                                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);*/
-
                             }
 
 
@@ -257,8 +258,19 @@ public class LogIn extends AppCompatActivity {
                             Intent i = new Intent(getApplicationContext(), pantallaInicialUsuarioComun.class);
                                 startActivity(i);
                                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
-                        //dialog.dismiss();
                            break;
+
+                    case 6:
+                        solicitarParametricasBanco = new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                objetoServicios.obtenerParametricasBanco();
+                            }
+                        });
+
+                        solicitarParametricasBanco.start();
+                        break;
+
                 }
             }
 
