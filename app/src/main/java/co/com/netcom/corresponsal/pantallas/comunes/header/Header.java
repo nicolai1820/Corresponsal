@@ -63,13 +63,13 @@ public class Header extends Fragment {
 
                 if (getActivity().getLocalClassName().equals("pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun")) {
 
-                } else if (getActivity().getLocalClassName().equals("pantallas.comunes.logIn.PantallaCambioContrasena")) {
+                } else if (getActivity().getLocalClassName().equals("pantallas.comunes.logIn.PantallaOlvideMiContrasena")) {
 
                     //Se hace el correspondiente intent a la pantalla inicial de la aplicación
-                   /* Intent i = new Intent(getContext(), LogIn.class);
+                    Intent i = new Intent(getContext(), LogIn.class);
                     startActivity(i);
                     Log.d("Actividad", getActivity().toString());
-                    getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);*/
+                    getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 } else {
                     //Se hace el correspondiente intent a la pantalla inicial, con la correspondiente animacion
                     Intent i = new Intent(getContext(), pantallaInicialUsuarioComun.class);

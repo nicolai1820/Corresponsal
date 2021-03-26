@@ -5,7 +5,6 @@
       "sdkFolder": "/Users/netcom/Library/Android/sdk",
       "isNativeCompilerSettingsCacheEnabled": false,
       "isBuildOnlyTargetAbiEnabled": true,
-      "ideBuildTargetAbi": "x86",
       "splitsAbiFilterSet": [],
       "intermediatesFolder": "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/build/intermediates",
       "gradleModulePathName": ":app",
@@ -42,6 +41,7 @@
     "gradleBuildOutputFolder": "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cxx/debug",
     "isDebuggableEnabled": true,
     "validAbiList": [
+      "ARMEABI_V7A",
       "X86"
     ],
     "buildTargetSet": []

@@ -57,7 +57,6 @@ public class pantallaEnviarGiroCantidad extends BaseActivity {
         //Se crea el header con el respectivo titulo de la actividad
         getSupportFragmentManager().beginTransaction().replace(R.id.contenedorHeaderGirosEnviar,header).commit();
         cantidad.setFilters(new InputFilter[]{new InputFilter.LengthFilter(15)});
-
     }
 
 
@@ -71,8 +70,12 @@ public class pantallaEnviarGiroCantidad extends BaseActivity {
         //Se obtiene la cantidad digitada por el usuario
         String cantidad_string = cantidad.getText().toString();
 
+        Log.d("Monto",cantidad_string);
         IntegradorC integradorC = new IntegradorC(getApplicationContext());
         DatosComision datosComision = new DatosComision();
+        datosComision.setReferenciaCancelacion(" ");
+        datosComision.setReferenciaReclamacion(" ");
+
         int numeroItems = 0;
 
 
@@ -86,11 +89,8 @@ public class pantallaEnviarGiroCantidad extends BaseActivity {
             Toast.makeText(getApplicationContext(),"Debe aceptar los terminos y condiciones",Toast.LENGTH_LONG).show();
         }
         else {
-            byte[] bytes = cantidad_string.getBytes(StandardCharsets.UTF_8);
 
-            String utf8EncodedString = new String(bytes, StandardCharsets.UTF_8);
-
-            numeroItems = integradorC.verificarComisionEnvioGiro(utf8EncodedString,datosComision);
+            numeroItems = integradorC.verificarComisionEnvioGiro(cantidad_string,datosComision);
 
             int valorComision = Integer.parseInt(datosComision.getValorComision());
 

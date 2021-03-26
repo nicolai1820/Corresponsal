@@ -30,7 +30,7 @@
         app:menu="@menu/menu_administrador"
         android:paddingLeft="60dp"
         android:paddingRight="60dp"
-        app:itemIconSize="35dp"
+        app:itemIconSize="30dp"
         app:labelVisibilityMode="unlabeled"
 
         />

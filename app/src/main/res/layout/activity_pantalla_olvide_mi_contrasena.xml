@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo"
+    app:layout_constrainedHeight="true"
+    app:layout_constrainedWidth="true"
+    tools:context=".pantallas.comunes.logIn.PantallaOlvideMiContrasena">
+
+    <FrameLayout
+        android:id="@+id/contenedorHeaderPantallaOlvideMiContrasena"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/guideline164"
+        app:layout_constraintBottom_toTopOf="@id/guideline165"
+        app:layout_constraintStart_toEndOf="@id/guideline166"
+        app:layout_constraintEnd_toStartOf="@id/guideline167"
+        />
+
+
+
+    <TextView
+        android:id="@+id/textView_PantallaOlvideMiContrasena"
+        android:layout_width="260dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.1"
+        android:textColor="@color/azul"
+        android:fontFamily="@font/quicksand_regular"
+        app:layout_constraintTop_toBottomOf="@id/contenedorHeaderPantallaOlvideMiContrasena"
+        app:layout_constraintBottom_toTopOf="@id/guideline165"
+        app:layout_constraintStart_toEndOf="@id/guideline166"
+        app:layout_constraintEnd_toStartOf="@id/guideline167"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.04"
+        android:layout_marginStart="36dp"
+        android:text="@string/textView_PantallaOlvideMiContrasena"
+        android:autoSizeMaxTextSize="21dp"
+        android:autoSizeMinTextSize="19dp"
+        android:autoSizeTextType="uniform"
+        />
+
+<EditText
+    android:id="@+id/editText_PantallaOlvideMiContrasena"
+    android:imeOptions="actionDone"
+    android:inputType="text"
+    android:background="@drawable/input_form"
+    android:paddingLeft="23dp"
+    android:fontFamily="@font/quicksand_regular"
+    android:textColor="@color/azul"
+    android:textColorHint="@color/azul"
+    android:hint="@string/editText_PantallaOlvideMiContrasena"
+    app:layout_constraintVertical_bias="0.3"
+    app:layout_constraintHeight_percent="0.07"
+    app:layout_constraintEnd_toStartOf="@id/guideline167"
+    app:layout_constraintStart_toEndOf="@id/guideline166"
+    app:layout_constraintBottom_toTopOf="@id/guideline165"
+    app:layout_constraintTop_toBottomOf="@id/textView_PantallaOlvideMiContrasena"
+    android:layout_marginStart="36dp"
+    android:layout_marginEnd="36dp"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:autoSizeMaxTextSize="19dp"
+    android:autoSizeMinTextSize="17dp"
+    android:autoSizeTextType="uniform"/>
+    
+    
+    <Button
+        android:text="@string/button_PantallaOlvideMiContrasena"
+        android:fontFamily="@font/quicksand_bold"
+        android:textAllCaps="false"
+        android:textColor="@color/blanco"
+        android:background="@drawable/boton_inicio"
+        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintEnd_toStartOf="@id/guideline167"
+        app:layout_constraintStart_toEndOf="@id/guideline166"
+        app:layout_constraintBottom_toTopOf="@id/guideline165"
+        app:layout_constraintTop_toBottomOf="@id/editText_PantallaOlvideMiContrasena"
+        app:layout_constraintHeight_percent="0.095"
+        app:layout_constraintWidth_percent="0.75"
+        android:autoSizeMinTextSize="18dp"
+        android:autoSizeMaxTextSize="21dp"
+        android:autoSizeTextType="uniform"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:onClick="solicitarClaveTemporal"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline164"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline165"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline166"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline167"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

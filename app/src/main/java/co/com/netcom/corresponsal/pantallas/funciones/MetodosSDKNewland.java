@@ -972,9 +972,20 @@ public class MetodosSDKNewland {
                           break;
                   }
 
-              } else if (errInfo.equals("Fail to check card state")){
+              }
+
+              else if (errInfo.equals("Fail to check card state")){
                   Log.d("ESTADO TARJETA",errInfo);
                   estado = errInfo;
+              }
+              else if(errInfo.equalsIgnoreCase("Search for device timeout")){
+                  try{
+                      Message apagarLeds = new Message();
+                      apagarLeds.what = 4;
+                      pantallaAjustesUsuarioComun.procesoTransacion.sendMessage(apagarLeds);
+                  }catch (Exception e){}
+                  Log.d("LISTA", listDevices.toString());
+
               }
 
         }

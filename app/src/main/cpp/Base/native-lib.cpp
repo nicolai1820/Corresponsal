@@ -1400,8 +1400,12 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_verificarComisionE
     paramMonto = (env)->GetStringUTFChars(monto, JNI_FALSE);
     memset(&datosComision, 0x00, sizeof(datosComision));
 
+    LOGI("monto  %s",paramMonto);
     datosComision = verificarComision((char *) paramMonto);
+    LOGI("Despues datos comision");
+
     numeroItems = verificarNumeroItemsDocumentos();
+    LOGI("Despues numeroItems ");
 
     setearParametrosObjetoComision(env, datosComision, datos_comision);
 

@@ -148,6 +148,8 @@ public class pantallaInformacionUsuarioComun extends Fragment {
 
                         }
                     });
+
+                    hilo.start();
                 }else{
 
                     PopUp popUp = new PopUp(getActivity().getApplicationContext());

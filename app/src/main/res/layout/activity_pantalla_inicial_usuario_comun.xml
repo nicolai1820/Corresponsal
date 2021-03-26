@@ -28,7 +28,7 @@
         android:background="@drawable/menu_fondo"
         android:paddingLeft="40dp"
         android:paddingRight="40dp"
-        app:itemIconSize="35dp"
+        app:itemIconSize="30dp"
         app:itemIconTint="@color/azul"
         app:itemTextColor="@color/azul"
         app:labelVisibilityMode="unlabeled"

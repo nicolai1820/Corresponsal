@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 
 import com.ingenico.lar.bc.Pinpad;
 
@@ -36,6 +37,7 @@ public class SplashInicial extends AppCompatActivity {
             adminWifi.setWifiEnabled(false);
         }
         String path = this.getFilesDir().getAbsolutePath();
+        Log.d("PATH",path);
         integradorC.crearRutaArchivo(path);
         IntegradorC.inicializarJava();
         IntegradorC.copyFiletoExternalStorage(R.raw.caroot, "caroot.pem", path + "/", SplashInicial.this);

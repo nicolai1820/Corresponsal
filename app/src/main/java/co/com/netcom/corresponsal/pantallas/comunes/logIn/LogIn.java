@@ -89,7 +89,7 @@ public class LogIn extends AppCompatActivity {
         editText_User = (EditText) findViewById(R.id.editText_User);
         editText_Password = (EditText) findViewById(R.id.editText_Password);
         textView_Password = (TextView) findViewById(R.id.textView_PasswordLogin);
-        textView_CambiarContraseña = findViewById(R.id.textView_CambiarContrasena);
+        //textView_CambiarContraseña = findViewById(R.id.textView_CambiarContrasena);
 
         sharedPreferences = getSharedPreferences("User",MODE_PRIVATE);
         sharedPreferencesEditor = sharedPreferences.edit();
@@ -102,7 +102,7 @@ public class LogIn extends AppCompatActivity {
 
         //se crea popUp sesion cerrada por timeout
         if (sesion==1){
-            popUp.crearPopUpLoginFallido("Sesión cerrada por time out.");
+            popUp.crearPopUpLoginFallido("Sesión cerrada por inactividad.");
         }
 
         //Se crea un elemento para verificar que los permisos esten activados
@@ -120,7 +120,7 @@ public class LogIn extends AppCompatActivity {
 
         /** Se crea el evento click para el textview de recuperar contraseña, el cual crea un pop up donde se recibe el usuario
          * para posteriormente consumir el servicio de recuperar contraseña.*/
-        textView_CambiarContraseña.setOnClickListener(new View.OnClickListener() {
+/*        textView_CambiarContraseña.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -130,7 +130,7 @@ public class LogIn extends AppCompatActivity {
                 startActivity(i);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
-        });
+        });*/
 
         /**Se cre el evento click para el text view olvide mi contraseña, el cual crea un pop up donde se recibo el usuario para
          * posteriormente */
@@ -139,19 +139,17 @@ public class LogIn extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                popUp.crearPopUpRecuperarContrasena();
-             /*   Intent i = new Intent(getApplicationContext() , PantallaCambioContrasena.class);
+               // popUp.crearPopUpRecuperarContrasena();
+               Intent i = new Intent(getApplicationContext() , PantallaOlvideMiContrasena.class);
                 startActivity(i);
-                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);*/
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
         });
 
         //Se crea este filtro para que el usuario no digite espacios en los editText
 
         InputFilter textFilter = new InputFilter() {
-
             @Override
-
             public CharSequence filter (CharSequence source, int start, int end, Spanned dest, int dstart, int dend){
 
                 StringBuilder sbText = new StringBuilder(source);
@@ -180,17 +178,15 @@ public class LogIn extends AppCompatActivity {
 
                         //Este error deberia ocurrir unicamente cuando el servidor no responde
                         if(token.isEmpty()){
-
-                      /*      PopUp popUp = new PopUp(LogIn.this);
-                            popUp.crearPopUpErrorServidor();*/
-                            Intent i = new Intent(getApplicationContext(), pantallaInicialUsuarioComun.class);
-                            startActivity(i);
-                            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                             dialog.dismiss();
+                           PopUp popUp = new PopUp(LogIn.this);
+                            popUp.crearPopUpErrorServidor();
+
+
                         }else{
 
                   //Se cre hilo para hacer la petición del inicio de sesión.
-                            solicitudInicioSesion = new Thread(new Runnable() {
+         /*                   solicitudInicioSesion = new Thread(new Runnable() {
                                 @Override
                                 public void run() {
                                     Log.d("HILO2","Segundo Hilo");
@@ -203,11 +199,12 @@ public class LogIn extends AppCompatActivity {
                             });
 
                             solicitudInicioSesion.start();
+*/
 
-                          /*  estadoConexion="1";
+                            estadoConexion="1";
                             Message usuarioCancela = new Message();
                             usuarioCancela.what = 4;
-                            LogIn.respuesta.sendMessage(usuarioCancela);*/
+                            LogIn.respuesta.sendMessage(usuarioCancela);
 
                         }
 
@@ -227,22 +224,6 @@ public class LogIn extends AppCompatActivity {
 
                         case 4:
                             if (Integer.parseInt(estadoConexion)==1){
-                /*      EncripcionAES en = new EncripcionAES();
-
-                      try {
-                          PreferencesUsuario prefs_enc = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_INFO_USUARIO,this);
-                          CodificarBase64 b = new CodificarBase64();
-                          Log.d("AES", en.encrypt(b.decodificarBase64(prefs_enc.getEncryptionKey()),"Holis"));
-
-                          Log.d("AES LIMPIO",en.decrypt(b.decodificarBase64(prefs_enc.getEncryptionKey()), en.encrypt(b.decodificarBase64(prefs_enc.getEncryptionKey()),"Holis")));
-
-
-
-
-                      }catch (Exception e){
-                          Log.d("EXC",e.toString());
-                      }*/
-
 
                                 solicitarParametricas = new  Thread(new Runnable() {
                                     @Override
@@ -254,15 +235,10 @@ public class LogIn extends AppCompatActivity {
                                 });
 
                                 solicitarParametricas.start();
-               /*            try {
-                               solicitarParametricas.join();
-                           } catch (InterruptedException e) {
-                               e.printStackTrace();
-                           }*/
 
                             }
                             else{
-                                dialog.dismiss();
+                                //dialog.dismiss();
                                 //popUp.crearPopUpLoginFallido(base64.decodificarBase64(objetoServicios.getRespuestaServidor()));
                                 Intent i = new Intent(getApplicationContext(), pantallaInicialUsuarioComun.class);
                                 startActivity(i);
@@ -276,7 +252,7 @@ public class LogIn extends AppCompatActivity {
                             Intent i = new Intent(getApplicationContext(), pantallaInicialUsuarioComun.class);
                                 startActivity(i);
                                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
-                        dialog.dismiss();
+                        //dialog.dismiss();
                            break;
                 }
             }
@@ -325,7 +301,8 @@ public class LogIn extends AppCompatActivity {
               usuarioEncriptado=base64.convertirBase64(user);
               contrasenaEncriptada=base64.convertirBase64(sha512.codificarSHA512(password));
 
-              Log.d("USUARIODECO",base64.decodificarBase64(usuarioEncriptado));
+              Log.d("USUARIODECO",usuarioEncriptado);
+              Log.d("Clave encriptada",contrasenaEncriptada);
 
               //Se crea hilo para hacer la petición al servidor del token
                   solicitudToken =  new Thread(new Runnable() {

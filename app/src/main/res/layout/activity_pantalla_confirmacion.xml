@@ -78,7 +78,6 @@
             android:layout_width="67dp"
             android:layout_height="67dp"
             android:adjustViewBounds="true"
-
             android:background="@drawable/boton_inicio"
             android:drawableTint="@color/blanco"
             android:onClick="cancelarValores"

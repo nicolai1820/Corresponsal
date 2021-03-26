@@ -331,6 +331,25 @@
     <string name="textView_Numeros">Al menos un número</string>
     <string name="button_ReestablecerContrasena">Reestablecer contraseña</string>
 
+    <!-->String Activity Olvide mi Contraseña</!-->
+    <string name="textView_PantallaOlvideMiContrasena">Ingrese el usuario para reestablecer la contraseña</string>
+    <string name="editText_PantallaOlvideMiContrasena">Usuario</string>
+    <string name="button_PantallaOlvideMiContrasena">Reestablecer mi contraseña</string>
+
+    <!-->String Activity Resultado Transaccion Exitosa </!-->
+    <string name="textView_PantallaResultadoTransaccionExitosa">¡Transacción exitosa!</string>
+    <string name="button_EnviarCopiaTransaccionExitosa">Enviar Copia</string>
+    <string name="textView_Transaccion"> Número de transacción:</string>
+
+    <!-->String Activity Resultado Transaccion Fallida </!-->
+    <string name="textView_PantallaTransaccionExitosaCorreo">Ingrese la información.</string>
+    <string name="editText_PantallaTransaccionExitosaCorreo">Correo electrónico</string>
+    <string name="button_PantallaTransaccionExitosaCorreo">Enviar Correo</string>
+
+    <!-->String Activity Resultado Transaccion Fallida </!-->
+    <string name="textView_PantallaTransaccionFallida">Transacción Fallida</string>
+    <string name="button_PantallaTransaccionFallida">Salir</string>
+
 
 
     <!--> __________________________________________________________________Proyecto APOS _____________________________________________________________________________________________________</!-->
