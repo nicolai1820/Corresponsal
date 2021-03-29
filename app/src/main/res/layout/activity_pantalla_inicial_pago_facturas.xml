@@ -1,135 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.pantallaInicialPagoFacturas"
-    android:background="@drawable/fondo"
     android:layout_gravity="center_horizontal"
-    >
+    android:background="@drawable/fondo"
+    app:layout_constrainedWidth="true"
+    app:layout_constrainedHeight="true"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.pantallaInicialPagoFacturas">
 
     <FrameLayout
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline65"
+        app:layout_constraintEnd_toStartOf="@id/guideline67"
+        app:layout_constraintStart_toEndOf="@id/guideline66"
+        app:layout_constraintTop_toBottomOf="@id/guideline64"
         android:id="@+id/contenedorHeaderPantallaInicialFacturas"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
-    <ScrollView
-        android:layout_below="@+id/contenedorHeaderPantallaInicialFacturas"
-        android:layout_above="@id/menuFacturas"
+
+    <TextView
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.04"
+        app:layout_constraintBottom_toTopOf="@id/guideline65"
+        app:layout_constraintEnd_toStartOf="@id/guideline67"
+        app:layout_constraintStart_toEndOf="@id/guideline66"
+        app:layout_constraintTop_toBottomOf="@id/contenedorHeaderPantallaInicialFacturas"
+        android:id="@+id/textView_PantallaInicialPagoFacturas"
+        android:layout_width="305dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:fontFamily="@font/quicksand_regular"
+        android:text="@string/textView_PagoFacturasInicial"
+        android:textColor="@color/azul"
+        android:textSize="21dp" />
+
+
+
+        <Button
+            app:layout_constraintHeight_percent="0.175"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.075"
+            app:layout_constraintBottom_toTopOf="@id/guideline65"
+            app:layout_constraintEnd_toStartOf="@id/button_PagoFacturasEmpresarial"
+            app:layout_constraintStart_toEndOf="@id/guideline66"
+            app:layout_constraintTop_toBottomOf="@id/textView_PantallaInicialPagoFacturas"
+            android:id="@+id/button_PagoFacturasManual"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="36dp"
+            android:layout_weight="1"
+            android:background="@drawable/input_form"
+            android:drawableTop="@drawable/pago_manual"
+            android:drawableTint="@color/azul"
+            android:fontFamily="@font/quicksand_bold"
+            android:onClick="pagoManualFacturas"
+            android:paddingTop="34dp"
+            android:paddingBottom="10dp"
+            android:text="@string/button_PagoFacturasInicialManual"
+            android:textAllCaps="false"
+            android:textColor="@color/azul"
+            android:textSize="19dp"/>
+
+
+        <Button
+            app:layout_constraintHeight_percent="0.175"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.075"
+            app:layout_constraintBottom_toTopOf="@id/guideline65"
+            app:layout_constraintEnd_toStartOf="@id/guideline67"
+            app:layout_constraintStart_toEndOf="@id/button_PagoFacturasManual"
+            app:layout_constraintTop_toBottomOf="@id/textView_PantallaInicialPagoFacturas"
+            android:id="@+id/button_PagoFacturasEmpresarial"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="36dp"
+            android:layout_weight="1"
+            android:background="@drawable/input_form"
+            android:drawableTop="@drawable/empresarial"
+            android:drawableTint="@color/azul"
+            android:fontFamily="@font/quicksand_bold"
+            android:onClick="pagoFacturaEmpresarial"
+            android:paddingTop="34dp"
+            android:paddingBottom="10dp"
+            android:text="@string/button_PagoFacturasInicialEmpresarial"
+            android:textAllCaps="false"
+            android:textColor="@color/azul"
+            android:textSize="19dp"/>
+
+    <Button
+        app:layout_constraintHeight_percent="0.175"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintBottom_toTopOf="@id/guideline65"
+        app:layout_constraintEnd_toStartOf="@id/guideline67"
+        app:layout_constraintStart_toEndOf="@id/guideline66"
+        app:layout_constraintTop_toBottomOf="@id/button_PagoFacturasManual"
+        android:id="@+id/button_PagoFacturasBarras"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="5dp">
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="15dp"
+        android:layout_weight="1"
+        android:background="@drawable/input_form"
+        android:drawableTop="@drawable/pago_barras"
+        android:drawableTint="@color/azul"
+        android:fontFamily="@font/quicksand_bold"
+        android:paddingTop="34dp"
+        android:paddingBottom="10dp"
+        android:text="@string/button_PagoFacturasInicialCodigoBarras"
+        android:textAllCaps="false"
+        android:textColor="@color/azul"
+        android:textSize="19dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_gravity="center_horizontal">
-
-            <TextView
-                android:layout_width="305dp"
-                android:layout_height="60dp"
-                android:textColor="@color/azul"
-                android:textSize="21dp"
-                android:fontFamily="@font/quicksand_regular"
-                android:text="@string/textView_PagoFacturasInicial"
-                android:layout_marginTop="38dp"
-                android:layout_marginStart="36dp"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal"
-                android:layout_marginTop="47dp">
-
-                <Button
-                    android:id="@+id/button_PagoFacturasManual"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="117dp"
-                    android:background="@drawable/input_form"
-                    android:textAllCaps="false"
-                    android:drawableTop="@drawable/pago_manual"
-                    android:paddingTop="34dp"
-                    android:text="@string/button_PagoFacturasInicialManual"
-                    android:drawableTint="@color/azul"
-                    android:textColor="@color/azul"
-                    android:textSize="19dp"
-                    android:fontFamily="@font/quicksand_bold"
-                    android:paddingBottom="10dp"
-                    android:layout_gravity="center_horizontal"
-                    android:onClick="pagoManualFacturas"
-                    android:layout_marginStart="36dp"/>
-
-
-                <Button
-                    android:onClick="pagoFacturaEmpresarial"
-                    android:id="@+id/button_PagoFacturasEmpresarial"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="117dp"
-                    android:background="@drawable/input_form"
-                    android:textAllCaps="false"
-                    android:drawableTop="@drawable/empresarial"
-                    android:paddingTop="34dp"
-                    android:drawableTint="@color/azul"
-                    android:text="@string/button_PagoFacturasInicialEmpresarial"
-                    android:textColor="@color/azul"
-                    android:textSize="19dp"
-                    android:fontFamily="@font/quicksand_bold"
-                    android:paddingBottom="10dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="36dp"/>
-            </LinearLayout>
-            
-            <Button
-                android:id="@+id/button_PagoFacturasBarras"
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_height="117dp"
-                android:background="@drawable/input_form"
-                android:textAllCaps="false"
-                android:drawableTop="@drawable/pago_barras"
-                android:paddingTop="34dp"
-                android:textColor="@color/azul"
-                android:fontFamily="@font/quicksand_bold"
-                android:textSize="19dp"
-                android:drawableTint="@color/azul"
-                android:text="@string/button_PagoFacturasInicialCodigoBarras"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="12dp"
-                android:paddingBottom="10dp"
-                android:layout_marginStart="36dp"
-                android:layout_marginEnd="36dp"
-                android:layout_marginBottom="15dp"/>
-
-        </LinearLayout>
-
-
-
-    </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/menuFacturas"
-        android:background="@drawable/menu_fondo"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        app:itemIconTint="@color/azul"
-        app:itemTextColor="@color/azul"
+        android:layout_height="0dp"
         android:layout_alignParentBottom="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:menu="@menu/menu_home"
+        android:background="@drawable/menu_fondo"
         android:paddingLeft="60dp"
         android:paddingRight="60dp"
-        app:itemIconSize="35dp"
+        app:itemIconSize="30dp"
+        app:itemIconTint="@color/azul"
+        app:itemTextColor="@color/azul"
         app:labelVisibilityMode="unlabeled"
-        />
+        app:layout_constraintTop_toBottomOf="@id/button_PagoFacturasBarras"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline67"
+        app:layout_constraintStart_toEndOf="@id/guideline66"
+        app:layout_constraintBottom_toTopOf="@id/guideline65"
+        app:layout_constraintHeight_percent="0.10"
+        app:menu="@menu/menu_home" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline64"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline65"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline66"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline67"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

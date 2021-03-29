@@ -1,80 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.manual.pantallaPagoFacturasManual"
-    android:background="@drawable/fondo"
     android:layout_gravity="center_horizontal"
-    >
+    android:background="@drawable/fondo"
+    app:layout_constrainedWidth="true"
+    app:layout_constrainedHeight="true"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.manual.pantallaPagoFacturasManual">
 
     <FrameLayout
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline81"
+        app:layout_constraintEnd_toStartOf="@id/guideline83"
+        app:layout_constraintStart_toEndOf="@id/guideline82"
+        app:layout_constraintTop_toBottomOf="@id/guideline80"
         android:id="@+id/contenedorHeaderPagoFacturasManual"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
-<ScrollView
-    android:layout_below="@id/contenedorHeaderPagoFacturasManual"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
+
+            <TextView
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintVertical_bias="0.04"
+                app:layout_constraintBottom_toTopOf="@id/guideline81"
+                app:layout_constraintEnd_toStartOf="@id/guideline83"
+                app:layout_constraintStart_toEndOf="@id/guideline82"
+                app:layout_constraintTop_toBottomOf="@id/contenedorHeaderPagoFacturasManual"
+                android:id="@+id/textView_PantallaPagoFacturasManual"
+                android:layout_width="262dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:fontFamily="@font/quicksand_regular"
+                android:text="@string/textView_PagoFacturasManual"
+                android:textColor="@color/azul"
+                android:textSize="21dp" />
+
+            <Button
+                app:layout_constraintHeight_percent="0.175"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintVertical_bias="0.15"
+                app:layout_constraintBottom_toTopOf="@id/guideline81"
+                app:layout_constraintEnd_toStartOf="@id/guideline83"
+                app:layout_constraintStart_toEndOf="@id/guideline82"
+                app:layout_constraintTop_toBottomOf="@id/textView_PantallaPagoFacturasManual"
+                android:id="@+id/button_PagoFactuasManualConvenio"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="45dp"
+                android:background="@drawable/input_form"
+                android:drawableTop="@drawable/pago_convenio"
+                android:fontFamily="@font/quicksand_bold"
+                android:onClick="pagoFactuasManualConvenio"
+                android:paddingTop="30dp"
+                android:paddingBottom="15dp"
+                android:text="@string/button_PagoFacturasManualConvenio"
+                android:textAllCaps="false"
+                android:textColor="@color/azul"
+                android:textSize="21dp" />
+
+            <Button
+                app:layout_constraintBottom_toTopOf="@id/guideline81"
+                app:layout_constraintHeight_percent="0.175"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintVertical_bias="0.05"
+                app:layout_constraintEnd_toStartOf="@id/guideline83"
+                app:layout_constraintStart_toEndOf="@id/guideline82"
+                app:layout_constraintTop_toBottomOf="@id/button_PagoFactuasManualConvenio"
+                android:id="@+id/button_PagoFactuasManualRecaudadora"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="45dp"
+                android:background="@drawable/input_form"
+                android:drawableTop="@drawable/pago_recaudadora"
+                android:fontFamily="@font/quicksand_bold"
+                android:onClick="pagoFactuasManualRecaudadora"
+                android:paddingTop="30dp"
+                android:paddingBottom="15dp"
+                android:text="@string/button_PagoFacturasManualRecaudadora"
+                android:textAllCaps="false"
+                android:textColor="@color/azul"
+                android:textSize="21dp" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline81"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline82"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
-        >
+        app:layout_constraintGuide_begin="0dp" />
 
-        <TextView
-            android:layout_width="262dp"
-            android:layout_height="40dp"
-            android:textSize="21dp"
-            android:textColor="@color/azul"
-            android:fontFamily="@font/quicksand_regular"
-            android:text="@string/textView_PagoFacturasManual"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="38dp"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline83"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
 
-        <Button
-            android:id="@+id/button_PagoFactuasManualConvenio"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="80dp"
-            android:drawableTop="@drawable/pago_convenio"
-            android:paddingTop="30dp"
-            android:paddingBottom="15dp"
-            android:layout_width="match_parent"
-            android:layout_marginEnd="45dp"
-            android:layout_height="117dp"
-            android:background="@drawable/input_form"
-            android:textAllCaps="false"
-            android:textColor="@color/azul"
-            android:fontFamily="@font/quicksand_bold"
-            android:textSize="21dp"
-            android:text="@string/button_PagoFacturasManualConvenio"
-            android:onClick="pagoFactuasManualConvenio"/>
-
-        <Button
-            android:id="@+id/button_PagoFactuasManualRecaudadora"
-            android:layout_marginStart="36dp"
-            android:layout_marginEnd="45dp"
-            android:layout_marginTop="13dp"
-            android:layout_width="match_parent"
-            android:layout_height="117dp"
-            android:background="@drawable/input_form"
-            android:drawableTop="@drawable/pago_recaudadora"
-            android:paddingTop="30dp"
-            android:paddingBottom="15dp"
-            android:textAllCaps="false"
-            android:textColor="@color/azul"
-            android:fontFamily="@font/quicksand_bold"
-            android:textSize="21dp"
-            android:text="@string/button_PagoFacturasManualRecaudadora"
-            android:onClick="pagoFactuasManualRecaudadora"/>
-
-
-
-    </LinearLayout>
-
-</ScrollView>
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

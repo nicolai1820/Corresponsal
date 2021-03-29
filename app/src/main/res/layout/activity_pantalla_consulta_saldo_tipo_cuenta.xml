@@ -1,80 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.consultaSaldo.pantallaConsultaSaldoTipoCuenta"
-    android:background="@drawable/fondo">
+    android:background="@drawable/fondo"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.consultaSaldo.pantallaConsultaSaldoTipoCuenta">
 
 
     <FrameLayout
+        app:layout_constraintEnd_toStartOf="@id/guideline39"
+        app:layout_constraintStart_toEndOf="@id/guideline38"
+        app:layout_constraintTop_toBottomOf="@id/guideline36"
+        app:layout_constraintHeight_percent="0.17"
         android:id="@+id/contenedorHeaderPantallaConsultaSaldoTipoCuenta"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <ScrollView
-        android:layout_below="@id/contenedorHeaderPantallaConsultaSaldoTipoCuenta"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        android:layout_height="0dp" />
 
 
             <TextView
-                android:layout_marginTop="40dp"
-                android:layout_marginStart="36dp"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintEnd_toStartOf="@id/guideline39"
+                app:layout_constraintStart_toEndOf="@id/guideline38"
+                app:layout_constraintTop_toBottomOf="@id/contenedorHeaderPantallaConsultaSaldoTipoCuenta"
+                android:id="@+id/textView_PantallaConsultaSaldo"
                 android:layout_width="260dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/azul"
-                android:textSize="19dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="40dp"
                 android:fontFamily="@font/quicksand_regular"
-                android:text="@string/textView_pantallaConsultaSaldoCuenta"/>
+                android:text="@string/textView_pantallaConsultaSaldoCuenta"
+                android:textColor="@color/azul"
+                android:textSize="19dp" />
 
 
             <Spinner
+                app:layout_constraintHeight_percent="0.08"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintEnd_toStartOf="@id/guideline39"
+                app:layout_constraintStart_toEndOf="@id/guideline38"
+                app:layout_constraintTop_toBottomOf="@id/textView_PantallaConsultaSaldo"
                 android:id="@+id/spinner_tipoDeCuentaConsultaSaldo"
                 android:layout_width="match_parent"
-                android:layout_marginEnd="45dp"
-                android:layout_height="49dp"
+                android:layout_height="0dp"
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="140dp"
-                android:paddingStart="23dp"
+                android:layout_marginEnd="45dp"
                 android:background="@null"
                 android:foreground="@drawable/spinner_style"
-                android:overlapAnchor="false"
-                />
+                android:overlapAnchor="false"/>
 
             <Button
-                android:onClick="continuarConsultaSaldo"
+                app:layout_constraintHeight_percent="0.095"
+                app:layout_constraintBottom_toTopOf="@id/guideline37"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintEnd_toStartOf="@id/guideline39"
+                app:layout_constraintStart_toEndOf="@id/guideline38"
+                app:layout_constraintTop_toBottomOf="@id/spinner_tipoDeCuentaConsultaSaldo"
                 android:id="@+id/button_ContinuarConsultaSaldo"
                 android:layout_width="138dp"
-                android:layout_height="67dp"
-                android:background="@drawable/boton_inicio"
-                android:textAllCaps="false"
+                android:layout_height="0dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="143dp"
                 android:layout_marginBottom="15dp"
+                android:background="@drawable/boton_inicio"
+                android:fontFamily="@font/quicksand_bold"
+                android:onClick="continuarConsultaSaldo"
                 android:text="@string/button_pantallaConsultaSaldoCCuentaContinuar"
+                android:textAllCaps="false"
                 android:textColor="@color/blanco"
-                android:fontFamily="@font/quicksand_regular"
-                android:textSize="20dp"
-                />
+                android:textSize="20dp" />
 
 
 
-        </LinearLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline36"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline37"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline38"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline39"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
 
 
-
-
-    </ScrollView>
-
-
-
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

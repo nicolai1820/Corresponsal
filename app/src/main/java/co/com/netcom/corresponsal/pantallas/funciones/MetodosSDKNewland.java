@@ -65,6 +65,7 @@ public class MetodosSDKNewland {
     public static final int CONSULTA_SALDO =2;
     public static final int TRANSFERENCIA =3;
     public static final int TARJETA_EMPRESARIAL=4;
+    public final static int CONTACTLESS=6;
 
 
     public static final int DEFAULT_MK_INDEX = 1;
@@ -177,6 +178,7 @@ public class MetodosSDKNewland {
 
         @Override
         public void onScannerResult(BluetoothDevice devInfo) {
+            Log.d("onScannerResult","onScannerResult");
 
             String sSubCadena = devInfo.getAddress().substring(0,5);
 
@@ -191,6 +193,7 @@ public class MetodosSDKNewland {
         @Override
         public void discoverComplete(ArrayList<BluetoothDevice> devInfoList) {
             //appendString("discoverComplete, "+ devInfoList);
+            Log.d("discoverComplete","discoverComplete");
 
             try{
                 Message apagarLeds = new Message();
@@ -221,7 +224,7 @@ public class MetodosSDKNewland {
                 Thread t = new  Thread(new Runnable() {
                     @Override
                     public void run() {
-                        String paramString = "9F0605A000000228DF0101009F09020001DF14039F37049F7B06000000000000DF160199DF2106000000007500DF1906000000000000DF2006000000010000DF180101DF1105B050148800DF13050000880000DF1205B050149800DF1701999F1B0400000000DF150400000000";
+                        /*String paramString = "9F0605A000000228DF0101009F09020001DF14039F37049F7B06000000000000DF160199DF2106000000007500DF1906000000000000DF2006000000010000DF180101DF1105B050148800DF13050000880000DF1205B050149800DF1701999F1B0400000000DF150400000000";
                         nlPosManager.addAID(MediaTypeEnum.ALL, "9F0607A0000000043060DF0101009F08020002DF1105FC5058A000DF1205F85058F800DF130504000000009F1B0400000000DF150400000000DF160199DF170199DF14039F3704DF180101DF1906000000100000DF2006000999999999DF2106000000100000");
                         nlPosManager.addAID(MediaTypeEnum.ALL, "9F0607A0000000651010DF0101009F08020200DF1105FC6024A800DF1205FC60ACF800DF130500100000009F1B0400000000DF150400000000DF160199DF170199DF14039F3704DF180100DF1906000000100000DF2006000999999999DF2106000000100000");
                         nlPosManager.addAID(MediaTypeEnum.ALL, "9F0608A000000333010101DF0101009F08020020DF1105D84000A800DF1205D84004F800DF130500100000009F1B0400000000DF150400000000DF160199DF170199DF14039F3704DF1801019F7B06000000100000DF1906000000100000DF2006000999999999DF2106000000100000");
@@ -282,7 +285,7 @@ public class MetodosSDKNewland {
                         nlPosManager.addCAPublicKey("9F0605A0000000259F220167DF05083230303931323331DF060101DF070101DF02B0C687ADCCF3D57D3360B174E471EDA693AA555DFDC6C8CD394C74BA25CCDF8EABFD1F1CEADFBE2280C9E81F7A058998DC22B7F22576FE84713D0BDD3D34CFCD12FCD0D26901BA74103D075C664DABCCAF57BF789494051C5EC303A2E1D784306D3DB3EB665CD360A558F40B7C05C919B2F0282FE1ED9BF6261AA814648FBC263B14214491DE426D242D65CD1FFF0FBE4D4DAFF5CFACB2ADC7131C9B147EE791956551076270696B75FD97373F1FD7804FDF031452A2907300C8445BF54B970C894691FEADF2D28E");
                         nlPosManager.addCAPublicKey("9F0605A0000000259F220168DF05083230303931323331DF060101DF070101DF02F8F4D198F2F0CF140E4D2D81B765EB4E24CED4C0834822769854D0E97E8066CBE465029B3F410E350F6296381A253BE71A4BBABBD516625DAE67D073D00113AAB9EA4DCECA29F3BB7A5D46C0D8B983E2482C2AD759735A5AB9AAAEFB31D3E718B8CA66C019ECA0A8BE312E243EB47A62300620BD51CF169A9194C17A42E51B34D83775A98E80B2D66F4F98084A448FE0507EA27C905AEE72B62A8A29438B6A4480FFF72F93280432A55FDD648AD93D82B9ECF01275C0914BAD8EB3AAF46B129F8749FEA425A2DCDD7E813A08FC0CA7841EDD49985CD8BC6D5D56F17AB9C67CEC50BA422440563ECCE21699E435C8682B6266393672C693D8B7DF0314415E5FE9EC966C835FBB3E6F766A9B1A4B8674C3");
                         nlPosManager.addCAPublicKey("9F0605A0000000259F22010EDF05083230303931323331DF060101DF070101DF0290AA94A8C6DAD24F9BA56A27C09B01020819568B81A026BE9FD0A3416CA9A71166ED5084ED91CED47DD457DB7E6CBCD53E560BC5DF48ABC380993B6D549F5196CFA77DFB20A0296188E969A2772E8C4141665F8BB2516BA2C7B5FC91F8DA04E8D512EB0F6411516FB86FC021CE7E969DA94D33937909A53A57F907C40C22009DA7532CB3BE509AE173B39AD6A01BA5BB85DF040103DF0314A7266ABAE64B42A3668851191D49856E17F8FBCD");
-
+                    */
                     }
                 });
 
@@ -472,7 +475,7 @@ public class MetodosSDKNewland {
 
            //Se obtiene el track dos y se hace el Split en el caracter correspondiente.
 
-            track2 = Dump.getHexDump(cardInfoEntity.getStrTrack2()).split("D");
+            /*track2 = Dump.getHexDump(cardInfoEntity.getStrTrack2()).split("D");
            bin = track2[0].substring(0,7);
 
            datosTarjeta.setTrack1(Dump.getHexDump(cardInfoEntity.getStrTrack1()));
@@ -483,9 +486,181 @@ public class MetodosSDKNewland {
            datosTarjeta.setKsn(Dump.getHexDump(cardInfoEntity.getKsn()));
            datosTarjeta.setPinBlock(Dump.getHexDump(cardInfoEntity.getPinBlock()));
            datosTarjeta.setKsnPinBlock(Dump.getHexDump(cardInfoEntity.getPinKsn()));
-           datosTarjeta.setUltimosCuatro(track2[0].substring(17));
+           datosTarjeta.setUltimosCuatro(track2[0].substring(17));*/
+
+           if (Dump.getHexDump(cardInfoEntity.getIccDataPlain())=="0"){
+
+               datosTarjeta.setTrack1(Dump.getHexDump(cardInfoEntity.getStrTrack1()));
+               datosTarjeta.setTrack2(Dump.getHexDump(cardInfoEntity.getStrTrack2()));
+               datosTarjeta.setTrack3(Dump.getHexDump(cardInfoEntity.getStrTrack3()));
+               datosTarjeta.setFechaExpiracion(cardInfoEntity.getExpiryDate());
+               //card.setUltimosCuatro(track2[0].substring(track2[0].length()-4, track2[0].length()));
+               datosTarjeta.setKsn(Dump.getHexDump(cardInfoEntity.getKsn()));
+               datosTarjeta.setKsnPinBlock(Dump.getHexDump(cardInfoEntity.getPinKsn()));
+               datosTarjeta.setPinBlock(Dump.getHexDump(cardInfoEntity.getPinBlock()));
+
+               switch (codigoTransaccion){
+
+                   case RETIRO:
+
+                       //Lectura de tarjeta exitosa en Retiro con Tarjeta
+                       try{
+                           Message respuestaLectura = new Message();
+                           respuestaLectura.what = PantallaRetiroConTarjetaLoader.PROCESO_EXISTOSO;
+                           PantallaRetiroConTarjetaLoader.respuesta.sendMessage(respuestaLectura);
+                       }catch (Exception e){ }
+
+                       break;
+
+                   case CONSULTA_SALDO:
+
+                       //Lectura de tarjeta exitosa en Consulta Saldo
+
+                       try{
+                           Message respuestaLectura = new Message();
+                           respuestaLectura.what = pantallaConsultaSaldoLectura.PROCESO_EXISTOSO;
+                           pantallaConsultaSaldoLectura.respuesta.sendMessage(respuestaLectura);
+                       }catch (Exception e){ }
 
 
+                       break;
+                   case TRANSFERENCIA:
+
+                       //Lectura de tarjeta exitosa en Transferencia
+                       try{
+                           Message respuestaLectura = new Message();
+                           respuestaLectura.what = pantallaTransferenciaLectura.PROCESO_EXISTOSO;
+                           pantallaTransferenciaLectura.respuesta.sendMessage(respuestaLectura);
+                       }catch (Exception e){ }
+                       break;
+
+                   case TARJETA_EMPRESARIAL:
+
+                       //Lectura de tarjeta exitosa en TarjetaEmpresarial
+                       try{
+                           Message respuestaLectura = new Message();
+                           respuestaLectura.what = PantallaTarjetaEmpresarialLectura.PROCESO_EXISTOSO;
+                           PantallaTarjetaEmpresarialLectura.respuesta.sendMessage(respuestaLectura);
+                       }catch (Exception e){ }
+
+                       break;
+
+
+               }
+
+           }else if(Dump.getHexDump(cardInfoEntity.getIccDataPlain())=="1"){
+               track2 = Dump.getHexDump(cardInfoEntity.getStrTrack2()).split("D");
+               bin = track2[0].substring(0,7);
+
+               datosTarjeta.setTrack1(Dump.getHexDump(cardInfoEntity.getStrTrack1()));
+               datosTarjeta.setTrack2(Dump.getHexDump(cardInfoEntity.getStrTrack2()));
+               datosTarjeta.setTrack3(Dump.getHexDump(cardInfoEntity.getStrTrack3()));
+               datosTarjeta.setPan(track2[0]);
+               datosTarjeta.setFechaExpiracion(track2[1].substring(0,6));
+               datosTarjeta.setKsn(Dump.getHexDump(cardInfoEntity.getKsn()));
+               datosTarjeta.setPinBlock(Dump.getHexDump(cardInfoEntity.getPinBlock()));
+               datosTarjeta.setKsnPinBlock(Dump.getHexDump(cardInfoEntity.getPinKsn()));
+               datosTarjeta.setUltimosCuatro(track2[0].substring(17));
+
+               switch (codigoTransaccion){
+
+                   case RETIRO:
+
+                       //Lectura de tarjeta exitosa en Retiro con Tarjeta
+                       try{
+                           Message respuestaLectura = new Message();
+                           respuestaLectura.what = PantallaRetiroConTarjetaLoader.PROCESO_EXISTOSO;
+                           PantallaRetiroConTarjetaLoader.respuesta.sendMessage(respuestaLectura);
+                       }catch (Exception e){ }
+
+                       break;
+
+                   case CONSULTA_SALDO:
+
+                       //Lectura de tarjeta exitosa en Consulta Saldo
+
+                       try{
+                           Message respuestaLectura = new Message();
+                           respuestaLectura.what = pantallaConsultaSaldoLectura.PROCESO_EXISTOSO;
+                           pantallaConsultaSaldoLectura.respuesta.sendMessage(respuestaLectura);
+                       }catch (Exception e){ }
+
+
+                       break;
+                   case TRANSFERENCIA:
+
+                       //Lectura de tarjeta exitosa en Transferencia
+                       try{
+                           Message respuestaLectura = new Message();
+                           respuestaLectura.what = pantallaTransferenciaLectura.PROCESO_EXISTOSO;
+                           pantallaTransferenciaLectura.respuesta.sendMessage(respuestaLectura);
+                       }catch (Exception e){ }
+                       break;
+
+                   case TARJETA_EMPRESARIAL:
+
+                       //Lectura de tarjeta exitosa en TarjetaEmpresarial
+                       try{
+                           Message respuestaLectura = new Message();
+                           respuestaLectura.what = PantallaTarjetaEmpresarialLectura.PROCESO_EXISTOSO;
+                           PantallaTarjetaEmpresarialLectura.respuesta.sendMessage(respuestaLectura);
+                       }catch (Exception e){ }
+
+                       break;
+
+               }
+
+           }else{
+
+               switch (codigoTransaccion){
+
+                   case RETIRO:
+
+                       //Lectura de tarjeta exitosa en Retiro con Tarjeta
+                       try{
+                           Message respuestaLectura = new Message();
+                           respuestaLectura.what = CONTACTLESS;
+                           PantallaRetiroConTarjetaLoader.respuesta.sendMessage(respuestaLectura);
+                       }catch (Exception e){ }
+
+                       break;
+
+                   case CONSULTA_SALDO:
+
+                       //Lectura de tarjeta exitosa en Consulta Saldo
+
+                       try{
+                           Message respuestaLectura = new Message();
+                           respuestaLectura.what = CONTACTLESS;
+                           pantallaConsultaSaldoLectura.respuesta.sendMessage(respuestaLectura);
+                       }catch (Exception e){ }
+
+
+                       break;
+                   case TRANSFERENCIA:
+
+                       //Lectura de tarjeta exitosa en Transferencia
+                       try{
+                           Message respuestaLectura = new Message();
+                           respuestaLectura.what = CONTACTLESS;
+                           pantallaTransferenciaLectura.respuesta.sendMessage(respuestaLectura);
+                       }catch (Exception e){ }
+                       break;
+
+                   case TARJETA_EMPRESARIAL:
+
+                       //Lectura de tarjeta exitosa en TarjetaEmpresarial
+                       try{
+                           Message respuestaLectura = new Message();
+                           respuestaLectura.what = CONTACTLESS;
+                           PantallaTarjetaEmpresarialLectura.respuesta.sendMessage(respuestaLectura);
+                       }catch (Exception e){ }
+
+                       break;
+
+               }
+
+           }
 
 
 
@@ -493,7 +668,7 @@ public class MetodosSDKNewland {
 
 
            Log.d("TARJETA CARDDTO",datosTarjeta.toString());
-            nlPosManager.calculateMAC(PinManageType.DUKPT, DEFAULT_MAC_WK_INDEX, ISOUtils.hex2byte(DataforMac), MacAlgorithm.MAC_X919);
+        /*    nlPosManager.calculateMAC(PinManageType.DUKPT, DEFAULT_MAC_WK_INDEX, ISOUtils.hex2byte(DataforMac), MacAlgorithm.MAC_X919);
 
             switch (codigoTransaccion){
 
@@ -543,7 +718,7 @@ public class MetodosSDKNewland {
 
 
             }
-
+*/
 
 
 
@@ -797,9 +972,20 @@ public class MetodosSDKNewland {
                           break;
                   }
 
-              } else if (errInfo.equals("Fail to check card state")){
+              }
+
+              else if (errInfo.equals("Fail to check card state")){
                   Log.d("ESTADO TARJETA",errInfo);
                   estado = errInfo;
+              }
+              else if(errInfo.equalsIgnoreCase("Search for device timeout")){
+                  try{
+                      Message apagarLeds = new Message();
+                      apagarLeds.what = 4;
+                      pantallaAjustesUsuarioComun.procesoTransacion.sendMessage(apagarLeds);
+                  }catch (Exception e){}
+                  Log.d("LISTA", listDevices.toString());
+
               }
 
         }
@@ -878,7 +1064,11 @@ public class MetodosSDKNewland {
                 nlPosManager.scanBlueDevice(TIMEOUT);
             } else {
                 Toast.makeText(context,"Active Bluetooth",Toast.LENGTH_SHORT).show();
-
+                try{
+                    Message apagarLeds = new Message();
+                    apagarLeds.what = 4;
+                    pantallaAjustesUsuarioComun.procesoTransacion.sendMessage(apagarLeds);
+                }catch (Exception e){}
             }
 
     }

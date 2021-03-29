@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -79,6 +80,8 @@ public class pantallaReclamarGiroDatosBeneficiario extends BaseActivity {
 
         //Se inicializa el header con el respectivo titulo de la vista.
         getSupportFragmentManager().beginTransaction().replace(R.id.contenedorHeaderReclamarGiroDatosBeneficiario,header).commit();
+        editText_DocumentoBeneficiarioReclamarGiro.setFilters(new InputFilter[]{new InputFilter.LengthFilter(15)});
+        editText_MontoReclamarGiro.setFilters(new InputFilter[]{new InputFilter.LengthFilter(15)});
 
     }
 

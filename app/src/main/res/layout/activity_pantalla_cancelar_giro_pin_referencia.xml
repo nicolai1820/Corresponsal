@@ -1,87 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.giros.cancelar.pantallaCancelarGiroPinReferencia"
     android:layout_gravity="center_horizontal"
-    android:background="@drawable/fondo">
+    android:background="@drawable/fondo"
+    app:layout_constrainedWidth="true"
+    app:layout_constrainedHeight="true"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.giros.cancelar.pantallaCancelarGiroPinReferencia">
 
     <FrameLayout
-    android:id="@+id/contenedorHeaderCancelarGiroPinReferencia"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
-
-    <ScrollView
-        android:layout_below="@id/contenedorHeaderCancelarGiroPinReferencia"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline18"
+        app:layout_constraintEnd_toStartOf="@id/guideline20"
+        app:layout_constraintStart_toEndOf="@id/guideline19"
+        app:layout_constraintTop_toBottomOf="@id/guideline17"
+        android:id="@+id/contenedorHeaderCancelarGiroPinReferencia"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_gravity="center_horizontal">
-
-            <TextView
-                android:layout_width="280dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="36dp"
-                android:layout_marginTop="34dp"
-                android:textColor="@color/azul"
-                android:textSize="21dp"
-                android:fontFamily="@font/quicksand_regular"
-                android:text="@string/textView_CancelarGiroPinReferencia"
-                />
-
-            <EditText
-                android:id="@+id/editText_CancelarGiroPinReferencia"
-                android:layout_width="match_parent"
-                android:layout_marginEnd="45dp"
-                android:layout_height="49dp"
-                android:layout_marginStart="36dp"
-                android:layout_marginTop="120dp"
-                android:background="@drawable/input_form"
-                android:fontFamily="@font/quicksand_bold"
-                android:inputType="number"
-                android:numeric="integer"
-                android:paddingStart="23dp"
-                android:textColorHint="@color/azul"
-                android:textSize="21dp"
-                android:hint="@string/editText_CancelarGiroPinReferencia"
-                android:imeOptions="actionDone"
-                android:textColor="@color/azul"
-                />
-
-            <Button
-                android:id="@+id/button_CancelarGirosPinReferenciaContinuar"
-                android:layout_width="138dp"
-                android:layout_height="67dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="180dp"
-                android:background="@drawable/boton_inicio"
-                android:fontFamily="@font/quicksand_regular"
-                android:text="@string/button_CancelarGirosPinReferenciaContinuar"
-                android:textAllCaps="false"
-                android:textColor="@color/blanco"
-                android:textSize="20dp"
-                android:onClick="continuarPinReferenciaCancelarGiro"
-                />
+        android:layout_height="wrap_content"
+        />
 
 
+    <TextView
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.04"
+        app:layout_constraintBottom_toTopOf="@id/guideline18"
+        app:layout_constraintEnd_toStartOf="@id/guideline20"
+        app:layout_constraintStart_toEndOf="@id/guideline19"
+        app:layout_constraintTop_toBottomOf="@id/contenedorHeaderCancelarGiroPinReferencia"
+        android:id="@+id/textView_PantallaCancelarGiroPin"
+        android:layout_width="280dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.05"
+        android:layout_marginStart="36dp"
+        android:fontFamily="@font/quicksand_regular"
+        android:text="@string/textView_CancelarGiroPinReferencia"
+        android:textColor="@color/azul"
+        android:textSize="21dp" />
+
+    <EditText
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline18"
+        app:layout_constraintEnd_toStartOf="@id/guideline20"
+        app:layout_constraintStart_toEndOf="@id/guideline19"
+        app:layout_constraintTop_toBottomOf="@id/textView_PantallaCancelarGiroPin"
+        android:id="@+id/editText_CancelarGiroPinReferencia"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/input_form"
+        android:fontFamily="@font/quicksand_regular"
+        android:hint="@string/editText_CancelarGiroPinReferencia"
+        android:imeOptions="actionDone"
+        android:inputType="number"
+        android:numeric="integer"
+        android:paddingStart="23dp"
+        android:textColor="@color/azul"
+        android:textColorHint="@color/azul"
+        android:textSize="21dp" />
+
+    <Button
+        app:layout_constraintHeight_percent="0.095"
+        app:layout_constraintBottom_toTopOf="@id/guideline18"
+        app:layout_constraintVertical_bias="0.4"
+        app:layout_constraintEnd_toStartOf="@id/guideline20"
+        app:layout_constraintStart_toEndOf="@id/guideline19"
+        app:layout_constraintTop_toBottomOf="@+id/editText_CancelarGiroPinReferencia"
+        android:id="@+id/button_CancelarGirosPinReferenciaContinuar"
+        android:layout_width="138dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/boton_inicio"
+        android:fontFamily="@font/quicksand_bold"
+        android:onClick="continuarPinReferenciaCancelarGiro"
+        android:text="@string/button_CancelarGirosPinReferenciaContinuar"
+        android:textAllCaps="false"
+        android:textColor="@color/blanco"
+        android:textSize="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
 
 
-        </LinearLayout>
-
-
-
-
-
-    </ScrollView>
-
-
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

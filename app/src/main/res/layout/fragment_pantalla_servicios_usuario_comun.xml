@@ -142,10 +142,10 @@
 
 
 
-            <LinearLayout
+            <!--LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"-->
 
                 <Button
                     android:id="@+id/button_PagoFacturas"
@@ -167,7 +167,7 @@
 
 
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                <!--com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/scrollAbajo"
                     android:src="@drawable/arrowdown"
                     android:tint="@color/float_transparent"
@@ -182,8 +182,8 @@
                     android:layout_marginTop="13dp"
                     app:fabCustomSize="40dp"
                     android:visibility="invisible"
-                    />
-            </LinearLayout>
+                    /-->
+            <!--/LinearLayout-->
 
             <Button
                 android:id="@+id/button_Deposito"

@@ -42,7 +42,7 @@
                 android:background="@drawable/boton_inicio"
                 android:text="@string/button_PopUpSalir"
                 android:textSize="19dp"
-                android:fontFamily="@font/quicksand_regular"
+                android:fontFamily="@font/quicksand_bold"
                 />
 
             <Button
@@ -57,7 +57,7 @@
                 android:background="@drawable/boton_inicio"
                 android:text="@string/button_PopUpIntentarNuevamente"
                 android:textSize="19dp"
-                android:fontFamily="@font/quicksand_regular"/>
+                android:fontFamily="@font/quicksand_bold"/>
 
 
 

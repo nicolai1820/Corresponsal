@@ -81,6 +81,7 @@ public class pantallaRetiroSinTarjetaPin extends BaseActivity {
 
                         // pantalla loader transaccion pin
 
+                        //Mostrar loader aqui y hacer llamado al a función de c, así mismo habilitar la pantalla nuevamnete
                         Intent i = new Intent(getApplicationContext(), PantallaRetiroSinTarjetaLoader.class);
                         i.putExtra("valores",valores);
                         startActivity(i);

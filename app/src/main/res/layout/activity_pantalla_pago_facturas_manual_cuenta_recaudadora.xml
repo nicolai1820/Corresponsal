@@ -1,107 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.manual.manualCuentaRecaudadora.pantallaPagoFacturasManualCuentaRecaudadora"
-    android:background="@drawable/fondo"
     android:layout_gravity="center_horizontal"
-    >
+    android:background="@drawable/fondo"
+    app:layout_constrainedWidth="true"
+    app:layout_constrainedHeight="true"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.manual.manualCuentaRecaudadora.pantallaPagoFacturasManualCuentaRecaudadora">
 
     <FrameLayout
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline89"
+        app:layout_constraintEnd_toStartOf="@id/guideline91"
+        app:layout_constraintStart_toEndOf="@id/guideline90"
+        app:layout_constraintTop_toBottomOf="@id/guideline88"
         android:id="@+id/contenedorHeaderPagoFacturasManualCuentaRecaudadora"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <ScrollView
-        android:layout_below="@id/contenedorHeaderPagoFacturasManualCuentaRecaudadora"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        app:layout_constraintVertical_bias="0.04"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline89"
+        app:layout_constraintEnd_toStartOf="@id/guideline91"
+        app:layout_constraintStart_toEndOf="@id/guideline90"
+        app:layout_constraintTop_toBottomOf="@id/contenedorHeaderPagoFacturasManualCuentaRecaudadora"
+        android:id="@+id/textView_PantallaPagoFacturasManualCuentaRecaudadora"
+        android:layout_width="283dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:fontFamily="@font/quicksand_regular"
+        android:text="@string/textView_PagoFacturasManualCuentaRecaudadora"
+        android:textColor="@color/azul"
+        android:textSize="21dp" />
+
+    <Spinner
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline89"
+        app:layout_constraintEnd_toStartOf="@id/guideline91"
+        app:layout_constraintStart_toEndOf="@id/guideline90"
+        app:layout_constraintTop_toBottomOf="@id/textView_PantallaPagoFacturasManualCuentaRecaudadora"
+        android:id="@+id/spinner_tipoDeCuentaCuentaRecaudadora"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_gravity="center_horizontal"
-            >
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="45dp"
+        android:background="@null"
+        android:foreground="@drawable/spinner_style"
+        android:overlapAnchor="false"/>
 
-            <TextView
-                android:layout_width="283dp"
-                android:layout_height="60dp"
-                android:textColor="@color/azul"
-                android:textSize="21dp"
-                android:fontFamily="@font/quicksand_regular"
-                android:layout_marginStart="36dp"
-                android:layout_marginTop="38dp"
-                android:text="@string/textView_PagoFacturasManualCuentaRecaudadora"/>
+    <EditText
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline89"
+        app:layout_constraintEnd_toStartOf="@id/guideline91"
+        app:layout_constraintStart_toEndOf="@id/guideline90"
+        app:layout_constraintTop_toBottomOf="@id/spinner_tipoDeCuentaCuentaRecaudadora"
+        android:id="@+id/editText_PagoFacturasManualNumeroCuentaRecaudadora"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/input_form"
+        android:fontFamily="@font/quicksand_regular"
+        android:hint="@string/editText_PagoFacturasManualNumeroCuentaRecaudadora"
+        android:inputType="number"
+        android:numeric="integer"
+        android:paddingStart="23dp"
+        android:textColor="@color/azul"
+        android:textColorHint="@color/azul"
+        android:textSize="21dp" />
 
-            <Spinner
-                android:id="@+id/spinner_tipoDeCuentaCuentaRecaudadora"
-                android:layout_width="match_parent"
-                android:layout_height="49dp"
-                android:layout_marginStart="36dp"
-                android:layout_marginEnd="45dp"
-                android:layout_marginTop="58dp"
-                android:foreground="@drawable/spinner_style"
-                android:background="@null"
-                android:paddingStart="23dp"
-                android:overlapAnchor="false"
-                />
+    <EditText
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline89"
+        app:layout_constraintEnd_toStartOf="@id/guideline91"
+        app:layout_constraintStart_toEndOf="@id/guideline90"
+        app:layout_constraintTop_toBottomOf="@id/editText_PagoFacturasManualNumeroCuentaRecaudadora"
+        android:id="@+id/editText_PagoFacturasManualCuentaRecaudadoraNumeroReferencia"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/input_form"
+        android:fontFamily="@font/quicksand_regular"
+        android:hint="@string/editText_PagoFacturasManualCuentaRecaudadoraNumeroReferencia"
+        android:imeOptions="actionDone"
+        android:inputType="number"
+        android:numeric="integer"
+        android:paddingStart="23dp"
+        android:textColor="@color/azul"
+        android:textColorHint="@color/azul"
+        android:textSize="21dp" />
 
-            <EditText
-                android:id="@+id/editText_PagoFacturasManualNumeroCuentaRecaudadora"
-                android:layout_width="match_parent"
-                android:layout_height="49dp"
-                android:layout_marginStart="36dp"
-                android:layout_marginEnd="45dp"
-                android:layout_marginTop="21dp"
-                android:hint="@string/editText_PagoFacturasManualNumeroCuentaRecaudadora"
-                android:textColorHint="@color/azul"
-                android:inputType="number"
-                android:numeric="integer"
-                android:fontFamily="@font/quicksand_bold"
-                android:textSize="21dp"
-                android:paddingStart="23dp"
-                android:background="@drawable/input_form"
-                android:textColor="@color/azul"
-                />
+    <Button
+        app:layout_constraintHeight_percent="0.095"
+        app:layout_constraintBottom_toTopOf="@id/guideline89"
+        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintEnd_toStartOf="@id/guideline91"
+        app:layout_constraintStart_toEndOf="@id/guideline90"
+        app:layout_constraintTop_toBottomOf="@id/editText_PagoFacturasManualCuentaRecaudadoraNumeroReferencia"
+        android:id="@+id/button_PagoFacturasManualCuentaRecaudadoraVamos"
+        android:layout_width="138dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/boton_inicio"
+        android:fontFamily="@font/quicksand_bold"
+        android:onClick="pagoFacturasManualCuentaRecaudadoraVamos"
+        android:text="@string/button_PagoFacturasManualCuentaRecaudadoraVamos"
+        android:textAllCaps="false"
+        android:textColor="@color/blanco"
+        android:textSize="20dp" />
 
-            <EditText
-                android:id="@+id/editText_PagoFacturasManualCuentaRecaudadoraNumeroReferencia"
-                android:layout_width="match_parent"
-                android:layout_height="49dp"
-                android:layout_marginStart="36dp"
-                android:layout_marginEnd="45dp"
-                android:layout_marginTop="21dp"
-                android:hint="@string/editText_PagoFacturasManualCuentaRecaudadoraNumeroReferencia"
-                android:textColorHint="@color/azul"
-                android:inputType="number"
-                android:numeric="integer"
-                android:fontFamily="@font/quicksand_bold"
-                android:textSize="21dp"
-                android:paddingStart="23dp"
-                android:background="@drawable/input_form"
-                android:imeOptions="actionDone"
-                android:textColor="@color/azul"
-                />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline88"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
 
-            <Button
-                android:id="@+id/button_PagoFacturasManualCuentaRecaudadoraVamos"
-                android:layout_width="138dp"
-                android:layout_height="67dp"
-                android:layout_gravity="center_horizontal"
-                android:textSize="20dp"
-                android:text="@string/button_PagoFacturasManualCuentaRecaudadoraVamos"
-                android:textAllCaps="false"
-                android:background="@drawable/boton_inicio"
-                android:textColor="@color/blanco"
-                android:fontFamily="@font/quicksand_regular"
-                android:layout_marginTop="78dp"
-                android:onClick="pagoFacturasManualCuentaRecaudadoraVamos"
-                android:layout_marginBottom="15dp"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline89"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
 
-        </LinearLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline90"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
 
-    </ScrollView>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline91"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

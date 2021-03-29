@@ -15,8 +15,8 @@
         >
 
         <pl.droidsonroids.gif.GifImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
             android:src="@drawable/splash"
             android:layout_centerInParent="true"
             android:layout_gravity="center_horizontal"

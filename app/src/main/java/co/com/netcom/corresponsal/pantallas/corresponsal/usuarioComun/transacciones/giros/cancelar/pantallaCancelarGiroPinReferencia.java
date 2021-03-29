@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -53,6 +54,7 @@ public class pantallaCancelarGiroPinReferencia extends BaseActivity {
 
         //Se crea la conexion con los elementos de la interfaz grafica
         editText_CancelarGiroPinReferencia = (EditText) findViewById(R.id.editText_CancelarGiroPinReferencia);
+        editText_CancelarGiroPinReferencia.setFilters(new InputFilter[]{new InputFilter.LengthFilter(15)});
 
     }
 

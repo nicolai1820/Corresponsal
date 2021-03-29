@@ -43,6 +43,8 @@ public class BaseActivity extends AppCompatActivity implements TimeOutSesion.Tim
      */
     @Override
     public void doLogout() {
+
+        TimeOutSesion.stopLogoutTimer();
         // write your stuff here
         Intent i = new Intent(this, LogIn.class);
         i.putExtra("sesion",1);

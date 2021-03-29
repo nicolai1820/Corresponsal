@@ -1,47 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.tarjetaEmpresarial.PantallaTarjetaEmpresarialLectura"
-    android:background="@drawable/fondo">
+    android:background="@drawable/fondo"
+    app:layout_constrainedWidth="true"
+    app:layout_constrainedHeight="true"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.tarjetaEmpresarial.PantallaTarjetaEmpresarialLectura">
 
     <FrameLayout
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline137"
+        app:layout_constraintEnd_toStartOf="@id/guideline139"
+        app:layout_constraintStart_toEndOf="@id/guideline138"
+        app:layout_constraintTop_toBottomOf="@id/guideline136"
         android:id="@+id/contenedorHeaderTarjetaEmpresarialLectura"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <ScrollView
-        android:layout_below="@id/contenedorHeaderTarjetaEmpresarialLectura"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            
-            <TextView
-                android:layout_width="225dp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/azul"
-                android:textSize="19dp"
-                android:fontFamily="@font/quicksand_regular"
-                android:layout_marginStart="36dp"
-                android:layout_marginTop="40dp"
-                android:text="@string/textView_PantallaTarjetaEmpresarialLectura"/>
-
-            <pl.droidsonroids.gif.GifImageView
-                android:layout_width="300dp"
-                android:layout_height="300dp"
-                android:src="@drawable/inserte_tarjeta"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="90dp"
-                android:layout_marginBottom="15dp"/>
-
-        </LinearLayout>
-    </ScrollView>
+        android:layout_height="wrap_content" />
 
 
-</RelativeLayout>
+    <TextView
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.04"
+        app:layout_constraintBottom_toTopOf="@id/guideline137"
+        app:layout_constraintEnd_toStartOf="@id/guideline139"
+        app:layout_constraintStart_toEndOf="@id/guideline138"
+        app:layout_constraintTop_toBottomOf="@id/contenedorHeaderTarjetaEmpresarialLectura"
+        android:id="@+id/textView_PantallaTarjetaEmpresarialLectura"
+        android:layout_width="225dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:fontFamily="@font/quicksand_regular"
+        android:text="@string/textView_PantallaTarjetaEmpresarialLectura"
+        android:textColor="@color/azul"
+        android:textSize="19dp" />
+
+    <pl.droidsonroids.gif.GifImageView
+        app:layout_constraintBottom_toTopOf="@id/guideline137"
+        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintEnd_toStartOf="@id/guideline139"
+        app:layout_constraintStart_toEndOf="@id/guideline138"
+        app:layout_constraintTop_toBottomOf="@id/textView_PantallaTarjetaEmpresarialLectura"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="15dp"
+        android:src="@drawable/inserte_tarjeta" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline136"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline137"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline138"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline139"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

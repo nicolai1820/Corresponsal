@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import co.com.netcom.corresponsal.R;
@@ -54,6 +56,7 @@ public class pantallaEnviarGiroCantidad extends BaseActivity {
 
         //Se crea el header con el respectivo titulo de la actividad
         getSupportFragmentManager().beginTransaction().replace(R.id.contenedorHeaderGirosEnviar,header).commit();
+        cantidad.setFilters(new InputFilter[]{new InputFilter.LengthFilter(15)});
     }
 
 
@@ -67,8 +70,12 @@ public class pantallaEnviarGiroCantidad extends BaseActivity {
         //Se obtiene la cantidad digitada por el usuario
         String cantidad_string = cantidad.getText().toString();
 
+        Log.d("Monto",cantidad_string);
         IntegradorC integradorC = new IntegradorC(getApplicationContext());
         DatosComision datosComision = new DatosComision();
+        datosComision.setReferenciaCancelacion(" ");
+        datosComision.setReferenciaReclamacion(" ");
+
         int numeroItems = 0;
 
 

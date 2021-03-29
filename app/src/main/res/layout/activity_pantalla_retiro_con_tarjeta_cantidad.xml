@@ -1,83 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.retiro.conTarjeta.PantallaRetiroConTarjetaCantidad"
-    android:background="@drawable/fondo">
+    android:background="@drawable/fondo"
+    app:layout_constrainedWidth="true"
+    app:layout_constrainedHeight="true"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.retiro.conTarjeta.PantallaRetiroConTarjetaCantidad">
 
     <FrameLayout
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline109"
+        app:layout_constraintEnd_toStartOf="@id/guideline111"
+        app:layout_constraintStart_toEndOf="@id/guideline110"
+        app:layout_constraintTop_toBottomOf="@id/guideline108"
         android:id="@+id/contenedorHeaderPantallaRetiroConTarjetaCantidad"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <ScrollView
-        android:layout_below="@id/contenedorHeaderPantallaRetiroConTarjetaCantidad"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-       <LinearLayout
-           android:layout_gravity="center_horizontal"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:orientation="vertical">
-
-           <TextView
-               android:layout_marginTop="10dp"
-               android:layout_marginStart="36dp"
-               android:layout_width="250dp"
-               android:layout_height="wrap_content"
-               android:text="@string/textView_pantallaRetiroConTarjetaCantidad"
-               android:textColor="@color/azul"
-               android:textSize="19dp"
-               android:fontFamily="@font/quicksand_regular"/>
-
-           <EditText
-               android:id="@+id/editText_pantallaRetiroConTarjetaCantidad"
-               android:textSize="19dp"
-               android:fontFamily="@font/quicksand_bold"
-               android:textColorHint="@color/azul"
-               android:paddingStart="23dp"
-               android:hint="@string/editText_pantallaRetiroConTarjetaCantidad"
-               android:layout_marginTop="68dp"
-               android:background="@drawable/input_form"
-               android:layout_marginEnd="45dp"
-               android:layout_marginStart="36dp"
-               android:layout_width="match_parent"
-               android:layout_height="49dp"
-               android:inputType="number"
-               android:numeric="integer"
-               android:imeOptions="actionDone"
-               android:textColor="@color/azul"
-               />
+        android:layout_height="wrap_content" />
 
 
 
-           
-           <Button
-               android:id="@+id/button_RetiroConTarjetaContinuar"
-               android:layout_marginTop="100dp"
-               android:layout_gravity="center_horizontal"
-               android:layout_width="138dp"
-               android:layout_height="67dp"
-               android:background="@drawable/boton_inicio"
-               android:textAllCaps="false"
-               android:text="@string/button_pantallaRetiroConTarjetaCantidadContinuar"
-               android:textColor="@color/blanco"
-               android:fontFamily="@font/quicksand_regular"
-               android:textSize="20dp"
-               android:onClick="continuarRetiroConTarjeta"
-               android:layout_marginBottom="15dp"/>
+    <TextView
+        app:layout_constraintVertical_bias="0.04"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline109"
+        app:layout_constraintEnd_toStartOf="@id/guideline111"
+        app:layout_constraintStart_toEndOf="@id/guideline110"
+        app:layout_constraintTop_toBottomOf="@id/contenedorHeaderPantallaRetiroConTarjetaCantidad"
+        android:id="@+id/textView_PantallaRetiroConTarjetaCantidad"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:fontFamily="@font/quicksand_regular"
+        android:text="@string/textView_pantallaRetiroConTarjetaCantidad"
+        android:textColor="@color/azul"
+        android:textSize="19dp" />
+
+            <EditText
+                app:layout_constraintHeight_percent="0.07"
+                app:layout_constraintVertical_bias="0.2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintBottom_toTopOf="@id/guideline109"
+                app:layout_constraintEnd_toStartOf="@id/guideline111"
+                app:layout_constraintStart_toEndOf="@id/guideline110"
+                app:layout_constraintTop_toBottomOf="@id/textView_PantallaRetiroConTarjetaCantidad"
+                android:id="@+id/editText_pantallaRetiroConTarjetaCantidad"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="45dp"
+                android:background="@drawable/input_form"
+                android:fontFamily="@font/quicksand_regular"
+                android:hint="@string/editText_pantallaRetiroConTarjetaCantidad"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:numeric="integer"
+                android:paddingStart="23dp"
+                android:textColor="@color/azul"
+                android:textColorHint="@color/azul"
+                android:textSize="19dp" />
+
+
+            <Button
+                app:layout_constraintBottom_toTopOf="@id/guideline109"
+                app:layout_constraintHeight_percent="0.095"
+                app:layout_constraintVertical_bias="0.25"
+                app:layout_constraintEnd_toStartOf="@id/guideline111"
+                app:layout_constraintStart_toEndOf="@id/guideline110"
+                app:layout_constraintTop_toBottomOf="@id/editText_pantallaRetiroConTarjetaCantidad"
+                android:id="@+id/button_RetiroConTarjetaContinuar"
+                android:layout_width="138dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/boton_inicio"
+                android:fontFamily="@font/quicksand_bold"
+                android:onClick="continuarRetiroConTarjeta"
+                android:text="@string/button_pantallaRetiroConTarjetaCantidadContinuar"
+                android:textAllCaps="false"
+                android:textColor="@color/blanco"
+                android:textSize="20dp" />
 
 
 
 
-       </LinearLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline108"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline109"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline110"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline111"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
 
-    </ScrollView>
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

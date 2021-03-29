@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -87,6 +88,9 @@ public class pantallaEnviarGiroDatosBeneficiario extends BaseActivity {
             }
         };
         spinner_tipoDocumentoBeneficiarioEnviarGiro.setAdapter(adapter);
+        editText_DocumentoBeneficiarioEnviarGiro.setFilters(new InputFilter[]{new InputFilter.LengthFilter(15)});
+        editText_NumeroCelularBeneficiarioEnviarGiro.setFilters(new InputFilter[]{new InputFilter.LengthFilter(15)});
+
     }
 
     /**Metodo continuarDatosGirador de tipo void, recibo como parametro un View, para poder ser implementado por

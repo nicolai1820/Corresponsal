@@ -1,76 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.tarjetaEmpresarial.PantallaTarjetaEmpresarialCantidad"
-    android:background="@drawable/fondo">
+    android:background="@drawable/fondo"
+    app:layout_constrainedWidth="true"
+    app:layout_constrainedHeight="true"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.tarjetaEmpresarial.PantallaTarjetaEmpresarialCantidad">
 
     <FrameLayout
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline133"
+        app:layout_constraintEnd_toStartOf="@id/guideline135"
+        app:layout_constraintStart_toEndOf="@id/guideline134"
+        app:layout_constraintTop_toBottomOf="@id/guideline132"
         android:id="@+id/contenedorHeaderPantallaTarjetaEmpresarialCantidad"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
-    <ScrollView
-        android:layout_below="@id/contenedorHeaderPantallaTarjetaEmpresarialCantidad"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            
+
             <TextView
+                app:layout_constraintVertical_bias="0.04"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintBottom_toTopOf="@id/guideline133"
+                app:layout_constraintEnd_toStartOf="@id/guideline135"
+                app:layout_constraintStart_toEndOf="@id/guideline134"
+                app:layout_constraintTop_toBottomOf="@id/contenedorHeaderPantallaTarjetaEmpresarialCantidad"
+                android:id="@+id/textView_PantallaTarjetaEmpresarialCantidad"
                 android:layout_width="230dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/azul"
-                android:fontFamily="@font/quicksand_regular"
-                android:textSize="19dp"
                 android:layout_marginStart="36dp"
-                android:layout_marginTop="40dp"
+                android:fontFamily="@font/quicksand_regular"
                 android:text="@string/textView_PantallaTarjetaEmpresarialCantidad"
-                />
+                android:textColor="@color/azul"
+                android:textSize="19dp" />
 
             <EditText
+                app:layout_constraintHeight_percent="0.07"
+                app:layout_constraintVertical_bias="0.25"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintBottom_toTopOf="@id/guideline133"
+                app:layout_constraintEnd_toStartOf="@id/guideline135"
+                app:layout_constraintStart_toEndOf="@id/guideline134"
+                app:layout_constraintTop_toBottomOf="@id/textView_PantallaTarjetaEmpresarialCantidad"
                 android:id="@+id/editText_TarjetaEmpresarialCantidad"
-                android:textSize="19dp"
-                android:textColorHint="@color/azul"
-                android:textColor="@color/azul"
-                android:fontFamily="@font/quicksand_bold"
-                android:hint="@string/editText_PantallaTarjetaEmpresarialCantidad"
-                android:layout_marginTop="130dp"
-                android:paddingStart="23dp"
-                android:layout_marginEnd="36dp"
-                android:layout_marginStart="36dp"
-                android:background="@drawable/input_form"
                 android:layout_width="match_parent"
-                android:layout_height="49dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="36dp"
+                android:background="@drawable/input_form"
+                android:fontFamily="@font/quicksand_regular"
+                android:hint="@string/editText_PantallaTarjetaEmpresarialCantidad"
                 android:imeOptions="actionDone"
                 android:inputType="number"
                 android:numeric="integer"
-                />
+                android:paddingStart="23dp"
+                android:textColor="@color/azul"
+                android:textColorHint="@color/azul"
+                android:textSize="19dp" />
 
             <Button
-                android:onClick="pagoFacturaEmpresarialContinuar"
+                app:layout_constraintBottom_toTopOf="@id/guideline133"
+                app:layout_constraintHeight_percent="0.095"
+                app:layout_constraintVertical_bias="0.3"
+                app:layout_constraintEnd_toStartOf="@id/guideline135"
+                app:layout_constraintStart_toEndOf="@id/guideline134"
+                app:layout_constraintTop_toBottomOf="@id/editText_TarjetaEmpresarialCantidad"
                 android:id="@+id/button_TarjetaEmpresarialContinuar"
                 android:layout_width="138dp"
-                android:layout_height="67dp"
-                android:background="@drawable/boton_inicio"
+                android:layout_height="0dp"
                 android:layout_gravity="center_horizontal"
-                android:textAllCaps="false"
-                android:textSize="20dp"
-                android:fontFamily="@font/quicksand_regular"
-                android:textColor="@color/blanco"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/boton_inicio"
+                android:fontFamily="@font/quicksand_bold"
+                android:onClick="pagoFacturaEmpresarialContinuar"
                 android:text="@string/button_pantallaTransferenciaTipoDeCuentaNumeroYMontoContinuar"
-                android:layout_marginTop="117dp"
-                android:layout_marginBottom="15dp"/>
-            
-            
-        </LinearLayout>
-        
-    </ScrollView>
-    
+                android:textAllCaps="false"
+                android:textColor="@color/blanco"
+                android:textSize="20dp" />
 
-</RelativeLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline132"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline133"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline134"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline135"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

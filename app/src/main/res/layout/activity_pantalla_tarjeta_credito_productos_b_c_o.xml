@@ -1,92 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.pagoProductosBCO.tarjetaCredito.pantallaTarjetaCreditoProductosBCO"
-    android:background="@drawable/fondo"
     android:layout_gravity="center_horizontal"
-    >
+    android:background="@drawable/fondo"
+    app:layout_constrainedWidth="true"
+    app:layout_constrainedHeight="true"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.pagoProductosBCO.tarjetaCredito.pantallaTarjetaCreditoProductosBCO">
 
     <FrameLayout
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline129"
+        app:layout_constraintEnd_toStartOf="@id/guideline131"
+        app:layout_constraintStart_toEndOf="@id/guideline130"
+        app:layout_constraintTop_toBottomOf="@id/guideline128"
         android:id="@+id/contenedorHeaderTarjetaCreditoProductosBCO"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/contenedorHeaderTarjetaCreditoProductosBCO">
+            <TextView
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintVertical_bias="0.04"
+                app:layout_constraintBottom_toTopOf="@id/guideline129"
+                app:layout_constraintEnd_toStartOf="@id/guideline131"
+                app:layout_constraintStart_toEndOf="@id/guideline130"
+                app:layout_constraintTop_toBottomOf="@id/contenedorHeaderTarjetaCreditoProductosBCO"
+                android:id="@+id/textView_PantallaTarjetaCreditoProductosBCO"
+                android:layout_width="270dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="36dp"
+                android:fontFamily="@font/quicksand_regular"
+                android:text="@string/textView_TarjetaDeCreditoPagoProductosBCO"
+                android:textColor="@color/azul"
+                android:textSize="21dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_gravity="center_horizontal">
-        <TextView
-            android:layout_width="270dp"
-            android:layout_height="60dp"
-            android:textColor="@color/azul"
-            android:fontFamily="@font/quicksand_regular"
-            android:textSize="21dp"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="38dp"
-            android:text="@string/textView_TarjetaDeCreditoPagoProductosBCO"/>
-
-
-        <EditText
-            android:id="@+id/editText_TarjetaDeCreditoPagoProductosBCONumero"
-            android:layout_width="match_parent"
-            android:layout_height="49dp"
-            android:layout_marginStart="37dp"
-            android:layout_marginEnd="45dp"
-            android:layout_marginTop="87dp"
-            android:background="@drawable/input_form"
-            android:hint="@string/editText_TarjetaDeCreditoPagoProductosBCONumero"
-            android:inputType="number"
-            android:numeric="integer"
-            android:fontFamily="@font/quicksand_bold"
-            android:textSize="21dp"
-            android:textColorHint="@color/azul"
-            android:paddingStart="23dp"
-            android:textColor="@color/azul"
-            />
 
             <EditText
-                android:id="@+id/editText_TarjetaDeCreditoPagoProductosBCOCantidad"
+                app:layout_constraintHeight_percent="0.07"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintVertical_bias="0.2"
+                app:layout_constraintBottom_toTopOf="@id/guideline129"
+                app:layout_constraintEnd_toStartOf="@id/guideline131"
+                app:layout_constraintStart_toEndOf="@id/guideline130"
+                app:layout_constraintTop_toBottomOf="@id/textView_PantallaTarjetaCreditoProductosBCO"
+                android:id="@+id/editText_TarjetaDeCreditoPagoProductosBCONumero"
                 android:layout_width="match_parent"
-                android:layout_height="49dp"
+                android:layout_height="0dp"
                 android:layout_marginStart="37dp"
                 android:layout_marginEnd="45dp"
-                android:layout_marginTop="21dp"
                 android:background="@drawable/input_form"
-                android:hint="@string/editText_TarjetaDeCreditoPagoProductosBCOCantidad"
+                android:fontFamily="@font/quicksand_regular"
+                android:hint="@string/editText_TarjetaDeCreditoPagoProductosBCONumero"
                 android:inputType="number"
                 android:numeric="integer"
-                android:fontFamily="@font/quicksand_bold"
-                android:textSize="21dp"
-                android:textColorHint="@color/azul"
                 android:paddingStart="23dp"
-                android:imeOptions="actionDone"
                 android:textColor="@color/azul"
-                />
+                android:textColorHint="@color/azul"
+                android:textSize="21dp" />
+
+            <EditText
+                app:layout_constraintHeight_percent="0.07"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintVertical_bias="0.05"
+                app:layout_constraintBottom_toTopOf="@id/guideline129"
+                app:layout_constraintEnd_toStartOf="@id/guideline131"
+                app:layout_constraintStart_toEndOf="@id/guideline130"
+                app:layout_constraintTop_toBottomOf="@id/editText_TarjetaDeCreditoPagoProductosBCONumero"
+                android:id="@+id/editText_TarjetaDeCreditoPagoProductosBCOCantidad"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="37dp"
+                android:layout_marginEnd="45dp"
+                android:background="@drawable/input_form"
+                android:fontFamily="@font/quicksand_regular"
+                android:hint="@string/editText_TarjetaDeCreditoPagoProductosBCOCantidad"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:numeric="integer"
+                android:paddingStart="23dp"
+                android:textColor="@color/azul"
+                android:textColorHint="@color/azul"
+                android:textSize="21dp" />
 
             <Button
+                app:layout_constraintBottom_toTopOf="@id/guideline129"
+                app:layout_constraintHeight_percent="0.095"
+                app:layout_constraintVertical_bias="0.3"
+                app:layout_constraintEnd_toStartOf="@id/guideline131"
+                app:layout_constraintStart_toEndOf="@id/guideline130"
+                app:layout_constraintTop_toBottomOf="@id/editText_TarjetaDeCreditoPagoProductosBCOCantidad"
                 android:id="@+id/button_TarjetaDeCreditoPagoProductosBCOContinuar"
                 android:layout_width="138dp"
-                android:layout_height="67dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="15dp"
                 android:background="@drawable/boton_inicio"
+                android:fontFamily="@font/quicksand_bold"
+                android:onClick="TarjetaDeCreditoPagoProductosBCOContinuar"
+                android:text="@string/button_TarjetaDeCreditoPagoProductosBCOContinuar"
                 android:textAllCaps="false"
                 android:textColor="@color/blanco"
-                android:text="@string/button_TarjetaDeCreditoPagoProductosBCOContinuar"
-                android:fontFamily="@font/quicksand_regular"
-                android:textSize="20dp"
-                android:layout_marginTop="118dp"
-                android:layout_gravity="center_horizontal"
-                android:onClick="TarjetaDeCreditoPagoProductosBCOContinuar"
-                android:layout_marginBottom="15dp"/>
-        </LinearLayout>
-    </ScrollView>
+                android:textSize="20dp" />
 
-</RelativeLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline128"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline129"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline130"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline131"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

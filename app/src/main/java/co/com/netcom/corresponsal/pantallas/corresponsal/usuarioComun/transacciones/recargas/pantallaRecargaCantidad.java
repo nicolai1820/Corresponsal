@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -43,6 +44,7 @@ public class pantallaRecargaCantidad extends BaseActivity {
         valores = i.getStringArrayList("valores");
         datosRecaudo = i.getParcelable("datosRecuado");
 
+        cantidad.setFilters(new InputFilter[]{new InputFilter.LengthFilter(15)});
 
     }
 

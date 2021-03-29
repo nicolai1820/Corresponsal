@@ -1,39 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.retiro.conTarjeta.PantallaRetiroConTarjetaLoader"
-    android:background="@drawable/fondo">
+    android:background="@drawable/fondo"
+    app:layout_constrainedHeight="true"
+    app:layout_constrainedWidth="true"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.retiro.conTarjeta.PantallaRetiroConTarjetaLoader">
 
     <FrameLayout
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline113"
+        app:layout_constraintEnd_toStartOf="@id/guideline115"
+        app:layout_constraintStart_toEndOf="@id/guideline114"
+        app:layout_constraintTop_toBottomOf="@id/guideline112"
         android:id="@+id/contenedorHeaderPantallaRetiroConTarjetaLoader"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
-    
+        android:layout_height="wrap_content" />
+
     <TextView
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.04"
+        app:layout_constraintBottom_toTopOf="@id/guideline113"
+        app:layout_constraintEnd_toStartOf="@id/guideline115"
+        app:layout_constraintStart_toEndOf="@id/guideline114"
+        app:layout_constraintTop_toBottomOf="@id/contenedorHeaderPantallaRetiroConTarjetaLoader"
         android:id="@+id/textView_pantallaRetiroConTarjetaLoader"
-        android:layout_below="@id/contenedorHeaderPantallaRetiroConTarjetaLoader"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:layout_below="@id/contenedorHeaderPantallaRetiroConTarjetaLoader"
+        android:layout_marginStart="36dp"
+        android:fontFamily="@font/quicksand_regular"
         android:text="@string/textView_pantallaRetiroConTarjetaLoader"
         android:textColor="@color/azul"
-        android:fontFamily="@font/quicksand_regular"
-        android:textSize="21dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="10dp"
-        />
+        android:textSize="21dp" />
 
     <pl.droidsonroids.gif.GifImageView
-        android:layout_below="@id/textView_pantallaRetiroConTarjetaLoader"
+        app:layout_constraintBottom_toTopOf="@id/guideline113"
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintBottom_toBottomOf="@id/guideline113"
+        app:layout_constraintEnd_toStartOf="@id/guideline115"
+        app:layout_constraintStart_toEndOf="@id/guideline114"
+        app:layout_constraintTop_toBottomOf="@id/textView_pantallaRetiroConTarjetaLoader"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:src="@drawable/inserte_tarjeta"
+        android:layout_below="@id/textView_pantallaRetiroConTarjetaLoader"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        />
+        android:src="@drawable/inserte_tarjeta" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline112"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline113"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline114"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline115"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

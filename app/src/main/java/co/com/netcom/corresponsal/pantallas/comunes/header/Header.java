@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import co.com.netcom.corresponsal.R;
+import co.com.netcom.corresponsal.pantallas.comunes.logIn.LogIn;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun;
 
 
@@ -48,8 +49,8 @@ public class Header extends Fragment {
         logo = (ImageView) vista.findViewById(R.id.imageViewHeader);
 
 
-        logoComercioImage = new LogoComercio();
-        getFragmentManager().beginTransaction().replace(R.id.frameLayoutLogoComercio , logoComercioImage).commit();
+        //logoComercioImage = new LogoComercio();
+        //getFragmentManager().beginTransaction().replace(R.id.frameLayoutLogoComercio , logoComercioImage).commit();
 
         //Se asigna el String recibido como parametro en el constructor como titulo
         titulo.setText(Html.fromHtml(titulo_string));
@@ -62,13 +63,22 @@ public class Header extends Fragment {
 
                 if (getActivity().getLocalClassName().equals("pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun")) {
 
+                } else if (getActivity().getLocalClassName().equals("pantallas.comunes.logIn.PantallaOlvideMiContrasena")) {
+
+                    //Se hace el correspondiente intent a la pantalla inicial de la aplicación
+                    Intent i = new Intent(getContext(), LogIn.class);
+                    startActivity(i);
+                    Log.d("Actividad", getActivity().toString());
+                    getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                }else if(getActivity().getLocalClassName().equals("pantallas.comunes.logIn.PantallaCambioContrasena")){
+
                 }
                 else {
                     //Se hace el correspondiente intent a la pantalla inicial, con la correspondiente animacion
                     Intent i = new Intent(getContext(), pantallaInicialUsuarioComun.class);
                     startActivity(i);
                     Log.d("Actividad", getActivity().toString());
-                    getActivity().overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+                    getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 }
 
             }

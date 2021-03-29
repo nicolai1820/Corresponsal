@@ -1,54 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.retiro.sinTarjeta.pantallaRetiroSinTarjetaPin"
     android:layout_gravity="center_horizontal"
-    android:background="@drawable/fondo">
+    android:background="@drawable/fondo"
+    app:layout_constrainedWidth="true"
+    app:layout_constrainedHeight="true"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.retiro.sinTarjeta.pantallaRetiroSinTarjetaPin">
 
     <FrameLayout
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline125"
+        app:layout_constraintEnd_toStartOf="@id/guideline127"
+        app:layout_constraintStart_toEndOf="@id/guideline126"
+        app:layout_constraintTop_toBottomOf="@id/guideline124"
         android:id="@+id/contenedorHeaderRetiroSinTarjetaPin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    
-    <ScrollView
-        android:layout_below="@id/contenedorHeaderRetiroSinTarjetaPin"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        
-        <LinearLayout
-            android:layout_gravity="center_horizontal"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            
+        android:layout_height="wrap_content" />
+
+
+
             <TextView
+                app:layout_constraintVertical_bias="0.04"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintBottom_toTopOf="@id/guideline125"
+                app:layout_constraintTop_toBottomOf="@id/contenedorHeaderRetiroSinTarjetaPin"
+                app:layout_constraintEnd_toStartOf="@id/guideline127"
+                app:layout_constraintStart_toEndOf="@id/guideline126"
+                android:id="@+id/textView_PantallaRetiroSinTarjetaPin"
                 android:layout_width="282dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="36dp"
-                android:layout_marginTop="33dp"
-                android:textColor="@color/azul"
-                android:textSize="21dp"
                 android:fontFamily="@font/quicksand_regular"
-                android:text="@string/textView_RetiroSinTarjetaPin"/>
+                android:text="@string/textView_RetiroSinTarjetaPin"
+                android:textColor="@color/azul"
+                android:textSize="21dp" />
 
             <pl.droidsonroids.gif.GifImageView
+                app:layout_constraintBottom_toTopOf="@id/guideline125"
+                app:layout_constraintVertical_bias="0.15"
+                app:layout_constraintEnd_toStartOf="@id/guideline127"
+                app:layout_constraintStart_toEndOf="@id/guideline126"
+                app:layout_constraintTop_toBottomOf="@id/textView_PantallaRetiroSinTarjetaPin"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
-                android:src="@drawable/ingrese_pin"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="30dp"
                 android:layout_gravity="center_horizontal"
-                />
+                android:src="@drawable/ingrese_pin" />
 
 
-            
-        </LinearLayout>
-        
-    </ScrollView>
-        
-        
-        
-</RelativeLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline124"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline125"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline126"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline127"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

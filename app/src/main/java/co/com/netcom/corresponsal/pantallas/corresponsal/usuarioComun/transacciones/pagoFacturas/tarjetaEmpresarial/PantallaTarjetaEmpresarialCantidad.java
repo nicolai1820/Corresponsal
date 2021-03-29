@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -48,6 +49,7 @@ public class PantallaTarjetaEmpresarialCantidad extends BaseActivity {
 
         tarjeta = new CardDTO();
         tarjeta = extras.getParcelable("tarjeta");
+        editText_TarjetaEmpresarialCantidad.setFilters(new InputFilter[]{new InputFilter.LengthFilter(15)});
 
     }
 

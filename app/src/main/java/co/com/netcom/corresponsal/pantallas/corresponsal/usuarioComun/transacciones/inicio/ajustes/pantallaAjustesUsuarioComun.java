@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -94,12 +95,13 @@ public class pantallaAjustesUsuarioComun extends Fragment {
 
                     LayoutInflater inflater = getActivity().getLayoutInflater();
 
-                    loader.setView(R.layout.loader_buscando_dispositivos);
+                    loader.setView(inflater.inflate(R.layout.loader_buscando_dispositivos,null));
                     loader.setCancelable(false);
 
 
                     AlertDialog dialog = loader.create();
                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
                     Log.d("OPEN", " se abrio el loader");
 
                     dialog.show();
@@ -131,6 +133,7 @@ public class pantallaAjustesUsuarioComun extends Fragment {
                                 }
                                 case 2: {
                                     try {
+                                        dialog2.dismiss();
                                         Toast.makeText(getActivity(), "Conexión Fallida", Toast.LENGTH_SHORT).show();
                                     }catch (Exception e){}
                                     break;
@@ -175,15 +178,20 @@ public class pantallaAjustesUsuarioComun extends Fragment {
                                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                                 Log.d("DIRECCION", direcciones[position]);
 
-                                                dialog2.show();
+                                                if(newlandSDK.isConnected()){
+                                                    Toast.makeText(getActivity(),"Ya tiene un dispositivo conectado",Toast.LENGTH_SHORT).show();
+                                                }else{
+                                                    dialog2.show();
 
-                                                new Thread(new Runnable() {
-                                                    @Override
-                                                    public void run() {
-                                                        newlandSDK.connectDevice(60, direcciones[position]);
+                                                    new Thread(new Runnable() {
+                                                        @Override
+                                                        public void run() {
+                                                            newlandSDK.connectDevice(60, direcciones[position]);
 
-                                                    }
-                                                }).start();
+                                                        }
+                                                    }).start();
+                                                }
+
                                             }
                                         });
 
@@ -191,6 +199,8 @@ public class pantallaAjustesUsuarioComun extends Fragment {
                                     }
                                     break;
                                 }
+                                case 4:
+                                    dialog.dismiss();
 
 
                                 default:
@@ -200,16 +210,21 @@ public class pantallaAjustesUsuarioComun extends Fragment {
 
                     };
 
-
-                    //Se realiza la busqueda de dispostivos
-                    Thread t = new Thread(new Runnable() {
+                    getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             newlandSDK.scanDevice();
+
+                        }
+                    });
+                    //Se realiza la busqueda de dispostivos
+                  /*  Thread t = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
                         }
                     });
 
-                    t.start();
+                    t.start();*/
 
                 }
             }
