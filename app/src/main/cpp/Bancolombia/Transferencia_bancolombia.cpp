@@ -75,7 +75,7 @@ int enviarTransferencia(DatosTarjetaAndroid datosTarjetaAndroid, char *tpCuentaO
     }
     sprintf(datosVentaBancolombia.processingCode, "41%2s00", datosVentaBancolombia.tipoCuenta);
     sprintf(datosVentaBancolombia.tipoTransaccion, "%02d", TRANSACCION_BCL_TRANSFERENCIA);
-    do {
+    //do {
         armarTramaTransferencia(intentosVentas);
 
         resultado = procesarTransaccionTransferencia();
@@ -132,7 +132,7 @@ int enviarTransferencia(DatosTarjetaAndroid datosTarjetaAndroid, char *tpCuentaO
             resultado = -1;
         }
 
-    } while (resultado == -2 && intentosVentas < MAX_INTENTOS_VENTA);
+    //} while (resultado == -2 && intentosVentas < MAX_INTENTOS_VENTA);
 
     if (strlen(datosVentaBancolombia.ARQC) > 0) { // Solo entra si es CHIP
         // memset(bufferAuxiliarCustomEMV, 0x00, sizeof(bufferAuxiliarCustomEMV));
@@ -233,12 +233,12 @@ int procesarTransaccionTransferencia(void) {
     resultadoCaja = verificarHabilitacionCaja();
 
     memset(globalDataRecibida, 0x00, sizeof(globalDataRecibida));
-    memset(&resultadoIsoPackMessage, 0x00, sizeof(resultadoIsoPackMessage));
+    memset(&globalresultadoIsoPack, 0x00, sizeof(globalresultadoIsoPack));
     memset(&datosTransaccionDeclinada, 0x00, sizeof(datosTransaccionDeclinada));
 
-    resultadoIsoPackMessage = packISOMessage();
+    globalresultadoIsoPack = packISOMessage();
 
-    if (resultadoIsoPackMessage.responseCode > 0) {
+    /*if (resultadoIsoPackMessage.responseCode > 0) {
 
         resultadoTransaccion = realizarTransaccion(resultadoIsoPackMessage.isoPackMessage,
                                                    resultadoIsoPackMessage.totalBytes, globalDataRecibida, atoi(datosVentaBancolombia.tipoTransaccion),
@@ -259,7 +259,7 @@ int procesarTransaccionTransferencia(void) {
             }
             resultadoTransaccion = 0;
         }
-    }
+    }*/
 
     return resultadoTransaccion;
 }

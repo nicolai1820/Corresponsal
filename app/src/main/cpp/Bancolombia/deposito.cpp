@@ -37,20 +37,20 @@ int enviarDeposito(char *cuenta,char *monto, int tipoCuenta, char* codigoAprobac
     memset(datosVentaBancolombia.tipoCuenta, 0x00, sizeof(datosVentaBancolombia.tipoCuenta));
     sprintf(datosVentaBancolombia.tipoCuenta, "%02d", tipoCuenta);
     obtenerTerminalModoCorresponsal(datosVentaBancolombia.terminalId);
-    do {
+    //do {
         armarTramaDeposito(&datosDeposito, intentosVentas);
 
         resultado = procesarTransaccionDeposito(&datosDeposito);
 
-        if (resultado == -2) {
+       /* if (resultado == -2) {
             intentosVentas++;
         }
 
         if (intentosVentas == 3) {//CAMBIAR POR DEFINE
             resultado = -1;
-        }
+        }*/
 
-    } while (resultado == -2 && intentosVentas < 3);
+    //} while (resultado == -2 && intentosVentas < 3);
 
     if(resultado > 0){
         memcpy(codigoAprobacion, datosVentaBancolombia.codigoAprobacion, strlen(datosVentaBancolombia.codigoAprobacion));
@@ -102,11 +102,14 @@ void armarTramaDeposito(DatosCnbBancolombia *datosDeposito, int intentosVentas) 
     memcpy(datosVentaBancolombia.nii, nii + 1, TAM_NII);
     memcpy(datosVentaBancolombia.posConditionCode, "00", TAM_POS_CONDITION);
 
+    datosTarjetaSembrada = cargarTarjetaSembrada();
+
+    armarTrack(datosVentaBancolombia.track2, datosTarjetaSembrada.pan, atoi(datosVentaBancolombia.tipoTransaccion));
+
     isoHeader8583.TPDU = 60;
     memcpy(isoHeader8583.destination, nii, TAM_NII + 1);
     memcpy(isoHeader8583.source, nii, TAM_NII + 1);
     setHeader(isoHeader8583);
-
 
     setMTI(datosVentaBancolombia.msgType);
 
@@ -117,13 +120,13 @@ void armarTramaDeposito(DatosCnbBancolombia *datosDeposito, int intentosVentas) 
     setField(24, datosVentaBancolombia.nii, TAM_NII);
     setField(25, datosVentaBancolombia.posConditionCode, TAM_POS_CONDITION);
 
-    datosTarjetaSembrada = cargarTarjetaSembrada();
 
-    armarTrack(datosVentaBancolombia.track2, datosTarjetaSembrada.pan, atoi(datosVentaBancolombia.tipoTransaccion));
     setField(35, datosVentaBancolombia.track2, strlen(datosVentaBancolombia.track2));
 
-    setField(41, datosVentaBancolombia.terminalId, TAM_TERMINAL_ID);
+    LOGI("TRACK2  EN DEPOSITO %s",datosTarjetaSembrada.pan);
 
+    setField(41, datosVentaBancolombia.terminalId, TAM_TERMINAL_ID);
+    LOGI("NUMERO DE TERMINAL EN DEPOSITO %s",datosVentaBancolombia.terminalId);
     //// ARMADO DE TOKENS
 
     strcpy(datosVentaBancolombia.tarjetaHabiente, datosTarjetaSembrada.tarjetaHabiente);
@@ -150,20 +153,15 @@ void armarTramaDeposito(DatosCnbBancolombia *datosDeposito, int intentosVentas) 
 
 int procesarTransaccionDeposito(DatosCnbBancolombia *datosDeposito) {
 
-    ResultISOPack resultadoIsoPackMessage;
     int resultadoTransaccion = -1;
-    //DatosTransaccionDeclinada datosTransaccionDeclinada;
     char dataRecibida[512];
 
     memset(dataRecibida, 0x00, sizeof(dataRecibida));
-    memset(&resultadoIsoPackMessage, 0x00, sizeof(resultadoIsoPackMessage));
-    //memset(&datosTransaccionDeclinada, 0x00, sizeof(datosTransaccionDeclinada));
+    memset(&globalresultadoIsoPack, 0x00, sizeof(globalresultadoIsoPack));
 
-    verificarHabilitacionCaja();
-
-    resultadoIsoPackMessage = packISOMessage();
-
-    if (resultadoIsoPackMessage.responseCode > 0) {
+    globalresultadoIsoPack = packISOMessage();
+    LOGI(" TAMNO %d",globalresultadoIsoPack.totalBytes);
+    /*if (resultadoIsoPackMessage.responseCode > 0) {
 
         resultadoTransaccion = realizarTransaccion(resultadoIsoPackMessage.isoPackMessage,
                                                    resultadoIsoPackMessage.totalBytes, dataRecibida, atoi(datosVentaBancolombia.tipoTransaccion), CANAL_DEMANDA,
@@ -189,7 +187,7 @@ int procesarTransaccionDeposito(DatosCnbBancolombia *datosDeposito) {
 
             resultadoTransaccion = 0;
         }
-    }
+    }*/
 
     return resultadoTransaccion;
 }

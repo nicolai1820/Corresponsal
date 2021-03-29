@@ -2322,3 +2322,20 @@ int  validarInicializacionProgramada(){
 
     return resultado;
 }
+
+void cargarInformacionPanVirtualCorresposal(char * fiid, char* tipoCuenta, char * panVirtual){
+
+    LOGI("fidd %s", fiid);
+    LOGI("tipoCuenta %s", tipoCuenta);
+    LOGI("panVirtual %s", panVirtual);
+    setParameter(CNB_BANCO, fiid);
+    setParameter(CNB_TIPO_CUENTA, tipoCuenta);
+    memcpy(panVirtual + strlen(panVirtual), "D101210100000", 13);
+
+    memset(tipoCuenta, 0x00, sizeof(tipoCuenta));
+    sprintf(tipoCuenta, "%02d", CNB_TIPO_TARJETA_VIRTUAL);
+    LOGI("tipoCuenta %s",tipoCuenta);
+    setParameter(CNB_TIPO_TARJETA, tipoCuenta);
+    borrarArchivo(discoNetcom,(char *) TARJETA_CNB);
+    escribirArchivo(discoNetcom, (char *) TARJETA_CNB, panVirtual, strlen(panVirtual));
+}

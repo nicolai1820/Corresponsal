@@ -23,7 +23,7 @@ char textoBancolombia1[] = {
 char textoBancolombia2[] = {
         "Para reclamos comuniquese al 018000912345 conserve esta tirilla como soporte."};
 DatosVenta datosVentaBancolombia;
-
+ResultISOPack globalresultadoIsoPack;
 void formatearDatos(DatosTokens *datosTokens) {
 
     uChar buffer[SIZE_FACTURA + 1];
@@ -420,11 +420,13 @@ void obtenerTerminalModoCorresponsal(uChar *terminal) {
     int modo = 0;
     modo = verificarModoCNB();
 
-    if (modo == MODO_PURO) {
+    //if (modo == MODO_PURO) {
         getParameter(NUMERO_TERMINAL, terminal);
-    } else {
+   /* } else {
         getParameter(CNB_TERMINAL, terminal);
-    }
+    }*/
+    LOGI("este es el terminalID %s",terminal);
+
 }
 
 void empaquetarEncabezado(DatosVenta *datosDeposito, uChar *pan, int intentosVentas) {

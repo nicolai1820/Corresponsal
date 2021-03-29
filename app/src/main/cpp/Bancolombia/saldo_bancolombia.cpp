@@ -70,7 +70,7 @@ int enviarTransaccionSaldoBCL(DatosTarjetaAndroid datosTarjetaAndroid, int inten
     sprintf(datosVentaBancolombia.tipoTransaccion, "%02d", TRANSACCION_BCL_SALDO);
     resultado = enviarConsultarSaldo(globalpinblock, intentosVentas);
 
-    if(resultado > 0  && datosTarjetaAndroid.sizeP55 == 0){
+    /*if(resultado > 0  && datosTarjetaAndroid.sizeP55 == 0){
         LOGI("Aprobado  EMV  %s ", datosVentaBancolombia.codigoAprobacion);
         mostrarAprobacionBancolombia(&datosVentaBancolombia);
         memcpy(codigoRespuesta, datosVentaBancolombia.codigoRespuesta, 6);
@@ -80,7 +80,7 @@ int enviarTransaccionSaldoBCL(DatosTarjetaAndroid datosTarjetaAndroid, int inten
         preAprobacionEmv();
     }
     setParameter(TIPO_INICIA_TRANSACCION, (char *) "00");
-    setVariableGlobalesRetiro();
+    setVariableGlobalesRetiro();*/
     return resultado;
 }
 
@@ -182,15 +182,16 @@ void armarTrama(char *pinblock, int intentosVenta, int intentosPin) {
 
 int procesarTransaccion(void) {
 
-    ResultISOPack resultadoIsoPackMessage;
+    //ResultISOPack resultadoIsoPackMessage;
     int resultadoTransaccion = -1;
 
-    memset(&resultadoIsoPackMessage, 0x00, sizeof(resultadoIsoPackMessage));
+    memset(&globalresultadoIsoPack, 0x00, sizeof(globalresultadoIsoPack));
+    //memset(&resultadoIsoPackMessage, 0x00, sizeof(resultadoIsoPackMessage));
     memset(globalDataRecibida, 0x00, sizeof(globalsizeData));
 
-    resultadoIsoPackMessage = packISOMessage();
+    globalresultadoIsoPack = packISOMessage();
 
-    if (resultadoIsoPackMessage.responseCode > 0) {
+    /*if (resultadoIsoPackMessage.responseCode > 0) {
 
         resultadoTransaccion = realizarTransaccion(resultadoIsoPackMessage.isoPackMessage,
                                                    resultadoIsoPackMessage.totalBytes,
@@ -210,7 +211,7 @@ int procesarTransaccion(void) {
 
             resultadoTransaccion = 0;
         }
-    }
+    }*/
 
     return resultadoTransaccion;
 }
@@ -300,21 +301,12 @@ int enviarConsultarSaldo(char *pinblock, int intentosPin) {
 
     int resultado = 0;
     int intentosVentas = 0;
-    do {
+   // do {
         armarTrama(pinblock, intentosVentas, intentosPin);
         resultado = procesarTransaccion();
 
-        if (resultado == -2) {
-            intentosVentas++;
-        }
-
-        if (intentosVentas == MAX_INTENTOS_VENTA) {
-            //screenMessage("COMUNICACION", "REINTENTE", "TRANSACCION", "", 2 * 1000);
-            resultado = -1;
-        }
-
-    } while (resultado == -2 && intentosVentas < MAX_INTENTOS_VENTA);
-    if (strlen(datosVentaBancolombia.ARQC) > 0) { // Solo entra si es CHIP
+   // } while (resultado == -2 && intentosVentas < MAX_INTENTOS_VENTA);
+    /*if (strlen(datosVentaBancolombia.ARQC) > 0) { // Solo entra si es CHIP
         //memset(bufferAuxiliarCustomEMV, 0x00, sizeof(bufferAuxiliarCustomEMV));
         //cargaTagsRespuestaTransacionEMV(bufferAuxiliarCustomEMV, &sizeCustomEMV, globalresultadoUnpack, resultado);
         LOGI("entro condicion ARQC %s",datosVentaBancolombia.ARQC);
@@ -322,7 +314,7 @@ int enviarConsultarSaldo(char *pinblock, int intentosPin) {
         if (resultado == 1) {
             globalTransaccionAprobada = TRUE;
         }
-    }
+    }*/
     return resultado;
 }
 

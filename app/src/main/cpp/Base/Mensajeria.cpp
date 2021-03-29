@@ -1,6 +1,7 @@
 //
 // Created by NETCOM on 15/01/2020.
 //
+
 #include "Mensajeria.h"
 #include "Utilidades.h"
 //#include "include/Utilidades.h"
@@ -26,74 +27,74 @@ uChar messageInputISO[LEN_BUFFER_MAX * 2 + 1];
 
 FieldDescription packageISO8583[] =
         {
-                {0,  LEN_MSG_CODE,       BCD_NUMERIC},
-                {1,  LEN_BITMAP,         BCD_BITMAP},
-                {2,  LEN_PAN,            BCD_LL_NUMERIC},
-                {3,  LEN_PROC_CODE,      BCD_NUMERIC},
-                {4,  LEN_TRAN_AMT,       BCD_NUMERIC},
-                {5,  LEN_FRN_AMT,        BCD_NUMERIC},
-                {6,  12,                 BCD_NUMERIC},
-                {7,  10,                 BCD_NUMERIC},
-                {8,  8,                  BCD_NUMERIC},
-                {9,  LEN_DCC_RATE,       BCD_NUMERIC},
-                {10, 8,                  BCD_NUMERIC},
-                {11, LEN_STAN,           BCD_NUMERIC},
-                {12, LEN_LOCAL_TIME,     BCD_NUMERIC},
-                {13, LEN_LOCAL_DATE,     BCD_NUMERIC},
-                {14, LEN_EXP_DATE,       BCD_NUMERIC},
-                {15, 4,                  BCD_NUMERIC},
-                {16, 4,                  BCD_NUMERIC},
-                {17, 4,                  BCD_NUMERIC},
-                {18, 4,                  BCD_NUMERIC},
-                {19, 3,                  BCD_NUMERIC},
-                {20, 3,                  BCD_NUMERIC},
-                {21, 3,                  BCD_NUMERIC},
-                {22, LEN_ENTRY_MODE,     BCD_NUMERIC},
-                {23, LEN_PAN_SEQ_NO,     BCD_NUMERIC},
-                {24, LEN_NII,            BCD_NUMERIC},
-                {25, LEN_COND_CODE,      BCD_NUMERIC},
-                {26, 2,                  BCD_NUMERIC},
-                {27, 1,                  BCD_NUMERIC},
-                {28, 9,                  BCD_AMOUNT},
-                {29, 9,                  BCD_AMOUNT},
-                {30, 9,                  BCD_AMOUNT},
-                {31, 9,                  BCD_AMOUNT},
-                {32, LEN_FIELD32,        BCD_LL_NUMERIC},
-                {33, 11,                 BCD_LL_NUMERIC},
-                {34, 28,                 BCD_LL_CHAR},
-                {35, LEN_TRACK2,         BCD_LL_NUMERIC},
-                {36, LEN_TRACK3,         BCD_LLL_CHAR},
-                {37, LEN_RRN,            BCD_CHAR},
-                {38, LEN_AUTH_CODE,      BCD_CHAR},
-                {39, LEN_RSP_CODE,       BCD_CHAR},
-                {40, LEN_FIELD40,        BCD_CHAR},
-                {41, LEN_TERM_ID,        BCD_CHAR},
-                {42, LEN_MERCHANT_ID,    BCD_CHAR},
-                {43, LEN_FIELD43,        BCD_CHAR},
-                {44, LEN_ADDL_RSP,       BCD_LL_CHAR},
-                {45, LEN_TRACK1,         BCD_LL_CHAR},
-                {46, 999,                BCD_LLL_CHAR},
-                {47, LEN_FIELD47,        BCD_LLL_CHAR},
-                {48, LEN_FIELD48,        BCD_LLL_CHAR},
+                {0,  LEN_MSG_CODE, BCD_NUMERIC},
+                {1,  LEN_BITMAP, BCD_BITMAP},
+                {2,  LEN_PAN, BCD_LL_NUMERIC},
+                {3,  LEN_PROC_CODE, BCD_NUMERIC},
+                {4,  LEN_TRAN_AMT, BCD_NUMERIC},
+                {5,  LEN_FRN_AMT, BCD_NUMERIC},
+                {6,  12, BCD_NUMERIC},
+                {7,  10, BCD_NUMERIC},
+                {8,  8, BCD_NUMERIC},
+                {9,  LEN_DCC_RATE, BCD_NUMERIC},
+                {10, 8, BCD_NUMERIC},
+                {11, LEN_STAN, BCD_NUMERIC},
+                {12, LEN_LOCAL_TIME, BCD_NUMERIC},
+                {13, LEN_LOCAL_DATE, BCD_NUMERIC},
+                {14, LEN_EXP_DATE, BCD_NUMERIC},
+                {15, 4, BCD_NUMERIC},
+                {16, 4, BCD_NUMERIC},
+                {17, 4, BCD_NUMERIC},
+                {18, 4, BCD_NUMERIC},
+                {19, 3, BCD_NUMERIC},
+                {20, 3, BCD_NUMERIC},
+                {21, 3, BCD_NUMERIC},
+                {22, LEN_ENTRY_MODE, BCD_NUMERIC},
+                {23, LEN_PAN_SEQ_NO, BCD_NUMERIC},
+                {24, LEN_NII, BCD_NUMERIC},
+                {25, LEN_COND_CODE, BCD_NUMERIC},
+                {26, 2, BCD_NUMERIC},
+                {27, 1, BCD_NUMERIC},
+                {28, 9, BCD_AMOUNT},
+                {29, 9, BCD_AMOUNT},
+                {30, 9, BCD_AMOUNT},
+                {31, 9, BCD_AMOUNT},
+                {32, LEN_FIELD32, BCD_LL_NUMERIC},
+                {33, 11, BCD_LL_NUMERIC},
+                {34, 28, BCD_LL_CHAR},
+                {35, LEN_TRACK2, BCD_LL_NUMERIC},
+                {36, LEN_TRACK3, BCD_LLL_CHAR},
+                {37, LEN_RRN, BCD_CHAR},
+                {38, LEN_AUTH_CODE, BCD_CHAR},
+                {39, LEN_RSP_CODE, BCD_CHAR},
+                {40, LEN_FIELD40, BCD_CHAR},
+                {41, LEN_TERM_ID, BCD_CHAR},
+                {42, LEN_MERCHANT_ID, BCD_CHAR},
+                {43, LEN_FIELD43, BCD_CHAR},
+                {44, LEN_ADDL_RSP, BCD_LL_CHAR},
+                {45, LEN_TRACK1, BCD_LL_CHAR},
+                {46, 999, BCD_LLL_CHAR},
+                {47, LEN_FIELD47, BCD_LLL_CHAR},
+                {48, LEN_FIELD48, BCD_LLL_CHAR},
                 {49, LEN_FRN_CURCY_CODE, BCD_CHAR},
-                {50, LEN_CURCY_CODE,     BCD_CHAR},
-                {51, 2,                  BCD_CHAR},
-                {52, LEN_PIN_DATA,       BCD_BINARY},
-                {53, 16,                 BCD_NUMERIC},
-                {54, LEN_EXT_AMOUNT,     BCD_LLL_CHAR},
-                {55, LEN_ICC_DATA,       BCD_LLL_CHAR},
-                {56, LEN_FIELD56,        BCD_LLL_CHAR},
-                {57, LEN_FIELD57,        BCD_LLL_CHAR},
-                {58, LEN_FIELD58,        BCD_LLL_CHAR},
-                {59, 999,                BCD_LLL_CHAR},
-                {60, LEN_FIELD60,        BCD_LLL_CHAR},
-                {61, LEN_FIELD61,        BCD_LLL_CHAR},
-                {62, LEN_FIELD62,        BCD_LLL_CHAR},
-                {63, LEN_FIELD63,        BCD_LLL_CHAR},
-                {64, LEN_MAC,            BCD_BINARY}
+                {50, LEN_CURCY_CODE, BCD_CHAR},
+                {51, 2, BCD_CHAR},
+                {52, LEN_PIN_DATA, BCD_BINARY},
+                {53, 16, BCD_NUMERIC},
+                {54, LEN_EXT_AMOUNT, BCD_LLL_CHAR},
+                {55, LEN_ICC_DATA, BCD_LLL_CHAR},
+                {56, LEN_FIELD56, BCD_LLL_CHAR},
+                {57, LEN_FIELD57, BCD_LLL_CHAR},
+                {58, LEN_FIELD58, BCD_LLL_CHAR},
+                {59, 999, BCD_LLL_CHAR},
+                {60, LEN_FIELD60, BCD_LLL_CHAR},
+                {61, LEN_FIELD61, BCD_LLL_CHAR},
+                {62, LEN_FIELD62, BCD_LLL_CHAR},
+                {63, LEN_FIELD63, BCD_LLL_CHAR},
+                {64, LEN_MAC, BCD_BINARY}
         };
 
-void setField(int field, uChar *valueField, int totalBytes) {
+void setField(int field, uChar * valueField, int totalBytes) {
 
     ISOFieldMessage isoFieldMsg;
     int id = 0;
@@ -124,7 +125,6 @@ void setHeader(ISOHeader header) {
     sprintf(iso, "%d%s%s", header.TPDU, header.destination, header.source);
     _convertASCIIToBCD_(isoHeader, iso, strlen(iso));
 }
-
 int getIdFieldISO(int field) {
     int id;
     int length;
@@ -162,10 +162,9 @@ ISOFieldMessage getISOFieldMessageISO(int field) {
     return fieldMessage;
 }
 
-void setMTI(uChar *valueMTI) {
+void setMTI(uChar* valueMTI) {
     setField(0, valueMTI, 4);
 }
-
 ResultISOPack packISOMessage(void) {
     int i = 0;
     int index = 0;
@@ -215,8 +214,7 @@ ResultISOPack packISOMessage(void) {
 
         }
         resultadoIsoPackMessage.totalBytes = index;
-        convertIntegerToHex((resultadoIsoPackMessage.totalBytes - 2),
-                            resultadoIsoPackMessage.isoPackMessage);
+        convertIntegerToHex((resultadoIsoPackMessage.totalBytes - 2), resultadoIsoPackMessage.isoPackMessage);
         memcpy(resultadoIsoPackMessage.isoPackMessage + 2, isoHeader, 5);
         memcpy(resultadoIsoPackMessage.isoPackMessage + LEN_MSG_CODE / 2 + 2 + 5, bitMap, 8);
     }
@@ -250,12 +248,12 @@ int validateDataElement() {
     return errorCode;
 }
 
-void packDataElement(FieldDescription packageISO8583, uChar *outputElement, uChar *inputElement,
+void packDataElement(FieldDescription packageISO8583,uChar *outputElement, uChar * inputElement,
                      int *inLength) {
 
     int length = 0;
     char tam[4 + 1];
-    uChar bufferAux[1024 + 1];
+    uChar bufferAux[1300 + 1];
 
     length = *inLength;
 
@@ -333,7 +331,7 @@ void packDataElement(FieldDescription packageISO8583, uChar *outputElement, uCha
 
 }
 
-void convertIntegerToHex(int integer, uChar *buffer) {
+void convertIntegerToHex(int integer,uChar * buffer) {
     buffer[0] = integer / 256;
     buffer[1] = integer - (buffer[0] * 256);
 }
@@ -355,7 +353,7 @@ void inicializarCampos(void) {
 
 }
 
-ResultISOUnpack unpackISOMessage(uChar *messageISO, int inLength) {
+ResultISOUnpack unpackISOMessage(uChar * messageISO, int inLength) {
 
     int i = 0;
     int index = 0;
@@ -427,8 +425,8 @@ ISOFieldMessage getField(int field) {
 
     //MTI
     length = packageISO8583[0].fieldLength;
-    totalBytes = unpackDataElement(packageISO8583[0], outputElement, messageInputISO + index,
-                                   &length);
+
+    totalBytes = unpackDataElement(packageISO8583[0], outputElement, messageInputISO + index, &length);
 
     index += length;
     memcpy(bitMap, messageInputISO + index, uiBitmap);
@@ -442,14 +440,12 @@ ISOFieldMessage getField(int field) {
             pos = i + 1;
             length = packageISO8583[pos].fieldLength;
             memset(&isoFieldMessage, 0x00, sizeof(isoFieldMessage));
-            totalBytes = unpackDataElement(packageISO8583[pos], outputElement,
-                                           messageInputISO + index, &length);
 
+            totalBytes = unpackDataElement(packageISO8583[pos], outputElement, messageInputISO + index, &length);
             isoFieldMessage.totalBytes = totalBytes;
             memcpy(isoFieldMessage.valueField, outputElement, isoFieldMessage.totalBytes);
-
             index += length;
-            if (pos == field) {
+            if (pos == field){
                 break;
 
             }
@@ -458,12 +454,12 @@ ISOFieldMessage getField(int field) {
     return isoFieldMessage;
 }
 
-int unpackDataElement(FieldDescription packageISO8583, uChar *outputElement, uChar *inputElement,
-                      int *inLength) {
+int unpackDataElement(FieldDescription packageISO8583, uChar *outputElement, uChar * inputElement,
+                      int * inLength) {
 
     int length = 0;
     int totalBytes = 0;
-    uChar bufferAux[LEN_BUFFER_MAX * 2 + 1];
+    uChar bufferAux[(LEN_BUFFER_MAX * 2) + 1];
     memset(bufferAux, 0x00, sizeof(bufferAux));
     memset(outputElement, 0x00, sizeof(outputElement));
     memcpy(bufferAux, inputElement, sizeof(inputElement));
@@ -495,7 +491,8 @@ int unpackDataElement(FieldDescription packageISO8583, uChar *outputElement, uCh
             *inLength = (length + 1) / 2 + 1; // + 1 para el byte de tamaño
             totalBytes = length;
             break;
-        case BCD_AMOUNT:;
+        case BCD_AMOUNT:
+            ;
             break;
         case BCD_CHAR:
             memcpy(outputElement, inputElement, packageISO8583.fieldLength);
@@ -595,7 +592,7 @@ void inicializarMensajeriaTokens(void) {
     }
 }
 
-void _setTokenMessage_(char *token, uChar *valueToken, int totalBytes) {
+void _setTokenMessage_(char * token, uChar * valueToken, int totalBytes) {
 
     TokenMessage tokenMsg;
     int id = 0;
@@ -612,7 +609,7 @@ void _setTokenMessage_(char *token, uChar *valueToken, int totalBytes) {
 
 }
 
-int getIdToken(char *token) {
+int getIdToken(char * token) {
 
     int id = 0;
     int length = 0;
@@ -661,7 +658,7 @@ TokenMessage _getTokenMessage_(char *token) {
         _convertBCDToASCII_(buffer, bufferAux, 4);
         LOGI("bufferAschi %s", buffer);
 
-        if (strcmp(buffer, "3030") != 0) {
+        if (strcmp(buffer, "3030") != 0 && atoi(buffer) < 2500 ){
             totalBytes = atoi(buffer);
             if (totalBytes > 0) {
                 LOGI("totalBytes %d", totalBytes);
@@ -685,7 +682,7 @@ TokenMessage _getTokenMessage_(char *token) {
 
 }
 
-ResultTokenUnpack unpackTokenMessage(uChar *messageToken, int inLength) {
+ResultTokenUnpack unpackTokenMessage(uChar * messageToken, int inLength) {
 
     int idx = 0;
     int acumulado = 2;
@@ -716,6 +713,7 @@ ResultTokenUnpack unpackTokenMessage(uChar *messageToken, int inLength) {
         acumulado += length;
 
     }
+
     if (acumulado == inLength) {
         resultTokenUnpack.responseCode = 1;
         resultTokenUnpack.totalToken = countToken;
@@ -745,14 +743,33 @@ ISOFieldMessage getMTI() {
 
     //MTI
     length = packageISO8583[0].fieldLength;
-    totalBytes = unpackDataElement(packageISO8583[0], outputElement, messageInputISO + index,
-                                   &length);
+    totalBytes = unpackDataElement(packageISO8583[0], outputElement, messageInputISO + index, &length);
 
     isoFieldMessage.totalBytes = totalBytes;
     memcpy(isoFieldMessage.valueField, outputElement, isoFieldMessage.totalBytes);
 
     return isoFieldMessage;
 }
+
+TokenMessage getTokenMessage(char * token) {
+
+    int idx = 0;
+    TokenMessage tokenMsg;
+    indiceActualToken = -1;
+
+    memset(&tokenMsg, 0x00, sizeof(tokenMsg));
+
+    for (idx = 0; idx < MAX_TOKEN; idx++) {
+        if (strcmp(tokenMessage[idx].token, token) == 0) {
+            tokenMsg = tokenMessage[idx];
+            indiceActualToken = idx; // indice donde se encontro.
+            break;
+        }
+    }
+
+    return tokenMsg;
+}
+
 void limpiarTokenMessage(){
     lengthMessageToken = 0;
 }

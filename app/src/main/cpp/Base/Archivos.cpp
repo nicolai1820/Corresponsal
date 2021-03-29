@@ -29,7 +29,7 @@ int verificarArchivo( char * nombreDisco, const char * nombreArchivo) {
 
     long iRet = 0;
     int resultado = 0;
-    char rutaFile[60 + 1];
+    char rutaFile[100 + 1];
 
     memset(rutaFile, 0x00, sizeof(rutaFile));
 
@@ -50,13 +50,12 @@ int verificarArchivo( char * nombreDisco, const char * nombreArchivo) {
 int borrarArchivo( char * nombreDisco,char * nombreArchivo) {
 
     int iRet = 0;
-    char rutaFile[60 + 1];
+    char rutaFile[100 + 1];
 
     memset(rutaFile, 0x00, sizeof(rutaFile));
 
     strcpy(rutaFile,nombreDisco );
     strcat(rutaFile,nombreArchivo);
-    LOGI("borrarArchivo %s  ",rutaFile);
     iRet = unlink(rutaFile);
     return iRet;
 }
@@ -72,7 +71,7 @@ int buscarArchivo(char * nombreDisco, char * nombreArchivo, char * dataLeida, in
     memset(&pxFid, 0x00, sizeof(pxFid));
     memset(dataLeida, 0x00, sizeof(dataLeida));
 
-    char rutaFile[60 + 1];
+    char rutaFile[100 + 1];
 
     memset(rutaFile, 0x00, sizeof(rutaFile));
 
@@ -126,7 +125,7 @@ int buscarArchivo(char * nombreDisco, char * nombreArchivo, char * dataLeida, in
 
 int escribirArchivo(char * nombreDisco,  char * nombreArchivo, char * datosEscribir, int tamanoArchivo) {
 
-    char rutaFile[60 + 1];
+    char rutaFile[100 + 1];
 
     memset(rutaFile, 0x00, sizeof(rutaFile));
 
@@ -169,7 +168,7 @@ int actualizarArchivo(char * nombreDisco, char * nombreArchivo, char * datosEscr
     int resultado = 0;
     int finalArchivo = 0;
 
-    char rutaFile[60 + 1];
+    char rutaFile[100 + 1];
 
     memset(rutaFile, 0x00, sizeof(rutaFile));
 
@@ -268,7 +267,7 @@ int leerArchivo(char * nombreDisco, char * nombreArchivo, char * dataLeida) {
     int tamanoArchivo = 6000;
     memset(dataLeida, 0x00, sizeof(dataLeida));
 
-    char rutaFile[60 + 1];
+    char rutaFile[100 + 1];
 
     memset(rutaFile, 0x00, sizeof(rutaFile));
 
@@ -313,8 +312,8 @@ int leerArchivo(char * nombreDisco, char * nombreArchivo, char * dataLeida) {
 int renombrarArchivo(char * nombreDisco, char * nombreActual, char * nombreNuevo) {
 
     long iRet;
-    char rutaFile[60 + 1];
-    char rutaNuevo[60 + 1];
+    char rutaFile[100 + 1];
+    char rutaNuevo[100 + 1];
 
     memset(rutaFile, 0x00, sizeof(rutaFile));
 
@@ -345,7 +344,7 @@ FILE *abrirArchivo(char * nombreDisco, char * nombreArchivo, char * modo) {
     unsigned int uiAccess;
     FILE *pxFid = NULL; // Identificador del Archivo
     long iRet = 0;
-    char rutaFile[60 + 1];
+    char rutaFile[100 + 1];
     memset(rutaFile, 0x00, sizeof(rutaFile));
 
     strcpy(rutaFile,nombreDisco );
@@ -416,7 +415,7 @@ long tamArchivo(char * nombreDisco, char * nombreArchivo) {
     long iRet = 0;
     long tamanoArchivo = 0;
 
-    char rutaFile[60 + 1];
+    char rutaFile[100 + 1];
 
     memset(rutaFile, 0x00, sizeof(rutaFile));
 
