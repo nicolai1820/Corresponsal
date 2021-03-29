@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo"
+    app:layout_constrainedHeight="true"
+    app:layout_constrainedWidth="true"
+    tools:context=".pantallas.comunes.resultadoTransaccion.PantallaResultadoTransaccionExitosa">
+
+    <FrameLayout
+        android:id="@+id/contenedorHeaderPantallaResultadoTransaccionExitosa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/guideline179"
+        app:layout_constraintBottom_toTopOf="@id/guideline180"
+        app:layout_constraintStart_toEndOf="@id/guideline181"
+        app:layout_constraintEnd_toStartOf="@id/guideline182"/>
+
+
+    <TextView
+        android:id="@+id/textView_PantallaResultadoTransaccionExitosa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="45dp"
+        android:layout_marginStart="45dp"
+        app:layout_constraintTop_toBottomOf="@id/contenedorHeaderPantallaResultadoTransaccionExitosa"
+        app:layout_constraintBottom_toTopOf="@id/guideline180"
+        app:layout_constraintStart_toEndOf="@id/guideline181"
+        app:layout_constraintEnd_toStartOf="@id/guideline182"
+        app:layout_constraintVertical_bias="0.35"
+        android:fontFamily="@font/quicksand_bold"
+        android:textSize="45dp"
+        android:text="@string/textView_PantallaResultadoTransaccionExitosa"
+        android:textAlignment="center"
+        android:textColor="@color/azul"/>
+
+    <TextView
+        android:id="@+id/textView_Transaccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/azul"
+        android:text="@string/textView_Transaccion"
+        android:textSize="15dp"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintTop_toBottomOf="@id/textView_PantallaResultadoTransaccionExitosa"
+        app:layout_constraintBottom_toTopOf="@id/guideline180"
+        app:layout_constraintStart_toEndOf="@id/guideline181"
+        app:layout_constraintEnd_toStartOf="@id/guideline182"/>
+
+    <TextView
+        android:id="@+id/textView_referenciaTransaccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/azul"
+        app:layout_constraintTop_toBottomOf="@id/textView_PantallaResultadoTransaccionExitosa"
+        app:layout_constraintBottom_toTopOf="@id/guideline180"
+        app:layout_constraintEnd_toStartOf="@id/guideline182"
+        app:layout_constraintStart_toEndOf="@id/guideline181"
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.55"/>
+
+
+    <ImageButton
+        android:id="@+id/button_ImageButtonCancelarPantallaResultadoTransaccionExitosa"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.085"
+        app:layout_constraintWidth_percent="0.17"
+        android:src="@drawable/cancelar_giro_icon"
+        android:background="@drawable/boton_inicio"
+        android:scaleType="fitCenter"
+        android:padding="20dp"
+        android:tint="@color/blanco"
+        app:layout_constraintTop_toBottomOf="@id/textView_PantallaResultadoTransaccionExitosa"
+        app:layout_constraintBottom_toTopOf="@id/guideline180"
+        app:layout_constraintStart_toEndOf="@id/guideline181"
+        app:layout_constraintEnd_toStartOf="@id/button_EnviarCopiaPantallaResultadoTransaccionExitosa"
+        app:layout_constraintVertical_bias="0.35"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginStart="45dp"/>
+
+    <Button
+        android:id="@+id/button_EnviarCopiaPantallaResultadoTransaccionExitosa"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/textView_PantallaResultadoTransaccionExitosa"
+        app:layout_constraintEnd_toStartOf="@id/guideline182"
+        app:layout_constraintStart_toEndOf="@id/button_ImageButtonCancelarPantallaResultadoTransaccionExitosa"
+        app:layout_constraintBottom_toTopOf="@id/guideline180"
+        app:layout_constraintVertical_bias="0.35"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHeight_percent="0.085"
+        app:layout_constraintWidth_percent="0.55"
+        android:background="@drawable/boton_inicio"
+        android:textAllCaps="false"
+        android:text="@string/button_EnviarCopiaTransaccionExitosa"
+        android:textColor="@color/blanco"
+        android:fontFamily="@font/quicksand_bold"
+        android:textSize="20dp"
+        android:layout_marginEnd="45dp"
+        />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline179"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline180"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline181"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline182"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

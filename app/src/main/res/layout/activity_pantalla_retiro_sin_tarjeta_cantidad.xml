@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/fondo"
+    app:layout_constrainedWidth="true"
+    app:layout_constrainedHeight="true"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.retiro.sinTarjeta.pantallaRetiroSinTarjetaCantidad">
+
+    <FrameLayout
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline121"
+        app:layout_constraintEnd_toStartOf="@id/guideline123"
+        app:layout_constraintStart_toEndOf="@id/guideline122"
+        app:layout_constraintTop_toBottomOf="@id/guideline120"
+        android:id="@+id/contenedorHeaderRetiroSinTarjetaCantidad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
+            <TextView
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintVertical_bias="0.04"
+                app:layout_constraintBottom_toTopOf="@id/guideline121"
+                app:layout_constraintEnd_toStartOf="@id/guideline123"
+                app:layout_constraintStart_toEndOf="@id/guideline122"
+                app:layout_constraintTop_toBottomOf="@id/contenedorHeaderRetiroSinTarjetaCantidad"
+                android:id="@+id/textView_PantallaRetiroSinTarjetaCantidad"
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="36dp"
+                android:fontFamily="@font/quicksand_regular"
+                android:text="@string/textView_RetiroSinTarjetaCantidad"
+                android:textColor="@color/azul"
+                android:textSize="21dp" />
+
+            <EditText
+                app:layout_constraintHeight_percent="0.07"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintVertical_bias="0.25"
+                app:layout_constraintBottom_toTopOf="@id/guideline121"
+                app:layout_constraintEnd_toStartOf="@id/guideline123"
+                app:layout_constraintStart_toEndOf="@id/guideline122"
+                app:layout_constraintTop_toBottomOf="@id/textView_PantallaRetiroSinTarjetaCantidad"
+                android:id="@+id/editText_RetiroSinTarjetaNumeroCuenta"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="45dp"
+                android:background="@drawable/input_form"
+                android:fontFamily="@font/quicksand_regular"
+                android:hint="@string/editText_RetiroSinTarjetaNumeroCuenta"
+                android:inputType="number"
+                android:numeric="integer"
+                android:paddingStart="23dp"
+                android:textColor="@color/azul"
+                android:textColorHint="@color/azul"
+                android:textSize="21dp" />
+
+            <EditText
+                app:layout_constraintHeight_percent="0.08"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintVertical_bias="0.05"
+                app:layout_constraintBottom_toTopOf="@id/guideline121"
+                app:layout_constraintEnd_toStartOf="@id/guideline123"
+                app:layout_constraintStart_toEndOf="@id/guideline122"
+                app:layout_constraintTop_toBottomOf="@id/editText_RetiroSinTarjetaNumeroCuenta"
+                android:id="@+id/editText_RetiroSinTarjetaCantidad"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="45dp"
+                android:background="@drawable/input_form"
+                android:fontFamily="@font/quicksand_regular"
+                android:hint="@string/editText_RetiroSinTarjetaCantidad"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:numeric="integer"
+                android:paddingStart="23dp"
+                android:textColor="@color/azul"
+                android:textColorHint="@color/azul"
+                android:textSize="21dp" />
+
+            <Button
+                app:layout_constraintBottom_toTopOf="@id/guideline121"
+                app:layout_constraintHeight_percent="0.095"
+                app:layout_constraintVertical_bias="0.4"
+                app:layout_constraintBottom_toBottomOf="@id/guideline121"
+                app:layout_constraintEnd_toStartOf="@id/guideline123"
+                app:layout_constraintStart_toEndOf="@id/guideline122"
+                app:layout_constraintTop_toBottomOf="@id/editText_RetiroSinTarjetaCantidad"
+                android:id="@+id/button_RetiroSinTarjetaContinuar"
+                android:layout_width="138dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/boton_inicio"
+                android:fontFamily="@font/quicksand_bold"
+                android:onClick="retiroSinTarjetaContinuar"
+                android:text="@string/button_RetiroSinTarjetaContinuar"
+                android:textAllCaps="false"
+                android:textColor="@color/blanco"
+                android:textSize="20dp" />
+
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline120"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline121"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline122"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline123"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/fondo"
+    app:layout_constrainedWidth="true"
+    app:layout_constrainedHeight="true"
+    tools:context="co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.giros.pantallaInicialGiros">
+
+    <FrameLayout
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline61"
+        app:layout_constraintEnd_toStartOf="@id/guideline63"
+        app:layout_constraintStart_toEndOf="@id/guideline62"
+        app:layout_constraintTop_toBottomOf="@id/guideline60"
+        android:id="@+id/contenedorHeaderGiros"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="10dp" />
+
+
+    <TextView
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.04"
+        app:layout_constraintBottom_toTopOf="@id/guideline61"
+        app:layout_constraintEnd_toStartOf="@id/guideline63"
+        app:layout_constraintStart_toEndOf="@id/guideline62"
+        app:layout_constraintTop_toBottomOf="@id/contenedorHeaderGiros"
+        android:id="@+id/textView_Giros"
+        android:layout_width="264dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginEnd="74dp"
+        android:fontFamily="@font/quicksand_regular"
+        android:text="@string/textView_GirosInicial"
+        android:textColor="@color/azul"
+        android:textSize="21dp" />
+
+
+        <Button
+            app:layout_constraintHeight_percent="0.175"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.075"
+            app:layout_constraintBottom_toTopOf="@id/guideline61"
+            app:layout_constraintEnd_toStartOf="@id/Button_Giros_Reclamar"
+            app:layout_constraintStart_toEndOf="@id/guideline62"
+            app:layout_constraintTop_toBottomOf="@id/textView_Giros"
+            android:id="@+id/Button_Giros_Enviar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="36dp"
+            android:background="@drawable/input_form"
+            android:drawableTop="@drawable/enviar_giro_icon"
+            android:drawableTint="@color/azul"
+            android:fontFamily="@font/quicksand_bold"
+            android:onClick="enviarGiro"
+            android:paddingTop="20dp"
+            android:paddingBottom="15dp"
+            android:text="@string/button_Giros_Enviar"
+            android:textAllCaps="false"
+            android:textColor="@color/azul"
+            android:textSize="19dp" />
+
+        <Button
+            app:layout_constraintHeight_percent="0.175"
+            app:layout_constraintVertical_bias="0.075"
+            app:layout_constraintBottom_toTopOf="@id/guideline61"
+            app:layout_constraintStart_toEndOf="@id/Button_Giros_Enviar"
+            app:layout_constraintEnd_toStartOf="@id/guideline63"
+            app:layout_constraintTop_toBottomOf="@id/textView_Giros"
+            android:id="@+id/Button_Giros_Reclamar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="36dp"
+            android:background="@drawable/input_form"
+            android:drawableTop="@drawable/reclamar_giro_icon"
+            android:drawableTint="@color/azul"
+            android:fontFamily="@font/quicksand_bold"
+            android:onClick="reclamarGiro"
+            android:paddingTop="13dp"
+            android:paddingBottom="15dp"
+            android:text="@string/button_Giros_Reclamar"
+            android:textAllCaps="false"
+            android:textColor="@color/azul"
+            android:textSize="19dp" />
+
+
+
+
+    <Button
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintEnd_toStartOf="@id/guideline63"
+        app:layout_constraintStart_toEndOf="@id/guideline62"
+        app:layout_constraintHeight_percent="0.175"
+        app:layout_constraintBottom_toTopOf="@id/guideline61"
+        app:layout_constraintTop_toBottomOf="@id/Button_Giros_Enviar"
+        android:id="@+id/Button_Giros_Cancelar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_weight="1"
+        android:background="@drawable/input_form"
+        android:drawableTop="@drawable/cancelar_giro_icon"
+        android:drawableTint="@color/azul"
+        android:fontFamily="@font/quicksand_bold"
+        android:onClick="cancelarGiro"
+        android:paddingTop="13dp"
+        android:paddingBottom="15dp"
+        android:text="@string/button_Giros_Cancelar"
+        android:textAllCaps="false"
+        android:textColor="@color/azul"
+        android:textSize="19dp" />
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/menuUserGiros"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/menu_fondo"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp"
+        app:itemIconSize="30dp"
+        app:itemIconTint="@color/azul"
+        app:itemTextColor="@color/azul"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/menu_home"
+        app:layout_constraintHeight_percent="0.10"
+        app:layout_constraintTop_toBottomOf="@id/Button_Giros_Cancelar"
+        app:layout_constraintBottom_toTopOf="@id/guideline61"
+        app:layout_constraintEnd_toStartOf="@id/guideline63"
+        app:layout_constraintStart_toEndOf="@id/guideline62"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintHorizontal_bias=".0"
+
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline60"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline61"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline62"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline63"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

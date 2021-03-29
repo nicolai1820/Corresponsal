@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constrainedWidth="true"
+    app:layout_constrainedHeight="true"
+    tools:context="co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.informacion.pantallaInformacionUsuarioComun">
+
+    <FrameLayout
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline157"
+        app:layout_constraintEnd_toStartOf="@id/guideline159"
+        app:layout_constraintStart_toEndOf="@id/guideline158"
+        app:layout_constraintTop_toBottomOf="@id/guideline156"
+        android:id="@+id/contenedorHeaderPantallaInformacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
+            <!--TextView
+                android:textSize="45dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_bold"
+                android:textColor="@color/azul"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/textView_SaludoAdministrado"
+                /-->
+            <!--TextView
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/azul"
+                android:fontFamily="@font/quicksand_regular"
+                android:textSize="19dp"
+                android:text="@string/textView_bienvenidaAdministrador"
+                android:layout_marginStart="36dp"/-->
+
+
+                <Button
+                    app:layout_constraintHeight_percent="0.2"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintVertical_bias="0.035"
+                    app:layout_constraintBottom_toTopOf="@id/guideline157"
+                    app:layout_constraintStart_toEndOf="@id/guideline158"
+                    app:layout_constraintEnd_toStartOf="@id/button_soporte"
+                    app:layout_constraintTop_toBottomOf="@id/contenedorHeaderPantallaInformacion"
+                    android:id="@+id/button_preguntasFrecuentes"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="36dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/input_form"
+                    android:drawableTop="@drawable/interrogacion"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:paddingTop="25dp"
+                    android:paddingBottom="15dp"
+                    android:text="@string/button_pantallaInformacionPreguntasFrecuentes"
+                    android:textColor="@color/azul"
+                    android:textSize="19dp" />
+
+                <Button
+                    app:layout_constraintHeight_percent="0.2"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintVertical_bias="0.035"
+                    app:layout_constraintBottom_toTopOf="@id/guideline157"
+                    app:layout_constraintEnd_toStartOf="@id/guideline159"
+                    app:layout_constraintStart_toEndOf="@id/button_preguntasFrecuentes"
+                    app:layout_constraintTop_toBottomOf="@id/contenedorHeaderPantallaInformacion"
+                    android:id="@+id/button_soporte"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginEnd="36dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/input_form"
+                    android:drawableTop="@drawable/soporte"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:paddingTop="25dp"
+                    android:paddingBottom="17dp"
+                    android:text="@string/button_pantallaInformacionSoporte"
+                    android:textAllCaps="false"
+                    android:textColor="@color/azul"
+                    android:textSize="19dp" />
+
+            <Button
+                app:layout_constraintHeight_percent="0.2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintVertical_bias="0.05"
+                app:layout_constraintBottom_toTopOf="@id/guideline157"
+                app:layout_constraintEnd_toStartOf="@id/guideline159"
+                app:layout_constraintStart_toEndOf="@id/guideline158"
+                app:layout_constraintTop_toBottomOf="@id/button_preguntasFrecuentes"
+                android:id="@+id/button_duplicadoRecibo"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="36dp"
+                android:background="@drawable/input_form"
+                android:drawableTop="@drawable/duplicado"
+                android:fontFamily="@font/quicksand_bold"
+                android:paddingTop="25dp"
+                android:paddingBottom="15dp"
+                android:text="@string/button_pantallaInformacionDuplicado"
+                android:textAllCaps="false"
+                android:textColor="@color/azul"
+                android:textSize="19dp" />
+
+            <Button
+                app:layout_constraintBottom_toTopOf="@id/guideline157"
+                app:layout_constraintHeight_percent="0.12"
+                app:layout_constraintVertical_bias="0.2"
+                app:layout_constraintEnd_toStartOf="@id/guideline159"
+                app:layout_constraintStart_toEndOf="@id/guideline158"
+                app:layout_constraintTop_toBottomOf="@id/button_duplicadoRecibo"
+                android:id="@+id/button_cerrarSesion"
+                android:layout_width="161dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/boton_inicio"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="@string/button_pantallaInformacionCerrarSesion"
+                android:textAllCaps="false"
+                android:textColor="@color/blanco"
+                android:textSize="20dp" />
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline156"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline157"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline158"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline159"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

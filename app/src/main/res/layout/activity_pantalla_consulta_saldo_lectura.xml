@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo"
+    app:layout_constrainedWidth="true"
+    app:layout_constrainedHeight="true"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.consultaSaldo.pantallaConsultaSaldoLectura">
+
+    <FrameLayout
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline33"
+        app:layout_constraintEnd_toStartOf="@id/guideline35"
+        app:layout_constraintStart_toEndOf="@id/guideline34"
+        app:layout_constraintTop_toBottomOf="@id/guideline32"
+        android:id="@+id/contenedorHeaderPantallaConsultaDeSaldoLectura"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+            <TextView
+                app:layout_constraintVertical_bias="0.04"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintBottom_toTopOf="@id/guideline33"
+                app:layout_constraintEnd_toStartOf="@id/guideline35"
+                app:layout_constraintStart_toEndOf="@id/guideline34"
+                app:layout_constraintTop_toBottomOf="@id/contenedorHeaderPantallaConsultaDeSaldoLectura"
+                android:id="@+id/textView_ConsultaSaldoLectura"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:fontFamily="@font/quicksand_regular"
+                android:text="@string/textView_pantallaConsultaSaldoLectura"
+                android:textColor="@color/azul"
+                android:textSize="19dp" />
+
+            <pl.droidsonroids.gif.GifImageView
+                app:layout_constraintVertical_bias="0.1"
+                app:layout_constraintBottom_toTopOf="@id/guideline33"
+                app:layout_constraintEnd_toStartOf="@id/guideline35"
+                app:layout_constraintStart_toEndOf="@id/guideline34"
+                app:layout_constraintTop_toBottomOf="@id/textView_ConsultaSaldoLectura"
+                android:id="@+id/gifImageViewConsultaSaldo"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/inserte_tarjeta" />
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/menuConsultaSaldo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.10"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/menu_fondo"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp"
+        app:itemIconSize="30dp"
+        app:itemIconTint="@color/azul"
+        app:itemTextColor="@color/azul"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toTopOf="@id/guideline33"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline35"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/guideline34"
+        app:layout_constraintTop_toBottomOf="@id/gifImageViewConsultaSaldo"
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/menu_home" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline35"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

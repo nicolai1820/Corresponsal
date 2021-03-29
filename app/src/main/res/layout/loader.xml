@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/fondo_loader"
+        android:gravity="center"
+        >
+
+        <ProgressBar
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/azul"
+            android:scaleY="1.2"
+            android:scaleX="1.2"
+            />
+
+
+
+        <TextView
+            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Procesando..."
+            android:textSize="25dp"
+            android:fontFamily="@font/quicksand_bold"
+            android:textColor="@color/azul"/>
+
+
+
+    </LinearLayout>
+</RelativeLayout>

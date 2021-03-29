@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion"
+    android:background="@drawable/fondo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    >
+
+    <FrameLayout
+        android:id="@+id/contenedorHeaderConfirmarValores"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+
+    <ScrollView
+        android:layout_below="@id/contenedorHeaderConfirmarValores"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+
+
+    <TextView
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/contenedorHeaderConfirmarValores"
+        android:id="@+id/textViewDescripcionValores"
+        android:layout_width="239dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:fontFamily="@font/quicksand_regular"
+        android:textColor="@color/azul"
+        android:textSize="21dp" />
+
+    <LinearLayout
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@id/textViewDescripcionValores"
+        android:id="@+id/linearLayoutConfirmacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:background="@drawable/input_form"
+        android:orientation="vertical"
+        android:padding="10dp"></LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@id/linearLayoutConfirmacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/button_CancelarConfirmacion"
+            android:layout_width="67dp"
+            android:layout_height="67dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/boton_inicio"
+            android:drawableTint="@color/blanco"
+            android:onClick="cancelarValores"
+            android:padding="20dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/cancelar_giro_icon"
+            android:tint="@color/blanco" />
+
+
+        <Button
+            android:id="@+id/button_ContinuarConfirmarValores"
+            android:layout_width="138dp"
+            android:layout_height="67dp"
+            android:layout_marginStart="11dp"
+            android:background="@drawable/boton_inicio"
+            android:onClick="confirmarValores"
+            android:text="@string/button_ContinuarConfirmarValores"
+            android:textAllCaps="false"
+            android:textColor="@color/blanco"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+
+
+</LinearLayout>
+
+
+</ScrollView>
+</RelativeLayout>

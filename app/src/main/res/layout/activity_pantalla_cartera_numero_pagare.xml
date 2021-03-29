@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/fondo"
+    app:layout_constrainedWidth="true"
+    app:layout_constrainedHeight="true"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.pagoProductosBCO.cartera.pantallaCarteraNumeroPagare">
+
+    <FrameLayout
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline25"
+        app:layout_constraintEnd_toStartOf="@id/guideline27"
+        app:layout_constraintStart_toEndOf="@id/guideline26"
+        app:layout_constraintTop_toBottomOf="@id/guideline24"
+        android:id="@+id/contenedorHeaderCarteraNumeroPagare"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <TextView
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintVertical_bias="0.04"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline25"
+        app:layout_constraintEnd_toStartOf="@id/guideline27"
+        app:layout_constraintStart_toEndOf="@id/guideline26"
+        app:layout_constraintTop_toBottomOf="@id/contenedorHeaderCarteraNumeroPagare"
+        android:id="@+id/textView_PantallaNumeroCartera"
+        android:layout_width="290dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
+        android:fontFamily="@font/quicksand_regular"
+        android:text="@string/textView_CarteraNumeroPagare"
+        android:textColor="@color/azul"
+        android:textSize="21dp" />
+
+    <EditText
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintBottom_toTopOf="@id/guideline25"
+        app:layout_constraintEnd_toStartOf="@id/guideline27"
+        app:layout_constraintStart_toEndOf="@id/guideline26"
+        app:layout_constraintTop_toBottomOf="@id/textView_PantallaNumeroCartera"
+        android:id="@+id/editText_CarteraNumeroPagare"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/input_form"
+        android:fontFamily="@font/quicksand_regular"
+        android:hint="@string/editText_CarteraNumeroPagare"
+        android:inputType="number"
+        android:numeric="integer"
+        android:textAlignment="center"
+        android:textColor="@color/azul"
+        android:textColorHint="@color/azul"
+        android:textSize="21dp" />
+
+    <EditText
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintBottom_toTopOf="@id/guideline25"
+        app:layout_constraintEnd_toStartOf="@id/guideline27"
+        app:layout_constraintStart_toEndOf="@id/guideline26"
+        app:layout_constraintTop_toBottomOf="@id/editText_CarteraNumeroPagare"
+        android:id="@+id/editText_CarteraCantidad"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/input_form"
+        android:fontFamily="@font/quicksand_regular"
+        android:hint="@string/editText_CarteraCantidad"
+        android:imeOptions="actionDone"
+        android:inputType="number"
+        android:numeric="integer"
+        android:textAlignment="center"
+        android:textColor="@color/azul"
+        android:textColorHint="@color/azul"
+        android:textSize="21dp" />
+
+    <Button
+        app:layout_constraintHeight_percent="0.095"
+        app:layout_constraintVertical_bias="0.4"
+        app:layout_constraintBottom_toTopOf="@id/guideline25"
+        app:layout_constraintEnd_toStartOf="@id/guideline27"
+        app:layout_constraintStart_toEndOf="@id/guideline26"
+        app:layout_constraintTop_toBottomOf="@+id/editText_CarteraCantidad"
+        android:id="@+id/button_CarteraNumeroPagareContinuar"
+        android:layout_width="138dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/boton_inicio"
+        android:fontFamily="@font/quicksand_bold"
+        android:onClick="carteraNumeroPagareContinuar"
+        android:text="@string/button_CarteraNumeroPagareContinuar"
+        android:textAllCaps="false"
+        android:textColor="@color/blanco"
+        android:textSize="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

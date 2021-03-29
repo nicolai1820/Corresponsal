@@ -1,0 +1,53 @@
+[1/2] Building CXX object CMakeFiles/native-lib.dir/src/main/cpp/Base/native-lib.cpp.o
+In file included from /Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Base/native-lib.cpp:35:
+../../../../src/main/cpp/include/configuracion.h:263:9: warning: 'TAM_TIPO_TRANSACCION' macro redefined [-Wmacro-redefined]
+#define TAM_TIPO_TRANSACCION        2
+        ^
+../../../../src/main/cpp/include/Definiciones.h:417:9: note: previous definition is here
+#define TAM_TIPO_TRANSACCION                                                            3
+        ^
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Base/native-lib.cpp:271:29: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+    setParameter(IP_DEFAULT,"190.24.137.204");
+                            ^
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Base/native-lib.cpp:272:33: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+    setParameter(PUERTO_DEFAULT,"3007");
+                                ^
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Base/native-lib.cpp:273:22: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+    setParameter(NII,"0160");
+                     ^
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Base/native-lib.cpp:274:29: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+    setParameter(TIPO_CANAL,"02");
+                            ^
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Base/native-lib.cpp:925:38: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+        setParameter(TIPO_TELECARGA, "1");
+                                     ^
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Base/native-lib.cpp:977:38: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+        setParameter(TIPO_TELECARGA, "1");
+                                     ^
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Base/native-lib.cpp:979:38: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+        setParameter(TIPO_TELECARGA, "0");
+                                     ^
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Base/native-lib.cpp:2002:30: warning: if statement has empty body [-Wempty-body]
+    if (NULL == callBackJava);
+                             ^
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Base/native-lib.cpp:2002:30: note: put the semicolon on a separate line to silence this warning
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Base/native-lib.cpp:2828:31: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+    setParameter(REVISION_SW, REVISION_SOFTWARE);
+                              ^
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Base/native-lib.cpp:45:28: note: expanded from macro 'REVISION_SOFTWARE'
+#define  REVISION_SOFTWARE "RC"
+                           ^
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Base/native-lib.cpp:2890:32: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+    borrarArchivo(discoNetcom, "/PARAMTERMINAL.txt");
+                               ^
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Base/native-lib.cpp:2891:34: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+    escribirArchivo(discoNetcom, "/PARAMTERMINAL.txt", (char *) paramData, tamano);
+                                 ^
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Base/native-lib.cpp:2987:36: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+        borrarArchivo(discoNetcom, TOKEN_QC);
+                                   ^
+../../../../src/main/cpp/include/Definiciones.h:1006:38: note: expanded from macro 'TOKEN_QC'
+#define TOKEN_QC                                                                                    "/TOKENQC.TXT"
+                                                                                                    ^
+13 warnings generated.
+[2/2] Linking CXX shared library ../../../../build/intermediates/cmake/debug/obj/x86/libnative-lib.so

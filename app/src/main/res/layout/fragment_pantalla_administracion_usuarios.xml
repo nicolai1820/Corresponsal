@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pantallas.corresponsal.administrador.inicio.pantallaAdministracionUsuarios">
+
+    <FrameLayout
+        android:id="@+id/contenedorHeaderPantallaAdministracionUsuarios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ScrollView
+        android:layout_below="@id/contenedorHeaderPantallaAdministracionUsuarios"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            
+            <TextView
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="@string/textView_pantallaAdministracionUsuario"
+                android:textSize="19dp"
+                android:fontFamily="@font/quicksand_regular"
+                android:textColor="@color/azul"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/button_CrearUsuarios"
+                    android:layout_marginTop="52dp"
+                    android:layout_marginBottom="12dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="117dp"
+                    android:layout_marginStart="36dp"
+                    android:background="@drawable/input_form"
+                    android:drawableTop="@drawable/crear_usuarios"
+                    android:drawableTint="@color/azul"
+                    android:text="@string/button_pantallaAdministracionUsuarioCrear"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:textSize="19dp"
+                    android:textColor="@color/azul"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="15dp"/>
+
+                <Button
+                    android:id="@+id/button_EditarUsuarios"
+                    android:layout_marginTop="52dp"
+                    android:layout_marginBottom="12dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="117dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="36dp"
+                    android:background="@drawable/input_form"
+                    android:drawableTop="@drawable/editar_usuarios"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:drawableTint="@color/azul"
+                    android:text="@string/button_pantallaAdministacionUsuarioEditar"
+                    android:textAllCaps="false"
+                    android:textColor="@color/azul"
+                    android:textSize="19dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="15dp"
+                    />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button_ListarUsuarios"
+                android:layout_width="match_parent"
+                android:layout_height="117dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="36dp"
+                android:background="@drawable/input_form"
+                android:drawableTop="@drawable/lista_usuarios"
+                android:text="@string/button_pantallaAdministracionUsuarioListar"
+                android:textAllCaps="false"
+                android:textColor="@color/azul"
+                android:textSize="19dp"
+                android:fontFamily="@font/quicksand_bold"
+                android:paddingTop="20dp"
+                android:paddingBottom="15dp"/>
+
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</RelativeLayout>

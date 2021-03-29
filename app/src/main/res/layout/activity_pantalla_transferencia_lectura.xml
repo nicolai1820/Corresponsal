@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo"
+    app:layout_constrainedWidth="true"
+    app:layout_constrainedHeight="true"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.transferencia.pantallaTransferenciaLectura">
+
+    <FrameLayout
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline145"
+        app:layout_constraintEnd_toStartOf="@id/guideline147"
+        app:layout_constraintStart_toEndOf="@id/guideline146"
+        app:layout_constraintTop_toBottomOf="@id/guideline144"
+        android:id="@+id/contenedorHeaderPantallaTransferenciaLectura"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.04"
+        app:layout_constraintBottom_toTopOf="@id/guideline145"
+        app:layout_constraintEnd_toStartOf="@id/guideline147"
+        app:layout_constraintStart_toEndOf="@id/guideline146"
+        app:layout_constraintTop_toBottomOf="@id/contenedorHeaderPantallaTransferenciaLectura"
+        android:id="@+id/textView_PantallaTransferenciaLectura"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:fontFamily="@font/quicksand_regular"
+        android:text="@string/textView_pantallaTransferenciaLectura"
+        android:textColor="@color/azul"
+        android:textSize="19dp" />
+
+    <pl.droidsonroids.gif.GifImageView
+        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintEnd_toStartOf="@id/guideline147"
+        app:layout_constraintStart_toEndOf="@id/guideline146"
+        app:layout_constraintTop_toBottomOf="@id/textView_PantallaTransferenciaLectura"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/inserte_tarjeta"
+        app:layout_constraintBottom_toTopOf="@id/guideline145"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline144"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline145"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline146"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline147"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

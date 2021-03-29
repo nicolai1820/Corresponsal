@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo"
+    app:layout_constrainedWidth="true"
+    app:layout_constrainedHeight="true"
+    tools:context=".pantallas.corresponsal.usuarioComun.transacciones.inicio.cupoTarjeta.pantallaCupo">
+
+    <FrameLayout
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline153"
+        app:layout_constraintEnd_toStartOf="@id/guideline155"
+        app:layout_constraintStart_toEndOf="@id/guideline154"
+        app:layout_constraintTop_toBottomOf="@id/guideline152"
+        android:id="@+id/contenedorHeaderCupo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        app:layout_constraintVertical_bias="0.04"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/guideline153"
+        app:layout_constraintEnd_toStartOf="@id/guideline155"
+        app:layout_constraintStart_toEndOf="@id/guideline154"
+        app:layout_constraintTop_toBottomOf="@id/contenedorHeaderCupo"
+        android:id="@+id/textView_PantallaCupo"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:fontFamily="@font/quicksand_regular"
+        android:text="@string/textView_Cupo"
+        android:textColor="@color/azul"
+        android:textSize="19dp" />
+
+    <RelativeLayout
+        app:layout_constraintBottom_toTopOf="@id/guideline153"
+        app:layout_constraintHeight_percent="0.27"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@id/guideline155"
+        app:layout_constraintStart_toEndOf="@id/guideline154"
+        app:layout_constraintTop_toBottomOf="@id/textView_PantallaCupo"
+        android:layout_width="match_parent"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="45dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/cupo">
+
+        <TextView
+            android:id="@+id/textView_NombreComercio"
+            android:layout_width="142dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="40dp"
+            android:text="Nombre Comercio"
+            android:fontFamily="@font/quicksand_bold"
+            android:textColor="@color/blanco"
+            android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="80dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="85dp"
+            android:text="@string/textView_saldoPygree"
+            android:fontFamily="@font/quicksand_regular"
+            android:textColor="@color/blanco"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/textView_CupoComercio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="45dp"
+            android:layout_marginBottom="40dp"
+            android:text="$200.000"
+            android:fontFamily="@font/quicksand_bold"
+            android:textColor="@color/blanco"
+            android:textSize="37dp" />
+
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline152"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline153"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline154"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline155"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
