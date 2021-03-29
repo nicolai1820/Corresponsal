@@ -192,7 +192,7 @@ int enviarRecaudo(DatosTokens datosToken, int tipoRecaudoCaja, char *totalVenta)
     strcpy(datosToken.indicador1, INDICADOR_LECTOR);
     memcpy(datosVentaBancolombia.totalVenta, totalVenta, 12);
 
-    do {
+   // do {
 
         armarTramaRecaudo(intentosVentas, datosToken, MENSAJE_PAGO);
         memcpy(datosToken.tokensp6 + 2, datosVentaBancolombia.numeroRecibo, TAM_NUMERO_RECIBO);
@@ -238,7 +238,7 @@ int enviarRecaudo(DatosTokens datosToken, int tipoRecaudoCaja, char *totalVenta)
             imprimirDeclinadas(datosVentaBancolombia, "REINTENTE TRANSACCION");
         }
 
-    } while (resultado == -2 && intentosVentas < MAX_INTENTOS_VENTA);
+   // } while (resultado == -2 && intentosVentas < MAX_INTENTOS_VENTA);
 
     if (strlen(datosVentaBancolombia.ARQC) > 0) { // Solo entra si es CHIP
         //memset(bufferAuxiliarCustomEMV, 0x00, sizeof(bufferAuxiliarCustomEMV));
@@ -335,17 +335,17 @@ int procesarTransaccionRecaudo(uChar *tokenP6Enviado, int tipoRecaudoCaja) {
     uChar mensajeDeclinada[21 + 1] = {0x00};
 
     memset(globalDataRecibida, 0x00, sizeof(globalDataRecibida));
-    memset(&resultadoIsoPackMessage, 0x00, sizeof(resultadoIsoPackMessage));
+    memset(&globalresultadoIsoPack, 0x00, sizeof(globalresultadoIsoPack));
     memset(&datosTransaccionDeclinada, 0x00, sizeof(datosTransaccionDeclinada));
     memset(tokenP6Recibido, 0x00, sizeof(tokenP6Recibido));
     memset(iniciaTransaccion, 0x00, sizeof(iniciaTransaccion));
 
-    resultadoIsoPackMessage = packISOMessage();
+    globalresultadoIsoPack = packISOMessage();
     getParameter(TIPO_INICIA_TRANSACCION, iniciaTransaccion);
 
     verificarHabilitacionCaja();
 
-    if (resultadoIsoPackMessage.responseCode > 0) {
+    /*if (resultadoIsoPackMessage.responseCode > 0) {
         interpretarTrama(resultadoIsoPackMessage.isoPackMessage,
                          resultadoIsoPackMessage.totalBytes * 2);
         resultadoTransaccion = realizarTransaccion(resultadoIsoPackMessage.isoPackMessage,
@@ -356,18 +356,16 @@ int procesarTransaccionRecaudo(uChar *tokenP6Enviado, int tipoRecaudoCaja) {
 
         if (resultadoTransaccion > 0) {
             globalsizeData = resultadoTransaccion;
-            // desarmar la trama
+
             resultadoTransaccion = unpackDataRecaudo(tokenP6Recibido, tipoRecaudoCaja);
 
-            // es solo para el nuevo recaudo
             if (resultadoTransaccion > 0
-                && (verificarHabilitacionCaja() <= 0/* || verificarCajaIPCB() == 1)*/)) {
+                && (verificarHabilitacionCaja() <= 0/)) {
                 LOGI("comparar tokens pago % d", resultadoTransaccion);
                 resultadoTransaccion = compararTokens(tokenP6Recibido, tokenP6Enviado,
                                                       COMPARACION_PAGO, (char *) " ", NULL);
                 LOGI("resultadoPago % d", resultadoTransaccion);
                 if (resultadoTransaccion <= 0) {
-                    //screenMessage("MENSAJE", "TRANSACCION", "REVERSADA", "", T_OUT(2));
                     imprimirDeclinadas(datosVentaBancolombia, "TRANSACCION REVERSADA");
                     resultadoTransaccion = generarReverso();
 
@@ -394,13 +392,12 @@ int procesarTransaccionRecaudo(uChar *tokenP6Enviado, int tipoRecaudoCaja) {
                 strcpy(mensajeDeclinada, "ERROR SIN CONEXION");
             }
 
-            //responderCajaDeclinadaRecaudo(tipoRecaudoCaja);
             LOGI("imprimir declinada  ");
             imprimirDeclinadas(datosVentaBancolombia, mensajeDeclinada);
 
             resultadoTransaccion = 0;
         }
-    }
+    }*/
 
     return resultadoTransaccion;
 }
@@ -701,14 +698,14 @@ procesarConsulta(uChar *tokenP6, long *valorFactura, int *indicadorBaseDatos, in
     uChar var[SIZE_TOKEN_P6 + 1];
 
     memset(globalDataRecibida, 0x00, sizeof(globalDataRecibida));
-    memset(&resultadoIsoPackMessage, 0x00, sizeof(resultadoIsoPackMessage));
+    memset(&globalresultadoIsoPack, 0x00, sizeof(globalresultadoIsoPack));
     memset(&datosTransaccionDeclinada, 0x00, sizeof(datosTransaccionDeclinada));
     memset(tokenP6Recibido, 0x00, sizeof(tokenP6Recibido));
     memset(var, 0x00, sizeof(var));
 
-    resultadoIsoPackMessage = packISOMessage();
+    globalresultadoIsoPack = packISOMessage();
 
-    if (resultadoIsoPackMessage.responseCode > 0) {
+   /*if (resultadoIsoPackMessage.responseCode > 0) {
 
         resultadoTransaccion = realizarTransaccion(resultadoIsoPackMessage.isoPackMessage,
                                                    resultadoIsoPackMessage.totalBytes,
@@ -741,13 +738,8 @@ procesarConsulta(uChar *tokenP6, long *valorFactura, int *indicadorBaseDatos, in
             LOGI("copiar token  ");
             memcpy(tokenP6, tokenP6Recibido, SIZE_TOKEN_P6);
 
-            if (verificarHabilitacionCaja() == TRUE) {
-                /*if (verificarCajaIPCB() == 0) {
-                    memcpy(datosRecaudo->informacionAdicional + 2, tokenP6Recibido + 37, 110);
-                }*/
-            }
         }
-    }
+    }*/
 
     return resultadoTransaccion;
 }

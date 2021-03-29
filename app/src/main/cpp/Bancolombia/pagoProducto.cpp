@@ -13,7 +13,10 @@
 #include <native-lib.h>
 #include "Tipo_datos.h"
 #include "comunicaciones.h"
+#include "android/log.h"
 
+#define  LOG_TAG    "NETCOM_BANCOLOMBIA_PAGO_PRODUCTOS"
+#define  LOGI(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
 ResultISOUnpack globalresultadoUnpack;
 
 int enviarTransPago(char *referencia,char *monto, int tipoProducto) {
@@ -44,7 +47,7 @@ int enviarTransPago(char *referencia,char *monto, int tipoProducto) {
     memcpy(datoAuxiliar, referencia, strlen(referencia));
     leftPad(datosVentaBancolombia.tokenVivamos, datoAuxiliar, '0', maximo);
 
-    do {
+   // do {
         armarTramaPagoProducto(datosPagoProducto,intentosVentas);
 
         resultado = procesarTransaccionPagoProducto(datosPagoProducto);
@@ -65,11 +68,11 @@ int enviarTransPago(char *referencia,char *monto, int tipoProducto) {
             resultado = -1;
         }
 
-    } while (resultado == -2 && intentosVentas < 3);
+   // } while (resultado == -2 && intentosVentas < 3);
 
-    if(resultado > 0){
+    /*if(resultado > 0){
         mostrarAprobacionBancolombia(&datosVentaBancolombia);
-    }
+    }*/
     return resultado;
 }
 
@@ -82,7 +85,7 @@ void armarTramaPagoProducto(DatosCnbBancolombia datosPagoProducto,int intentosVe
     DatosTokens datosToken;
     char indicador[SIZE_INDICADOR + 1];
     char tokenQZ[81 + 1];
-
+    LOGI(" armar trama pago de producto INICIO ");
     memset(&resultTokenPack, 0x00, sizeof(resultTokenPack));
     memset(&datosTarjetaSembrada, 0x30, sizeof(datosTarjetaSembrada));
     memset(&datosToken, 0x00, sizeof(datosToken));
@@ -132,21 +135,23 @@ void armarTramaPagoProducto(DatosCnbBancolombia datosPagoProducto,int intentosVe
     resultTokenPack = _packTokenMessage_();
     setField(58, tokenQZ, longitud);
     setField(60, resultTokenPack.tokenPackMessage, resultTokenPack.totalBytes);
+
+    LOGI(" armar trama pago de producto FINAL ");
 }
 
 int procesarTransaccionPagoProducto(DatosCnbBancolombia datosPagoProducto) {
 
     ResultISOPack resultadoIsoPackMessage;
-    int resultadoTransaccion = -1;
+    int resultadoTransaccion = 1;
     char dataRecibida[512] = {0x00};
     //DatosTransaccionDeclinada datosTransaccionDeclinada;
 
     memset(&resultadoIsoPackMessage, 0x00, sizeof(resultadoIsoPackMessage));
     // memset(&datosTransaccionDeclinada, 0x00, sizeof(datosTransaccionDeclinada));
+    //resultadoIsoPackMessage = packISOMessage();
 
-    resultadoIsoPackMessage = packISOMessage();
-
-    if (resultadoIsoPackMessage.responseCode > 0) {
+    globalresultadoIsoPack = packISOMessage();
+    /*if (globalresultadoIsoPack.responseCode > 0) {
 
         resultadoTransaccion = realizarTransaccion(resultadoIsoPackMessage.isoPackMessage,
                                                    resultadoIsoPackMessage.totalBytes, dataRecibida, atoi(datosVentaBancolombia.tipoTransaccion),
@@ -172,7 +177,7 @@ int procesarTransaccionPagoProducto(DatosCnbBancolombia datosPagoProducto) {
 
             resultadoTransaccion = 0;
         }
-    }
+    }*/
 
     return resultadoTransaccion;
 }

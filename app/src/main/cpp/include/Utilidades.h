@@ -142,6 +142,7 @@ int mostrarReverso(void);
 int fechaActualizacion(ResultISOUnpack resultadoUnpack);
 void validarActualizacionTelecarga(ResultISOUnpack resultadoUnpack);
 int  validarInicializacionProgramada();
+void cargarInformacionPanVirtualCorresposal(char * fiid, char* tipoCuenta, char * panVirtual);
 Date obtenerDate();
 extern char pathNetcom[60 + 1];
 extern char discoNetcom[60 + 1];

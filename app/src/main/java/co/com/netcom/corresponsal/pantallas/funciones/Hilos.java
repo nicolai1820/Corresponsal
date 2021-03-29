@@ -14,6 +14,7 @@ import co.com.netcom.corresponsal.core.comunicacion.CardDTO;
 import co.com.netcom.corresponsal.core.comunicacion.DatosComision;
 import co.com.netcom.corresponsal.core.comunicacion.DatosRecaudo;
 import co.com.netcom.corresponsal.core.comunicacion.IntegradorC;
+import co.com.netcom.corresponsal.core.comunicacion.ParametrosC;
 import co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.giros.cancelar.pantallaCancelarGiroCantidad;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.recargas.pantallaRecargaCantidad;
@@ -27,6 +28,11 @@ public class Hilos extends AppCompatActivity {
 
     public  Hilos(Context contexto){
         this.integradorC =new IntegradorC(contexto);
+        integradorC.cargarInformacionPanVirtual(FIID, tipoDeCuenta,panVirtual);
+        String dataEscribir = "089054220178" + ";" + "12345678" + ";" + "B486AFD857A7";
+        Log.d("DataFile", "data File " + dataEscribir);
+        integradorC.escribirFile(dataEscribir, dataEscribir.length());//DATOS NECESARIOS PARA ARMAR TOKENP58 //ipactual dispositivo, numero de serie, macaddress
+        integradorC.setearParametrosC(ParametrosC.NUMERO_TERMINAL,"OCP00014");// se debe asignar al C el numero de terminal correspondiente
         this.context =contexto;
     }
 
