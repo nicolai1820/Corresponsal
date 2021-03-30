@@ -205,9 +205,6 @@ public class Hilos extends AppCompatActivity {
                     DatosRecaudo datosRecaudo = new DatosRecaudo();
 
                     //Recargas Celular
-
-
-
                     if(datos.get(2).toString().equals("NEQUI")){
 
                             datosRecaudo.setCodigoConvenio(datos.get(2).toString());
@@ -393,8 +390,8 @@ public class Hilos extends AppCompatActivity {
     public void cargarInformacionPanVirtual(String FIID, String tipoDeCuenta, String panVirtual){
         DeviceInformation deviceInformation= new DeviceInformation(context);
         Log.d("IP",deviceInformation.getIpAddress());
-        Log.d("MAC",deviceInformation.getMacAddress());
-        Log.d("UID",deviceInformation.getDeviceUUID());
+        Log.d("MAC",deviceInformation.getDeviceUUID().substring(0,8));
+        Log.d("UID",deviceInformation.getMacAddress().replaceAll(":","").substring(0,8));
 
         integradorC.cargarInformacionPanVirtual(FIID, tipoDeCuenta,panVirtual);
         String dataEscribir = deviceInformation.getIpAddress().replaceAll(".","") + ";" + deviceInformation.getDeviceUUID().substring(0,8) + ";" + deviceInformation.getMacAddress().replaceAll(":","").substring(0,8);

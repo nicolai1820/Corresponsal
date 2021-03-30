@@ -1,15 +1,15 @@
-Executable : /Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/cmake
+Executable : C:\Users\Pablo\AppData\Local\Android\Sdk\cmake\3.6.4111459\bin\cmake.exe
 arguments : 
--H/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app
--B/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/debug/x86
+-HC:\Users\Pablo\Documents\Netcom\Repositorio GItlab\Corresponsal\app
+-BC:\Users\Pablo\Documents\Netcom\Repositorio GItlab\Corresponsal\app\.cxx\cmake\debug\x86
 -DANDROID_ABI=x86
 -DANDROID_PLATFORM=android-22
--DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/build/intermediates/cmake/debug/obj/x86
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=C:\Users\Pablo\Documents\Netcom\Repositorio GItlab\Corresponsal\app\build\intermediates\cmake\debug\obj\x86
 -DCMAKE_BUILD_TYPE=Debug
--DANDROID_NDK=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669
+-DANDROID_NDK=C:\Users\Pablo\AppData\Local\Android\Sdk\ndk\21.3.6528147
 -DCMAKE_CXX_FLAGS=
--DCMAKE_TOOLCHAIN_FILE=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/build/cmake/android.toolchain.cmake
--DCMAKE_MAKE_PROGRAM=/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/ninja
+-DCMAKE_TOOLCHAIN_FILE=C:\Users\Pablo\AppData\Local\Android\Sdk\ndk\21.3.6528147\build\cmake\android.toolchain.cmake
+-DCMAKE_MAKE_PROGRAM=C:\Users\Pablo\AppData\Local\Android\Sdk\cmake\3.6.4111459\bin\ninja.exe
 -GAndroid Gradle - Ninja
 jvmArgs : 
 

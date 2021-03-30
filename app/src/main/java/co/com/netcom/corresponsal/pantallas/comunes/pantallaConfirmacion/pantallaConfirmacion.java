@@ -381,16 +381,18 @@ public class pantallaConfirmacion extends AppCompatActivity {
                          public void run() {
 
                              try {
-                                 Log.d("",aes.encrypt(prefs_parametricasUser.getEncryptionKey(),"holis"));
+                                 //Log.d("SERVICIO",service.obtenerPanVirtual());
+                                 Log.d("EN",aes.encrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),"24832432950423023423423"));
 
-                                 Log.d("",aes.decrypt(prefs_parametricasUser.getEncryptionKey(),aes.encrypt(prefs_parametricasUser.getEncryptionKey(),"holis")));
+                                 Log.d("DE",aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),aes.encrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),"24832432950423023423423")));
+                                 Log.d("DE-SERVIDOR",aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
                                  Log.d("encryption",prefs_parametricasUser.getEncryptionKey());
 
                              } catch (Exception e) {
                                  e.printStackTrace();
                              }
                              try {
-                                 hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(prefs_parametricasUser.getEncryptionKey(),service.obtenerPanVirtual()));
+                                 hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
                              } catch (Exception e) {
                                  e.printStackTrace();
                              }
@@ -400,7 +402,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
                                      @Override
                                      public void run() {
                                          Log.d("CLOSE"," se cerro el loader");
-                                         dialog.dismiss();
+                                         //dialog.dismiss();
                                      }
                                  });
                              } catch (final Exception ex) {
@@ -429,7 +431,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
                          public void run() {
 
                              try {
-                                 hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(prefs_parametricasUser.getEncryptionKey(),base64.decodificarBase64(service.obtenerPanVirtual())));
+                                 hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
                              } catch (Exception e) {
                                  e.printStackTrace();
                              }
@@ -468,7 +470,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
                          public void run() {
 
                              try {
-                                 hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(prefs_parametricasUser.getEncryptionKey(),base64.decodificarBase64(service.obtenerPanVirtual())));
+                                 hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
                              } catch (Exception e) {
                                  e.printStackTrace();
                              }
@@ -505,7 +507,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
                          public void run() {
 
                              try {
-                                 hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(prefs_parametricasUser.getEncryptionKey(),base64.decodificarBase64(service.obtenerPanVirtual())));
+                                 hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
                              } catch (Exception e) {
                                  e.printStackTrace();
                              }
@@ -533,7 +535,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
                          public void run() {
 
                              try {
-                                 hiloTransacciones.cancelarGiro(valores,datosComision,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(prefs_parametricasUser.getEncryptionKey(),base64.decodificarBase64(service.obtenerPanVirtual())));
+                                 hiloTransacciones.cancelarGiro(valores,datosComision,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
                              } catch (Exception e) {
                                  e.printStackTrace();
                              }
@@ -570,7 +572,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
                          public void run() {
 
                              try {
-                                 hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(prefs_parametricasUser.getEncryptionKey(),base64.decodificarBase64(service.obtenerPanVirtual())));
+                                 hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
                              } catch (Exception e) {
                                  e.printStackTrace();
                              }
@@ -656,7 +658,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
                          public void run() {
 
                              try {
-                                 hiloTransacciones.pagoFacturaManual(datosRecaudo,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(prefs_parametricasUser.getEncryptionKey(),base64.decodificarBase64(service.obtenerPanVirtual())));
+                                 hiloTransacciones.pagoFacturaManual(datosRecaudo,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
                              } catch (Exception e) {
                                  e.printStackTrace();
                              }
@@ -690,7 +692,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
                          public void run() {
 
                              try {
-                                 hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(prefs_parametricasUser.getEncryptionKey(),base64.decodificarBase64(service.obtenerPanVirtual())));
+                                 hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
                              } catch (Exception e) {
                                  e.printStackTrace();
                              }
@@ -724,7 +726,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
                          public void run() {
 
                              try {
-                                 hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(prefs_parametricasUser.getEncryptionKey(),base64.decodificarBase64(service.obtenerPanVirtual())));
+                                 hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
                              } catch (Exception e) {
                                  e.printStackTrace();
                              }
@@ -793,7 +795,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
                          public void run() {
 
                              try {
-                                 hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(prefs_parametricasUser.getEncryptionKey(),base64.decodificarBase64(service.obtenerPanVirtual())));
+                                 hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
                              } catch (Exception e) {
                                  e.printStackTrace();
                              }
@@ -834,6 +836,11 @@ public class pantallaConfirmacion extends AppCompatActivity {
         }
     }
 
+    /**Metodo enviarTransacción, de tipo void, que se encarga de enviar el servicio de venta*/
+    public void enviarTransaccion(){
+
+    }
+
 
     /**Metodo cancelarValores de tipo void, recibo como parametro un View, para poder ser implementado por el boton Cancelar.
      * Se encarga de cerrar la actividad y volver a la actividad donde se hizo el respectivo llamado.*/
@@ -860,5 +867,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
         super.finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
+
+
 
 }
