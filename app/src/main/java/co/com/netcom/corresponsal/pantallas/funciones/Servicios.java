@@ -28,6 +28,7 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManagerFactory;
 
 import co.com.netcom.corresponsal.pantallas.comunes.logIn.LogIn;
+import co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion;
 import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.consultaSaldo.pantallaConsultaSaldoLectura;
 import okhttp3.MediaType;
@@ -550,19 +551,26 @@ public class Servicios {
             JSONObject Jobject = new JSONObject(jsonData);
             Log.d("RESPUESTA",Jobject.toString());
 
+            Message usuarioCancela = new Message();
+            usuarioCancela.what = 1;
+            pantallaConfirmacion.respuesta.sendMessage(usuarioCancela);
 
             Map <String,String > resp = new HashMap<String,String>();
-            resp.put("responseCode","code");
-            resp.put("responseMessage","message");
-            resp.put("aprovalCode","code");
+            resp.put("responseCode",Jobject.getString("reponseCode"));
+            resp.put("responseMessage",Jobject.getString("responseMessage"));
+            resp.put("aprovalCode",Jobject.getString("aprovalCodel"));
             return resp;
 
 
         } catch (IOException | JSONException e) {
+            Message usuarioCancela = new Message();
+            usuarioCancela.what = 2;
+            pantallaConfirmacion.respuesta.sendMessage(usuarioCancela);
+            CodificarBase64 base64 = new CodificarBase64();
             Map <String,String > resp = new HashMap<String,String>();
-            resp.put("responseCode","code");
-            resp.put("responseMessage","message");
-            resp.put("aprovalCode","code");
+            resp.put("responseCode",base64.convertirBase64("code"));
+            resp.put("responseMessage",base64.convertirBase64("responseMessage"));
+            resp.put("aprovalCode",base64.convertirBase64("aprivalCode"));
             return resp;
 
         }

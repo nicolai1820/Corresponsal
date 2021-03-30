@@ -3,6 +3,7 @@ package co.com.netcom.corresponsal.pantallas.funciones;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
@@ -22,6 +23,8 @@ import androidx.core.app.ActivityCompat;
 
 public class DeviceInformation implements LocationListener {
     private Context context;
+    private String latitud;
+    private String longitud;
    public DeviceInformation(Context contexto){
         this.context = contexto;
     }
@@ -60,9 +63,10 @@ public class DeviceInformation implements LocationListener {
         }else{
             LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
             Criteria criteria = new Criteria();
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5, this);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 1, this);
             Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
-            return String.valueOf(location.getLatitude());
+            //Log.d("LATITUD",String.valueOf(location.getLatitude()));
+            return latitud;//String.valueOf(location.getLatitude());
 
         }
     }
@@ -81,7 +85,8 @@ public class DeviceInformation implements LocationListener {
             Criteria criteria = new Criteria();
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 1, this);
             Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
-            return String.valueOf(location.getLongitude());
+            //Log.d("LONGITUD",String.valueOf(location.getLongitude()));
+            return longitud;//String.valueOf(location.getLongitude());
 
         }
     }
@@ -98,12 +103,29 @@ public class DeviceInformation implements LocationListener {
         String macAddress = wInfo.getMacAddress();
         Log.e("TAG","MAC Address : " + macAddress);
         return macAddress;
-
     }
 
+    /**Metodo getConsecutive de tipo publico que retorna un String, sirve para obtener el consecutivo de la transaccion*/
+    public String getNewConsecutive(){
+        CodificarBase64 base64 = new CodificarBase64();
+        PreferencesUsuario prefs_parametricas = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_PARAMETRICAS,context);
+        int consecutivo=0 ;
+        String consecutivo_String="";
+        if(!prefs_parametricas.getConsecutive().isEmpty()){
+            consecutivo = Integer.parseInt(base64.decodificarBase64(prefs_parametricas.getConsecutive()))+1;
+            consecutivo_String = String.valueOf(consecutivo);
+            return consecutivo_String;
+        }else{
+            consecutivo_String = String.valueOf(consecutivo);
+            return consecutivo_String;
+        }
+    }
     @Override
     public void onLocationChanged(Location location) {
-
+            Log.d("LATITUD",String.valueOf(location.getLatitude()));
+            Log.d("LONGITUD",String.valueOf(location.getLongitude()));
+            this.latitud = String.valueOf(location.getLatitude());
+            this.longitud = String.valueOf(location.getLongitude());
     }
 
     @Override

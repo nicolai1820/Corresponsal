@@ -26,7 +26,7 @@
         android:id="@+id/textView_PantallaTransaccionFallida"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/guideline176"
+        app:layout_constraintTop_toBottomOf="@id/contenedorHeaderPantallaTransaccionFallida"
         app:layout_constraintBottom_toTopOf="@id/guideline177"
         app:layout_constraintStart_toEndOf="@id/guideline178"
         app:layout_constraintEnd_toStartOf="@id/guideline183"

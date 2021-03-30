@@ -18,11 +18,14 @@ public class PantallaResultadoTransaccionLoaderExitoso extends AppCompatActivity
         setContentView(R.layout.activity_pantalla_resultado_transaccion_loader);
 
         //Recuperar información transaccion : ID de la transacción
-
+        Bundle i = getIntent().getExtras();
+        String idTransaccion = i.getString("aprovalCode");
 
 
         //Se hace la transición a la siguiente pantalla luego de mostrar el loader
-        a= new Intent(this, LogIn.class);
+        a= new Intent(this, PantallaResultadoTransaccionExitosa.class);
+        a.putExtra("aprovalCode",idTransaccion);
+
         new Handler().postDelayed(
                 new Thread(new Runnable() {
                     @Override
@@ -30,7 +33,7 @@ public class PantallaResultadoTransaccionLoaderExitoso extends AppCompatActivity
                         startActivity(a);
                         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                     }
-                }),3000
+                }),3500
         );
     }
 

@@ -29,7 +29,11 @@ public class PantallaResultadoTransaccionFallida extends AppCompatActivity {
 
         Intent i = new Intent(getApplicationContext(), pantallaInicialUsuarioComun.class);
         i.putExtra("Fragmento",1);
-        getApplicationContext().startActivity(i);
+        startActivity(i);
         overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

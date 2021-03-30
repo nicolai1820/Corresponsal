@@ -121,7 +121,7 @@ public class Hilos extends AppCompatActivity {
                     datosComision.setValorComision(datos.get(1).toString());
                     datosComision.setValorIvaComision(datos.get(3).toString());
                                                                 //datos comision, tipo documento girador, tipo documento beneficiario, numero documento girador, numero documento beneficiario, total giro, numero celular girador, numero celular beneficiario
-                    //resultado = integradorC.realizarEnvioGiroCnb(datosComision, datos.get(10).toString(), datos.get(11).toString(), datos.get(5).toString(), datos.get(8).toString(), datos.get(2).toString(), datos.get(6).toString(), datos.get(8).toString());
+                    //resultado = integradorC.realizarEnvioGiroCnb(datosComision, datos.get(10).toString(), datos.get(11).toString(), datos.get(5).toString(), datos.get(8).toString(), datos.get(2).toString(), datos.get(6).toString(), datos.get(7).toString());
                     Log.d("Case 2", "resultado " + resultado);
                     //Hacer intent dependiendo de la respuesta
 
@@ -204,6 +204,7 @@ public class Hilos extends AppCompatActivity {
 
                     DatosRecaudo datosRecaudo = new DatosRecaudo();
 
+
                     //Recargas Celular
                     if(datos.get(2).toString().equals("NEQUI")){
 
@@ -241,7 +242,8 @@ public class Hilos extends AppCompatActivity {
                             }
                         }
 
-                    }else{
+                    }
+                    else{
                         //Facturas Normales
 
                         datosRecaudo.setCuentaRecaudadora(datos.get(0).toString());
