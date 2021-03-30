@@ -72,7 +72,7 @@ public class Hilos extends AppCompatActivity {
                     cargarInformacionPanVirtual(FIID,tipoDeCuenta,panVirtual);
 
                     //cantidad, numer cuenta, pinblock
-                    //resultado = integradorC.enviarRetiroSinTarjeta(datos.get(1).toString(), datos.get(0).toString(), datos.get(2).toString());
+                    resultado = integradorC.enviarRetiroSinTarjeta(datos.get(1).toString(), datos.get(0).toString(), datos.get(2).toString());
                     //Hacer intent dependiendo de la respuesta
 
                 }).start();
@@ -87,7 +87,7 @@ public class Hilos extends AppCompatActivity {
                     String resultado = null;
                                     //Cartera numero pagare//numero pagare, cantidad, origen
                                     //Tarjeta crédito// numero tarjeta, cantidad, orign
-                    //resultado = integradorC.enviarPagoPoducto(datos.get(1).toString(),datos.get(2).toString(),Integer.parseInt(datos.get(0).toString()));
+                    resultado = integradorC.enviarPagoPoducto(datos.get(1).toString(),datos.get(2).toString(),Integer.parseInt(datos.get(0).toString()));
                     Log.d("Case 2", "resultado " + resultado);
                     //Hacer intent dependiendo de la respuesta
 
@@ -102,7 +102,7 @@ public class Hilos extends AppCompatActivity {
 
                     String resultado = null;
                                                                     //numero de referencia, tipo documento beneficiario, numero documento beneficiario, monto a reclamar.
-                    //resultado = integradorC.realizarReclamacionGiro(datos.get(3).toString(),datos.get(4).toString(),datos.get(1).toString(),datos.get(2).toString());
+                    resultado = integradorC.realizarReclamacionGiro(datos.get(3).toString(),datos.get(4).toString(),datos.get(1).toString(),datos.get(2).toString());
                     //Hacer intent dependiendo de la respuesta
 
                     Log.d("RESULTADO RECLAMAR GIRO",resultado);
@@ -121,7 +121,7 @@ public class Hilos extends AppCompatActivity {
                     datosComision.setValorComision(datos.get(1).toString());
                     datosComision.setValorIvaComision(datos.get(3).toString());
                                                                 //datos comision, tipo documento girador, tipo documento beneficiario, numero documento girador, numero documento beneficiario, total giro, numero celular girador, numero celular beneficiario
-                    //resultado = integradorC.realizarEnvioGiroCnb(datosComision, datos.get(10).toString(), datos.get(11).toString(), datos.get(5).toString(), datos.get(8).toString(), datos.get(2).toString(), datos.get(6).toString(), datos.get(7).toString());
+                    resultado = integradorC.realizarEnvioGiroCnb(datosComision, datos.get(10).toString(), datos.get(11).toString(), datos.get(5).toString(), datos.get(8).toString(), datos.get(2).toString(), datos.get(6).toString(), datos.get(7).toString());
                     Log.d("Case 2", "resultado " + resultado);
                     //Hacer intent dependiendo de la respuesta
 
@@ -136,7 +136,7 @@ public class Hilos extends AppCompatActivity {
 
                     String resultado = null;
                                                                             //cantidad, track2
-                    //resultado = integradorC.enviarRecaudoTarjetaEmpresarial(datos.get(0).toString(),datos.get(1).toString());
+                    resultado = integradorC.enviarRecaudoTarjetaEmpresarial(datos.get(0).toString(),datos.get(1).toString());
                     Log.d("TARJETA EMPRESARIAL", "resultado " + resultado);
                     //Hacer intent dependiendo de la respuesta
 
@@ -168,7 +168,7 @@ public class Hilos extends AppCompatActivity {
 
                     DatosComision datosComision = new DatosComision();
                                                                             //datosComision,tipo documento girador, tipo documento beneficiario, numero documento girador, numero documento beneficiario, pin referencia
-                    //resultado = integradorC.realizaConsultaCancelacionGiroCnb(datosComision,datos.get(5).toString(),datos.get(6).toString(),datos.get(1).toString(),datos.get(3).toString(),datos.get(4).toString());
+                    resultado = integradorC.realizaConsultaCancelacionGiroCnb(datosComision,datos.get(5).toString(),datos.get(6).toString(),datos.get(1).toString(),datos.get(3).toString(),datos.get(4).toString());
 
                     if (resultado == null) {
                         //PANTALLA RESULTADO TRANSACCION
@@ -286,7 +286,7 @@ public class Hilos extends AppCompatActivity {
             String resultado = null;
             Log.d("HILO CANCELAR", "LLegue a la clase hilos");
                                                             //datos comision, tipo documento girador, tipo documento beneficiario,,numero documento girador, numero documento beneficiario
-            //resultado = integradorC.realizarCancelacionGiro(datosComision,datos.get(5).toString(),datos.get(6).toString(),datos.get(1).toString(),datos.get(3).toString());
+            resultado = integradorC.realizarCancelacionGiro(datosComision,datos.get(5).toString(),datos.get(6).toString(),datos.get(1).toString(),datos.get(3).toString());
             //Hacer intent dependiendo de la respuesta
 
             Log.d("RESULT",resultado);
@@ -302,7 +302,7 @@ public class Hilos extends AppCompatActivity {
 
             String resultado = null;
             Log.d("HILO CANCELAR", "LLegue a la clase hilos");
-            //resultado = integradorC.enviarPagoRecaudoLector(datosRecaudo.getNumeroFactura(), datosRecaudo);
+            resultado = integradorC.enviarPagoRecaudoLector(datosRecaudo.getNumeroFactura(), datosRecaudo);
             //Hacer intent dependiendo de la respuesta
 
             Log.d("RESULT",resultado);
@@ -320,7 +320,7 @@ public class Hilos extends AppCompatActivity {
                 new Thread(() -> {
                     String resultado = null;
 
-                   // resultado = integradorC.enviarConsultaSaldoBclObj(tarjeta);
+                    resultado = integradorC.enviarConsultaSaldoBclObj(tarjeta);
                     Log.d("CONSULTA SALDO", "resultado " + resultado);
 
                     //Hacer intent dependiendo de la respuesta

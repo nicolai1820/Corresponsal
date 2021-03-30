@@ -3,10 +3,12 @@ package co.com.netcom.corresponsal.pantallas.comunes.resultadoTransaccion;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
+import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
 
 public class PantallaResultadoTransaccionExitosa extends AppCompatActivity {
 
@@ -24,8 +26,19 @@ public class PantallaResultadoTransaccionExitosa extends AppCompatActivity {
         textViewNumeroAprovacion = findViewById(R.id.textView_referenciaTransaccion);
 
         textViewNumeroAprovacion.setText(idTransaccion);
+
+
         //Se carga el Header de la vista
         getSupportFragmentManager().beginTransaction().replace(R.id.contenedorHeaderPantallaResultadoTransaccionExitosa,header).commit();
+    }
+
+    public void buttonSalirResultadoTransaccionExitosa(View view){
+        PopUp pop = new PopUp(PantallaResultadoTransaccionExitosa.this);
+        pop.crearPopUpConfirmarEnvioCorreo();
+    }
+
+    public void buttonEnviarCopiaCorreo(View view){
+        //Hacer el intent a la pantalla de enviar correo y agregar el id de la transacción
     }
 
     @Override

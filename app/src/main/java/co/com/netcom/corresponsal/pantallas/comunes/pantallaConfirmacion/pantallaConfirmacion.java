@@ -168,7 +168,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
                 switch (msg.what) {
                     case 1:
                         dialog.dismiss();
-                        Log.d("VENTA",resp.toString());
+                        //Log.d("VENTA",resp.toString());
                         if(resp.get("responseCode").equals("MQ==")){
                             Intent i = new Intent(pantallaConfirmacion.this, PantallaResultadoTransaccionLoaderExitoso
                                     .class);
