@@ -7,6 +7,8 @@ import androidx.core.content.res.ResourcesCompat;
 import co.com.netcom.corresponsal.core.comunicacion.CardDTO;
 import co.com.netcom.corresponsal.core.comunicacion.DatosComision;
 import co.com.netcom.corresponsal.core.comunicacion.DatosRecaudo;
+import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
+import co.com.netcom.corresponsal.pantallas.funciones.CodificarBase64;
 import co.com.netcom.corresponsal.pantallas.funciones.CodigosTransacciones;
 
 import android.app.AlertDialog;
@@ -23,10 +25,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.logging.Handler;
 
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
+import co.com.netcom.corresponsal.pantallas.funciones.ConstantesCorresponsal;
+import co.com.netcom.corresponsal.pantallas.funciones.DeviceInformation;
+import co.com.netcom.corresponsal.pantallas.funciones.EncripcionAES;
 import co.com.netcom.corresponsal.pantallas.funciones.Hilos;
+import co.com.netcom.corresponsal.pantallas.funciones.PreferencesUsuario;
+import co.com.netcom.corresponsal.pantallas.funciones.Servicios;
 
 public class pantallaConfirmacion extends AppCompatActivity {
 
@@ -58,7 +66,13 @@ public class pantallaConfirmacion extends AppCompatActivity {
     private final static int ICONO_NUMERO =3;
     private final static int ICONO_TIPO_DOCUMENTO=4;
 
-
+    private AlertDialog dialog;
+    private PreferencesUsuario prefs_parametricasBanco;
+    private PreferencesUsuario prefs_parametricasUser;
+    private CodificarBase64 base64;
+    private EncripcionAES aes;
+    private Servicios service;
+    private Handler respuesta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,7 +140,16 @@ public class pantallaConfirmacion extends AppCompatActivity {
         //Se llama al metodo para crear  los textView
         generarTextView();
 
+        //PREFERENCES FIID Y TIPODECUENTA
+        prefs_parametricasBanco = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_PARAMETRICAS_BANCO,this);
+        prefs_parametricasUser = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_INFO_USUARIO,this);
 
+        //OBJETOS PARA DECODIFICAR EL PAN
+        base64 = new CodificarBase64();
+        aes = new EncripcionAES();
+
+        //OBJETO PARA CONSUMIR SERVICIOS
+        service = new Servicios(this);
 
     }
 
@@ -323,433 +346,489 @@ public class pantallaConfirmacion extends AppCompatActivity {
 
         }else {
 
-            //Se crea el loader que se mostrara mientras se procesa la transaccion
-            AlertDialog.Builder loader = new AlertDialog.Builder(pantallaConfirmacion.this);
-
-            LayoutInflater inflater = this.getLayoutInflater();
-
-            loader.setView(inflater.inflate(R.layout.loader_procesando_transaccion,null));
-            loader.setCancelable(false);
-
-            AlertDialog dialog = loader.create();
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-            Log.d("OPEN"," se abrio el loader");
-
-
-            dialog.show();
-            datosTransaccion.clear();
-
-            switch (transaccion){
-
-                //listo
-                case CodigosTransacciones.CORRESPONSAL_DEPOSITO:{
-                    for (int i=0;i < valores.size();i++){
-                        datosTransaccion.add(valores.get(i));
-                    }
-                    for (int i =0; i<tipoDeCuenta.size();i++) {
-                        datosTransaccion.add(tipoDeCuenta.get(i));
-                    }
-
-                    new Thread() {
-                        @Override
-                        public void run() {
-
-                            hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion);
-                            try {
-                                // code runs in a thread
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Log.d("CLOSE"," se cerro el loader");
-                                        dialog.dismiss();
-                                    }
-                                });
-                            } catch (final Exception ex) {
-
-                            }
-                        }
-                    }.start();
-
-                    //datosTransaccion.clear();
-                    break;
-                }
-                //listo
-                case CodigosTransacciones.CORRESPONSAL_RECLAMACION_GIRO:{
-
-                    for (int i=0;i < valores.size();i++){
-                        datosTransaccion.add(valores.get(i));
-                    }
-
-                    for (int i =0; i<tipoDocumento.size();i++) {
-                        datosTransaccion.add(tipoDocumento.get(i));
-                    }
-
-                    Log.d("DATOS",datosTransaccion.toString());
-                    new Thread() {
-                        @Override
-                        public void run() {
-
-                            hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion);
-                            try {
-                                // code runs in a thread
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Log.d("CLOSE"," se cerro el loader");
-                                        dialog.dismiss();
-                                    }
-                                });
-                            } catch (final Exception ex) {
-
-                            }
-                        }
-                    }.start();
-
-                    //datosTransaccion.clear();
-
-                    break;
-                }
-                //listo
-                case CodigosTransacciones.CORRESPONSAL_ENVIO_GIRO:{
-
-                    for (int i=0; i<valores.size();i++){
-                        datosTransaccion.add(valores.get(i));
-                    }
-
-                    for(int i =0; i<tipoDocumento.size();i++){
-                        datosTransaccion.add(tipoDocumento.get(i));
-                    }
-
-                    new Thread() {
-                        @Override
-                        public void run() {
-
-                            hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion);
-                            try {
-                                // code runs in a thread
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Log.d("CLOSE"," se cerro el loader");
-                                        dialog.dismiss();
-                                    }
-                                });
-                            } catch (final Exception ex) {
-
-                            }
-                        }
-                    }.start();
-
-                    break;
-                }
-                //listo
-                case CodigosTransacciones.CORRESPONSAL_CANCELACION_GIRO_CONSULTA:{
-
-                    for (int i=0; i<valores.size();i++){
-                        datosTransaccion.add(valores.get(i));
-                    }
-
-                    for(int i =0; i<tipoDocumento.size();i++){
-                        datosTransaccion.add(tipoDocumento.get(i));
-                    }
-
-                    new Thread() {
-                        @Override
-                        public void run() {
-
-                            hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion);
-                            try {
-                                // code runs in a thread
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Log.d("CLOSE"," se cerro el loader");
-                                        dialog.dismiss();
-                                    }
-                                });
-                            } catch (final Exception ex) {
-
-                            }
-                        }
-                    }.start();
-                    break;
-                }
-                //listo pero no lo estoy usando, revisar
-                case CodigosTransacciones.CORRESPONSAL_CANCELACION_GIRO:{
-
-                    new Thread() {
-                        @Override
-                        public void run() {
-
-                            hiloTransacciones.cancelarGiro(valores,datosComision);
-                            try {
-                                // code runs in a thread
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Log.d("CLOSE"," se cerro el loader");
-                                        dialog.dismiss();
-                                    }
-                                });
-                            } catch (final Exception ex) {
-
-                            }
-                        }
-                    }.start();
-
-                    break;
-                }
-
-                //listo ------- veriricar porque no se confirman valores
-                case CodigosTransacciones.CORRESPONSAL_RETIRO_SIN_TARJETA:{
-
-                    for (int i=0;i < valores.size();i++){
-                        datosTransaccion.add(valores.get(i));
-                    }
-
-                    datosTransaccion.add(tarjeta.getPinBlock());
-
-
-                    new Thread() {
-                        @Override
-                        public void run() {
-
-                            hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion);
-                            try {
-                                // code runs in a thread
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Log.d("CLOSE"," se cerro el loader");
-                                        dialog.dismiss();
-                                    }
-                                });
-                            } catch (final Exception ex) {
-
-                            }
-                        }
-                    }.start();
-
-
-
-                    break;
-                }
-                //listo
-                case CodigosTransacciones.CORRESPONSAL_RETIRO_CON_TARJETA:{
-                    for (int i=0;i < valores.size();i++){
-                        datosTransaccion.add(valores.get(i));
-                    }
-                    for (int i =0;i < tipoDeCuenta.size();i++){
-                        datosTransaccion.add(tipoDeCuenta.get(i));
-                    }
-
-                    new Thread() {
-                        @Override
-                        public void run() {
-
-                            hiloTransacciones.transaccionesConTarjeta(transaccion,datosTransaccion,tarjeta);
-                            try {
-                                // code runs in a thread
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Log.d("CLOSE"," se cerro el loader");
-                                        dialog.dismiss();
-                                    }
-                                });
-                            } catch (final Exception ex) {
-
-                            }
-                        }
-                    }.start();
-
-                    break;
-                }
-                //Listo
-                case CodigosTransacciones.CORRESPONSAL_CONSULTA_SALDO:{
-
-                    new Thread() {
-                        @Override
-                        public void run() {
-
-                            hiloTransacciones.transaccionesConTarjeta(CodigosTransacciones.CORRESPONSAL_CONSULTA_SALDO,null,tarjeta);
-                            try {
-                                // code runs in a thread
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        dialog.dismiss();
-                                    }
-                                });
-                            } catch (final Exception ex) {
-
-                            }
-                        }
-                    }.start();
-
-
-                    break;
-                }
-                //listo
-                case CodigosTransacciones.CORRESPONSAL_PAGO_FACTURA_MANUAL:{
-                    new Thread() {
-                        @Override
-                        public void run() {
-
-                            hiloTransacciones.pagoFacturaManual(datosRecaudo);
-                            try {
-                                // code runs in a thread
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Log.d("CLOSE"," se cerro el loader");
-                                        dialog.dismiss();
-                                    }
-                                });
-                            } catch (final Exception ex) {
-
-                            }
-                        }
-                    }.start();
-                    break;
-                }
-                //Listo
-                case CodigosTransacciones.CORRESPONSAL_PAGO_FACTURA_TARJETA_EMPRESARIAL:{
-
-                    for (int i=0;i < valores.size();i++){
-                        datosTransaccion.add(valores.get(i));
-                    }
-
-                    datosTransaccion.add(tarjeta.getTrack2());
-
-                    new Thread() {
-                        @Override
-                        public void run() {
-
-                            hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion);
-                            try {
-                                // code runs in a thread
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Log.d("CLOSE"," se cerro el loader");
-                                        dialog.dismiss();
-                                    }
-                                });
-                            } catch (final Exception ex) {
-
-                            }
-                        }
-                    }.start();
-
-
-                    break;
-                }
-                //listo
-                case CodigosTransacciones.CORRESPONSAL_PAGO_PRODUCTOS:{
-                    for (int i=0;i < valores.size();i++){
-                        datosTransaccion.add(valores.get(i));
-                    }
-
-
-                    new Thread() {
-                        @Override
-                        public void run() {
-
-                            hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion);
-                            try {
-                                // code runs in a thread
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Log.d("CLOSE"," se cerro el loader");
-                                        dialog.dismiss();
-                                    }
-                                });
-                            } catch (final Exception ex) {
-
-                            }
-                        }
-                    }.start();
-
-
-                    break;
-                }
-                //Listo
-                case CodigosTransacciones.CORRESPONSAL_TRANSFERENCIA:{
-                    for (int i=0;i < valores.size();i++){
-                        datosTransaccion.add(valores.get(i));
-                    }
-                    for (int i =0;i < tipoDeCuenta.size();i++){
-                        datosTransaccion.add(tipoDeCuenta.get(i));
-                    }
-
-                    new Thread() {
-                        @Override
-                        public void run() {
-
-                            hiloTransacciones.transaccionesConTarjeta(transaccion,datosTransaccion,tarjeta);
-                            try {
-                                // code runs in a thread
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Log.d("CLOSE"," se cerro el loader");
-                                        dialog.dismiss();
-                                    }
-                                });
-                            } catch (final Exception ex) {
-
-                            }
-                        }
-                    }.start();
-                    break;
-                }
-                //listo para recargas,  creo que funciona para facturas
-                case CodigosTransacciones.CORRESPONSAL_CONSULTA_FACTURAS:{
-                    for (int i=0;i < valores.size();i++){
-                        datosTransaccion.add(valores.get(i));
-                    }
-
-                    try {
-                        for (int i=0;i < tipoDeCuenta.size();i++){
-                            datosTransaccion.add(tipoDeCuenta.get(i));
-                        }
-                    }catch (Exception e){}
-
-                    new Thread() {
-                        @Override
-                        public void run() {
-
-                            hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion);
-                            try {
-                                // code runs in a thread
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Log.d("CLOSE"," se cerro el loader");
-                                        dialog.dismiss();
-                                    }
-                                });
-                            } catch (final Exception ex) {
-
-                            }
-                        }
-                    }.start();
-
-                    break;
-                }
-
-
-                default: {
-                        Log.d("DEFAULT","Default");
-                    break;
-                }
-
-            }
-
-
+            DeviceInformation deviceInformation = new DeviceInformation(this);
+         if(deviceInformation.getInternetStatus()){
+             //Se crea el loader que se mostrara mientras se procesa la transaccion
+             AlertDialog.Builder loader = new AlertDialog.Builder(pantallaConfirmacion.this);
+
+             LayoutInflater inflater = this.getLayoutInflater();
+
+             loader.setView(inflater.inflate(R.layout.loader_procesando_transaccion,null));
+             loader.setCancelable(false);
+
+             dialog = loader.create();
+             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+             Log.d("OPEN"," se abrio el loader");
+
+
+             dialog.show();
+             datosTransaccion.clear();
+
+             switch (transaccion){
+
+                 //listo
+                 case CodigosTransacciones.CORRESPONSAL_DEPOSITO:{
+                     for (int i=0;i < valores.size();i++){
+                         datosTransaccion.add(valores.get(i));
+                     }
+                     for (int i =0; i<tipoDeCuenta.size();i++) {
+                         datosTransaccion.add(tipoDeCuenta.get(i));
+                     }
+
+                     new Thread() {
+                         @Override
+                         public void run() {
+
+                             try {
+                                 Log.d("",aes.encrypt(prefs_parametricasUser.getEncryptionKey(),"holis"));
+
+                                 Log.d("",aes.decrypt(prefs_parametricasUser.getEncryptionKey(),aes.encrypt(prefs_parametricasUser.getEncryptionKey(),"holis")));
+                                 Log.d("encryption",prefs_parametricasUser.getEncryptionKey());
+
+                             } catch (Exception e) {
+                                 e.printStackTrace();
+                             }
+                             try {
+                                 hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(prefs_parametricasUser.getEncryptionKey(),service.obtenerPanVirtual()));
+                             } catch (Exception e) {
+                                 e.printStackTrace();
+                             }
+                             try {
+                                 // code runs in a thread
+                                 runOnUiThread(new Runnable() {
+                                     @Override
+                                     public void run() {
+                                         Log.d("CLOSE"," se cerro el loader");
+                                         dialog.dismiss();
+                                     }
+                                 });
+                             } catch (final Exception ex) {
+
+                             }
+                         }
+                     }.start();
+
+                     //datosTransaccion.clear();
+                     break;
+                 }
+                 //listo
+                 case CodigosTransacciones.CORRESPONSAL_RECLAMACION_GIRO:{
+
+                     for (int i=0;i < valores.size();i++){
+                         datosTransaccion.add(valores.get(i));
+                     }
+
+                     for (int i =0; i<tipoDocumento.size();i++) {
+                         datosTransaccion.add(tipoDocumento.get(i));
+                     }
+
+                     Log.d("DATOS",datosTransaccion.toString());
+                     new Thread() {
+                         @Override
+                         public void run() {
+
+                             try {
+                                 hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(prefs_parametricasUser.getEncryptionKey(),base64.decodificarBase64(service.obtenerPanVirtual())));
+                             } catch (Exception e) {
+                                 e.printStackTrace();
+                             }
+                             try {
+                                 // code runs in a thread
+                                 runOnUiThread(new Runnable() {
+                                     @Override
+                                     public void run() {
+                                         Log.d("CLOSE"," se cerro el loader");
+                                         dialog.dismiss();
+                                     }
+                                 });
+                             } catch (final Exception ex) {
+
+                             }
+                         }
+                     }.start();
+
+                     //datosTransaccion.clear();
+
+                     break;
+                 }
+                 //listo
+                 case CodigosTransacciones.CORRESPONSAL_ENVIO_GIRO:{
+
+                     for (int i=0; i<valores.size();i++){
+                         datosTransaccion.add(valores.get(i));
+                     }
+
+                     for(int i =0; i<tipoDocumento.size();i++){
+                         datosTransaccion.add(tipoDocumento.get(i));
+                     }
+
+                     new Thread() {
+                         @Override
+                         public void run() {
+
+                             try {
+                                 hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(prefs_parametricasUser.getEncryptionKey(),base64.decodificarBase64(service.obtenerPanVirtual())));
+                             } catch (Exception e) {
+                                 e.printStackTrace();
+                             }
+                             try {
+                                 // code runs in a thread
+                                 runOnUiThread(new Runnable() {
+                                     @Override
+                                     public void run() {
+                                         Log.d("CLOSE"," se cerro el loader");
+                                         dialog.dismiss();
+                                     }
+                                 });
+                             } catch (final Exception ex) {
+
+                             }
+                         }
+                     }.start();
+
+                     break;
+                 }
+                 //listo
+                 case CodigosTransacciones.CORRESPONSAL_CANCELACION_GIRO_CONSULTA:{
+
+                     for (int i=0; i<valores.size();i++){
+                         datosTransaccion.add(valores.get(i));
+                     }
+
+                     for(int i =0; i<tipoDocumento.size();i++){
+                         datosTransaccion.add(tipoDocumento.get(i));
+                     }
+
+                     new Thread() {
+                         @Override
+                         public void run() {
+
+                             try {
+                                 hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(prefs_parametricasUser.getEncryptionKey(),base64.decodificarBase64(service.obtenerPanVirtual())));
+                             } catch (Exception e) {
+                                 e.printStackTrace();
+                             }
+                             try {
+                                 // code runs in a thread
+                                 runOnUiThread(new Runnable() {
+                                     @Override
+                                     public void run() {
+                                         Log.d("CLOSE"," se cerro el loader");
+                                         dialog.dismiss();
+                                     }
+                                 });
+                             } catch (final Exception ex) {
+
+                             }
+                         }
+                     }.start();
+                     break;
+                 }
+                 //listo pero no lo estoy usando, revisar
+                 case CodigosTransacciones.CORRESPONSAL_CANCELACION_GIRO:{
+
+                     new Thread() {
+                         @Override
+                         public void run() {
+
+                             try {
+                                 hiloTransacciones.cancelarGiro(valores,datosComision,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(prefs_parametricasUser.getEncryptionKey(),base64.decodificarBase64(service.obtenerPanVirtual())));
+                             } catch (Exception e) {
+                                 e.printStackTrace();
+                             }
+                             try {
+                                 // code runs in a thread
+                                 runOnUiThread(new Runnable() {
+                                     @Override
+                                     public void run() {
+                                         Log.d("CLOSE"," se cerro el loader");
+                                         dialog.dismiss();
+                                     }
+                                 });
+                             } catch (final Exception ex) {
+
+                             }
+                         }
+                     }.start();
+
+                     break;
+                 }
+
+                 //listo ------- veriricar porque no se confirman valores
+                 case CodigosTransacciones.CORRESPONSAL_RETIRO_SIN_TARJETA:{
+
+                     for (int i=0;i < valores.size();i++){
+                         datosTransaccion.add(valores.get(i));
+                     }
+
+                     datosTransaccion.add(tarjeta.getPinBlock());
+
+
+                     new Thread() {
+                         @Override
+                         public void run() {
+
+                             try {
+                                 hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(prefs_parametricasUser.getEncryptionKey(),base64.decodificarBase64(service.obtenerPanVirtual())));
+                             } catch (Exception e) {
+                                 e.printStackTrace();
+                             }
+                             try {
+                                 // code runs in a thread
+                                 runOnUiThread(new Runnable() {
+                                     @Override
+                                     public void run() {
+                                         Log.d("CLOSE"," se cerro el loader");
+                                         dialog.dismiss();
+                                     }
+                                 });
+                             } catch (final Exception ex) {
+
+                             }
+                         }
+                     }.start();
+
+
+
+                     break;
+                 }
+                 //listo
+                 case CodigosTransacciones.CORRESPONSAL_RETIRO_CON_TARJETA:{
+                     for (int i=0;i < valores.size();i++){
+                         datosTransaccion.add(valores.get(i));
+                     }
+                     for (int i =0;i < tipoDeCuenta.size();i++){
+                         datosTransaccion.add(tipoDeCuenta.get(i));
+                     }
+
+                     new Thread() {
+                         @Override
+                         public void run() {
+
+                             hiloTransacciones.transaccionesConTarjeta(transaccion,datosTransaccion,tarjeta);
+                             try {
+                                 // code runs in a thread
+                                 runOnUiThread(new Runnable() {
+                                     @Override
+                                     public void run() {
+                                         Log.d("CLOSE"," se cerro el loader");
+                                         dialog.dismiss();
+                                     }
+                                 });
+                             } catch (final Exception ex) {
+
+                             }
+                         }
+                     }.start();
+
+                     break;
+                 }
+                 //Listo
+                 case CodigosTransacciones.CORRESPONSAL_CONSULTA_SALDO:{
+
+                     new Thread() {
+                         @Override
+                         public void run() {
+
+                             hiloTransacciones.transaccionesConTarjeta(CodigosTransacciones.CORRESPONSAL_CONSULTA_SALDO,null,tarjeta);
+                             try {
+                                 // code runs in a thread
+                                 runOnUiThread(new Runnable() {
+                                     @Override
+                                     public void run() {
+                                         dialog.dismiss();
+                                     }
+                                 });
+                             } catch (final Exception ex) {
+
+                             }
+                         }
+                     }.start();
+
+
+                     break;
+                 }
+                 //listo
+                 case CodigosTransacciones.CORRESPONSAL_PAGO_FACTURA_MANUAL:{
+                     new Thread() {
+                         @Override
+                         public void run() {
+
+                             try {
+                                 hiloTransacciones.pagoFacturaManual(datosRecaudo,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(prefs_parametricasUser.getEncryptionKey(),base64.decodificarBase64(service.obtenerPanVirtual())));
+                             } catch (Exception e) {
+                                 e.printStackTrace();
+                             }
+                             try {
+                                 // code runs in a thread
+                                 runOnUiThread(new Runnable() {
+                                     @Override
+                                     public void run() {
+                                         Log.d("CLOSE"," se cerro el loader");
+                                         dialog.dismiss();
+                                     }
+                                 });
+                             } catch (final Exception ex) {
+
+                             }
+                         }
+                     }.start();
+                     break;
+                 }
+                 //Listo
+                 case CodigosTransacciones.CORRESPONSAL_PAGO_FACTURA_TARJETA_EMPRESARIAL:{
+
+                     for (int i=0;i < valores.size();i++){
+                         datosTransaccion.add(valores.get(i));
+                     }
+
+                     datosTransaccion.add(tarjeta.getTrack2());
+
+                     new Thread() {
+                         @Override
+                         public void run() {
+
+                             try {
+                                 hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(prefs_parametricasUser.getEncryptionKey(),base64.decodificarBase64(service.obtenerPanVirtual())));
+                             } catch (Exception e) {
+                                 e.printStackTrace();
+                             }
+                             try {
+                                 // code runs in a thread
+                                 runOnUiThread(new Runnable() {
+                                     @Override
+                                     public void run() {
+                                         Log.d("CLOSE"," se cerro el loader");
+                                         dialog.dismiss();
+                                     }
+                                 });
+                             } catch (final Exception ex) {
+
+                             }
+                         }
+                     }.start();
+
+
+                     break;
+                 }
+                 //listo
+                 case CodigosTransacciones.CORRESPONSAL_PAGO_PRODUCTOS:{
+                     for (int i=0;i < valores.size();i++){
+                         datosTransaccion.add(valores.get(i));
+                     }
+
+
+                     new Thread() {
+                         @Override
+                         public void run() {
+
+                             try {
+                                 hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(prefs_parametricasUser.getEncryptionKey(),base64.decodificarBase64(service.obtenerPanVirtual())));
+                             } catch (Exception e) {
+                                 e.printStackTrace();
+                             }
+                             try {
+                                 // code runs in a thread
+                                 runOnUiThread(new Runnable() {
+                                     @Override
+                                     public void run() {
+                                         Log.d("CLOSE"," se cerro el loader");
+                                         dialog.dismiss();
+                                     }
+                                 });
+                             } catch (final Exception ex) {
+
+                             }
+                         }
+                     }.start();
+
+
+                     break;
+                 }
+                 //Listo
+                 case CodigosTransacciones.CORRESPONSAL_TRANSFERENCIA:{
+                     for (int i=0;i < valores.size();i++){
+                         datosTransaccion.add(valores.get(i));
+                     }
+                     for (int i =0;i < tipoDeCuenta.size();i++){
+                         datosTransaccion.add(tipoDeCuenta.get(i));
+                     }
+
+                     new Thread() {
+                         @Override
+                         public void run() {
+
+                             hiloTransacciones.transaccionesConTarjeta(transaccion,datosTransaccion,tarjeta);
+                             try {
+                                 // code runs in a thread
+                                 runOnUiThread(new Runnable() {
+                                     @Override
+                                     public void run() {
+                                         Log.d("CLOSE"," se cerro el loader");
+                                         dialog.dismiss();
+                                     }
+                                 });
+                             } catch (final Exception ex) {
+
+                             }
+                         }
+                     }.start();
+                     break;
+                 }
+                 //listo para recargas,  creo que funciona para facturas
+                 case CodigosTransacciones.CORRESPONSAL_CONSULTA_FACTURAS:{
+                     for (int i=0;i < valores.size();i++){
+                         datosTransaccion.add(valores.get(i));
+                     }
+
+                     try {
+                         for (int i=0;i < tipoDeCuenta.size();i++){
+                             datosTransaccion.add(tipoDeCuenta.get(i));
+                         }
+                     }catch (Exception e){}
+
+                     new Thread() {
+                         @Override
+                         public void run() {
+
+                             try {
+                                 hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(prefs_parametricasUser.getEncryptionKey(),base64.decodificarBase64(service.obtenerPanVirtual())));
+                             } catch (Exception e) {
+                                 e.printStackTrace();
+                             }
+                             try {
+                                 // code runs in a thread
+                                 runOnUiThread(new Runnable() {
+                                     @Override
+                                     public void run() {
+                                         Log.d("CLOSE"," se cerro el loader");
+                                         dialog.dismiss();
+                                     }
+                                 });
+                             } catch (final Exception ex) {
+
+                             }
+                         }
+                     }.start();
+
+                     break;
+                 }
+
+
+                 default: {
+                     Log.d("DEFAULT","Default");
+                     break;
+                 }
+
+             }
+
+
+
+         }else{
+             PopUp pop = new PopUp(pantallaConfirmacion.this);
+             pop.crearPopUpErrorInternet();
+         }
 
 
         }

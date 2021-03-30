@@ -15,14 +15,24 @@ import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion;
 import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
+import co.com.netcom.corresponsal.pantallas.funciones.CodificarBase64;
 import co.com.netcom.corresponsal.pantallas.funciones.CodigosTransacciones;
+import co.com.netcom.corresponsal.pantallas.funciones.ConstantesCorresponsal;
+import co.com.netcom.corresponsal.pantallas.funciones.EncripcionAES;
 import co.com.netcom.corresponsal.pantallas.funciones.Hilos;
+import co.com.netcom.corresponsal.pantallas.funciones.PreferencesUsuario;
+import co.com.netcom.corresponsal.pantallas.funciones.Servicios;
 
 public class PantallaRetiroSinTarjetaLoader extends BaseActivity {
     private ArrayList<String> valores = new ArrayList<String>();
     private Header header = new Header("<b>Retiro sin tarjeta.</b>");
     private Hilos hilos;
     private CodigosTransacciones codigosTransacciones;
+    private PreferencesUsuario prefs_parametricasBanco;
+    private PreferencesUsuario prefs_parametricasUser;
+    private CodificarBase64 base64;
+    private EncripcionAES aes;
+    private Servicios service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +61,16 @@ public class PantallaRetiroSinTarjetaLoader extends BaseActivity {
         AlertDialog dialog = loader.create();
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
+        //PREFERENCES FIID Y TIPODECUENTA
+        prefs_parametricasBanco = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_PARAMETRICAS_BANCO,this);
+        prefs_parametricasUser = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_INFO_USUARIO,this);
+
+        //OBJETOS PARA DECODIFICAR EL PAN
+        base64 = new CodificarBase64();
+        aes = new EncripcionAES();
+
+        //OBJETO PARA CONSUMIR SERVICIOS
+        service = new Servicios(this);
 
 
         //Se agrega para que no puedan salir de la transaccion mientras se procesa
@@ -60,7 +80,11 @@ public class PantallaRetiroSinTarjetaLoader extends BaseActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                hilos.transaccionesSinTarjeta(codigosTransacciones.CORRESPONSAL_RETIRO_SIN_TARJETA,valores);
+                try {
+                    hilos.transaccionesSinTarjeta(codigosTransacciones.CORRESPONSAL_RETIRO_SIN_TARJETA,valores,prefs_parametricasBanco.getFiidID(),prefs_parametricasBanco.getTipoCuenta(),aes.decrypt(prefs_parametricasUser.getEncryptionKey(),service.obtenerPanVirtual()));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }).start();
 

@@ -25,43 +25,43 @@ public class Hilos extends AppCompatActivity {
     private IntegradorC integradorC;
     private String[] respuestaTransacion = new String[4];
     private Context context;
+/*    private String FIID ="0003";
+    private String panVirtual = "8900720000658849";
+    private String tipoDeCuenta ="10";*/
 
     public  Hilos(Context contexto){
         this.integradorC =new IntegradorC(contexto);
-        integradorC.cargarInformacionPanVirtual(FIID, tipoDeCuenta,panVirtual);
+      /*  integradorC.cargarInformacionPanVirtual(FIID, tipoDeCuenta,panVirtual);
         String dataEscribir = "089054220178" + ";" + "12345678" + ";" + "B486AFD857A7";
         Log.d("DataFile", "data File " + dataEscribir);
         integradorC.escribirFile(dataEscribir, dataEscribir.length());//DATOS NECESARIOS PARA ARMAR TOKENP58 //ipactual dispositivo, numero de serie, macaddress
-        integradorC.setearParametrosC(ParametrosC.NUMERO_TERMINAL,"OCP00014");// se debe asignar al C el numero de terminal correspondiente
+        integradorC.setearParametrosC(ParametrosC.NUMERO_TERMINAL,"OCP00014");// se debe asignar al C el numero de terminal correspondiente*/
         this.context =contexto;
     }
 
     /**Metodo de tipo void que se encarga de procesar todas las transacciones sin tarjeta, excepto pago tarjeta empresarial, recibo como parametro el codigo de la transacccion
      * y un arreglo con los datos.*/
-    public void transaccionesSinTarjeta(int transaccion, ArrayList datos){
+    public void transaccionesSinTarjeta(int transaccion, ArrayList datos,String FIID, String tipoDeCuenta, String panVirtual){
         Log.d("DATA FINAL",datos.toString());
+        Log.d("FIID",FIID);
+        Log.d("tipoDeCuenta",tipoDeCuenta);
+        Log.d("panVirtual",panVirtual);
+
         switch (transaccion){
 
             case CodigosTransacciones.CORRESPONSAL_DEPOSITO:{
                new Thread(() -> {
             //Listo
+                   cargarInformacionPanVirtual(FIID,tipoDeCuenta,panVirtual);
                     String resultado = null;
                                                         //Numero de cuenta, cantidad, codigo tipo de cuenta
-                   //resultado = integradorC.enviarDeposito(datos.get(1).toString(),datos.get(2).toString(),Integer.parseInt(datos.get(3).toString()));
+                   resultado = integradorC.enviarDeposito(datos.get(1).toString(),datos.get(2).toString(),Integer.parseInt(datos.get(3).toString()));
 
-                   //Hacer intent dependiendo de la respuesta
+                   Log.d("RESULTADO DEPOSITO",resultado);
 
-                   //Log.d("RESULTADO DEPOSITO",resultado);
+
                 }).start();
 
-                /*try {
-                    Thread.sleep(10000);
-                    Log.d("Hilo"," Termino Hilo");
-
-
-                }catch (Exception e){
-                    Log.d("Error",e.toString());
-                }*/
                 break;
             }
 
@@ -69,8 +69,9 @@ public class Hilos extends AppCompatActivity {
             case CodigosTransacciones.CORRESPONSAL_RETIRO_SIN_TARJETA:{
                 new Thread(() -> {
                     String resultado = null;
+                    cargarInformacionPanVirtual(FIID,tipoDeCuenta,panVirtual);
 
-                                                                //cantidad, numer cuenta, pinblock
+                    //cantidad, numer cuenta, pinblock
                     //resultado = integradorC.enviarRetiroSinTarjeta(datos.get(1).toString(), datos.get(0).toString(), datos.get(2).toString());
                     //Hacer intent dependiendo de la respuesta
 
@@ -81,6 +82,8 @@ public class Hilos extends AppCompatActivity {
             //Listo
             case CodigosTransacciones.CORRESPONSAL_PAGO_PRODUCTOS:{
                 new Thread(() -> {
+                    cargarInformacionPanVirtual(FIID,tipoDeCuenta,panVirtual);
+
                     String resultado = null;
                                     //Cartera numero pagare//numero pagare, cantidad, origen
                                     //Tarjeta crédito// numero tarjeta, cantidad, orign
@@ -95,6 +98,8 @@ public class Hilos extends AppCompatActivity {
             //Listo  creo
             case CodigosTransacciones.CORRESPONSAL_RECLAMACION_GIRO:{
                 new Thread(() -> {
+                    cargarInformacionPanVirtual(FIID,tipoDeCuenta,panVirtual);
+
                     String resultado = null;
                                                                     //numero de referencia, tipo documento beneficiario, numero documento beneficiario, monto a reclamar.
                     //resultado = integradorC.realizarReclamacionGiro(datos.get(3).toString(),datos.get(4).toString(),datos.get(1).toString(),datos.get(2).toString());
@@ -108,6 +113,8 @@ public class Hilos extends AppCompatActivity {
             //Directo listo
             case CodigosTransacciones.CORRESPONSAL_ENVIO_GIRO:{
                 new Thread(() -> {
+                    cargarInformacionPanVirtual(FIID,tipoDeCuenta,panVirtual);
+
                     String resultado = null;
 
                    DatosComision datosComision = new DatosComision();
@@ -125,6 +132,8 @@ public class Hilos extends AppCompatActivity {
             //Listo
             case CodigosTransacciones.CORRESPONSAL_PAGO_FACTURA_TARJETA_EMPRESARIAL:{
                 new Thread(() -> {
+                    cargarInformacionPanVirtual(FIID,tipoDeCuenta,panVirtual);
+
                     String resultado = null;
                                                                             //cantidad, track2
                     //resultado = integradorC.enviarRecaudoTarjetaEmpresarial(datos.get(0).toString(),datos.get(1).toString());
@@ -138,6 +147,8 @@ public class Hilos extends AppCompatActivity {
             //No esta
             case CodigosTransacciones.CORRESPONSAL_PAGO_FACTURAS_LECTOR:{
                 new Thread(() -> {
+                    cargarInformacionPanVirtual(FIID,tipoDeCuenta,panVirtual);
+
                     String resultado = null;
 
                     //resultado = integradorC.enviarDeposito(datos[0],datos[1],Integer.parseInt(datos[3]));
@@ -150,6 +161,8 @@ public class Hilos extends AppCompatActivity {
             //Listo
             case CodigosTransacciones.CORRESPONSAL_CANCELACION_GIRO_CONSULTA:{
                 new Thread(() -> {
+                    cargarInformacionPanVirtual(FIID,tipoDeCuenta,panVirtual);
+
                     String resultado = null;
                     //Se crea un objeto de tipo datos recaudo.
 
@@ -185,6 +198,8 @@ public class Hilos extends AppCompatActivity {
             case CodigosTransacciones.CORRESPONSAL_CONSULTA_FACTURAS:{
 
                 new Thread(() -> {
+                    cargarInformacionPanVirtual(FIID,tipoDeCuenta,panVirtual);
+
                     String resultado = null;
 
                     DatosRecaudo datosRecaudo = new DatosRecaudo();
@@ -235,7 +250,7 @@ public class Hilos extends AppCompatActivity {
                         datosRecaudo.setCuentaRecaudadora(datos.get(0).toString());
                         datosRecaudo.setNumeroFactura(datos.get(1).toString());
                         datosRecaudo.setTipoRecaudo(datos.get(2).toString());
-                      //  resultado = integradorC.enviarConsultaRecaudoManual(datosRecaudo);
+                        resultado = integradorC.enviarConsultaRecaudoManual(datosRecaudo);
                         if (resultado == null) {
                             //PANTALLA RESULTADO TRANSACCION
                             //mostrarResultado(false, "PAGO FACTURA MANUAL ERROR", resultado, false);
@@ -264,9 +279,11 @@ public class Hilos extends AppCompatActivity {
 
     /**Metodo de tipo void que se encarga de hacer la cancelación de un giro, recibe como parametros un arreglo con los datos y un objeto
      * de tipo DatosComision*/
-    public void cancelarGiro(ArrayList datos, DatosComision datosComision){
+    public void cancelarGiro(ArrayList datos, DatosComision datosComision,String FIID, String tipoDeCuenta, String panVirtual){
 
         new Thread(() -> {
+            cargarInformacionPanVirtual(FIID,tipoDeCuenta,panVirtual);
+
             String resultado = null;
             Log.d("HILO CANCELAR", "LLegue a la clase hilos");
                                                             //datos comision, tipo documento girador, tipo documento beneficiario,,numero documento girador, numero documento beneficiario
@@ -279,9 +296,11 @@ public class Hilos extends AppCompatActivity {
     }
 
     /**Metodo de tipo void que se encarga del pago de facutras, recibo como parametro un objeto de tipo datos recuado*/
-    public void pagoFacturaManual(DatosRecaudo datosRecaudo){
+    public void pagoFacturaManual(DatosRecaudo datosRecaudo,String FIID, String tipoDeCuenta, String panVirtual){
 
         new Thread(() -> {
+            cargarInformacionPanVirtual(FIID,tipoDeCuenta,panVirtual);
+
             String resultado = null;
             Log.d("HILO CANCELAR", "LLegue a la clase hilos");
             //resultado = integradorC.enviarPagoRecaudoLector(datosRecaudo.getNumeroFactura(), datosRecaudo);
@@ -369,6 +388,19 @@ public class Hilos extends AppCompatActivity {
         }
 
 
+    }
+
+    public void cargarInformacionPanVirtual(String FIID, String tipoDeCuenta, String panVirtual){
+        DeviceInformation deviceInformation= new DeviceInformation(context);
+        Log.d("IP",deviceInformation.getIpAddress());
+        Log.d("MAC",deviceInformation.getMacAddress());
+        Log.d("UID",deviceInformation.getDeviceUUID());
+
+        integradorC.cargarInformacionPanVirtual(FIID, tipoDeCuenta,panVirtual);
+        String dataEscribir = deviceInformation.getIpAddress().replaceAll(".","") + ";" + deviceInformation.getDeviceUUID().substring(0,8) + ";" + deviceInformation.getMacAddress().replaceAll(":","").substring(0,8);
+        Log.d("DataFile", "data File " + dataEscribir);
+        integradorC.escribirFile(dataEscribir, dataEscribir.length());//DATOS NECESARIOS PARA ARMAR TOKENP58 //ipactual dispositivo, numero de serie, macaddress
+        integradorC.setearParametrosC(ParametrosC.NUMERO_TERMINAL,"OCP00014");// se debe asignar al C el numero de terminal correspondiente*/
     }
 
 }

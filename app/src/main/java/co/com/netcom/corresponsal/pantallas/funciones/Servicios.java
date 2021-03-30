@@ -53,6 +53,7 @@ public class Servicios {
     private static String apiCambioContrasena ="netcom/merchant/api/users/userId/passwords";
     private static String apiVenta ="netcom/merchant/api/transactions/sales/v2";
     private static String apiParametricasBanco ="netcom/merchant/api/parametrics/terminal?userId=USERID&terminalCode=TERMINALCODE";
+    private static String apiPanVirtual ="netcom/merchant/api/parametrics/terminal/pan?userId=USERID&terminalCode=TERMINALCODE";
 
     private Context context;
     private String token;
@@ -631,5 +632,48 @@ public class Servicios {
 
         }
 
+    }
+
+    /**Metodo para obtener el pan virtual del servidor*/
+    public String obtenerPanVirtual(){
+
+        //Se debe sobreescribir este metodo para que acepte cualquier certificado seguro.
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.hostnameVerifier(new HostnameVerifier() {
+            @Override
+            public boolean verify(String hostname, SSLSession session) {
+                return true;
+            }
+        });
+
+        //Objeto SharedPreferences
+        PreferencesUsuario prefs_token = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_TOKEN,context);
+        PreferencesUsuario prefs_user = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_INFO_USUARIO,context);
+        PreferencesUsuario prefs_parametricas = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_PARAMETRICAS,context);
+
+        OkHttpClient client = builder.sslSocketFactory(getSLLContext().getSocketFactory()).callTimeout(30, TimeUnit.SECONDS).build();
+
+
+        Request request = new Request.Builder()
+                .url(urlBaseServicios+apiPanVirtual.replaceFirst("USERID",prefs_user.getUserId()).replaceFirst("TERMINALCODE",prefs_parametricas.getTerminalCodeParametricas()))
+                .method("GET", null)
+                .addHeader("Authorization", "Bearer "+prefs_token.getToken())
+                .build();
+
+        try {
+            Response response = client.newCall(request).execute();
+            Log.d("RESPONSE",response.toString());
+
+            String jsonData = response.body().string();
+            JSONObject Jobject = new JSONObject(jsonData);
+            Log.d("RESPUESTA",Jobject.toString());
+
+            return Jobject.getString("pan");
+
+
+        } catch (IOException | JSONException e) {
+            return "";
+
+        }
     }
 }

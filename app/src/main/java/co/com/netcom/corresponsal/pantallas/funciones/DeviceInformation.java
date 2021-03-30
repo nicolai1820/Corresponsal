@@ -10,11 +10,13 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.format.Formatter;
+import android.util.Log;
 
 import androidx.core.app.ActivityCompat;
 
@@ -89,6 +91,15 @@ public class DeviceInformation implements LocationListener {
         return Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 
+    /**Metodo getMacAddress de tipo publico que retora un String, sirve para obtener la dirección MAC del dispositivo*/
+    public String getMacAddress(){
+        WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        WifiInfo wInfo = wifiManager.getConnectionInfo();
+        String macAddress = wInfo.getMacAddress();
+        Log.e("TAG","MAC Address : " + macAddress);
+        return macAddress;
+
+    }
 
     @Override
     public void onLocationChanged(Location location) {

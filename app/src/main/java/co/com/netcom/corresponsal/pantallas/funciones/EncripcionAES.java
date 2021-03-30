@@ -18,8 +18,9 @@ public class EncripcionAES {
 
     /**Metodo encrypt que recibe como parametros el String key y el String texto, sirve para encriptar el texto en AES*/
     public  String encrypt(String llave, String texto) throws Exception {
+        CodificarBase64 base64 = new CodificarBase64();
         Cipher cipher = Cipher.getInstance(tipoCifrado);
-        SecretKeySpec secretKeySpec = new SecretKeySpec(llave.getBytes(), algoritmo);
+        SecretKeySpec secretKeySpec = new SecretKeySpec(base64.decodificarBase64(llave).getBytes(), algoritmo);
 
         IvParameterSpec ivParameterSpec = new IvParameterSpec(mInitVec);
         cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec, ivParameterSpec);
@@ -30,10 +31,12 @@ public class EncripcionAES {
     /**Metodo encrypt que recibe como parametros el String key y el String encrypted, sirve para desencriptar la de AES a texto en limpio*/
 
     public  String decrypt(String llave,String encrypted) throws Exception {
+        CodificarBase64 base64 = new CodificarBase64();
         Cipher cipher = Cipher.getInstance(tipoCifrado);
-        SecretKeySpec secretKeySpec = new SecretKeySpec(llave.getBytes(), algoritmo);
+        SecretKeySpec secretKeySpec = new SecretKeySpec(base64.decodificarBase64(llave).getBytes(), algoritmo);
         IvParameterSpec ivParameterSpec = new IvParameterSpec(mInitVec);
-        byte[] enc = Base64.decode(encrypted,Base64.DEFAULT);
+
+        byte[] enc = base64.decodificarBase64(encrypted).getBytes();
         cipher.init(Cipher.DECRYPT_MODE, secretKeySpec, ivParameterSpec);
         byte[] decrypted = cipher.doFinal(enc);
         return new String(decrypted);
