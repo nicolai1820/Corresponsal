@@ -1,50 +1,50 @@
 {
   "buildFiles": [
-    "C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\CMakeLists.txt"
+    "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/CMakeLists.txt"
   ],
   "cleanCommands": [
-    "C:\\Users\\Pablo\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build \"C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\.cxx\\cmake\\debug\\armeabi-v7a\" --target clean"
+    "/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/netcom/Documents/Repositorio\\ GitLab/CorresponsalApp/app/.cxx/cmake/debug/armeabi-v7a --target clean"
   ],
   "libraries": {
     "libcrypto-Debug-armeabi-v7a": {
       "artifactName": "libcrypto",
       "abi": "armeabi-v7a",
-      "output": "C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\libs\\openssl-1.0.2\\armeabi-v7a\\lib\\libcrypto.a"
+      "output": "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/libs/openssl-1.0.2/armeabi-v7a/lib/libcrypto.a"
     },
     "netcom_Venta-Debug-armeabi-v7a": {
       "artifactName": "netcom_Venta",
-      "buildCommand": "C:\\Users\\Pablo\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build \"C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\.cxx\\cmake\\debug\\armeabi-v7a\" --target netcom_Venta",
+      "buildCommand": "/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/netcom/Documents/Repositorio\\ GitLab/CorresponsalApp/app/.cxx/cmake/debug/armeabi-v7a --target netcom_Venta",
       "abi": "armeabi-v7a",
-      "output": "C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\.cxx\\cmake\\debug\\armeabi-v7a\\libnetcom_Venta.a"
+      "output": "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/debug/armeabi-v7a/libnetcom_Venta.a"
     },
     "libssl-Debug-armeabi-v7a": {
       "artifactName": "libssl",
       "abi": "armeabi-v7a",
-      "output": "C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\libs\\openssl-1.0.2\\armeabi-v7a\\lib\\libssl.a"
+      "output": "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/libs/openssl-1.0.2/armeabi-v7a/lib/libssl.a"
     },
     "netcom_Bancolombia-Debug-armeabi-v7a": {
       "artifactName": "netcom_Bancolombia",
-      "buildCommand": "C:\\Users\\Pablo\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build \"C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\.cxx\\cmake\\debug\\armeabi-v7a\" --target netcom_Bancolombia",
+      "buildCommand": "/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/netcom/Documents/Repositorio\\ GitLab/CorresponsalApp/app/.cxx/cmake/debug/armeabi-v7a --target netcom_Bancolombia",
       "abi": "armeabi-v7a",
-      "output": "C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\.cxx\\cmake\\debug\\armeabi-v7a\\libnetcom_Bancolombia.a"
+      "output": "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/debug/armeabi-v7a/libnetcom_Bancolombia.a"
     },
     "netcom_Lealtad-Debug-armeabi-v7a": {
       "artifactName": "netcom_Lealtad",
-      "buildCommand": "C:\\Users\\Pablo\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build \"C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\.cxx\\cmake\\debug\\armeabi-v7a\" --target netcom_Lealtad",
+      "buildCommand": "/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/netcom/Documents/Repositorio\\ GitLab/CorresponsalApp/app/.cxx/cmake/debug/armeabi-v7a --target netcom_Lealtad",
       "abi": "armeabi-v7a",
-      "output": "C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\.cxx\\cmake\\debug\\armeabi-v7a\\libnetcom_Lealtad.a"
+      "output": "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/debug/armeabi-v7a/libnetcom_Lealtad.a"
     },
     "native-lib-Debug-armeabi-v7a": {
       "artifactName": "native-lib",
-      "buildCommand": "C:\\Users\\Pablo\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build \"C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\.cxx\\cmake\\debug\\armeabi-v7a\" --target native-lib",
+      "buildCommand": "/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/netcom/Documents/Repositorio\\ GitLab/CorresponsalApp/app/.cxx/cmake/debug/armeabi-v7a --target native-lib",
       "abi": "armeabi-v7a",
-      "output": "C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\build\\intermediates\\cmake\\debug\\obj\\armeabi-v7a\\libnative-lib.so"
+      "output": "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libnative-lib.so"
     },
     "netcom_Caja-Debug-armeabi-v7a": {
       "artifactName": "netcom_Caja",
-      "buildCommand": "C:\\Users\\Pablo\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build \"C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\.cxx\\cmake\\debug\\armeabi-v7a\" --target netcom_Caja",
+      "buildCommand": "/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/netcom/Documents/Repositorio\\ GitLab/CorresponsalApp/app/.cxx/cmake/debug/armeabi-v7a --target netcom_Caja",
       "abi": "armeabi-v7a",
-      "output": "C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\.cxx\\cmake\\debug\\armeabi-v7a\\libnetcom_Caja.a"
+      "output": "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/debug/armeabi-v7a/libnetcom_Caja.a"
     }
   }
 }

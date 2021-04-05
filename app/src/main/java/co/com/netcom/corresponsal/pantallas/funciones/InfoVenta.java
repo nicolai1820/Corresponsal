@@ -60,6 +60,16 @@ public class InfoVenta {
     private String  numeroDocumentoBeneficiario;
     private String  numeroCelularBeneficiario;
 
+    public String getTramaISO() {
+        return tramaISO;
+    }
+
+    public void setTramaISO(String tramaISO) {
+        this.tramaISO = tramaISO;
+    }
+
+    private String tramaISO;
+
 
     public String getUserId() {
         return userId;
@@ -491,5 +501,61 @@ public class InfoVenta {
 
     public void setNumeroCelularBeneficiario(String numeroCelularBeneficiario) {
         this.numeroCelularBeneficiario = numeroCelularBeneficiario;
+    }
+
+    public String ConvertToString(){
+        return "userId: "+userId + "commerceId :"+commerceId +
+                "transactionId :"+transactionId +
+        "commerceCode :"+commerceCode+
+                "detailSalecommerceId :"+detailSalecommerceId+
+        "terminalCode :"+terminalCode+
+         "transactionType :"+       transactionType+
+        "mposType :"+ mposType+
+        "numberQuotas : "+        numberQuotas+
+        "accountType :"+accountType+
+        "partialAmount :"+        partialAmount+
+        "iva :" +iva+
+         "base :"+       base+
+        "inc :"+inc+
+         "tip :"+       tip+
+        "pan :"+pan+
+        "totalAmount :" +        totalAmount+
+        "tagSale :"+tagSale+
+        "track2 :"+        track2+
+        "encryptType :"+encryptType+
+        "ksn :"+        ksn+
+        "pinBlock :"+pinBlock+
+        "ksnPinBlock :"+        ksnPinBlock+
+        "postEntryMode :" +postEntryMode+
+        "country :"+        country+
+        "department :"+department+
+        "city :"+        city+
+        "address :"+address+
+        "latitude :"+        latitude+
+        "length :" +length+
+        "consecutive :"+        consecutive+
+        "billNumber :"+ billNumber+
+        "entityCode :"+        entityCode+
+        "arqc :"+arqc+
+        "cardName :"+        cardName+
+        "apLabel :"+apLabel+
+        "channel :"+        channel+
+        "expirationDate :"+expirationDate+
+        "aid"+         aid+
+        "documentNumber"+ documentNumber+
+        "numeroCuenta"+         numeroCuenta+
+        "numeroConvenio"+ numeroConvenio+
+        "capturaLectorBarras"+         capturaLectorBarras+
+        "numeroCelular"+ numeroCelular+
+        "numeroTarjeta"+         numeroTarjeta+
+        "numeroPagare"+ numeroPagare+
+        "tipoCuentaDestino"+         tipoCuentaDestino+
+        "cuentaDestino"+ cuentaDestino+
+        "tipoDocumentoGirador"+         tipoDocumentoGirador+
+        "numeroDocumentoGirador"+ numeroDocumentoGirador+
+        "numeroCelularGirador"+         numeroCelularGirador+
+        "tipoDocumentoBeneficiario"+ tipoDocumentoBeneficiario+
+        "numeroDocumentoBeneficiario"+         numeroDocumentoBeneficiario+
+        "numeroCelularBeneficiario"+ numeroCelularBeneficiario;
     }
 }

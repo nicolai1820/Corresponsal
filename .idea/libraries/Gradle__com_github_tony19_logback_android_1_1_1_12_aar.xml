@@ -1,15 +1,14 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.tony19:logback-android:1.1.1-12@aar">
     <CLASSES>
-      <root url="file://C:/Gradle/gradle-6.7/caches/transforms-2/files-2.1/25154d5bbb2447a800d4c5f9a95705a4/logback-android-1.1.1-12/AndroidManifest.xml" />
-      <root url="jar://C:/Gradle/gradle-6.7/caches/transforms-2/files-2.1/25154d5bbb2447a800d4c5f9a95705a4/logback-android-1.1.1-12/jars/classes.jar!/" />
-      <root url="file://C:/Gradle/gradle-6.7/caches/transforms-2/files-2.1/25154d5bbb2447a800d4c5f9a95705a4/logback-android-1.1.1-12/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/25154d5bbb2447a800d4c5f9a95705a4/logback-android-1.1.1-12/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/25154d5bbb2447a800d4c5f9a95705a4/logback-android-1.1.1-12/res" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://C:/Gradle/gradle-6.7/caches/modules-2/files-2.1/com.github.tony19/logback-android/1.1.1-12/7cdae65bb0bf1a49fa63246901c3cab495092a3e/logback-android-1.1.1-12-javadoc.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.tony19/logback-android/1.1.1-12/7cdae65bb0bf1a49fa63246901c3cab495092a3e/logback-android-1.1.1-12-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://C:/Gradle/gradle-6.7/caches/modules-2/files-2.1/com.github.tony19/logback-android/1.1.1-12/1396151811d6f59dd36bb242e1a66c9e2cbc0c3f/logback-android-1.1.1-12-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.tony19/logback-android/1.1.1-12/1396151811d6f59dd36bb242e1a66c9e2cbc0c3f/logback-android-1.1.1-12-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

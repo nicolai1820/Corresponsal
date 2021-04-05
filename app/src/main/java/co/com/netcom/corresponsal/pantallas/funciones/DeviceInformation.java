@@ -21,10 +21,17 @@ import android.util.Log;
 
 import androidx.core.app.ActivityCompat;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
+
 public class DeviceInformation implements LocationListener {
     private Context context;
     private String latitud;
     private String longitud;
+
+    private FusedLocationProviderClient fusedLocationProviderClient;
+
    public DeviceInformation(Context contexto){
         this.context = contexto;
     }
@@ -51,10 +58,10 @@ public class DeviceInformation implements LocationListener {
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
     }
 
-    /**Metodo getLatitude de tipo publico que retorna un booleano, sirve para obtener la latitud.*/
+/*    *//**Metodo getLatitude de tipo publico que retorna un booleano, sirve para obtener la latitud.*/
     public String getLatitude() {
 
-        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        /*if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
             ActivityCompat.requestPermissions((Activity) context,new String[]{
                     Manifest.permission.ACCESS_COARSE_LOCATION,
@@ -68,13 +75,39 @@ public class DeviceInformation implements LocationListener {
             //Log.d("LATITUD",String.valueOf(location.getLatitude()));
             return latitud;//String.valueOf(location.getLatitude());
 
+        }*/
+        // Get the location manager
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions((Activity) context,new String[]{
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION},0);
+            return "";
+        }else {
+
+            LocationManager locationManager = (LocationManager) context.getSystemService(context.LOCATION_SERVICE);
+            Criteria criteria = new Criteria();
+            String bestProvider = locationManager.getBestProvider(criteria, false);
+            Location location = locationManager.getLastKnownLocation(bestProvider);
+            Double lat, lon;
+            try {
+                lat = location.getLatitude();
+                String resp ="";
+                 resp = String.valueOf(lat);
+                 return resp;
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+                return null;
+            }
         }
     }
+
+
 
     /**Metodo getLatitude de tipo publico que retorna un booleano, sirve para obtener la longitud.*/
     public String getLongitude(){
 
-        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        /*if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
             ActivityCompat.requestPermissions((Activity) context,new String[]{
                     Manifest.permission.ACCESS_COARSE_LOCATION,
@@ -86,8 +119,32 @@ public class DeviceInformation implements LocationListener {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 1, this);
             Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
             //Log.d("LONGITUD",String.valueOf(location.getLongitude()));
+
             return longitud;//String.valueOf(location.getLongitude());
 
+        }*/
+
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions((Activity) context,new String[]{
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION},0);
+            return "";
+        }else {
+            LocationManager locationManager = (LocationManager) context.getSystemService(context.LOCATION_SERVICE);
+            Criteria criteria = new Criteria();
+            String bestProvider = locationManager.getBestProvider(criteria, false);
+            Location location = locationManager.getLastKnownLocation(bestProvider);
+            Double lat, lon;
+            try {
+                lon = location.getLongitude();
+                String resp = "";
+                resp = String.valueOf(lon);
+                return resp;
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+                return null;
+            }
         }
     }
 

@@ -1,7 +1,7 @@
-C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/debug/x86/CMakeFiles/netcom_Venta.dir
-C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/debug/x86/CMakeFiles/native-lib.dir
-C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/debug/x86/CMakeFiles/rebuild_cache.dir
-C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/debug/x86/CMakeFiles/netcom_Lealtad.dir
-C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/debug/x86/CMakeFiles/netcom_Bancolombia.dir
-C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/debug/x86/CMakeFiles/netcom_Caja.dir
-C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/debug/x86/CMakeFiles/edit_cache.dir
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/debug/x86/CMakeFiles/edit_cache.dir
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/debug/x86/CMakeFiles/netcom_Bancolombia.dir
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/debug/x86/CMakeFiles/netcom_Caja.dir
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/debug/x86/CMakeFiles/rebuild_cache.dir
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/debug/x86/CMakeFiles/netcom_Lealtad.dir
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/debug/x86/CMakeFiles/netcom_Venta.dir
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/debug/x86/CMakeFiles/native-lib.dir

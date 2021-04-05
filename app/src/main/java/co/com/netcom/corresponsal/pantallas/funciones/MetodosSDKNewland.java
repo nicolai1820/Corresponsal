@@ -548,7 +548,8 @@ public class MetodosSDKNewland {
 
                }
 
-           }else if(Dump.getHexDump(cardInfoEntity.getIccDataPlain())=="1"){
+           }
+           else if(Dump.getHexDump(cardInfoEntity.getIccDataPlain())=="1"){
                track2 = Dump.getHexDump(cardInfoEntity.getStrTrack2()).split("D");
                bin = track2[0].substring(0,7);
 
@@ -610,7 +611,8 @@ public class MetodosSDKNewland {
 
                }
 
-           }else{
+           }
+           else{
 
                switch (codigoTransaccion){
 
@@ -662,66 +664,7 @@ public class MetodosSDKNewland {
 
            }
 
-
-
-
-
-
            Log.d("TARJETA CARDDTO",datosTarjeta.toString());
-        /*    nlPosManager.calculateMAC(PinManageType.DUKPT, DEFAULT_MAC_WK_INDEX, ISOUtils.hex2byte(DataforMac), MacAlgorithm.MAC_X919);
-
-            switch (codigoTransaccion){
-
-                case RETIRO:
-
-                    //Lectura de tarjeta exitosa en Retiro con Tarjeta
-                    try{
-                        Message respuestaLectura = new Message();
-                        respuestaLectura.what = PantallaRetiroConTarjetaLoader.PROCESO_EXISTOSO;
-                        PantallaRetiroConTarjetaLoader.respuesta.sendMessage(respuestaLectura);
-                    }catch (Exception e){ }
-
-                    break;
-
-                case CONSULTA_SALDO:
-
-                    //Lectura de tarjeta exitosa en Consulta Saldo
-
-                    try{
-                        Message respuestaLectura = new Message();
-                        respuestaLectura.what = pantallaConsultaSaldoLectura.PROCESO_EXISTOSO;
-                        pantallaConsultaSaldoLectura.respuesta.sendMessage(respuestaLectura);
-                    }catch (Exception e){ }
-
-
-                    break;
-                case TRANSFERENCIA:
-
-                    //Lectura de tarjeta exitosa en Transferencia
-                    try{
-                        Message respuestaLectura = new Message();
-                        respuestaLectura.what = pantallaTransferenciaLectura.PROCESO_EXISTOSO;
-                        pantallaTransferenciaLectura.respuesta.sendMessage(respuestaLectura);
-                    }catch (Exception e){ }
-                    break;
-
-                case TARJETA_EMPRESARIAL:
-
-                    //Lectura de tarjeta exitosa en TarjetaEmpresarial
-                    try{
-                        Message respuestaLectura = new Message();
-                        respuestaLectura.what = PantallaTarjetaEmpresarialLectura.PROCESO_EXISTOSO;
-                        PantallaTarjetaEmpresarialLectura.respuesta.sendMessage(respuestaLectura);
-                    }catch (Exception e){ }
-
-                    break;
-
-
-            }
-*/
-
-
-
 
         }
 

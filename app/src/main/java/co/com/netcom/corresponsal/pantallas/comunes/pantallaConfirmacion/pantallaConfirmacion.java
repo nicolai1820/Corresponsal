@@ -12,6 +12,7 @@ import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
 import co.com.netcom.corresponsal.pantallas.comunes.resultadoTransaccion.PantallaResultadoTransaccionExitosa;
 import co.com.netcom.corresponsal.pantallas.comunes.resultadoTransaccion.PantallaResultadoTransaccionLoaderExitoso;
 import co.com.netcom.corresponsal.pantallas.comunes.resultadoTransaccion.PantallaResultadoTransaccionLoaderFallida;
+import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
 import co.com.netcom.corresponsal.pantallas.funciones.CodificarBase64;
 import co.com.netcom.corresponsal.pantallas.funciones.CodigosTransacciones;
 
@@ -24,6 +25,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,7 +45,7 @@ import co.com.netcom.corresponsal.pantallas.funciones.InfoVenta;
 import co.com.netcom.corresponsal.pantallas.funciones.PreferencesUsuario;
 import co.com.netcom.corresponsal.pantallas.funciones.Servicios;
 
-public class pantallaConfirmacion extends AppCompatActivity {
+public class pantallaConfirmacion extends BaseActivity {
 
     private String tituloActivity;
     private Header header;
@@ -80,7 +82,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
     private EncripcionAES aes;
     private Servicios service;
     public static Handler respuesta;
-
+    private  String respuestaC;
     private Map<String,String > resp;
 
     @Override
@@ -174,9 +176,11 @@ public class pantallaConfirmacion extends AppCompatActivity {
                                     .class);
                             i.putExtra("aprovalCode",resp.get("aprovalCode"));
                             startActivity(i);
+                            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                         }else {
                             Intent i = new Intent(pantallaConfirmacion.this, PantallaResultadoTransaccionLoaderFallida.class);
                             startActivity(i);
+                            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                     }
                         break;
                     case 2:
@@ -417,9 +421,9 @@ public class pantallaConfirmacion extends AppCompatActivity {
 
                                  try {
                                      //Log.d("SERVICIO",service.obtenerPanVirtual());
-                                     Log.d("EN",aes.encrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),"24832432950423023423423"));
-
-                                     Log.d("DE",aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),aes.encrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),"24832432950423023423423")));
+                                     Log.d("LLave",prefs_parametricasUser.getEncryptionKey());
+                                     //Log.d("EN",aes.encrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),"24832432950423023423423"));
+                                     //Log.d("DE",aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),aes.encrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),"24832432950423023423423")));
                                      Log.d("DE-SERVIDOR",aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
                                      Log.d("encryption",prefs_parametricasUser.getEncryptionKey());
 
@@ -427,7 +431,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
                                      e.printStackTrace();
                                  }
                                  try {
-                                     hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,base64.decodificarBase64(prefs_parametricasBanco.getFiidID()),base64.decodificarBase64(prefs_parametricasBanco.getTipoCuenta()),aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
+                                     respuestaC= hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,base64.decodificarBase64(prefs_parametricasBanco.getFiidID()),base64.decodificarBase64(prefs_parametricasBanco.getTipoCuenta()),aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
                                  } catch (Exception e) {
                                      e.printStackTrace();
                                  }
@@ -436,7 +440,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
                                      runOnUiThread(new Runnable() {
                                          @Override
                                          public void run() {
-                                             //Log.d("CLOSE"," se cerro el loader");
+                                             Log.d("RESPUESTA",respuestaC);
                                              //dialog.dismiss();
                                              enviarTransaccion();
                                          }
@@ -873,11 +877,14 @@ public class pantallaConfirmacion extends AppCompatActivity {
     public void enviarTransaccion(){
         InfoVenta inforVenta = new InfoVenta();
         DeviceInformation devideInfo = new DeviceInformation(this);
+        //devideInfo.obtenerLocalizacion();
         PreferencesUsuario prefs_Parametricas = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_PARAMETRICAS,this);
         PreferencesUsuario prefs_InfoUser = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_INFO_USUARIO,this);
 
+
         inforVenta.setUserId(prefs_InfoUser.getUserId());
-        inforVenta.setCommerceId(base64.decodificarBase64(prefs_Parametricas.getCommerceId()));
+        //inforVenta.setCommerceId(base64.decodificarBase64(prefs_Parametricas.getCommerceId()));
+        inforVenta.setCommerceId("hola");
         inforVenta.setTransactionId("12345");
             //Detail Sale
             inforVenta.setCommerceCode(base64.decodificarBase64(prefs_Parametricas.getCommerceCode()));
@@ -935,6 +942,7 @@ public class pantallaConfirmacion extends AppCompatActivity {
                 inforVenta.setTipoDocumentoBeneficiario("");
                 inforVenta.setNumeroDocumentoBeneficiario("");
                 inforVenta.setNumeroCelularBeneficiario("");
+                inforVenta.setTramaISO(respuestaC);
             }
                 break;
 

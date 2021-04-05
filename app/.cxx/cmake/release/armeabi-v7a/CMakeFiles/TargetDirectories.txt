@@ -1,7 +1,7 @@
-C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a/CMakeFiles/netcom_Venta.dir
-C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a/CMakeFiles/native-lib.dir
-C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a/CMakeFiles/rebuild_cache.dir
-C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a/CMakeFiles/netcom_Lealtad.dir
-C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a/CMakeFiles/netcom_Bancolombia.dir
-C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a/CMakeFiles/netcom_Caja.dir
-C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a/CMakeFiles/netcom_Bancolombia.dir
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a/CMakeFiles/netcom_Caja.dir
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a/CMakeFiles/netcom_Lealtad.dir
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a/CMakeFiles/netcom_Venta.dir
+/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a/CMakeFiles/native-lib.dir

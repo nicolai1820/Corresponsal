@@ -2,11 +2,11 @@
 {
 	"buildFiles" : 
 	[
-		"C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/CMakeLists.txt"
+		"/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/CMakeLists.txt"
 	],
 	"cleanCommands" : 
 	[
-		"C:\\Users\\Pablo\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build \"C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\.cxx\\cmake\\release\\armeabi-v7a\" --target clean"
+		"/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/netcom/Documents/Repositorio\\ GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a --target clean"
 	],
 	"cppFileExtensions" : [ "cpp" ],
 	"libraries" : 
@@ -16,306 +16,306 @@
 			"abi" : "armeabi-v7a",
 			"artifactName" : "libcrypto",
 			"buildType" : "release",
-			"output" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/libs/openssl-1.0.2/armeabi-v7a/lib/libcrypto.a",
-			"toolchain" : "1687298129"
+			"output" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/libs/openssl-1.0.2/armeabi-v7a/lib/libcrypto.a",
+			"toolchain" : "13606010358536022641"
 		},
 		"libssl-Release-armeabi-v7a" : 
 		{
 			"abi" : "armeabi-v7a",
 			"artifactName" : "libssl",
 			"buildType" : "release",
-			"output" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/libs/openssl-1.0.2/armeabi-v7a/lib/libssl.a",
-			"toolchain" : "1687298129"
+			"output" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/libs/openssl-1.0.2/armeabi-v7a/lib/libssl.a",
+			"toolchain" : "13606010358536022641"
 		},
 		"native-lib-Release-armeabi-v7a" : 
 		{
 			"abi" : "armeabi-v7a",
 			"artifactName" : "native-lib",
-			"buildCommand" : "C:\\Users\\Pablo\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build \"C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\.cxx\\cmake\\release\\armeabi-v7a\" --target native-lib",
+			"buildCommand" : "/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/netcom/Documents/Repositorio\\ GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a --target native-lib",
 			"buildType" : "release",
 			"files" : 
 			[
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_lib_EXPORTS -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Base/native-lib.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Base/native-lib.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_lib_EXPORTS -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Base/configuracion.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Base/configuracion.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_lib_EXPORTS -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Base/Archivos.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Base/Archivos.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_lib_EXPORTS -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Base/comunicaciones.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Base/comunicaciones.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_lib_EXPORTS -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Base/Mensajeria.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Base/Mensajeria.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_lib_EXPORTS -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Base/Utilidades.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Base/Utilidades.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_lib_EXPORTS -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Base/Inicializacion.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Base/Inicializacion.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_lib_EXPORTS -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Base/Reportes.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Base/Reportes.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_lib_EXPORTS -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Base/menu.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Base/menu.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				}
 			],
-			"output" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/build/intermediates/cmake/release/obj/armeabi-v7a/libnative-lib.so",
-			"toolchain" : "1687298129"
+			"output" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/build/intermediates/cmake/release/obj/armeabi-v7a/libnative-lib.so",
+			"toolchain" : "13606010358536022641"
 		},
 		"netcom_Bancolombia-Release-armeabi-v7a" : 
 		{
 			"abi" : "armeabi-v7a",
 			"artifactName" : "netcom_Bancolombia",
-			"buildCommand" : "C:\\Users\\Pablo\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build \"C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\.cxx\\cmake\\release\\armeabi-v7a\" --target netcom_Bancolombia",
+			"buildCommand" : "/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/netcom/Documents/Repositorio\\ GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a --target netcom_Bancolombia",
 			"buildType" : "release",
 			"files" : 
 			[
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Bancolombia/deposito.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Bancolombia/deposito.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Bancolombia/pagoProducto.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Bancolombia/pagoProducto.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Bancolombia/utilidadesBancolombia.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Bancolombia/utilidadesBancolombia.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Bancolombia/cierre_bancolombia.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Bancolombia/cierre_bancolombia.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Bancolombia/giros_bancolombia.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Bancolombia/giros_bancolombia.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Bancolombia/retiro_bancolombia.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Bancolombia/retiro_bancolombia.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Bancolombia/Transferencia_bancolombia.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Bancolombia/Transferencia_bancolombia.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Bancolombia/recaudo_bancolombia.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Bancolombia/recaudo_bancolombia.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Bancolombia/saldo_bancolombia.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Bancolombia/saldo_bancolombia.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Bancolombia/anulacion_bancolombia.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Bancolombia/anulacion_bancolombia.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Bancolombia/duplicado_bancolombia.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Bancolombia/duplicado_bancolombia.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				}
 			],
-			"output" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a/libnetcom_Bancolombia.a",
-			"toolchain" : "1687298129"
+			"output" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a/libnetcom_Bancolombia.a",
+			"toolchain" : "13606010358536022641"
 		},
 		"netcom_Caja-Release-armeabi-v7a" : 
 		{
 			"abi" : "armeabi-v7a",
 			"artifactName" : "netcom_Caja",
-			"buildCommand" : "C:\\Users\\Pablo\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build \"C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\.cxx\\cmake\\release\\armeabi-v7a\" --target netcom_Caja",
+			"buildCommand" : "/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/netcom/Documents/Repositorio\\ GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a --target netcom_Caja",
 			"buildType" : "release",
 			"files" : 
 			[
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Caja/Cajas.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Caja/Cajas.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Caja/CajaIP.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Caja/CajaIP.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Caja/Mensajeria_caja.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Caja/Mensajeria_caja.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				}
 			],
-			"output" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a/libnetcom_Caja.a",
-			"toolchain" : "1687298129"
+			"output" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a/libnetcom_Caja.a",
+			"toolchain" : "13606010358536022641"
 		},
 		"netcom_Lealtad-Release-armeabi-v7a" : 
 		{
 			"abi" : "armeabi-v7a",
 			"artifactName" : "netcom_Lealtad",
-			"buildCommand" : "C:\\Users\\Pablo\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build \"C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\.cxx\\cmake\\release\\armeabi-v7a\" --target netcom_Lealtad",
+			"buildCommand" : "/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/netcom/Documents/Repositorio\\ GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a --target netcom_Lealtad",
 			"buildType" : "release",
 			"files" : 
 			[
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/LifeMiles/lealtad.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/LifeMiles/lealtad.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				}
 			],
-			"output" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a/libnetcom_Lealtad.a",
-			"toolchain" : "1687298129"
+			"output" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a/libnetcom_Lealtad.a",
+			"toolchain" : "13606010358536022641"
 		},
 		"netcom_Venta-Release-armeabi-v7a" : 
 		{
 			"abi" : "armeabi-v7a",
 			"artifactName" : "netcom_Venta",
-			"buildCommand" : "C:\\Users\\Pablo\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build \"C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\.cxx\\cmake\\release\\armeabi-v7a\" --target netcom_Venta",
+			"buildCommand" : "/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/netcom/Documents/Repositorio\\ GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a --target netcom_Venta",
 			"buildType" : "release",
 			"files" : 
 			[
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Venta/cierre_venta.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Venta/cierre_venta.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Venta/duplicado_venta.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Venta/duplicado_venta.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Venta/saldo_venta.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Venta/saldo_venta.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Venta/anulacion_venta.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Venta/anulacion_venta.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Venta/manejo_impuestos.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Venta/manejo_impuestos.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Venta/consultas_informacion_costos.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Venta/consultas_informacion_costos.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Venta/core_venta.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Venta/core_venta.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Venta/dcc_proceso.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Venta/dcc_proceso.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Venta/emv_venta.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Venta/emv_venta.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Venta/qr_code_venta.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Venta/qr_code_venta.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Venta/utilidades_qr_code.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Venta/utilidades_qr_code.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Venta/dinero_electronico.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Venta/dinero_electronico.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				},
 				
 				{
-					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/sysroot   -I..\\..\\..\\..\\src\\main\\cpp\\include -I..\\..\\..\\..\\src\\main\\cpp\\include\\openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/src/main/cpp/Venta/puntosColombia.cpp",
-					"workingDirectory" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a"
+					"flags" : "  --target=armv7-none-linux-androideabi22 --gcc-toolchain=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/sysroot   -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -Oz -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/src/main/cpp/Venta/puntosColombia.cpp",
+					"workingDirectory" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a"
 				}
 			],
-			"output" : "C:/Users/Pablo/Documents/Netcom/Repositorio GItlab/Corresponsal/app/.cxx/cmake/release/armeabi-v7a/libnetcom_Venta.a",
-			"toolchain" : "1687298129"
+			"output" : "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/armeabi-v7a/libnetcom_Venta.a",
+			"toolchain" : "13606010358536022641"
 		}
 	},
 	"toolchains" : 
 	{
-		"1687298129" : 
+		"13606010358536022641" : 
 		{
-			"cCompilerExecutable" : "C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe",
-			"cppCompilerExecutable" : "C:/Users/Pablo/AppData/Local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe"
+			"cCompilerExecutable" : "/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang",
+			"cppCompilerExecutable" : "/Users/netcom/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++"
 		}
 	}
 }

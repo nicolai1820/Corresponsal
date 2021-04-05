@@ -1,50 +1,50 @@
 {
   "buildFiles": [
-    "C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\CMakeLists.txt"
+    "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/CMakeLists.txt"
   ],
   "cleanCommands": [
-    "C:\\Users\\Pablo\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build \"C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\.cxx\\cmake\\release\\x86\" --target clean"
+    "/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/netcom/Documents/Repositorio\\ GitLab/CorresponsalApp/app/.cxx/cmake/release/x86 --target clean"
   ],
   "libraries": {
     "netcom_Caja-Release-x86": {
       "artifactName": "netcom_Caja",
-      "buildCommand": "C:\\Users\\Pablo\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build \"C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\.cxx\\cmake\\release\\x86\" --target netcom_Caja",
+      "buildCommand": "/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/netcom/Documents/Repositorio\\ GitLab/CorresponsalApp/app/.cxx/cmake/release/x86 --target netcom_Caja",
       "abi": "x86",
-      "output": "C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\.cxx\\cmake\\release\\x86\\libnetcom_Caja.a"
+      "output": "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/x86/libnetcom_Caja.a"
     },
     "libcrypto-Release-x86": {
       "artifactName": "libcrypto",
       "abi": "x86",
-      "output": "C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\libs\\openssl-1.0.2\\x86\\lib\\libcrypto.a"
+      "output": "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/libs/openssl-1.0.2/x86/lib/libcrypto.a"
     },
     "netcom_Bancolombia-Release-x86": {
       "artifactName": "netcom_Bancolombia",
-      "buildCommand": "C:\\Users\\Pablo\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build \"C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\.cxx\\cmake\\release\\x86\" --target netcom_Bancolombia",
+      "buildCommand": "/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/netcom/Documents/Repositorio\\ GitLab/CorresponsalApp/app/.cxx/cmake/release/x86 --target netcom_Bancolombia",
       "abi": "x86",
-      "output": "C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\.cxx\\cmake\\release\\x86\\libnetcom_Bancolombia.a"
+      "output": "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/x86/libnetcom_Bancolombia.a"
     },
     "native-lib-Release-x86": {
       "artifactName": "native-lib",
-      "buildCommand": "C:\\Users\\Pablo\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build \"C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\.cxx\\cmake\\release\\x86\" --target native-lib",
+      "buildCommand": "/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/netcom/Documents/Repositorio\\ GitLab/CorresponsalApp/app/.cxx/cmake/release/x86 --target native-lib",
       "abi": "x86",
-      "output": "C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\build\\intermediates\\cmake\\release\\obj\\x86\\libnative-lib.so"
+      "output": "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/build/intermediates/cmake/release/obj/x86/libnative-lib.so"
     },
     "libssl-Release-x86": {
       "artifactName": "libssl",
       "abi": "x86",
-      "output": "C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\libs\\openssl-1.0.2\\x86\\lib\\libssl.a"
+      "output": "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/libs/openssl-1.0.2/x86/lib/libssl.a"
     },
     "netcom_Lealtad-Release-x86": {
       "artifactName": "netcom_Lealtad",
-      "buildCommand": "C:\\Users\\Pablo\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build \"C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\.cxx\\cmake\\release\\x86\" --target netcom_Lealtad",
+      "buildCommand": "/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/netcom/Documents/Repositorio\\ GitLab/CorresponsalApp/app/.cxx/cmake/release/x86 --target netcom_Lealtad",
       "abi": "x86",
-      "output": "C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\.cxx\\cmake\\release\\x86\\libnetcom_Lealtad.a"
+      "output": "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/x86/libnetcom_Lealtad.a"
     },
     "netcom_Venta-Release-x86": {
       "artifactName": "netcom_Venta",
-      "buildCommand": "C:\\Users\\Pablo\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build \"C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\.cxx\\cmake\\release\\x86\" --target netcom_Venta",
+      "buildCommand": "/Users/netcom/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/netcom/Documents/Repositorio\\ GitLab/CorresponsalApp/app/.cxx/cmake/release/x86 --target netcom_Venta",
       "abi": "x86",
-      "output": "C:\\Users\\Pablo\\Documents\\Netcom\\Repositorio GItlab\\Corresponsal\\app\\.cxx\\cmake\\release\\x86\\libnetcom_Venta.a"
+      "output": "/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/x86/libnetcom_Venta.a"
     }
   }
 }

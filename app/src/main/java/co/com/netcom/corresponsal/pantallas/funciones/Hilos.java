@@ -25,6 +25,7 @@ public class Hilos extends AppCompatActivity {
     private IntegradorC integradorC;
     private String[] respuestaTransacion = new String[4];
     private Context context;
+    private  String resultado = null;
 /*    private String FIID ="0003";
     private String panVirtual = "8900720000658849";
     private String tipoDeCuenta ="10";*/
@@ -41,7 +42,7 @@ public class Hilos extends AppCompatActivity {
 
     /**Metodo de tipo void que se encarga de procesar todas las transacciones sin tarjeta, excepto pago tarjeta empresarial, recibo como parametro el codigo de la transacccion
      * y un arreglo con los datos.*/
-    public void transaccionesSinTarjeta(int transaccion, ArrayList datos,String FIID, String tipoDeCuenta, String panVirtual){
+    public String transaccionesSinTarjeta(int transaccion, ArrayList datos,String FIID, String tipoDeCuenta, String panVirtual){
         Log.d("DATA FINAL",datos.toString());
         Log.d("FIID",FIID);
         Log.d("tipoDeCuenta",tipoDeCuenta);
@@ -50,72 +51,67 @@ public class Hilos extends AppCompatActivity {
         switch (transaccion){
 
             case CodigosTransacciones.CORRESPONSAL_DEPOSITO:{
-               new Thread(() -> {
-            //Listo
-                   cargarInformacionPanVirtual(FIID,tipoDeCuenta,panVirtual);
-                    String resultado = null;
+
+                cargarInformacionPanVirtual(FIID,tipoDeCuenta,panVirtual);
                                                         //Numero de cuenta, cantidad, codigo tipo de cuenta
-                   resultado = integradorC.enviarDeposito(datos.get(1).toString(),datos.get(2).toString(),Integer.parseInt(datos.get(3).toString()));
-
-                   Log.d("RESULTADO DEPOSITO",resultado);
-
-
-                }).start();
-
-                break;
+                resultado = integradorC.enviarDeposito(datos.get(1).toString(),datos.get(2).toString(),Integer.parseInt(datos.get(3).toString()));
+                Log.d("RESPUESTA_HILOS",resultado);
+                return resultado;
             }
 
             //Necesitan PAN Virtual
             case CodigosTransacciones.CORRESPONSAL_RETIRO_SIN_TARJETA:{
-                new Thread(() -> {
-                    String resultado = null;
+
+
                     cargarInformacionPanVirtual(FIID,tipoDeCuenta,panVirtual);
 
                     //cantidad, numer cuenta, pinblock
                     resultado = integradorC.enviarRetiroSinTarjeta(datos.get(1).toString(), datos.get(0).toString(), datos.get(2).toString());
                     //Hacer intent dependiendo de la respuesta
 
-                }).start();
-                break;
+
+                return resultado;
+
+
             }
 
             //Listo
             case CodigosTransacciones.CORRESPONSAL_PAGO_PRODUCTOS:{
-                new Thread(() -> {
+
                     cargarInformacionPanVirtual(FIID,tipoDeCuenta,panVirtual);
 
-                    String resultado = null;
                                     //Cartera numero pagare//numero pagare, cantidad, origen
                                     //Tarjeta crédito// numero tarjeta, cantidad, orign
                     resultado = integradorC.enviarPagoPoducto(datos.get(1).toString(),datos.get(2).toString(),Integer.parseInt(datos.get(0).toString()));
                     Log.d("Case 2", "resultado " + resultado);
                     //Hacer intent dependiendo de la respuesta
 
-                }).start();
-                break;
+                return resultado;
+
+
             }
 
             //Listo  creo
             case CodigosTransacciones.CORRESPONSAL_RECLAMACION_GIRO:{
-                new Thread(() -> {
+
                     cargarInformacionPanVirtual(FIID,tipoDeCuenta,panVirtual);
 
-                    String resultado = null;
                                                                     //numero de referencia, tipo documento beneficiario, numero documento beneficiario, monto a reclamar.
                     resultado = integradorC.realizarReclamacionGiro(datos.get(3).toString(),datos.get(4).toString(),datos.get(1).toString(),datos.get(2).toString());
                     //Hacer intent dependiendo de la respuesta
 
                     Log.d("RESULTADO RECLAMAR GIRO",resultado);
-                }).start();
-                break;
+
+                return resultado;
+
             }
 
             //Directo listo
             case CodigosTransacciones.CORRESPONSAL_ENVIO_GIRO:{
-                new Thread(() -> {
+
                     cargarInformacionPanVirtual(FIID,tipoDeCuenta,panVirtual);
 
-                    String resultado = null;
+
 
                    DatosComision datosComision = new DatosComision();
                     datosComision.setValorComision(datos.get(1).toString());
@@ -125,45 +121,47 @@ public class Hilos extends AppCompatActivity {
                     Log.d("Case 2", "resultado " + resultado);
                     //Hacer intent dependiendo de la respuesta
 
-                }).start();
-                break;
+
+                return resultado;
+
             }
 
             //Listo
             case CodigosTransacciones.CORRESPONSAL_PAGO_FACTURA_TARJETA_EMPRESARIAL:{
-                new Thread(() -> {
+
                     cargarInformacionPanVirtual(FIID,tipoDeCuenta,panVirtual);
 
-                    String resultado = null;
+
                                                                             //cantidad, track2
                     resultado = integradorC.enviarRecaudoTarjetaEmpresarial(datos.get(0).toString(),datos.get(1).toString());
                     Log.d("TARJETA EMPRESARIAL", "resultado " + resultado);
                     //Hacer intent dependiendo de la respuesta
 
-                }).start();
-                break;
+
+                return resultado;
+
             }
 
             //No esta
             case CodigosTransacciones.CORRESPONSAL_PAGO_FACTURAS_LECTOR:{
-                new Thread(() -> {
+
                     cargarInformacionPanVirtual(FIID,tipoDeCuenta,panVirtual);
 
-                    String resultado = null;
+
 
                     //resultado = integradorC.enviarDeposito(datos[0],datos[1],Integer.parseInt(datos[3]));
                     Log.d("Case 2", "resultado " + resultado);
 
-                }).start();
-                break;
+
+                return resultado;
+
             }
 
             //Listo
             case CodigosTransacciones.CORRESPONSAL_CANCELACION_GIRO_CONSULTA:{
-                new Thread(() -> {
+
                     cargarInformacionPanVirtual(FIID,tipoDeCuenta,panVirtual);
 
-                    String resultado = null;
                     //Se crea un objeto de tipo datos recaudo.
 
                     DatosComision datosComision = new DatosComision();
@@ -172,8 +170,11 @@ public class Hilos extends AppCompatActivity {
 
                     if (resultado == null) {
                         //PANTALLA RESULTADO TRANSACCION
+                        return resultado;
                     } else {
-                        respuestaTransacion = resultado.split(";");
+                        return resultado;
+
+                       /* respuestaTransacion = resultado.split(";");
                         if (respuestaTransacion[0].equals("00")) {
 
                             Intent intento = new Intent(context, pantallaCancelarGiroCantidad.class);
@@ -184,23 +185,23 @@ public class Hilos extends AppCompatActivity {
                             context.startActivity(intento);
 
                         } else {
+
                             //PANTALLA RESULTADO TRANSACCION
 
                             //resultadoTransaccion(resultado);
-                        }
+                        }*/
                     }
 
-                }).start();
-                break;
             }
 
             //Listo para Nequi
-            case CodigosTransacciones.CORRESPONSAL_CONSULTA_FACTURAS:{
+    /*        case CodigosTransacciones.CORRESPONSAL_CONSULTA_FACTURAS:{
 
-                new Thread(() -> {
+
+
                     cargarInformacionPanVirtual(FIID,tipoDeCuenta,panVirtual);
 
-                    String resultado = null;
+
 
                     DatosRecaudo datosRecaudo = new DatosRecaudo();
 
@@ -227,7 +228,7 @@ public class Hilos extends AppCompatActivity {
 
 
                                 //INTENT A ACTIVITY DONDE SE HACE LA RECARGA A NEQUI
-                            /*Intent intento = new Intent(getApplicationContext(), CorresponsalFacturasPagoActivity.class);
+                            *//*Intent intento = new Intent(getApplicationContext(), CorresponsalFacturasPagoActivity.class);
                             if (valores[2].equals("NEQUI")) {
                                 intento.putExtra("celular", valores[1]);
                                 intento.putExtra("isNequi", true);
@@ -235,7 +236,7 @@ public class Hilos extends AppCompatActivity {
                             }
                             Log.d(TAG, "recaudo  " + datosRecaudo.getValorFactura());
                             intento.putExtra("datosRecaudo", datosRecaudo);
-                            startActivity(intento);*/
+                            startActivity(intento);*//*
                             } else {
                                 //PANTALLA RESULTADO TRANSACCION
                                 // resultadoTransaccion(resultado);
@@ -268,11 +269,16 @@ public class Hilos extends AppCompatActivity {
                         }
                     }
 
-                }).start();
+
+
+
 
                 break;
-            }
+            }*/
+            default:
+                return resultado;
         }
+
 
     }
 

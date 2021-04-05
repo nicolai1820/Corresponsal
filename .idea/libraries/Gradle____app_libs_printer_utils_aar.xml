@@ -1,10 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: ./app/libs/printer-utils.aar">
     <CLASSES>
-      <root url="file://C:/Gradle/gradle-6.7/caches/transforms-2/files-2.1/ea79e176da8621d3e15cfc7294b396f5/printer-utils/AndroidManifest.xml" />
-      <root url="jar://C:/Gradle/gradle-6.7/caches/transforms-2/files-2.1/ea79e176da8621d3e15cfc7294b396f5/printer-utils/jars/classes.jar!/" />
-      <root url="file://C:/Gradle/gradle-6.7/caches/transforms-2/files-2.1/ea79e176da8621d3e15cfc7294b396f5/printer-utils/res" />
-      <root url="jar://C:/Gradle/gradle-6.7/caches/transforms-2/files-2.1/ea79e176da8621d3e15cfc7294b396f5/printer-utils/jars/libs/Binary_V1.0.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ea79e176da8621d3e15cfc7294b396f5/printer-utils/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ea79e176da8621d3e15cfc7294b396f5/printer-utils/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ea79e176da8621d3e15cfc7294b396f5/printer-utils/jars/libs/Binary_V1.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
