@@ -876,7 +876,7 @@ public class PopUp extends AppCompatActivity {
     }
 
     /**Metodo de tipo void, el cual se encarga de crear un pop up para confirmar que no quieren enviar correo al cliente*/
-    public void crearPopUpConfirmarEnvioCorreo(){
+    public void crearPopUpConfirmarEnvioCorreo(String codigoTransaccion){
 
         Handler resp = new Handler(){
             @Override
@@ -884,13 +884,7 @@ public class PopUp extends AppCompatActivity {
                 super.handleMessage(msg);
                 switch (msg.what) {
                     case 1:
-                        if(respuestaCierreSesion.equals("MQ==")){
-                            alertDialogConfirmarEnvioCorreo.dismiss();
-                            dialog.dismiss();
-                            crearPopUpGeneral("Se cerro sesión correctamente");
-                        }else{
-                            crearPopUpLoginFallido("Ocurrio un error al cerrar sesión");
-                        }
+                        //Hace el intent al inicio de la aplicación
 
                 }}};
 

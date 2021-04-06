@@ -60,6 +60,16 @@ public class InfoVenta {
     private String  numeroDocumentoBeneficiario;
     private String  numeroCelularBeneficiario;
 
+    public String getNumeroCuentaRecaudo() {
+        return numeroCuentaRecaudo;
+    }
+
+    public void setNumeroCuentaRecaudo(String numeroCuentaRecaudo) {
+        this.numeroCuentaRecaudo = numeroCuentaRecaudo;
+    }
+
+    private String  numeroCuentaRecaudo;
+
     public String getTramaISO() {
         return tramaISO;
     }

@@ -883,8 +883,7 @@ public class pantallaConfirmacion extends BaseActivity {
 
 
         inforVenta.setUserId(prefs_InfoUser.getUserId());
-        //inforVenta.setCommerceId(base64.decodificarBase64(prefs_Parametricas.getCommerceId()));
-        inforVenta.setCommerceId("hola");
+        inforVenta.setCommerceId(base64.decodificarBase64(prefs_Parametricas.getCommerceId()));
         inforVenta.setTransactionId("12345");
             //Detail Sale
             inforVenta.setCommerceCode(base64.decodificarBase64(prefs_Parametricas.getCommerceCode()));
@@ -895,8 +894,10 @@ public class pantallaConfirmacion extends BaseActivity {
             inforVenta.setDepartment("ee");
             inforVenta.setCity("");
             inforVenta.setAddress(base64.decodificarBase64(prefs_Parametricas.getAddress()));
-            inforVenta.setLatitude(devideInfo.getLatitude());
-            inforVenta.setLength(devideInfo.getLongitude());
+            //inforVenta.setLatitude(devideInfo.getLatitude());
+            //inforVenta.setLength(devideInfo.getLongitude());
+            inforVenta.setLatitude("-74.04252645904097");
+            inforVenta.setLength("4.679813877331977");
             inforVenta.setConsecutive(devideInfo.getNewConsecutive());
             inforVenta.setBillNumber("");
             inforVenta.setEntityCode("");
@@ -943,6 +944,7 @@ public class pantallaConfirmacion extends BaseActivity {
                 inforVenta.setNumeroDocumentoBeneficiario("");
                 inforVenta.setNumeroCelularBeneficiario("");
                 inforVenta.setTramaISO(respuestaC);
+                inforVenta.setNumeroCuentaRecaudo("");
             }
                 break;
 
