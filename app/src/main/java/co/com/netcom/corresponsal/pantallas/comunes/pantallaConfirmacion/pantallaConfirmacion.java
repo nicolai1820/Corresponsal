@@ -195,6 +195,7 @@ public class pantallaConfirmacion extends BaseActivity {
     * tomando como referencia los arreglos que se rescatan del intent.*/
     public void generarTextView(){
 
+        Log.d("Entre generarTextView","");
         //Caso especifico cancelacion giro
         if(transaccion == CodigosTransacciones.CORRESPONSAL_CANCELACION_GIRO){
             LinearLayout linearLayout = new LinearLayout(getBaseContext());
@@ -265,7 +266,8 @@ public class pantallaConfirmacion extends BaseActivity {
             //Se agregan los TextViews al LinearLayout
             linearLayoutConfirmacion.addView(referencia);
             linearLayoutConfirmacion.addView(linearLayout);
-        } else {
+        }
+        else {
             //Todas las transacciones excepto cancelar giro
 
             for (int j = 0; j < titulos.length; j++) {
@@ -364,6 +366,8 @@ public class pantallaConfirmacion extends BaseActivity {
 
 
     public void confirmarValores(View view){
+
+        Log.d("Entre confirmarValores","");
 
         /*Se determina si la el codigo de la transaccion es vacio, si lo es sigue con el flujo normal, de lo contrario, ejecuta
          el hilo correspondiente a esa transacción*/
@@ -642,17 +646,20 @@ public class pantallaConfirmacion extends BaseActivity {
                              datosTransaccion.add(tipoDeCuenta.get(i));
                          }
 
+                         Log.d("DATA",datosTransaccion.toString());
+                         Log.d("DATA",tarjeta.toString());
                          new Thread() {
                              @Override
                              public void run() {
 
-                                 hiloTransacciones.transaccionesConTarjeta(transaccion,datosTransaccion,tarjeta);
+
+                                 respuestaC =hiloTransacciones.transaccionesConTarjeta(transaccion,datosTransaccion,tarjeta,base64.decodificarBase64(prefs_parametricasBanco.getFiidID()),base64.decodificarBase64(prefs_parametricasBanco.getTipoCuenta()),tarjeta.getPan());
                                  try {
                                      // code runs in a thread
                                      runOnUiThread(new Runnable() {
                                          @Override
                                          public void run() {
-                                             //Log.d("CLOSE"," se cerro el loader");
+                                             Log.d("RESPUESTA",respuestaC);
                                              //dialog.dismiss();
                                              enviarTransaccion();
                                          }
@@ -671,7 +678,7 @@ public class pantallaConfirmacion extends BaseActivity {
                              @Override
                              public void run() {
 
-                                 hiloTransacciones.transaccionesConTarjeta(CodigosTransacciones.CORRESPONSAL_CONSULTA_SALDO,null,tarjeta);
+                                 hiloTransacciones.transaccionesConTarjeta(CodigosTransacciones.CORRESPONSAL_CONSULTA_SALDO,null,tarjeta,base64.decodificarBase64(prefs_parametricasBanco.getFiidID()),base64.decodificarBase64(prefs_parametricasBanco.getTipoCuenta()),tarjeta.getPan());
                                  try {
                                      // code runs in a thread
                                      runOnUiThread(new Runnable() {
@@ -800,7 +807,7 @@ public class pantallaConfirmacion extends BaseActivity {
                              @Override
                              public void run() {
 
-                                 hiloTransacciones.transaccionesConTarjeta(transaccion,datosTransaccion,tarjeta);
+                                 hiloTransacciones.transaccionesConTarjeta(transaccion,datosTransaccion,tarjeta,base64.decodificarBase64(prefs_parametricasBanco.getFiidID()),base64.decodificarBase64(prefs_parametricasBanco.getTipoCuenta()),tarjeta.getPan());
                                  try {
                                      // code runs in a thread
                                      runOnUiThread(new Runnable() {
@@ -862,7 +869,8 @@ public class pantallaConfirmacion extends BaseActivity {
                      }
                  }
 
-             }else{
+             }
+             else{
                  PopUp pop = new PopUp(pantallaConfirmacion.this);
                  pop.crearPopUpLoginFallido("Debe activar la ubicación");
              }
@@ -987,6 +995,8 @@ public class pantallaConfirmacion extends BaseActivity {
                 inforVenta.setTipoDocumentoBeneficiario(datosTransaccion.get(4));
                 inforVenta.setNumeroDocumentoBeneficiario(datosTransaccion.get(1));
                 inforVenta.setNumeroCelularBeneficiario("");
+                inforVenta.setTramaISO(respuestaC);
+                inforVenta.setNumeroCuentaRecaudo("");
             }
                 break;
 
@@ -1028,6 +1038,8 @@ public class pantallaConfirmacion extends BaseActivity {
                 inforVenta.setTipoDocumentoBeneficiario(datosTransaccion.get(11));
                 inforVenta.setNumeroDocumentoBeneficiario(datosTransaccion.get(8));
                 inforVenta.setNumeroCelularBeneficiario(datosTransaccion.get(7));
+                inforVenta.setTramaISO(respuestaC);
+                inforVenta.setNumeroCuentaRecaudo("");
             }
                 break;
 
@@ -1070,6 +1082,8 @@ public class pantallaConfirmacion extends BaseActivity {
                 inforVenta.setTipoDocumentoBeneficiario(datosTransaccion.get(6));
                 inforVenta.setNumeroDocumentoBeneficiario(datosTransaccion.get(3));
                 inforVenta.setNumeroCelularBeneficiario("");
+                inforVenta.setTramaISO(respuestaC);
+                inforVenta.setNumeroCuentaRecaudo("");
             }
                 break;
 
@@ -1111,6 +1125,8 @@ public class pantallaConfirmacion extends BaseActivity {
                 inforVenta.setTipoDocumentoBeneficiario(datosTransaccion.get(6));
                 inforVenta.setNumeroDocumentoBeneficiario(datosTransaccion.get(3));
                 inforVenta.setNumeroCelularBeneficiario("");
+                inforVenta.setTramaISO(respuestaC);
+                inforVenta.setNumeroCuentaRecaudo("");
             }
                 break;
 
@@ -1152,6 +1168,8 @@ public class pantallaConfirmacion extends BaseActivity {
                 inforVenta.setTipoDocumentoBeneficiario("");
                 inforVenta.setNumeroDocumentoBeneficiario("");
                 inforVenta.setNumeroCelularBeneficiario("");
+                inforVenta.setTramaISO(respuestaC);
+                inforVenta.setNumeroCuentaRecaudo("");
             }
                 break;
 
@@ -1197,6 +1215,8 @@ public class pantallaConfirmacion extends BaseActivity {
                 inforVenta.setTipoDocumentoBeneficiario("");
                 inforVenta.setNumeroDocumentoBeneficiario("");
                 inforVenta.setNumeroCelularBeneficiario("");
+                inforVenta.setTramaISO(respuestaC);
+                inforVenta.setNumeroCuentaRecaudo("");
             }
                 break;
 
@@ -1238,6 +1258,8 @@ public class pantallaConfirmacion extends BaseActivity {
                 inforVenta.setTipoDocumentoBeneficiario("");
                 inforVenta.setNumeroDocumentoBeneficiario("");
                 inforVenta.setNumeroCelularBeneficiario("");
+                inforVenta.setTramaISO(respuestaC);
+                inforVenta.setNumeroCuentaRecaudo("");
             }
                 break;
 
@@ -1279,6 +1301,8 @@ public class pantallaConfirmacion extends BaseActivity {
                 inforVenta.setTipoDocumentoBeneficiario("");
                 inforVenta.setNumeroDocumentoBeneficiario("");
                 inforVenta.setNumeroCelularBeneficiario("");
+                inforVenta.setTramaISO(respuestaC);
+                inforVenta.setNumeroCuentaRecaudo("");
             }
                 break;
 
@@ -1320,6 +1344,8 @@ public class pantallaConfirmacion extends BaseActivity {
                 inforVenta.setTipoDocumentoBeneficiario("");
                 inforVenta.setNumeroDocumentoBeneficiario("");
                 inforVenta.setNumeroCelularBeneficiario("");
+                inforVenta.setTramaISO(respuestaC);
+                inforVenta.setNumeroCuentaRecaudo("");
             }
                 break;
 
@@ -1364,6 +1390,8 @@ public class pantallaConfirmacion extends BaseActivity {
                 inforVenta.setTipoDocumentoBeneficiario("");
                 inforVenta.setNumeroDocumentoBeneficiario("");
                 inforVenta.setNumeroCelularBeneficiario("");
+                inforVenta.setTramaISO(respuestaC);
+                inforVenta.setNumeroCuentaRecaudo("");
             }
                 break;
 
@@ -1410,6 +1438,8 @@ public class pantallaConfirmacion extends BaseActivity {
                 inforVenta.setTipoDocumentoBeneficiario("");
                 inforVenta.setNumeroDocumentoBeneficiario("");
                 inforVenta.setNumeroCelularBeneficiario("");
+                inforVenta.setTramaISO(respuestaC);
+                inforVenta.setNumeroCuentaRecaudo("");
             }
                 break;
 
@@ -1452,6 +1482,8 @@ public class pantallaConfirmacion extends BaseActivity {
                 inforVenta.setTipoDocumentoBeneficiario("");
                 inforVenta.setNumeroDocumentoBeneficiario("");
                 inforVenta.setNumeroCelularBeneficiario("");
+                inforVenta.setTramaISO(respuestaC);
+                inforVenta.setNumeroCuentaRecaudo("");
             }
                 break;
         }

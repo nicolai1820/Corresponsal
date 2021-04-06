@@ -108,7 +108,7 @@ dependencies {
     implementation 'com.github.tony19:logback-android:1.1.1-12'
 
     //newland
-    implementation files('libs\\NLmeSdk-1.4.12-debug.jar')
+    implementation files('libs\\NLmeSdk-1.4.19.2_debug.jar')
 
     //peticiones http
     implementation 'com.squareup.okhttp3:okhttp:3.14.6'

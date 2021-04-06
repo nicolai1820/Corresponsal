@@ -23,12 +23,16 @@ import com.newland.depend.entity.ReadCardInfo;
 import com.newland.depend.enums.CARD_STATE;
 import com.newland.depend.enums.DataEncryptTypeEnum;
 import com.newland.depend.enums.MediaTypeEnum;
+import com.newland.mtype.module.common.cardreader.CardRule;
 import com.newland.mtype.module.common.cardreader.OpenCardType;
 import com.newland.mtype.module.common.emv.AIDConfig;
+import com.newland.mtype.module.common.pin.AccountInputType;
 import com.newland.mtype.module.common.pin.MacAlgorithm;
 import com.newland.mtype.module.common.pin.PinManageType;
 import com.newland.mtype.util.Dump;
 import com.newland.mtype.util.ISOUtils;
+import co.com.netcom.newlandplugin.ConstantsPosEntryMode;
+import co.com.netcom.newlandplugin.ConstantsModeEntry;
 
 import co.com.netcom.corresponsal.core.comunicacion.CardDTO;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.consultaSaldo.pantallaConsultaSaldoLectura;
@@ -126,7 +130,8 @@ public class MetodosSDKNewland {
 
 
         cipherTag = new ArrayList<Integer>();
-        cipherTag.add(0x5F20);
+        cipherTag.add(0x57);
+/*        cipherTag.add(0x5F20);
         cipherTag.add(0x4f);
         cipherTag.add(0x5F24);
         cipherTag.add(0x9F16);
@@ -170,7 +175,7 @@ public class MetodosSDKNewland {
         cipherTag.add(0x50);
         cipherTag.add(0x9F08);
         cipherTag.add(0x8A);
-        cipherTag.add(0x9F4C);
+        cipherTag.add(0x9F4C);*/
     }
 
     private PosManagerDelegate swiperCardChangedListener = new PosManagerDelegate() {
@@ -448,57 +453,48 @@ public class MetodosSDKNewland {
 
         @Override
         public void onReadCardSucc(CardInfoEntity cardInfoEntity) {
-           /* appendString("onReadCardSucc = " + cardInfoEntity.getCardNo());
-            appendString("ksn = " + Dump.getHexDump(cardInfoEntity.getKsn()));
 
-            if (cardInfoEntity.getPinKsn() != null) {
-                appendString("PinKsn = " + Dump.getHexDump(cardInfoEntity.getPinKsn()));
-            }
+           if (cardInfoEntity.getCardType()==0){
 
-            appendString("StrTrack1 = " + Dump.getHexDump(cardInfoEntity.getStrTrack1()));
-            appendString("StrTrack2 = " + cardInfoEntity.getStrTrack2());
-            appendString("StrTrack2 = " + Dump.getHexDump(cardInfoEntity.getStrTrack2()));
-            appendString("StrTrack3 = " + Dump.getHexDump(cardInfoEntity.getStrTrack3()));
-            appendString("Card No= " + cardInfoEntity.getCardNo());
-            appendString("Pan Sequence = " + cardInfoEntity.getPanSeqNo());
-            appendString("Card type = " + cardInfoEntity.getCardType());
-            appendString("card Expiry Date = " + cardInfoEntity.getExpiryDate());
-            appendString("iccData = " + Dump.getHexDump(cardInfoEntity.getIccDataPlain()));
-            appendString("Encrypted = " + Dump.getHexDump(cardInfoEntity.getIccDataEncrypt()));
-            appendString("pinblock = " + Dump.getHexDump(cardInfoEntity.getPinBlock()));
-
-            nlPosManager.calculateMAC(PinManageType.DUKPT, DEFAULT_MAC_WK_INDEX, ISOUtils.hex2byte(DataforMac), MacAlgorithm.MAC_X919);
-            */
-
-           Log.d("Modo Lectura",String.valueOf(cardInfoEntity.getCardType()));
-           Log.d("CARDTYPE",Dump.getHexDump(cardInfoEntity.getIccDataPlain()));
-
-           //Se obtiene el track dos y se hace el Split en el caracter correspondiente.
-
-            /*track2 = Dump.getHexDump(cardInfoEntity.getStrTrack2()).split("D");
-           bin = track2[0].substring(0,7);
-
-           datosTarjeta.setTrack1(Dump.getHexDump(cardInfoEntity.getStrTrack1()));
-           datosTarjeta.setTrack2(Dump.getHexDump(cardInfoEntity.getStrTrack2()));
-           datosTarjeta.setTrack3(Dump.getHexDump(cardInfoEntity.getStrTrack3()));
-           datosTarjeta.setPan(track2[0]);
-           datosTarjeta.setFechaExpiracion(track2[1].substring(0,6));
-           datosTarjeta.setKsn(Dump.getHexDump(cardInfoEntity.getKsn()));
-           datosTarjeta.setPinBlock(Dump.getHexDump(cardInfoEntity.getPinBlock()));
-           datosTarjeta.setKsnPinBlock(Dump.getHexDump(cardInfoEntity.getPinKsn()));
-           datosTarjeta.setUltimosCuatro(track2[0].substring(17));*/
-
-           if (Dump.getHexDump(cardInfoEntity.getIccDataPlain())=="0"){
-
-               datosTarjeta.setTrack1(Dump.getHexDump(cardInfoEntity.getStrTrack1()));
+             /*  datosTarjeta.setTrack1(Dump.getHexDump(cardInfoEntity.getStrTrack1()));
                datosTarjeta.setTrack2(Dump.getHexDump(cardInfoEntity.getStrTrack2()));
                datosTarjeta.setTrack3(Dump.getHexDump(cardInfoEntity.getStrTrack3()));
                datosTarjeta.setFechaExpiracion(cardInfoEntity.getExpiryDate());
                //card.setUltimosCuatro(track2[0].substring(track2[0].length()-4, track2[0].length()));
                datosTarjeta.setKsn(Dump.getHexDump(cardInfoEntity.getKsn()));
                datosTarjeta.setKsnPinBlock(Dump.getHexDump(cardInfoEntity.getPinKsn()));
-               datosTarjeta.setPinBlock(Dump.getHexDump(cardInfoEntity.getPinBlock()));
+               datosTarjeta.setPinBlock(Dump.getHexDump(cardInfoEntity.getPinBlock()));*/
+             UtilsHexa hexa = new UtilsHexa();
 
+               String [] track2 = hexa.hexToString(Dump.getHexDump(cardInfoEntity.getStrTrack2Plain()).replaceAll(" ","")).split("D");
+               String maskedPAN = track2[0].substring(0,8) + "****" + track2[0].substring(track2[0].length() - 4, track2[0].length());
+
+               datosTarjeta.setPanEnmascarado(maskedPAN);
+               datosTarjeta.setTarjetaHabiente(ObtenerTarjetaHabiente(hexa.hexToString(Dump.getHexDump(cardInfoEntity.getStrTrack1Plain()).replaceAll(" ","")).toCharArray()));
+               datosTarjeta.setTrack2(Dump.getHexDump(cardInfoEntity.getStrTrack2()));
+               datosTarjeta.setFechaExpiracion(track2[1].replaceAll(" ","").substring(0,4));
+               datosTarjeta.setUltimosCuatro(track2[0].substring(track2[0].length()-4, track2[0].length()));
+               datosTarjeta.setPan(track2[0]);
+
+               if(Dump.getHexDump(cardInfoEntity.getKsn())!=null){
+                   datosTarjeta.setKsn(Dump.getHexDump(cardInfoEntity.getKsn()).replaceAll(" ",""));
+               }else{
+                   datosTarjeta.setKsn(Dump.getHexDump(cardInfoEntity.getPinKsn()).replaceAll(" ",""));
+               }
+               if (Dump.getHexDump(cardInfoEntity.getPinKsn())!=null){
+                   datosTarjeta.setKsnPinBlock(Dump.getHexDump(cardInfoEntity.getPinKsn()).replaceAll(" ",""));
+               }
+               if (Dump.getHexDump(cardInfoEntity.getPinBlock())!=null){
+                   datosTarjeta.setPinBlock(Dump.getHexDump(cardInfoEntity.getPinBlock()).replaceAll(" ",""));
+               }
+
+               datosTarjeta.setTrack2Cifrado(Dump.getHexDump(cardInfoEntity.getStrTrack2()).replace(" ",""));
+               datosTarjeta.setPosEntryMode(ConstantsPosEntryMode.MAGNETIC_SWIP);
+               datosTarjeta.setIsBanda(true);
+               datosTarjeta.setFallBack(false);
+               datosTarjeta.setTipoCuentaId("");
+               datosTarjeta.setTipoEntrada(ConstantsModeEntry.MAGNETIC_SWIPE);
+               datosTarjeta.setPan(track2[0]);
                switch (codigoTransaccion){
 
                    case RETIRO:
@@ -549,8 +545,8 @@ public class MetodosSDKNewland {
                }
 
            }
-           else if(Dump.getHexDump(cardInfoEntity.getIccDataPlain())=="1"){
-               track2 = Dump.getHexDump(cardInfoEntity.getStrTrack2()).split("D");
+           else if(cardInfoEntity.getCardType()==1){
+          /*     track2 = Dump.getHexDump(cardInfoEntity.getStrTrack2()).split("D");
                bin = track2[0].substring(0,7);
 
                datosTarjeta.setTrack1(Dump.getHexDump(cardInfoEntity.getStrTrack1()));
@@ -561,7 +557,35 @@ public class MetodosSDKNewland {
                datosTarjeta.setKsn(Dump.getHexDump(cardInfoEntity.getKsn()));
                datosTarjeta.setPinBlock(Dump.getHexDump(cardInfoEntity.getPinBlock()));
                datosTarjeta.setKsnPinBlock(Dump.getHexDump(cardInfoEntity.getPinKsn()));
-               datosTarjeta.setUltimosCuatro(track2[0].substring(17));
+               datosTarjeta.setUltimosCuatro(track2[0].substring(17));*/
+
+
+               datosTarjeta.setPosEntryMode(ConstantsPosEntryMode.CHIP);
+               datosTarjeta.setIsBanda(false);
+               datosTarjeta.setIsChip(true);
+               datosTarjeta.setFallBack(false);
+               datosTarjeta.setTipoEntrada(ConstantsModeEntry.EMV);
+
+               if(Dump.getHexDump(cardInfoEntity.getKsn())!=null){
+                   datosTarjeta.setKsn(Dump.getHexDump(cardInfoEntity.getKsn()).replaceAll(" ",""));
+               }else{
+                   datosTarjeta.setKsn(Dump.getHexDump(cardInfoEntity.getPinKsn()).replaceAll(" ",""));
+               }
+               if (Dump.getHexDump(cardInfoEntity.getPinKsn())!=null){
+                   datosTarjeta.setKsnPinBlock(Dump.getHexDump(cardInfoEntity.getPinKsn()).replaceAll(" ",""));
+               }
+               if (Dump.getHexDump(cardInfoEntity.getPinBlock())!=null){
+                   datosTarjeta.setPinBlock(Dump.getHexDump(cardInfoEntity.getPinBlock()).replaceAll(" ",""));
+               }
+               String [] track2 = Dump.getHexDump(cardInfoEntity.getStrTrack2()).replaceAll(" ","").split("D");
+               datosTarjeta.setPan(track2[0]);
+               datosTarjeta.setFechaExpiracion(track2[1].replaceAll(" ","").substring(0,4));
+               datosTarjeta.setUltimosCuatro(track2[0].substring(track2[0].length()-4, track2[0].length()));
+               String maskedPAN = track2[0].substring(0,8) + "****" + track2[0].substring(track2[0].length() - 4, track2[0].length());
+               datosTarjeta.setPanEnmascarado(maskedPAN);
+
+               datosTarjeta.setTrack2(Dump.getHexDump(cardInfoEntity.getStrTrack2()));
+               datosTarjeta.setTrack2Cifrado(Dump.getHexDump(cardInfoEntity.getIccDataEncrypt()));
 
                switch (codigoTransaccion){
 
@@ -934,6 +958,11 @@ public class MetodosSDKNewland {
         }
 
         @Override
+        public void onReceiveErrorCode(int i, String s, CardInfoEntity cardInfoEntity) {
+
+        }
+
+        @Override
         public void onIncreaseKsnSucc() {
             //   appendString("onIncreaseKsnSucc ");
         }
@@ -1087,13 +1116,15 @@ public class MetodosSDKNewland {
             paramsInfo.setWkIndex(DEFAULT_DATA_WK_INDEX);
             paramsInfo.setPkIndex(DEFAULT_PIN_WK_INDEX);
             paramsInfo.setType(DataEncryptTypeEnum.DUKPT);
+            paramsInfo.setCardRule(CardRule.UN_ALLOW_LOWER);
             paramsInfo.setTimeout(TIMEOUT);
             String formatDisplayContent = String.format("Total : %s\n      ENTER PIN", totalAmount);
             paramsInfo.setDisplayContent(formatDisplayContent);
             nlPosManager.startReadCard(paramsInfo);
 
 
-        }else{
+        }
+        else{
 
             ReadCardInfo paramsInfo = new ReadCardInfo();
             paramsInfo.setOpenCardType(new OpenCardType[] { OpenCardType.SWIPER, OpenCardType.ICCARD, OpenCardType.NCCARD });
@@ -1111,6 +1142,7 @@ public class MetodosSDKNewland {
             paramsInfo.setWkIndex(DEFAULT_DATA_WK_INDEX);
             paramsInfo.setPkIndex(DEFAULT_PIN_WK_INDEX);
             paramsInfo.setType(DataEncryptTypeEnum.DUKPT);
+            paramsInfo.setCardRule(CardRule.UN_ALLOW_LOWER);
             paramsInfo.setTimeout(TIMEOUT);
             String formatDisplayContent = String.format("ENTER PIN");
             paramsInfo.setDisplayContent(formatDisplayContent);
@@ -1128,7 +1160,7 @@ public class MetodosSDKNewland {
 
         //pan virtual pruebas 6217731300813785
         //Se hace llamado al servicio que retorna el pan
-        nlPosManager.startPinInput(PinManageType.DUKPT,DEFAULT_PIN_WK_INDEX,"6217731300813785",6,"60",strTotalAmountDisplay);
+        nlPosManager.startPinInput(PinManageType.DUKPT,DEFAULT_PIN_WK_INDEX,"6217731300813785",6,"60",strTotalAmountDisplay, AccountInputType.PINBLOCK);
     }
 
     /**Metodo que retorna un String, para obtener el pinBlock */
@@ -1142,6 +1174,44 @@ public class MetodosSDKNewland {
         return estado;
     }
 
+    /**Metodo para obtener el tarjeta habiente */
+    private String ObtenerTarjetaHabiente(char[] infoTrack1) {
+        Log.d("ARREGLO",String.valueOf(infoTrack1));
+        int contadorSeparadores = 0;
+        int n = 0;
+        int contador = 0;
+        String tarjetaHabiente = "";
+
+        ////// VALIDANDO PRIMER SEPARADOR ////////
+        for (n = 0; n < infoTrack1.length; n++) {
+            if (String.valueOf(infoTrack1[n]).equals("^")) {
+                Log.d("primer separador","primer");
+                contadorSeparadores++;
+                break;
+            }
+        }
+        ////// VALIDANDO SIGUIENTE SEPARADOR ////////
+        for (contador = n + 1; contador < infoTrack1.length; contador++) {
+
+            if (String.valueOf(infoTrack1[contador]).equals("^")) {
+                Log.d("segundo separador","segundo");
+
+                contadorSeparadores++;
+                break;
+            } else {
+                Log.d("Caracter",String.valueOf(infoTrack1[contador]));
+                tarjetaHabiente += String.valueOf(infoTrack1[contador]);
+            }
+        }
+        Log.d("HAbiente",tarjetaHabiente);
+        if(contadorSeparadores==2){
+            Log.d("PAN",tarjetaHabiente);
+
+            return tarjetaHabiente;
+        }else{
+            return "";
+        }
+    }
 
 
 }

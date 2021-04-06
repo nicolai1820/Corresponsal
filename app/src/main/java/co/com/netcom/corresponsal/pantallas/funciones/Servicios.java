@@ -581,7 +581,8 @@ public class Servicios {
             return resp;
 
 
-        } catch (IOException | JSONException e) {
+        }
+        catch (IOException | JSONException e) {
             Message usuarioCancela = new Message();
             usuarioCancela.what = 2;
             pantallaConfirmacion.respuesta.sendMessage(usuarioCancela);

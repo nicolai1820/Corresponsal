@@ -318,27 +318,24 @@ public class Hilos extends AppCompatActivity {
 
     /**Metodo de tipo void que se encarga de las transacciones con tarjeta, recibo como parametros el codigo de la transaccion,
      * un arreglo con los datos y un objeto de tipo CardDTO*/
-    public void transaccionesConTarjeta(int transaccion, ArrayList datos, CardDTO tarjeta){
+    public String transaccionesConTarjeta(int transaccion, ArrayList datos, CardDTO tarjeta,String FIID, String tipoDeCuenta, String panVirtual){
 
         switch (transaccion){
             //Listo
             case CodigosTransacciones.CORRESPONSAL_CONSULTA_SALDO:{
-                new Thread(() -> {
-                    String resultado = null;
 
+                    String resultado = null;
+                    cargarInformacionPanVirtual(FIID,tipoDeCuenta,panVirtual);
                     resultado = integradorC.enviarConsultaSaldoBclObj(tarjeta);
                     Log.d("CONSULTA SALDO", "resultado " + resultado);
+                    return resultado;
 
-                    //Hacer intent dependiendo de la respuesta
-
-                }).start();
-                break;
             }
 
 
             //Listo
             case CodigosTransacciones.CORRESPONSAL_RETIRO_CON_TARJETA:{
-                new Thread(() -> {
+
                     String resultado = null;
                     int otraCuenta;
                     String numeroCuenta;
@@ -351,43 +348,46 @@ public class Hilos extends AppCompatActivity {
                         otraCuenta = 0;
                         numeroCuenta = "0";
                     }
-
+                    cargarInformacionPanVirtual(FIID,tipoDeCuenta,panVirtual);
                                                                     //objeto CardDTO, cantidad, otra cuenta, numero cuenta
-                    //resultado = integradorC.enviarRetiroTarjetaBCLObj(tarjeta, datos.get(0).toString(), otraCuenta, numeroCuenta);
+                    resultado = integradorC.enviarRetiroTarjetaBCLObj(tarjeta, datos.get(0).toString(), otraCuenta, numeroCuenta);
                     //Hacer intent dependiendo de la respuesta
                     Log.d("RETIRO CON TARJETA", "resultado " + resultado);
-
-                }).start();
-                break;
+                    return resultado;
             }
 
             //Listo
             case CodigosTransacciones.CORRESPONSAL_TRANSFERENCIA:{
-                new Thread(() -> {
+
                     String resultado = null;
                     int otraCuentaOrigen;
                     String numeroCuentaOrigen;
+
+                    cargarInformacionPanVirtual(FIID,tipoDeCuenta,panVirtual);
 
                     if (datos.size()>6){
                         otraCuentaOrigen=1;
                         numeroCuentaOrigen = datos.get(4).toString();
                         //objeto CardDTO, tipo cuenta origen, codigo cuenta destino,numero cuenta destino,numero cuenta origen, cantidad
-                      //  resultado = integradorC.enviarTransferencia(tarjeta, "10", datos.get(5).toString(), datos.get(1).toString(), numeroCuentaOrigen, datos.get(2).toString());
+                        resultado = integradorC.enviarTransferencia(tarjeta, "10", datos.get(5).toString(), datos.get(1).toString(), numeroCuentaOrigen, datos.get(2).toString());
                     }else{
                         otraCuentaOrigen = 0;
                         numeroCuentaOrigen = "00000";
                         //objeto CardDTO, tipo cuenta origen, codigo cuenta destino,numero cuenta destino,numero cuenta origen, cantidad
-                      //  resultado = integradorC.enviarTransferencia(tarjeta, "10", datos.get(4).toString(), datos.get(1).toString(), numeroCuentaOrigen, datos.get(2).toString());
+                        resultado = integradorC.enviarTransferencia(tarjeta, "10", datos.get(4).toString(), datos.get(1).toString(), numeroCuentaOrigen, datos.get(2).toString());
                     }
 
                     //Hacer intent dependiendo de la respuesta
 
 
                     Log.d("Transferencia", "resultado " + resultado);
+                    return resultado;
 
-                }).start();
-                break;
+
             }
+
+            default:
+                return "";
 
 
         }
