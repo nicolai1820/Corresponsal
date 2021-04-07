@@ -418,7 +418,7 @@ Java_co_com_netcom_corresponsal_core_comunicacion_IntegradorC_enviarTransferenci
     instance2 = thiz;
     int resultado = 0;
     char codigoAprobacion[20 + 1] = {0x00};
-    char respuesta[100 + 1] = {0x00};
+    char respuesta[1024 + 1] = {0x00};
     const char *paramTipo_cuenta_o;
     const char *paramtipo_cuenta_d;
     const char *paramCuentaDestino;
