@@ -18,6 +18,7 @@ import co.com.netcom.corresponsal.core.comunicacion.CardDTO;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion;
 import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
+import co.com.netcom.corresponsal.pantallas.funciones.CodigosTransacciones;
 
 public class PantallaRetiroConTarjetaTipoDeCuenta extends BaseActivity {
 
@@ -34,7 +35,7 @@ public class PantallaRetiroConTarjetaTipoDeCuenta extends BaseActivity {
     private int contador;
     private int contadorRespaldo;
     private CardDTO tarjeta;
-
+    private CodigosTransacciones codigo = new CodigosTransacciones();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,9 +131,9 @@ public class PantallaRetiroConTarjetaTipoDeCuenta extends BaseActivity {
                 i.putExtra("terminos",false);
                 i.putExtra("clase","");
                 i.putExtra("contador", contador);
-                i.putExtra("transaccion", "");
                 i.putExtra("tarjeta",tarjeta);
                 i.putExtra("iconos",iconos);
+                i.putExtra("transaccion", codigo.CORRESPONSAL_RETIRO_CON_TARJETA);
                 startActivity(i);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 
@@ -163,8 +164,8 @@ public class PantallaRetiroConTarjetaTipoDeCuenta extends BaseActivity {
                 i.putExtra("contador", contador);
                 i.putExtra("iconos",iconos);
                 i.putExtra("tipoDeCuenta", tipoDeCuenta);
-                i.putExtra("transaccion", "");
                 i.putExtra("tarjeta",tarjeta);
+                i.putExtra("transaccion", codigo.CORRESPONSAL_RETIRO_CON_TARJETA);
                 startActivity(i);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }

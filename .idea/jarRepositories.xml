@@ -41,5 +41,10 @@
       <option name="name" value="local" />
       <option name="url" value="file:$PROJECT_DIR$/../../Repositorio%20GitLab/CorresponsalApp/mvn-cache/" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="local" />
+      <option name="name" value="local" />
+      <option name="url" value="file:/$PROJECT_DIR$/../../Repositorio%20GItlab/Corresponsal/mvn-cache/" />
+    </remote-repository>
   </component>
 </project>

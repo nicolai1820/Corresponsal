@@ -350,6 +350,11 @@
     <string name="textView_PantallaTransaccionFallida">Transacción Fallida</string>
     <string name="button_PantallaTransaccionFallida">Salir</string>
 
+    <!-->String Activity Pantalla Copia Correo </!-->
+    <string name="textView_PantallaCopiaCorreo">Ingrese el correo electrónico del cliente</string>
+    <string name="editText_PantallaCopiaCorreo">Correo electrónico</string>
+    <string name="button_PantallaCopiaCorreo">Enviar Copia</string>
+
 
 
     <!--> __________________________________________________________________Proyecto APOS _____________________________________________________________________________________________________</!-->

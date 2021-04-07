@@ -1,7 +1,0 @@
-/Users/netcom/Desktop/CorresponsalApp/app/.cxx/cmake/debug/arm64-v8a/CMakeFiles/edit_cache.dir
-/Users/netcom/Desktop/CorresponsalApp/app/.cxx/cmake/debug/arm64-v8a/CMakeFiles/netcom_Bancolombia.dir
-/Users/netcom/Desktop/CorresponsalApp/app/.cxx/cmake/debug/arm64-v8a/CMakeFiles/netcom_Caja.dir
-/Users/netcom/Desktop/CorresponsalApp/app/.cxx/cmake/debug/arm64-v8a/CMakeFiles/rebuild_cache.dir
-/Users/netcom/Desktop/CorresponsalApp/app/.cxx/cmake/debug/arm64-v8a/CMakeFiles/netcom_Lealtad.dir
-/Users/netcom/Desktop/CorresponsalApp/app/.cxx/cmake/debug/arm64-v8a/CMakeFiles/netcom_Venta.dir
-/Users/netcom/Desktop/CorresponsalApp/app/.cxx/cmake/debug/arm64-v8a/CMakeFiles/native-lib.dir

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: ./app/libs/NLmeSdk-1.4.19.2_debug.jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/NLmeSdk-1.4.19.2_debug.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

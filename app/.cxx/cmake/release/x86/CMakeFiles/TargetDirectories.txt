@@ -1,7 +1,0 @@
-/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/edit_cache.dir
-/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/netcom_Bancolombia.dir
-/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/netcom_Caja.dir
-/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/rebuild_cache.dir
-/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/netcom_Lealtad.dir
-/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/netcom_Venta.dir
-/Users/netcom/Documents/Repositorio GitLab/CorresponsalApp/app/.cxx/cmake/release/x86/CMakeFiles/native-lib.dir

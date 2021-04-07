@@ -28,6 +28,7 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManagerFactory;
 
 import co.com.netcom.corresponsal.pantallas.comunes.logIn.LogIn;
+import co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion;
 import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.consultaSaldo.pantallaConsultaSaldoLectura;
 import okhttp3.MediaType;
@@ -53,6 +54,7 @@ public class Servicios {
     private static String apiCambioContrasena ="netcom/merchant/api/users/userId/passwords";
     private static String apiVenta ="netcom/merchant/api/transactions/sales/v2";
     private static String apiParametricasBanco ="netcom/merchant/api/parametrics/terminal?userId=USERID&terminalCode=TERMINALCODE";
+    private static String apiPanVirtual ="netcom/merchant/api/parametrics/terminal/pan?userId=USERID&terminalCode=TERMINALCODE";
 
     private Context context;
     private String token;
@@ -525,12 +527,17 @@ public class Servicios {
 
         OkHttpClient client = builder.sslSocketFactory(getSLLContext().getSocketFactory()).callTimeout(30,TimeUnit.SECONDS).build();
         MediaType mediaType = MediaType.parse("application/json");
-
-        String encriptionkey = prefs_userId.getEncryptionKey();
+        CodificarBase64 base641 = new CodificarBase64();
+        String encriptionkey = base641.decodificarBase64(prefs_userId.getEncryptionKey());
         EncripcionAES aes = new EncripcionAES();
         RequestBody body = RequestBody.create(mediaType,"");
+
+        Log.d("OBJETO VENTA",objetoVenta.ConvertToString());
         try {
-             body = RequestBody.create(mediaType, "{\r\n    \"userId\": \"" + prefs_userId.getUserId() + "\",\r\n    \"commerceId\": \"" + aes.encrypt(encriptionkey, objetoVenta.getCommerceId()) + "\",\r\n    \"transactionId\": \""+aes.encrypt(encriptionkey, objetoVenta.getTransactionId())+"\",\r\n    \"detailSale\": {\r\n        \"commerceCode\": \""+aes.encrypt(encriptionkey, objetoVenta.getCommerceCode())+"\",\r\n        \"commerceId\": \""+aes.encrypt(encriptionkey, objetoVenta.getDetailSalecommerceId())+"\",\r\n        \"terminalCode\": \""+aes.encrypt(encriptionkey, objetoVenta.getTerminalCode())+"\",\r\n        \"transactionType\": \""+aes.encrypt(encriptionkey, objetoVenta.getTransactionType())+"\",\r\n        \"mposType\": \""+aes.encrypt(encriptionkey, objetoVenta.getMposType())+"\",\r\n        \"numberQuotas\": \""+aes.encrypt(encriptionkey, objetoVenta.getNumberQuotas())+"\",\r\n        \"accountType\": \""+aes.encrypt(encriptionkey, objetoVenta.getAccountType())+"\",\r\n        \"partialAmount\": \""+aes.encrypt(encriptionkey, objetoVenta.getPartialAmount())+"\",\r\n        \"iva\": \""+aes.encrypt(encriptionkey, objetoVenta.getIva())+"\",\r\n        \"base\": \""+aes.encrypt(encriptionkey, objetoVenta.getBase())+"\",\r\n        \"inc\": \""+aes.encrypt(encriptionkey, objetoVenta.getInc())+"\",\r\n        \"tip\": \""+aes.encrypt(encriptionkey, objetoVenta.getTip())+"\",\r\n        \"pan\": \""+aes.encrypt(encriptionkey, objetoVenta.getPan())+"\",\r\n        \"totalAmount\": \""+aes.encrypt(encriptionkey, objetoVenta.getTotalAmount())+"\",\r\n        \"tagSale\": \""+aes.encrypt(encriptionkey, objetoVenta.getTagSale())+"\",\r\n        \"track2\": \""+aes.encrypt(encriptionkey, objetoVenta.getTrack2())+"\",\r\n        \"encryptType\": \""+aes.encrypt(encriptionkey, objetoVenta.getEncryptType())+"\",\r\n        \"ksn\": \""+aes.encrypt(encriptionkey, objetoVenta.getKsn())+"\",\r\n        \"pinBlock\": \""+aes.encrypt(encriptionkey, objetoVenta.getPinBlock())+"\",\r\n        \"ksnPinBlock\": \""+aes.encrypt(encriptionkey, objetoVenta.getKsnPinBlock())+"\",\r\n        \"postEntryMode\": \""+aes.encrypt(encriptionkey, objetoVenta.getPostEntryMode())+"\",\r\n        \"country\": \""+aes.encrypt(encriptionkey, objetoVenta.getCountry())+"\",\r\n        \"department\": \""+aes.encrypt(encriptionkey, objetoVenta.getDepartment())+"\",\r\n        \"city\": \""+aes.encrypt(encriptionkey, objetoVenta.getCity())+"\",\r\n        \"address\": \""+aes.encrypt(encriptionkey, objetoVenta.getAddress())+"\",\r\n        \"latitude\": \""+aes.encrypt(encriptionkey, objetoVenta.getLatitude())+"\",\r\n        \"length\": \""+aes.encrypt(encriptionkey, objetoVenta.getLength())+"\",\r\n        \"consecutive\": \""+aes.encrypt(encriptionkey, objetoVenta.getConsecutive())+"\",\r\n        \"billNumber\": \""+aes.encrypt(encriptionkey, objetoVenta.getBillNumber())+"\",\r\n        \"entityCode\": \""+aes.encrypt(encriptionkey, objetoVenta.getEntityCode())+"\",\r\n        \"arqc\": \""+aes.encrypt(encriptionkey, objetoVenta.getArqc())+"\",\r\n        \"cardName\": \""+aes.encrypt(encriptionkey, objetoVenta.getCardName())+"\",\r\n        \"apLabel\": \""+aes.encrypt(encriptionkey, objetoVenta.getApLabel())+"\",\r\n        \"channel\": \""+aes.encrypt(encriptionkey, objetoVenta.getChannel())+"\",\r\n        \"expirationDate\": \""+aes.encrypt(encriptionkey, objetoVenta.getExpirationDate())+"\",\r\n        \"aid\": \""+aes.encrypt(encriptionkey, objetoVenta.getAid())+"\",\r\n        \"documentNumber\": \""+aes.encrypt(encriptionkey, objetoVenta.getDocumentNumber())+"\",\r\n        \"numeroCuenta\": \""+aes.encrypt(encriptionkey, objetoVenta.getNumeroCuenta())+"\",\r\n        \"numeroConvenio\": \""+aes.encrypt(encriptionkey, objetoVenta.getNumeroConvenio())+"\",\r\n        \"capturaLectorBarras\": \""+aes.encrypt(encriptionkey, objetoVenta.getCapturaLectorBarras())+"\",\r\n        \"numeroCelular\": \""+aes.encrypt(encriptionkey, objetoVenta.getNumeroCelular())+"\",\r\n        \"numeroTarjeta\": \""+aes.encrypt(encriptionkey, objetoVenta.getNumeroTarjeta())+"\",\r\n        \"numeroPagare\": \""+aes.encrypt(encriptionkey, objetoVenta.getNumeroPagare())+"\",\r\n        \"tipoCuentaDestino\": \""+aes.encrypt(encriptionkey, objetoVenta.getTipoCuentaDestino())+"\",\r\n        \"cuentaDestino\": \""+aes.encrypt(encriptionkey, objetoVenta.getCuentaDestino())+"\",\r\n        \"tipoDocumentoGirador\": \""+aes.encrypt(encriptionkey, objetoVenta.getTipoDocumentoGirador())+"\",\r\n        \"numeroDocumentoGirador\": \""+aes.encrypt(encriptionkey, objetoVenta.getNumeroDocumentoGirador())+"\",\r\n        \"numeroCelularGirador\": \""+aes.encrypt(encriptionkey, objetoVenta.getNumeroCelularGirador())+"\",\r\n        \"tipoDocumentoBeneficiario\": \""+aes.encrypt(encriptionkey, objetoVenta.getTipoDocumentoBeneficiario())+"\",\r\n        \"numeroDocumentoBeneficiario\": \""+aes.encrypt(encriptionkey, objetoVenta.getNumeroDocumentoBeneficiario())+"\",\r\n        \"numeroCelularBeneficiario\": \""+aes.encrypt(encriptionkey, objetoVenta.getNumeroCelularBeneficiario())+"\"\r\n    }\r\n}");
+            //body = RequestBody.create(mediaType, "{\t\n    \"userId\": \"" + prefs_userId.getUserId() + "\",\t\n    \"commerceId\": \""+aes.encrypt(encriptionkey, objetoVenta.getCommerceId())+"\",\t\n    \"transactionId\": \""+aes.encrypt(encriptionkey, objetoVenta.getTransactionId())+"\",\t\n    \"detailSale\": {\r\n        \"commerceCode\": \""+aes.encrypt(encriptionkey, objetoVenta.getCommerceCode())+"\",\r\n        \"commerceId\": \""+aes.encrypt(encriptionkey, objetoVenta.getDetailSalecommerceId())+"\",\r\n        \"terminalCode\": \""+aes.encrypt(encriptionkey, objetoVenta.getTerminalCode())+"\",\r\n        \"transactionType\": \""+aes.encrypt(encriptionkey, objetoVenta.getTransactionType())+"\",\r\n        \"mposType\": \""+aes.encrypt(encriptionkey, objetoVenta.getMposType())+"\",\r\n        \"numberQuotas\": \""+aes.encrypt(encriptionkey, objetoVenta.getNumberQuotas())+"\",\r\n        \"accountType\": \""+aes.encrypt(encriptionkey, objetoVenta.getAccountType())+"\",\r\n        \"partialAmount\": \""+aes.encrypt(encriptionkey, objetoVenta.getPartialAmount())+"\",\r\n        \"iva\": \""+aes.encrypt(encriptionkey, objetoVenta.getIva())+"\",\r\n        \"base\": \""+aes.encrypt(encriptionkey, objetoVenta.getBase())+"\",\r\n        \"inc\": \""+aes.encrypt(encriptionkey, objetoVenta.getInc())+"\",\r\n        \"tip\": \""+aes.encrypt(encriptionkey, objetoVenta.getTip())+"\",\r\n        \"pan\": \""+aes.encrypt(encriptionkey, objetoVenta.getPan())+"\",\r\n        \"totalAmount\": \""+aes.encrypt(encriptionkey, objetoVenta.getTotalAmount())+"\",\r\n        \"tagSale\": \""+aes.encrypt(encriptionkey, objetoVenta.getTagSale())+"\",\r\n        \"track2\": \""+aes.encrypt(encriptionkey, objetoVenta.getTrack2())+"\",\r\n        \"encryptType\": \""+aes.encrypt(encriptionkey, objetoVenta.getEncryptType())+"\",\r\n        \"ksn\": \""+aes.encrypt(encriptionkey, objetoVenta.getKsn())+"\",\r\n        \"pinBlock\": \""+aes.encrypt(encriptionkey, objetoVenta.getPinBlock())+"\",\r\n        \"ksnPinBlock\": \""+aes.encrypt(encriptionkey, objetoVenta.getKsnPinBlock())+"\",\r\n        \"postEntryMode\": \""+aes.encrypt(encriptionkey, objetoVenta.getPostEntryMode())+"\",\r\n        \"country\": \""+aes.encrypt(encriptionkey, objetoVenta.getCountry())+"\",\r\n        \"department\": \""+aes.encrypt(encriptionkey, objetoVenta.getDepartment())+"\",\r\n        \"city\": \""+aes.encrypt(encriptionkey, objetoVenta.getCity())+"\",\r\n        \"address\": \""+aes.encrypt(encriptionkey, objetoVenta.getAddress())+"\",\r\n        \"latitude\": \""+aes.encrypt(encriptionkey, objetoVenta.getLatitude())+"\",\r\n        \"length\": \""+aes.encrypt(encriptionkey, objetoVenta.getLength())+"\",\r\n        \"consecutive\": \""+aes.encrypt(encriptionkey, objetoVenta.getConsecutive())+"\",\r\n        \"billNumber\": \""+aes.encrypt(encriptionkey, objetoVenta.getBillNumber())+"\",\r\n        \"entityCode\": \""+aes.encrypt(encriptionkey, objetoVenta.getEntityCode())+"\",\r\n        \"arqc\": \""+aes.encrypt(encriptionkey, objetoVenta.getArqc())+"\",\r\n        \"cardName\": \""+aes.encrypt(encriptionkey, objetoVenta.getCardName())+"\",\r\n        \"apLabel\": \""+aes.encrypt(encriptionkey, objetoVenta.getApLabel())+"\",\r\n        \"channel\": \""+aes.encrypt(encriptionkey, objetoVenta.getChannel())+"\",\r\n        \"expirationDate\": \""+aes.encrypt(encriptionkey, objetoVenta.getExpirationDate())+"\",\r\n        \"aid\": \""+aes.encrypt(encriptionkey, objetoVenta.getAid())+"\",\r\n        \"documentNumber\": \""+aes.encrypt(encriptionkey, objetoVenta.getDocumentNumber())+"\",\r\n        \"numeroCuenta\": \""+aes.encrypt(encriptionkey, objetoVenta.getNumeroCuenta())+"\",\r\n        \"numeroConvenio\": \""+aes.encrypt(encriptionkey, objetoVenta.getNumeroConvenio())+"\",\r\n        \"capturaLectorBarras\": \""+aes.encrypt(encriptionkey, objetoVenta.getCapturaLectorBarras())+"\",\r\n        \"numeroCelular\": \""+aes.encrypt(encriptionkey, objetoVenta.getNumeroCelular())+"\",\r\n        \"numeroTarjeta\": \""+aes.encrypt(encriptionkey, objetoVenta.getNumeroTarjeta())+"\",\r\n        \"numeroPagare\": \""+aes.encrypt(encriptionkey, objetoVenta.getNumeroPagare())+"\",\r\n        \"tipoCuentaDestino\": \""+aes.encrypt(encriptionkey, objetoVenta.getTipoCuentaDestino())+"\",\r\n        \"cuentaDestino\": \""+aes.encrypt(encriptionkey, objetoVenta.getCuentaDestino())+"\",\r\n        \"tipoDocumentoGirador\": \""+aes.encrypt(encriptionkey, objetoVenta.getTipoDocumentoGirador())+"\",\r\n        \"numeroDocumentoGirador\": \""+aes.encrypt(encriptionkey, objetoVenta.getNumeroDocumentoGirador())+"\",\r\n        \"numeroCelularGirador\": \""+aes.encrypt(encriptionkey, objetoVenta.getNumeroCelularGirador())+"\",\r\n        \"tipoDocumentoBeneficiario\": \""+aes.encrypt(encriptionkey, objetoVenta.getTipoDocumentoBeneficiario())+"\",\r\n        \"numeroDocumentoBeneficiario\": \""+aes.encrypt(encriptionkey, objetoVenta.getNumeroDocumentoBeneficiario())+"\",\r\n        \"numeroCelularBeneficiario\": \""+aes.encrypt(encriptionkey, objetoVenta.getNumeroCelularBeneficiario())+"\",\r\n        \"tramaISO\":\""+aes.encrypt(encriptionkey,objetoVenta.getTramaISO())+"\"\r\n    }\r\n}");
+            body = RequestBody.create(mediaType, "{\t\n    \"userId\": \"" + prefs_userId.getUserId() + "\",\t\n    \"commerceId\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getCommerceId()))+"\",\t\n    \"transactionId\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getTransactionId()))+"\",\t\n    \"detailSale\": {\r\n        \"commerceCode\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getCommerceCode()))+"\",\r\n        \"commerceId\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getDetailSalecommerceId()))+"\",\r\n        \"terminalCode\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getTerminalCode()))+"\",\r\n        \"transactionType\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getTransactionType()))+"\",\r\n        \"mposType\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getMposType()))+"\",\r\n        \"numberQuotas\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getNumberQuotas()))+"\",\r\n        \"accountType\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getAccountType()))+"\",\r\n        \"partialAmount\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getPartialAmount()))+"\",\r\n        \"iva\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getIva()))+"\",\r\n        \"base\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getBase()))+"\",\r\n        \"inc\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getInc()))+"\",\r\n        \"tip\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getTip()))+"\",\r\n        \"pan\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getPan()))+"\",\r\n        \"totalAmount\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getTotalAmount()))+"\",\r\n        \"tagSale\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getTagSale()))+"\",\r\n        \"track2\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getTrack2()))+"\",\r\n        \"encryptType\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getEncryptType()))+"\",\r\n        \"ksn\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getKsn()))+"\",\r\n        \"pinBlock\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getPinBlock()))+"\",\r\n        \"ksnPinBlock\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getKsnPinBlock()))+"\",\r\n        \"postEntryMode\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getPostEntryMode()))+"\",\r\n        \"country\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getCountry()))+"\",\r\n        \"department\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getDepartment()))+"\",\r\n        \"city\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getCity()))+"\",\r\n        \"address\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getAddress()))+"\",\r\n        \"latitude\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getLatitude()))+"\",\r\n        \"length\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getLength()))+"\",\r\n        \"consecutive\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getConsecutive()))+"\",\r\n        \"billNumber\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getBillNumber()))+"\",\r\n        \"entityCode\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getEntityCode()))+"\",\r\n        \"arqc\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getArqc()))+"\",\r\n        \"cardName\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getCardName()))+"\",\r\n        \"apLabel\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getApLabel()))+"\",\r\n        \"channel\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getChannel()))+"\",\r\n        \"expirationDate\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getExpirationDate()))+"\",\r\n        \"aid\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getAid()))+"\",\r\n        \"documentNumber\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getDocumentNumber()))+"\",\r\n        \"numeroCuenta\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getNumeroCuenta()))+"\",\r\n        \"numeroConvenio\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getNumeroConvenio()))+"\",\r\n        \"capturaLectorBarras\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getCapturaLectorBarras()))+"\",\r\n        \"numeroCelular\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getNumeroCelular()))+"\",\r\n        \"numeroTarjeta\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getNumeroTarjeta()))+"\",\r\n        \"numeroPagare\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getNumeroPagare()))+"\",\r\n        \"tipoCuentaDestino\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getTipoCuentaDestino()))+"\",\r\n        \"cuentaDestino\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getCuentaDestino()))+"\",\r\n        \"tipoDocumentoGirador\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getTipoDocumentoGirador()))+"\",\r\n        \"numeroDocumentoGirador\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getNumeroDocumentoGirador()))+"\",\r\n        \"numeroCelularGirador\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getNumeroCelularGirador()))+"\",\r\n        \"tipoDocumentoBeneficiario\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getTipoDocumentoBeneficiario()))+"\",\r\n        \"numeroDocumentoBeneficiario\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getNumeroDocumentoBeneficiario()))+"\",\r\n        \"numeroCelularBeneficiario\": \""+base641.convertirBase64(aes.encrypt(encriptionkey, objetoVenta.getNumeroCelularBeneficiario()))+"\",\r\n        \"tramaISO\":\""+base641.convertirBase64(aes.encrypt(encriptionkey,objetoVenta.getTramaISO()))+"\",\r\n        \"numeroCuentaRecaudo\":\""+base641.convertirBase64(aes.encrypt(encriptionkey,objetoVenta.getNumeroCuentaRecaudo()))+"\"\r\n    }\r\n}");
+
+
         }
         catch (Exception e){
         }
@@ -541,6 +548,20 @@ public class Servicios {
                 .addHeader("Content-Type", "application/json")
                 .build();
 
+        String a="";
+        try {
+            final Request copy = request.newBuilder().build();
+            final Buffer buffer = new Buffer();
+            copy.body().writeTo(buffer);
+            a = buffer.readUtf8();
+        } catch (final IOException e) {
+            a = "did not work";
+        }
+
+        Log.d("Body",a);
+        Log.d("Service",request.toString());
+        Log.d("Headers",request.headers().toString());
+
         try {
             Response response = client.newCall(request).execute();
             Log.d("RESPONSE",response.toString());
@@ -549,19 +570,27 @@ public class Servicios {
             JSONObject Jobject = new JSONObject(jsonData);
             Log.d("RESPUESTA",Jobject.toString());
 
+            Message usuarioCancela = new Message();
+            usuarioCancela.what = 1;
+            pantallaConfirmacion.respuesta.sendMessage(usuarioCancela);
 
             Map <String,String > resp = new HashMap<String,String>();
-            resp.put("responseCode","code");
-            resp.put("responseMessage","message");
-            resp.put("aprovalCode","code");
+            resp.put("responseCode",Jobject.getString("reponseCode"));
+            resp.put("responseMessage",Jobject.getString("responseMessage"));
+            resp.put("aprovalCode",Jobject.getString("aprovalCodel"));
             return resp;
 
 
-        } catch (IOException | JSONException e) {
+        }
+        catch (IOException | JSONException e) {
+            Message usuarioCancela = new Message();
+            usuarioCancela.what = 2;
+            pantallaConfirmacion.respuesta.sendMessage(usuarioCancela);
+            CodificarBase64 base64 = new CodificarBase64();
             Map <String,String > resp = new HashMap<String,String>();
-            resp.put("responseCode","code");
-            resp.put("responseMessage","message");
-            resp.put("aprovalCode","code");
+            resp.put("responseCode",base64.convertirBase64("code"));
+            resp.put("responseMessage",base64.convertirBase64("responseMessage"));
+            resp.put("aprovalCode",base64.convertirBase64("aprivalCode"));
             return resp;
 
         }
@@ -631,5 +660,48 @@ public class Servicios {
 
         }
 
+    }
+
+    /**Metodo para obtener el pan virtual del servidor*/
+    public String obtenerPanVirtual(){
+
+        //Se debe sobreescribir este metodo para que acepte cualquier certificado seguro.
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.hostnameVerifier(new HostnameVerifier() {
+            @Override
+            public boolean verify(String hostname, SSLSession session) {
+                return true;
+            }
+        });
+
+        //Objeto SharedPreferences
+        PreferencesUsuario prefs_token = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_TOKEN,context);
+        PreferencesUsuario prefs_user = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_INFO_USUARIO,context);
+        PreferencesUsuario prefs_parametricas = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_PARAMETRICAS,context);
+
+        OkHttpClient client = builder.sslSocketFactory(getSLLContext().getSocketFactory()).callTimeout(30, TimeUnit.SECONDS).build();
+
+
+        Request request = new Request.Builder()
+                .url(urlBaseServicios+apiPanVirtual.replaceFirst("USERID",prefs_user.getUserId()).replaceFirst("TERMINALCODE",prefs_parametricas.getTerminalCodeParametricas()))
+                .method("GET", null)
+                .addHeader("Authorization", "Bearer "+prefs_token.getToken())
+                .build();
+
+        try {
+            Response response = client.newCall(request).execute();
+            Log.d("RESPONSE",response.toString());
+
+            String jsonData = response.body().string();
+            JSONObject Jobject = new JSONObject(jsonData);
+            Log.d("RESPUESTA",Jobject.toString());
+
+            return Jobject.getString("pan");
+
+
+        } catch (IOException | JSONException e) {
+            return "";
+
+        }
     }
 }

@@ -38,6 +38,7 @@ public class pantallaTransferenciaTipoCuentas extends BaseActivity {
     private Spinner spinner_tipoCuentaOrigenTransferencia;
     private EditText editText_PantallaTransferenciaTipoCuentasOtraCuenta;
     private String tipoCuentaOrigen ="0";
+    private CodigosTransacciones codigo = new CodigosTransacciones();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -178,7 +179,7 @@ public class pantallaTransferenciaTipoCuentas extends BaseActivity {
                 i.putExtra("clase","");
                 i.putExtra("contador", contador);
                 i.putExtra("tipoDeCuenta", tipoDeCuenta);
-                i.putExtra("transaccion", "");
+                i.putExtra("transaccion", codigo.CORRESPONSAL_TRANSFERENCIA);
                 i.putExtra("iconos",iconos);
                 i.putExtra("tarjeta",tarjeta);
                 startActivity(i);

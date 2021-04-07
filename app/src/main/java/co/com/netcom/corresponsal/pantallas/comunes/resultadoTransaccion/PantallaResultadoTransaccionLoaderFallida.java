@@ -23,7 +23,7 @@ public class PantallaResultadoTransaccionLoaderFallida extends AppCompatActivity
 
 
         //Se hace la transición a la siguiente pantalla luego de mostrar el loader
-        a= new Intent(this, LogIn.class);
+        a= new Intent(this, PantallaResultadoTransaccionFallida.class);
         new Handler().postDelayed(
                 new Thread(new Runnable() {
                     @Override
@@ -31,8 +31,12 @@ public class PantallaResultadoTransaccionLoaderFallida extends AppCompatActivity
                         startActivity(a);
                         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                     }
-                }),3000
+                }),3500
         );
 
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

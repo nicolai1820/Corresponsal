@@ -35,6 +35,7 @@ public class CardDTO implements Parcelable {
     private String pan;
     private String panEnmascarado;
 
+
     /** Contendra los ultimos 4 digitos del track **/
     private String ultimosCuatro;
 

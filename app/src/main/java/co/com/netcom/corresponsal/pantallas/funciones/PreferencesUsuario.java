@@ -194,5 +194,14 @@ public class PreferencesUsuario {
         sharedPreferencesEditor.commit();
     }
 
+    /**Metodo getFiidID, que retorna el FIID que se encuentra guardado en el sharedPreferences*/
+    public String getFiidID(){
+        return sharedPreferences.getString("fiidId",null);
+    }
+
+    /**Metodo gettipoCuenta, que retorna el tipoCuenta que se encuentra guardado en el sharedPreferences*/
+    public String getTipoCuenta(){
+        return sharedPreferences.getString("tipoCuenta",null);
+    }
 
 }

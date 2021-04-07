@@ -2,10 +2,15 @@ package co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacci
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.WindowManager;
 import android.widget.EditText;
 
@@ -16,8 +21,15 @@ import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion;
 import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
 import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
+import co.com.netcom.corresponsal.pantallas.funciones.CodificarBase64;
 import co.com.netcom.corresponsal.pantallas.funciones.CodigosTransacciones;
+import co.com.netcom.corresponsal.pantallas.funciones.ConstantesCorresponsal;
+import co.com.netcom.corresponsal.pantallas.funciones.DeviceInformation;
+import co.com.netcom.corresponsal.pantallas.funciones.EncripcionAES;
+import co.com.netcom.corresponsal.pantallas.funciones.Hilos;
 import co.com.netcom.corresponsal.pantallas.funciones.MetodosSDKNewland;
+import co.com.netcom.corresponsal.pantallas.funciones.PreferencesUsuario;
+import co.com.netcom.corresponsal.pantallas.funciones.Servicios;
 
 public class pantallaRetiroSinTarjetaPin extends BaseActivity {
 
@@ -32,6 +44,16 @@ public class pantallaRetiroSinTarjetaPin extends BaseActivity {
     public static Handler respuesta;
     private PopUp popUp;
     private String pinBlock;
+
+    private Hilos hiloTransacciones;
+    private  String respuestaC;
+    private CodificarBase64 base64;
+    private EncripcionAES aes;
+    private Servicios service;
+    private AlertDialog dialog;
+    private PreferencesUsuario prefs_parametricasBanco;
+    private PreferencesUsuario prefs_parametricasUser;
+
 
     public final static int PROCESO_EXISTOSO =1;
     public final static int DISPOSITIVO_DESCONECTADO =2;
@@ -64,6 +86,17 @@ public class pantallaRetiroSinTarjetaPin extends BaseActivity {
         sdkNewland = new MetodosSDKNewland(getApplicationContext());
         popUp = new PopUp(this);
 
+        //OBJETOS PARA DECODIFICAR EL PAN
+        base64 = new CodificarBase64();
+        aes = new EncripcionAES();
+
+        //OBJETO PARA CONSUMIR SERVICIOS
+        service = new Servicios(this);
+
+        //PREFERENCES FIID Y TIPODECUENTA
+        prefs_parametricasBanco = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_PARAMETRICAS_BANCO,this);
+        prefs_parametricasUser = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_INFO_USUARIO,this);
+
 
         //Se crea el correspondiente handler, para manejar el flujo de forma correcta en la aplicación
 
@@ -78,14 +111,43 @@ public class pantallaRetiroSinTarjetaPin extends BaseActivity {
                         pinBlock = sdkNewland.getPinBlockFinal();
 
                         valores.add(pinBlock);
-
-                        // pantalla loader transaccion pin
-
                         //Mostrar loader aqui y hacer llamado al a función de c, así mismo habilitar la pantalla nuevamnete
-                        Intent i = new Intent(getApplicationContext(), PantallaRetiroSinTarjetaLoader.class);
-                        i.putExtra("valores",valores);
-                        startActivity(i);
-                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                        DeviceInformation deviceInformation = new DeviceInformation(pantallaRetiroSinTarjetaPin.this);
+
+                        if(deviceInformation.getInternetStatus()){
+
+                            if(deviceInformation.getLocationStatus()){
+                                //Se crea el loader que se mostrara mientras se procesa la transaccion
+                                AlertDialog.Builder loader = new AlertDialog.Builder(pantallaRetiroSinTarjetaPin.this);
+
+                                LayoutInflater inflater = getLayoutInflater();
+
+                                loader.setView(inflater.inflate(R.layout.loader_procesando_transaccion,null));
+                                loader.setCancelable(false);
+
+                                dialog = loader.create();
+                                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                                Log.d("OPEN"," se abrio el loader");
+
+                                try {
+                                    respuestaC =hiloTransacciones.transaccionesSinTarjeta(codigo.CORRESPONSAL_RETIRO_CON_TARJETA,valores,base64.decodificarBase64(prefs_parametricasBanco.getFiidID()),base64.decodificarBase64(prefs_parametricasBanco.getTipoCuenta()),aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
+                                    Log.d("respuestac",respuestaC);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+
+                                dialog.show();
+                            }
+                            else{
+                                PopUp pop = new PopUp(pantallaRetiroSinTarjetaPin.this);
+                                pop.crearPopUpLoginFallido("Debe activar la ubicación");
+                            }
+                         }else{
+                            PopUp pop = new PopUp(pantallaRetiroSinTarjetaPin.this);
+                            pop.crearPopUpErrorInternet();
+                        }
 
 
                         break;}

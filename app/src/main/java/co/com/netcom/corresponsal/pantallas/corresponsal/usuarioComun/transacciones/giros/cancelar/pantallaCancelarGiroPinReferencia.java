@@ -29,6 +29,7 @@ public class pantallaCancelarGiroPinReferencia extends BaseActivity {
     private int contador;
     private int contadorRespaldo;
     private CodigosTransacciones codigo = new CodigosTransacciones();
+    private ArrayList<Integer> iconos = new ArrayList<Integer>();
 
 
     @Override
@@ -73,6 +74,7 @@ public class pantallaCancelarGiroPinReferencia extends BaseActivity {
         } else {
 
             valores.add(numeroPinReferencia_string);
+            iconos.add(3);
 
             //Se realiza el intent a la activity confirmar valores
             Intent i = new Intent(getApplicationContext(), pantallaConfirmacion.class);
@@ -85,6 +87,7 @@ public class pantallaCancelarGiroPinReferencia extends BaseActivity {
             i.putExtra("clase","");
             i.putExtra("contador", contador);
             i.putExtra("tipoDocumento", tipoDocumento);
+            i.putExtra("iconos",iconos);
             i.putExtra("transaccion", codigo.CORRESPONSAL_CANCELACION_GIRO_CONSULTA);
             startActivity(i);
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);

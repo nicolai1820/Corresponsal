@@ -24,7 +24,7 @@ public class EncripcionAES {
         IvParameterSpec ivParameterSpec = new IvParameterSpec(mInitVec);
         cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec, ivParameterSpec);
         byte[] encrypted = cipher.doFinal(texto.getBytes());
-        return Base64.encodeToString(encrypted,Base64.DEFAULT);
+        return Base64.encodeToString(encrypted,Base64.NO_WRAP);
     }
 
     /**Metodo encrypt que recibe como parametros el String key y el String encrypted, sirve para desencriptar la de AES a texto en limpio*/
@@ -33,6 +33,7 @@ public class EncripcionAES {
         Cipher cipher = Cipher.getInstance(tipoCifrado);
         SecretKeySpec secretKeySpec = new SecretKeySpec(llave.getBytes(), algoritmo);
         IvParameterSpec ivParameterSpec = new IvParameterSpec(mInitVec);
+
         byte[] enc = Base64.decode(encrypted,Base64.DEFAULT);
         cipher.init(Cipher.DECRYPT_MODE, secretKeySpec, ivParameterSpec);
         byte[] decrypted = cipher.doFinal(enc);

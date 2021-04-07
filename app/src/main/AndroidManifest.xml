@@ -28,7 +28,8 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".pantallas.comunes.resultadoTransaccion.PantallaResultadoTransaccionFallida"></activity>
+        <activity android:name=".pantallas.comunes.correo.PantallaCopiaCorreo"></activity>
+        <activity android:name=".pantallas.comunes.resultadoTransaccion.PantallaResultadoTransaccionFallida" />
         <activity android:name=".pantallas.comunes.resultadoTransaccion.PantallaResultadoTransaccionExitosa" />
         <activity android:name=".pantallas.comunes.resultadoTransaccion.PantallaResultadoTransaccionLoaderFallida" />
         <activity android:name=".pantallas.comunes.resultadoTransaccion.PantallaResultadoTransaccionLoaderExitoso" />

@@ -72,6 +72,10 @@ public class Header extends Fragment {
                     getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 }else if(getActivity().getLocalClassName().equals("pantallas.comunes.logIn.PantallaCambioContrasena")){
 
+                } else if (getActivity().getLocalClassName().equals("pantallas.comunes.resultadoTransaccion.PantallaResultadoTransaccionExitosa")) {
+
+                }  else if (getActivity().getLocalClassName().equals("pantallas.comunes.resultadoTransaccion.PantallaResultadoTransaccionFallida")) {
+
                 }
                 else {
                     //Se hace el correspondiente intent a la pantalla inicial, con la correspondiente animacion

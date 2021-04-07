@@ -51,11 +51,13 @@ public class PopUp extends AppCompatActivity {
     private Activity activity;
     private AlertDialog alertDialog;
     private AlertDialog alertDialogLoginFallido;
+    private AlertDialog alertDialogConfirmarEnvioCorreo;
     private AlertDialog alertDialogRecuperarContrasena;
     private AlertDialog alertDialogGeneral;
     private AlertDialog alertDialogErrorServidor;
     private AlertDialog dialog;
     private Thread solicitarCierreSesion;
+    private Thread solicitarEnvioCorreoCliente;
     private String respuestaCierreSesion;
 
     /**Constructor de la clase PopUpDesconexion, recibo como parametro el contexto de la actividad donde se inicializa*/
@@ -383,7 +385,7 @@ public class PopUp extends AppCompatActivity {
 
                 }}};
 
-
+        //Se verifica si el usuario tiene una sesión iniciada
         if(mensaje.equals("Ya tiene una sesion activa, debe cerrar sesion o esperar el cierre automatico")){
             //Se hace la respectiva conexión con el frontEnd del pop up
             LayoutInflater li = LayoutInflater.from(context);
@@ -871,5 +873,99 @@ public class PopUp extends AppCompatActivity {
         alertDialogLoginFallido.getWindow().setLayout((int)(dpWidth*0.7), LinearLayout.LayoutParams.WRAP_CONTENT);//
 
 
+    }
+
+    /**Metodo de tipo void, el cual se encarga de crear un pop up para confirmar que no quieren enviar correo al cliente*/
+    public void crearPopUpConfirmarEnvioCorreo(String codigoTransaccion){
+
+        Handler resp = new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                switch (msg.what) {
+                    case 1:
+                        //Hace el intent al inicio de la aplicación
+
+                }}};
+
+        //Se hace la respectiva conexión con el frontEnd del pop up
+        LayoutInflater li = LayoutInflater.from(context);
+        View view = li.inflate(R.layout.activity_pop_up_error_mpos, null);
+
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        alertDialogBuilder.setView(view);
+        alertDialogBuilder.setCancelable(false);
+
+        //Se genera la conexión con el boton del pop up
+        TextView textViewErrorServidor = view.findViewById(R.id.textView_PopUp_Error);
+        Button btnAceptar= view.findViewById(R.id.button_PopUpSalirError);
+        Button btnCerrar= view.findViewById(R.id.button_PopUpVolverIntentar);
+
+        btnCerrar.setText("Cancelar");
+        btnAceptar.setText("Aceptar");
+        textViewErrorServidor.setText("Esta seguro que no desea enviar copia al cliente?");
+
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        float dpHeight = displayMetrics.heightPixels;
+        float dpWidth = displayMetrics.widthPixels ;
+
+
+        //Se crea el evento click para el boton del pop up, el cual redirige al inicio de la aplicacion
+        btnCerrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialogConfirmarEnvioCorreo.dismiss();
+            }
+        });
+
+        //Se crea el evento click para el boton del pop up, el cual redirige al inicio de la aplicacion
+        btnAceptar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Se crea el loader que se mostrara mientras se procesa la transaccion
+                AlertDialog.Builder loader = new AlertDialog.Builder(context);
+                LayoutInflater inflater = activity.getLayoutInflater();
+                loader.setView(inflater.inflate(R.layout.loader_procesando_transaccion,null));
+                loader.setCancelable(false);
+
+                dialog = loader.create();
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                Log.d("OPEN"," se abrio el loader");
+                dialog.show();
+
+                alertDialogConfirmarEnvioCorreo.dismiss();
+                Servicios serv = new Servicios(context);
+                solicitarEnvioCorreoCliente = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //solicitar envio correo
+                        //respuestaCierreSesion = serv.cerrarSesion();
+                        try{
+                            //Se envia un mensaje al handler de la clase consulta saldo, indicando que el usuario cancelo la transaccion
+                            //Message usuarioCancela = new Message();
+                            //usuarioCancela.what = 1;
+                            //resp.sendMessage(usuarioCancela);
+                        }catch (Exception e){ }
+                    }
+                });
+
+                solicitarEnvioCorreoCliente.start();
+            }
+        });
+
+        //Se crea el correspondiente Dialog que se mostrara al usuario
+        alertDialogConfirmarEnvioCorreo = alertDialogBuilder.create();
+        //Se agrega esta linea para que no tenga fondo por defecto el dialog
+        alertDialogConfirmarEnvioCorreo.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        //Se muestra el Dialogo al usuario con su correspondiente ubicacion en la pantalla
+        alertDialogConfirmarEnvioCorreo.show();
+
+
+        Log.d("heigh",String.valueOf(dpHeight));
+        Log.d("width",String.valueOf(dpWidth*0.9));
+
+        alertDialogConfirmarEnvioCorreo.getWindow().setLayout((int)(dpWidth*0.7), LinearLayout.LayoutParams.WRAP_CONTENT);//
     }
 }
