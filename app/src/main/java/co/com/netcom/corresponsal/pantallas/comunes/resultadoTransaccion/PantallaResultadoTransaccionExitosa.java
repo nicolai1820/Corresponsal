@@ -44,6 +44,7 @@ public class PantallaResultadoTransaccionExitosa extends AppCompatActivity {
     public void buttonEnviarCopiaCorreo(View view){
         //Hacer el intent a la pantalla de enviar correo y agregar el id de la transacción
         Intent i = new Intent(getApplicationContext(), PantallaCopiaCorreo.class);
+        i.putExtra("aprovalCode",idTransaccion);
         startActivity(i);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
     }

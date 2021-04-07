@@ -364,7 +364,7 @@ public class Hilos extends AppCompatActivity {
                     String numeroCuentaOrigen;
 
                     cargarInformacionPanVirtual(FIID,tipoDeCuenta,panVirtual);
-
+                    Log.d("DATA HILOS",datos.toString());
                     if (datos.size()>6){
                         otraCuentaOrigen=1;
                         numeroCuentaOrigen = datos.get(4).toString();

@@ -474,7 +474,7 @@ public class pantallaConfirmacion extends BaseActivity {
                              public void run() {
 
                                  try {
-                                     hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,base64.decodificarBase64(prefs_parametricasBanco.getFiidID()),base64.decodificarBase64(prefs_parametricasBanco.getTipoCuenta()),aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
+                                    respuestaC =  hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,base64.decodificarBase64(prefs_parametricasBanco.getFiidID()),base64.decodificarBase64(prefs_parametricasBanco.getTipoCuenta()),aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
                                  } catch (Exception e) {
                                      e.printStackTrace();
                                  }
@@ -513,7 +513,7 @@ public class pantallaConfirmacion extends BaseActivity {
                              public void run() {
 
                                  try {
-                                     hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,base64.decodificarBase64(prefs_parametricasBanco.getFiidID()),base64.decodificarBase64(prefs_parametricasBanco.getTipoCuenta()),aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
+                                    respuestaC = hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,base64.decodificarBase64(prefs_parametricasBanco.getFiidID()),base64.decodificarBase64(prefs_parametricasBanco.getTipoCuenta()),aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
                                  } catch (Exception e) {
                                      e.printStackTrace();
                                  }
@@ -616,7 +616,7 @@ public class pantallaConfirmacion extends BaseActivity {
                              public void run() {
 
                                  try {
-                                     hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,base64.decodificarBase64(prefs_parametricasBanco.getFiidID()),base64.decodificarBase64(prefs_parametricasBanco.getTipoCuenta()),aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
+                                    respuestaC= hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,base64.decodificarBase64(prefs_parametricasBanco.getFiidID()),base64.decodificarBase64(prefs_parametricasBanco.getTipoCuenta()),aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
                                  } catch (Exception e) {
                                      e.printStackTrace();
                                  }
@@ -678,7 +678,7 @@ public class pantallaConfirmacion extends BaseActivity {
                              @Override
                              public void run() {
 
-                                 hiloTransacciones.transaccionesConTarjeta(CodigosTransacciones.CORRESPONSAL_CONSULTA_SALDO,null,tarjeta,base64.decodificarBase64(prefs_parametricasBanco.getFiidID()),base64.decodificarBase64(prefs_parametricasBanco.getTipoCuenta()),tarjeta.getPan());
+                                respuestaC = hiloTransacciones.transaccionesConTarjeta(CodigosTransacciones.CORRESPONSAL_CONSULTA_SALDO,null,tarjeta,base64.decodificarBase64(prefs_parametricasBanco.getFiidID()),base64.decodificarBase64(prefs_parametricasBanco.getTipoCuenta()),tarjeta.getPan());
                                  try {
                                      // code runs in a thread
                                      runOnUiThread(new Runnable() {
@@ -739,7 +739,7 @@ public class pantallaConfirmacion extends BaseActivity {
                              public void run() {
 
                                  try {
-                                     hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,base64.decodificarBase64(prefs_parametricasBanco.getFiidID()),base64.decodificarBase64(prefs_parametricasBanco.getTipoCuenta()),aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
+                                   respuestaC=  hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,base64.decodificarBase64(prefs_parametricasBanco.getFiidID()),base64.decodificarBase64(prefs_parametricasBanco.getTipoCuenta()),aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
                                  } catch (Exception e) {
                                      e.printStackTrace();
                                  }
@@ -773,7 +773,7 @@ public class pantallaConfirmacion extends BaseActivity {
                              public void run() {
 
                                  try {
-                                     hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,base64.decodificarBase64(prefs_parametricasBanco.getFiidID()),base64.decodificarBase64(prefs_parametricasBanco.getTipoCuenta()),aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
+                                   respuestaC =  hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,base64.decodificarBase64(prefs_parametricasBanco.getFiidID()),base64.decodificarBase64(prefs_parametricasBanco.getTipoCuenta()),aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
                                  } catch (Exception e) {
                                      e.printStackTrace();
                                  }
@@ -802,12 +802,14 @@ public class pantallaConfirmacion extends BaseActivity {
                          for (int i =0;i < tipoDeCuenta.size();i++){
                              datosTransaccion.add(tipoDeCuenta.get(i));
                          }
+                         Log.d("DATA",datosTransaccion.toString());
+                         Log.d("DATA",tarjeta.toString());
 
                          new Thread() {
                              @Override
                              public void run() {
 
-                                 hiloTransacciones.transaccionesConTarjeta(transaccion,datosTransaccion,tarjeta,base64.decodificarBase64(prefs_parametricasBanco.getFiidID()),base64.decodificarBase64(prefs_parametricasBanco.getTipoCuenta()),tarjeta.getPan());
+                                 respuestaC = hiloTransacciones.transaccionesConTarjeta(transaccion,datosTransaccion,tarjeta,base64.decodificarBase64(prefs_parametricasBanco.getFiidID()),base64.decodificarBase64(prefs_parametricasBanco.getTipoCuenta()),tarjeta.getPan());
                                  try {
                                      // code runs in a thread
                                      runOnUiThread(new Runnable() {
@@ -842,7 +844,7 @@ public class pantallaConfirmacion extends BaseActivity {
                              public void run() {
 
                                  try {
-                                     hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,base64.decodificarBase64(prefs_parametricasBanco.getFiidID()),base64.decodificarBase64(prefs_parametricasBanco.getTipoCuenta()),aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
+                                   respuestaC=  hiloTransacciones.transaccionesSinTarjeta(transaccion,datosTransaccion,base64.decodificarBase64(prefs_parametricasBanco.getFiidID()),base64.decodificarBase64(prefs_parametricasBanco.getTipoCuenta()),aes.decrypt(base64.decodificarBase64(prefs_parametricasUser.getEncryptionKey()),base64.decodificarBase64(service.obtenerPanVirtual())));
                                  } catch (Exception e) {
                                      e.printStackTrace();
                                  }
