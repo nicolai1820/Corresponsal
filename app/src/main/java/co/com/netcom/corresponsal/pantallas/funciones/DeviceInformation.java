@@ -14,6 +14,7 @@ import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.os.Message;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.format.Formatter;
@@ -21,14 +22,19 @@ import android.util.Log;
 
 import androidx.core.app.ActivityCompat;
 
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import java.util.logging.Handler;
+
+import co.com.netcom.corresponsal.pantallas.comunes.logIn.LogIn;
+import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
+
 public class DeviceInformation implements LocationListener {
     private Context context;
-    private String latitud;
-    private String longitud;
+    private LocationManager locationManager;
 
     private FusedLocationProviderClient fusedLocationProviderClient;
 
@@ -58,94 +64,33 @@ public class DeviceInformation implements LocationListener {
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
     }
 
-/*    *//**Metodo getLatitude de tipo publico que retorna un booleano, sirve para obtener la latitud.*/
-    public String getLatitude() {
-
-        /*if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-            ActivityCompat.requestPermissions((Activity) context,new String[]{
-                    Manifest.permission.ACCESS_COARSE_LOCATION,
-                    Manifest.permission.ACCESS_FINE_LOCATION},0);
-            return "";
-        }else{
-            LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-            Criteria criteria = new Criteria();
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 1, this);
-            Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
-            //Log.d("LATITUD",String.valueOf(location.getLatitude()));
-            return latitud;//String.valueOf(location.getLatitude());
-
-        }*/
-        // Get the location manager
+    public void startLocation(){
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
             ActivityCompat.requestPermissions((Activity) context,new String[]{
                     Manifest.permission.ACCESS_COARSE_LOCATION,
                     Manifest.permission.ACCESS_FINE_LOCATION},0);
-            return "";
         }else {
-
-            LocationManager locationManager = (LocationManager) context.getSystemService(context.LOCATION_SERVICE);
+            locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
             Criteria criteria = new Criteria();
-            String bestProvider = locationManager.getBestProvider(criteria, false);
-            Location location = locationManager.getLastKnownLocation(bestProvider);
-            Double lat, lon;
-            try {
-                lat = location.getLatitude();
-                String resp ="";
-                 resp = String.valueOf(lat);
-                 return resp;
-            } catch (NullPointerException e) {
-                e.printStackTrace();
-                return null;
-            }
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 1, this);
+            Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
         }
     }
 
 
+    /**Metodo getLatitude de tipo publico que retorna un booleano, sirve para obtener la latitud.*/
+    public String getLatitude() {
+       PreferencesUsuario prefs = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_LOCALIZACION,context);
+        Log.d("Lat Guardada",prefs.getLatitud());
+        return prefs.getLatitud();
+    }
 
     /**Metodo getLatitude de tipo publico que retorna un booleano, sirve para obtener la longitud.*/
     public String getLongitude(){
-
-        /*if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-            ActivityCompat.requestPermissions((Activity) context,new String[]{
-                    Manifest.permission.ACCESS_COARSE_LOCATION,
-                    Manifest.permission.ACCESS_FINE_LOCATION},0);
-            return "";
-        }else{
-            LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-            Criteria criteria = new Criteria();
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 1, this);
-            Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
-            //Log.d("LONGITUD",String.valueOf(location.getLongitude()));
-
-            return longitud;//String.valueOf(location.getLongitude());
-
-        }*/
-
-        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-            ActivityCompat.requestPermissions((Activity) context,new String[]{
-                    Manifest.permission.ACCESS_COARSE_LOCATION,
-                    Manifest.permission.ACCESS_FINE_LOCATION},0);
-            return "";
-        }else {
-            LocationManager locationManager = (LocationManager) context.getSystemService(context.LOCATION_SERVICE);
-            Criteria criteria = new Criteria();
-            String bestProvider = locationManager.getBestProvider(criteria, false);
-            Location location = locationManager.getLastKnownLocation(bestProvider);
-            Double lat, lon;
-            try {
-                lon = location.getLongitude();
-                String resp = "";
-                resp = String.valueOf(lon);
-                return resp;
-            } catch (NullPointerException e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
+        PreferencesUsuario prefs = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_LOCALIZACION,context);
+        Log.d("Lon Guardada",prefs.getLongitud());
+        return prefs.getLongitud();
     }
 
     /**Metodo getDeviceUUID de tipo publico que retorna un String, sirve para obtener el identificador unico del dispositivo*/
@@ -179,10 +124,21 @@ public class DeviceInformation implements LocationListener {
     }
     @Override
     public void onLocationChanged(Location location) {
-            Log.d("LATITUD",String.valueOf(location.getLatitude()));
-            Log.d("LONGITUD",String.valueOf(location.getLongitude()));
-            this.latitud = String.valueOf(location.getLatitude());
-            this.longitud = String.valueOf(location.getLongitude());
+
+        String  latitud = String.valueOf(location.getLatitude());
+        String  longitud  = String.valueOf(location.getLongitude());
+        Log.d("Latitud",latitud);
+        Log.d("Longitud",longitud);
+
+        PreferencesUsuario prefs_localizacion = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_LOCALIZACION,context);
+        prefs_localizacion.setLongitud(longitud);
+        prefs_localizacion.setLatitud(latitud);
+        locationManager.removeUpdates(this);
+
+
+        Message usuarioCancela = new Message();
+        usuarioCancela.what = 7;
+        LogIn.respuesta.sendMessage(usuarioCancela);
     }
 
     @Override
@@ -199,4 +155,7 @@ public class DeviceInformation implements LocationListener {
     public void onProviderDisabled(String provider) {
 
     }
+
+
+
 }

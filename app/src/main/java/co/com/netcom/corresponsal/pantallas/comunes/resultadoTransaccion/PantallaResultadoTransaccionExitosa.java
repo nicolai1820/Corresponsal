@@ -12,24 +12,27 @@ import co.com.netcom.corresponsal.pantallas.comunes.correo.PantallaCopiaCorreo;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun;
+import co.com.netcom.corresponsal.pantallas.funciones.CodificarBase64;
 
 public class PantallaResultadoTransaccionExitosa extends AppCompatActivity {
 
     private Header header = new Header("<b>Resultado transacción</b>");
     private TextView textViewNumeroAprovacion;
-    String idTransaccion;
+    private String idTransaccion;
+    private CodificarBase64 base64;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_resultado_transaccion_exitosa);
 
+        base64 = new CodificarBase64();
         //Recuperar información transaccion : ID de la transacción
         Bundle i = getIntent().getExtras();
         idTransaccion = i.getString("aprovalCode");
 
         textViewNumeroAprovacion = findViewById(R.id.textView_referenciaTransaccion);
 
-        textViewNumeroAprovacion.setText(idTransaccion);
+        textViewNumeroAprovacion.setText(base64.decodificarBase64(idTransaccion));
 
 
         //Se carga el Header de la vista

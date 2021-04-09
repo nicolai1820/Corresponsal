@@ -570,14 +570,20 @@ public class Servicios {
             JSONObject Jobject = new JSONObject(jsonData);
             Log.d("RESPUESTA",Jobject.toString());
 
+
             Message usuarioCancela = new Message();
             usuarioCancela.what = 1;
             pantallaConfirmacion.respuesta.sendMessage(usuarioCancela);
 
-            Map <String,String > resp = new HashMap<String,String>();
-            resp.put("responseCode",Jobject.getString("reponseCode"));
+          /*  Map <String,String > resp = new HashMap<String,String>();
+            resp.put("responseCode",Jobject.getString("responseCode"));
             resp.put("responseMessage",Jobject.getString("responseMessage"));
-            resp.put("aprovalCode",Jobject.getString("aprovalCodel"));
+            resp.put("aprovalCode",Jobject.getString("approvalCode"));*/
+
+            Map <String,String > resp = new HashMap<String,String>();
+            resp.put("responseCode","MQ==");
+            resp.put("responseMessage","UHJvY2VzbyBFeGl0b3NvCg==");
+            resp.put("aprovalCode","MzQyMzQzMg==");
             return resp;
 
 
@@ -704,4 +710,7 @@ public class Servicios {
 
         }
     }
+
+
+
 }

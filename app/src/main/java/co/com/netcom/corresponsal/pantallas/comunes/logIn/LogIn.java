@@ -255,9 +255,9 @@ public class LogIn extends AppCompatActivity {
 
                             break;
                     case 5:
-                            Intent i = new Intent(getApplicationContext(), pantallaInicialUsuarioComun.class);
-                                startActivity(i);
-                                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                            DeviceInformation device = new DeviceInformation(LogIn.this);
+                            device.startLocation();
+
                            break;
 
                     case 6:
@@ -269,6 +269,13 @@ public class LogIn extends AppCompatActivity {
                         });
 
                         solicitarParametricasBanco.start();
+                        break;
+
+                    case 7:
+                        Intent i = new Intent(getApplicationContext(), pantallaInicialUsuarioComun.class);
+                        startActivity(i);
+                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+
                         break;
 
                 }
@@ -299,33 +306,41 @@ public class LogIn extends AppCompatActivity {
                Toast.makeText(getApplicationContext(),"Debe Ingresar una contraseña",Toast.LENGTH_SHORT).show();
            }
            else{
-          if(internet){
+               if(!internet) {
+              Log.d("Internet Desactivado", "No internet");
+              PopUp popUp = new PopUp(this);
+              popUp.crearPopUpErrorInternet();
+          }else if(!ubicacion){
+                   PopUp popUp = new PopUp(this);
+                   popUp.crearPopUpGeneral("Debes activar tu ubicación");
+          }
+          else{
 
-               //Se crea el loader que se mostrara mientras se procesa la transaccion
-               AlertDialog.Builder loader = new AlertDialog.Builder(LogIn.this);
+                  //Se crea el loader que se mostrara mientras se procesa la transaccion
+                  AlertDialog.Builder loader = new AlertDialog.Builder(LogIn.this);
 
-               LayoutInflater inflater = this.getLayoutInflater();
+                  LayoutInflater inflater = this.getLayoutInflater();
 
-               loader.setView(inflater.inflate(R.layout.loader_procesando_transaccion,null));
-               loader.setCancelable(false);
+                  loader.setView(inflater.inflate(R.layout.loader_procesando_transaccion,null));
+                  loader.setCancelable(false);
 
-               dialog = loader.create();
-               dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                  dialog = loader.create();
+                  dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-               Log.d("OPEN"," se abrio el loader");
-               dialog.show();
+                  Log.d("OPEN"," se abrio el loader");
+                  dialog.show();
 
-              usuarioEncriptado=base64.convertirBase64(user);
-              contrasenaEncriptada=base64.convertirBase64(sha512.codificarSHA512(password));
+                  usuarioEncriptado=base64.convertirBase64(user);
+                  contrasenaEncriptada=base64.convertirBase64(sha512.codificarSHA512(password));
 
-              Log.d("USUARIODECO",usuarioEncriptado);
-              Log.d("Clave encriptada",contrasenaEncriptada);
+                  Log.d("USUARIODECO",usuarioEncriptado);
+                  Log.d("Clave encriptada",contrasenaEncriptada);
 
-              //Se crea hilo para hacer la petición al servidor del token
+                  //Se crea hilo para hacer la petición al servidor del token
                   solicitudToken =  new Thread(new Runnable() {
                       @Override
                       public void run() {
-                         token = objetoServicios.solicitarToken();
+                          token = objetoServicios.solicitarToken();
                           Log.d("TOKEN",token.toString());
                           try{
                               //Se envia un mensaje al handler de la clase consulta saldo, indicando que el usuario cancelo la transaccion
@@ -337,13 +352,9 @@ public class LogIn extends AppCompatActivity {
                       }
                   });
 
-                   solicitudToken.start();
+                  solicitudToken.start();
 
-               }
-          else{
-                   Log.d("Internet Desactivado","No internet");
-                   PopUp popUp = new PopUp(this);
-                   popUp.crearPopUpErrorInternet();
+
                }
            }
 

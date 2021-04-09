@@ -204,4 +204,23 @@ public class PreferencesUsuario {
         return sharedPreferences.getString("tipoCuenta",null);
     }
 
+    public void setLongitud(String longitud){
+        Log.d("PREFS_LONGITUD",longitud);
+        sharedPreferencesEditor.putString("longitud",longitud);
+        sharedPreferencesEditor.commit();
+    }
+
+    public String getLongitud(){
+        return sharedPreferences.getString("longitud",null);
+    }
+
+    public void setLatitud(String latitud){
+        Log.d("PREFS_LATITUD",latitud);
+        sharedPreferencesEditor.putString("latitud",latitud);
+        sharedPreferencesEditor.commit();
+    }
+
+    public String getLatitud(){
+        return sharedPreferences.getString("latitud",null);
+    }
 }

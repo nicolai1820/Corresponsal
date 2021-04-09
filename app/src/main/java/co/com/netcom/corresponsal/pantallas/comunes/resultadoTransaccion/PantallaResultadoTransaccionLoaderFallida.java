@@ -17,13 +17,14 @@ public class PantallaResultadoTransaccionLoaderFallida extends AppCompatActivity
         setContentView(R.layout.activity_pantalla_resultado_transaccion_loader_fallida);
 
 
-
         //Recuperar información transaccion : ID de la transacción
-
+        Bundle i = getIntent().getExtras();
+        String responseMessage = i.getString("responseMessage");
 
 
         //Se hace la transición a la siguiente pantalla luego de mostrar el loader
         a= new Intent(this, PantallaResultadoTransaccionFallida.class);
+        a.putExtra("responseMessage",responseMessage);
         new Handler().postDelayed(
                 new Thread(new Runnable() {
                     @Override

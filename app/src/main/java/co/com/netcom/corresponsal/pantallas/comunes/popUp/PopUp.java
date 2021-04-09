@@ -901,8 +901,8 @@ public class PopUp extends AppCompatActivity {
         Button btnAceptar= view.findViewById(R.id.button_PopUpSalirError);
         Button btnCerrar= view.findViewById(R.id.button_PopUpVolverIntentar);
 
-        btnCerrar.setText("Cancelar");
-        btnAceptar.setText("Aceptar");
+        btnCerrar.setText("Aceptar");
+        btnAceptar.setText("Cancelar");
         textViewErrorServidor.setText("Esta seguro que no desea enviar copia al cliente?");
 
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
@@ -914,7 +914,10 @@ public class PopUp extends AppCompatActivity {
         btnCerrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                alertDialogConfirmarEnvioCorreo.dismiss();
+                //ENvia copia al comercio
+                Intent i = new Intent(context, pantallaInicialUsuarioComun.class);
+                context.startActivity(i);
+                activity.overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
             }
         });
 

@@ -179,6 +179,7 @@ public class pantallaConfirmacion extends BaseActivity {
                             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                         }else {
                             Intent i = new Intent(pantallaConfirmacion.this, PantallaResultadoTransaccionLoaderFallida.class);
+                            i.putExtra("responseMessage",resp.get("responseMessage"));
                             startActivity(i);
                             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                     }
@@ -904,10 +905,10 @@ public class pantallaConfirmacion extends BaseActivity {
             inforVenta.setDepartment("ee");
             inforVenta.setCity("");
             inforVenta.setAddress(base64.decodificarBase64(prefs_Parametricas.getAddress()));
-            //inforVenta.setLatitude(devideInfo.getLatitude());
-            //inforVenta.setLength(devideInfo.getLongitude());
-            inforVenta.setLatitude("-74.04252645904097");
-            inforVenta.setLength("4.679813877331977");
+            inforVenta.setLatitude(devideInfo.getLatitude());
+            inforVenta.setLength(devideInfo.getLongitude());
+            //inforVenta.setLatitude("-74.04252645904097");
+            //inforVenta.setLength("4.679813877331977");
             inforVenta.setConsecutive(devideInfo.getNewConsecutive());
             inforVenta.setBillNumber("");
             inforVenta.setEntityCode("");
@@ -1494,6 +1495,7 @@ public class pantallaConfirmacion extends BaseActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
+
                 resp = service.generarVenta(inforVenta);
             }
         }).start();
