@@ -910,52 +910,53 @@ public class pantallaConfirmacion extends BaseActivity {
             //inforVenta.setLatitude("-74.04252645904097");
             //inforVenta.setLength("4.679813877331977");
             inforVenta.setConsecutive(devideInfo.getNewConsecutive());
-            inforVenta.setBillNumber("");
-            inforVenta.setEntityCode("");
+            inforVenta.setBillNumber("1");
+            inforVenta.setEntityCode("1");
             inforVenta.setChannel("1");
 
 
         switch (transaccion){
             case CodigosTransacciones.CORRESPONSAL_DEPOSITO: {
-                inforVenta.setTransactionType("");
-                inforVenta.setMposType("");
-                inforVenta.setNumberQuotas("");
-                inforVenta.setAccountType("");
-                inforVenta.setPartialAmount("");
-                inforVenta.setIva("");
-                inforVenta.setBase("");
-                inforVenta.setInc("");
-                inforVenta.setTip("");
-                inforVenta.setPan("");
+                inforVenta.setTransactionType("25");
+                inforVenta.setMposType("1");
+                inforVenta.setNumberQuotas("0");
+                inforVenta.setAccountType("10");
+                inforVenta.setPartialAmount("0");
+                inforVenta.setIva("0");
+                inforVenta.setBase("0");
+                inforVenta.setInc("0");
+                inforVenta.setTip("0");
+                inforVenta.setPan("0");
                 inforVenta.setTotalAmount(datosTransaccion.get(2));
-                inforVenta.setTagSale("");
-                inforVenta.setTrack2("");
-                inforVenta.setKsn("");
-                inforVenta.setPinBlock("");
-                inforVenta.setKsnPinBlock("");
-                inforVenta.setPostEntryMode("");
-                inforVenta.setArqc("");
-                inforVenta.setCardName("");
-                inforVenta.setApLabel("");
-                inforVenta.setExpirationDate("");
-                inforVenta.setAid("");
-                inforVenta.setDocumentNumber("");
-                inforVenta.setNumeroCuenta("");
-                inforVenta.setNumeroConvenio("");
-                inforVenta.setCapturaLectorBarras("");
-                inforVenta.setNumeroCelular("");
-                inforVenta.setNumeroTarjeta("");
-                inforVenta.setNumeroPagare("");
+                inforVenta.setTagSale("0");
+                inforVenta.setTrack2("0");
+                inforVenta.setKsn("0");
+                inforVenta.setPinBlock("0");
+                inforVenta.setKsnPinBlock("0");
+                inforVenta.setPostEntryMode("0");
+                inforVenta.setArqc("0");
+                inforVenta.setCardName("0");
+                inforVenta.setApLabel("0");
+                inforVenta.setExpirationDate("0");
+                inforVenta.setAid("0");
+                inforVenta.setDocumentNumber("0");
+                inforVenta.setNumeroCuenta("0");
+                inforVenta.setNumeroConvenio("0");
+                inforVenta.setCapturaLectorBarras("0");
+                inforVenta.setNumeroCelular("0");
+                inforVenta.setNumeroTarjeta("0");
+                inforVenta.setNumeroPagare("0");
                 inforVenta.setTipoCuentaDestino(datosTransaccion.get(3));
                 inforVenta.setCuentaDestino(datosTransaccion.get(1));
-                inforVenta.setTipoDocumentoGirador("");
-                inforVenta.setNumeroDocumentoGirador("");
-                inforVenta.setNumeroCelularGirador("");
-                inforVenta.setTipoDocumentoBeneficiario("");
-                inforVenta.setNumeroDocumentoBeneficiario("");
-                inforVenta.setNumeroCelularBeneficiario("");
+                inforVenta.setTipoDocumentoGirador("0");
+                inforVenta.setNumeroDocumentoGirador("0");
+                inforVenta.setNumeroCelularGirador("0");
+                inforVenta.setTipoDocumentoBeneficiario("0");
+                inforVenta.setNumeroDocumentoBeneficiario("0");
+                inforVenta.setNumeroCelularBeneficiario("0");
                 inforVenta.setTramaISO(respuestaC);
-                inforVenta.setNumeroCuentaRecaudo("");
+                inforVenta.setNumeroCuentaRecaudo("0");
+                inforVenta.setLecturaBandaEmp("0");
             }
                 break;
 
@@ -1000,6 +1001,7 @@ public class pantallaConfirmacion extends BaseActivity {
                 inforVenta.setNumeroCelularBeneficiario("");
                 inforVenta.setTramaISO(respuestaC);
                 inforVenta.setNumeroCuentaRecaudo("");
+                inforVenta.setLecturaBandaEmp("");
             }
                 break;
 
@@ -1043,6 +1045,7 @@ public class pantallaConfirmacion extends BaseActivity {
                 inforVenta.setNumeroCelularBeneficiario(datosTransaccion.get(7));
                 inforVenta.setTramaISO(respuestaC);
                 inforVenta.setNumeroCuentaRecaudo("");
+                inforVenta.setLecturaBandaEmp("");
             }
                 break;
 
@@ -1087,6 +1090,7 @@ public class pantallaConfirmacion extends BaseActivity {
                 inforVenta.setNumeroCelularBeneficiario("");
                 inforVenta.setTramaISO(respuestaC);
                 inforVenta.setNumeroCuentaRecaudo("");
+                inforVenta.setLecturaBandaEmp("");
             }
                 break;
 
@@ -1130,6 +1134,7 @@ public class pantallaConfirmacion extends BaseActivity {
                 inforVenta.setNumeroCelularBeneficiario("");
                 inforVenta.setTramaISO(respuestaC);
                 inforVenta.setNumeroCuentaRecaudo("");
+                inforVenta.setLecturaBandaEmp("");
             }
                 break;
 
@@ -1173,10 +1178,12 @@ public class pantallaConfirmacion extends BaseActivity {
                 inforVenta.setNumeroCelularBeneficiario("");
                 inforVenta.setTramaISO(respuestaC);
                 inforVenta.setNumeroCuentaRecaudo("");
+                inforVenta.setLecturaBandaEmp("");
             }
                 break;
 
             case CodigosTransacciones.CORRESPONSAL_RETIRO_CON_TARJETA: {
+                Log.d("Tarjeta",tarjeta.toString());
                 inforVenta.setTransactionType("");
                 inforVenta.setMposType("");
                 inforVenta.setNumberQuotas("");
@@ -1186,18 +1193,18 @@ public class pantallaConfirmacion extends BaseActivity {
                 inforVenta.setBase("");
                 inforVenta.setInc("");
                 inforVenta.setTip("");
-                inforVenta.setPan("");
+                inforVenta.setPan(tarjeta.getPanEnmascarado());
                 inforVenta.setTotalAmount(datosTransaccion.get(0));
                 inforVenta.setTagSale("");
-                inforVenta.setTrack2("");
-                inforVenta.setKsn("");
-                inforVenta.setPinBlock("");
-                inforVenta.setKsnPinBlock("");
-                inforVenta.setPostEntryMode("");
+                inforVenta.setTrack2(tarjeta.getTrack2Cifrado());
+                inforVenta.setKsn(tarjeta.getKsn());
+                inforVenta.setPinBlock(tarjeta.getPinBlock());
+                inforVenta.setKsnPinBlock(tarjeta.getKsnPinBlock());
+                inforVenta.setPostEntryMode(tarjeta.getPosEntryMode());
                 inforVenta.setArqc("");
                 inforVenta.setCardName("");
                 inforVenta.setApLabel("");
-                inforVenta.setExpirationDate("");
+                inforVenta.setExpirationDate(tarjeta.getFechaExpiracion());
                 inforVenta.setAid("");
                 inforVenta.setDocumentNumber("");
                 if (datosTransaccion.size()>3){
@@ -1220,6 +1227,7 @@ public class pantallaConfirmacion extends BaseActivity {
                 inforVenta.setNumeroCelularBeneficiario("");
                 inforVenta.setTramaISO(respuestaC);
                 inforVenta.setNumeroCuentaRecaudo("");
+                inforVenta.setLecturaBandaEmp("");
             }
                 break;
 
@@ -1263,6 +1271,7 @@ public class pantallaConfirmacion extends BaseActivity {
                 inforVenta.setNumeroCelularBeneficiario("");
                 inforVenta.setTramaISO(respuestaC);
                 inforVenta.setNumeroCuentaRecaudo("");
+                inforVenta.setLecturaBandaEmp("");
             }
                 break;
 
@@ -1306,6 +1315,7 @@ public class pantallaConfirmacion extends BaseActivity {
                 inforVenta.setNumeroCelularBeneficiario("");
                 inforVenta.setTramaISO(respuestaC);
                 inforVenta.setNumeroCuentaRecaudo("");
+                inforVenta.setLecturaBandaEmp("");
             }
                 break;
 
@@ -1349,6 +1359,7 @@ public class pantallaConfirmacion extends BaseActivity {
                 inforVenta.setNumeroCelularBeneficiario("");
                 inforVenta.setTramaISO(respuestaC);
                 inforVenta.setNumeroCuentaRecaudo("");
+                inforVenta.setLecturaBandaEmp("");
             }
                 break;
 
@@ -1395,6 +1406,7 @@ public class pantallaConfirmacion extends BaseActivity {
                 inforVenta.setNumeroCelularBeneficiario("");
                 inforVenta.setTramaISO(respuestaC);
                 inforVenta.setNumeroCuentaRecaudo("");
+                inforVenta.setLecturaBandaEmp("");
             }
                 break;
 
@@ -1443,6 +1455,7 @@ public class pantallaConfirmacion extends BaseActivity {
                 inforVenta.setNumeroCelularBeneficiario("");
                 inforVenta.setTramaISO(respuestaC);
                 inforVenta.setNumeroCuentaRecaudo("");
+                inforVenta.setLecturaBandaEmp("");
             }
                 break;
 
@@ -1487,6 +1500,7 @@ public class pantallaConfirmacion extends BaseActivity {
                 inforVenta.setNumeroCelularBeneficiario("");
                 inforVenta.setTramaISO(respuestaC);
                 inforVenta.setNumeroCuentaRecaudo("");
+                inforVenta.setLecturaBandaEmp("");
             }
                 break;
         }

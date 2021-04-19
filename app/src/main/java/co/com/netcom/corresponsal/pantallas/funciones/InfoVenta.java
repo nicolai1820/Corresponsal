@@ -59,6 +59,15 @@ public class InfoVenta {
     private String  tipoDocumentoBeneficiario;
     private String  numeroDocumentoBeneficiario;
     private String  numeroCelularBeneficiario;
+    private String lecturaBandaEmp;
+
+    public String getLecturaBandaEmp() {
+        return lecturaBandaEmp;
+    }
+
+    public void setLecturaBandaEmp(String lecturaBandaEmp) {
+        this.lecturaBandaEmp = lecturaBandaEmp;
+    }
 
     public String getNumeroCuentaRecaudo() {
         return numeroCuentaRecaudo;

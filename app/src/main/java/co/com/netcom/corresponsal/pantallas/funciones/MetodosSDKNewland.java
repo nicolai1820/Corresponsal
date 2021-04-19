@@ -186,7 +186,7 @@ public class MetodosSDKNewland {
             Log.d("onScannerResult","onScannerResult");
 
             String sSubCadena = devInfo.getAddress().substring(0,5);
-
+            //Flito debe ser con el nombre
             if (sSubCadena.equals("08:00")){
                 listDevices.add(devInfo.getName() + "\n" + devInfo.getAddress());
                 Log.d("AGREGUE",devInfo.getAddress());
@@ -471,7 +471,7 @@ public class MetodosSDKNewland {
 
                datosTarjeta.setPanEnmascarado(maskedPAN);
                datosTarjeta.setTarjetaHabiente(ObtenerTarjetaHabiente(hexa.hexToString(Dump.getHexDump(cardInfoEntity.getStrTrack1Plain()).replaceAll(" ","")).toCharArray()));
-               datosTarjeta.setTrack2(Dump.getHexDump(cardInfoEntity.getStrTrack2()));
+               datosTarjeta.setTrack2(Dump.getHexDump(cardInfoEntity.getStrTrack2()).replaceAll(" ",""));
                datosTarjeta.setFechaExpiracion(track2[1].replaceAll(" ","").substring(0,4));
                datosTarjeta.setUltimosCuatro(track2[0].substring(track2[0].length()-4, track2[0].length()));
                datosTarjeta.setPan(track2[0]);
@@ -486,9 +486,11 @@ public class MetodosSDKNewland {
                }
                if (Dump.getHexDump(cardInfoEntity.getPinBlock())!=null){
                    datosTarjeta.setPinBlock(Dump.getHexDump(cardInfoEntity.getPinBlock()).replaceAll(" ",""));
+               }else{
+                   datosTarjeta.setPinBlock("");
                }
 
-               datosTarjeta.setTrack2Cifrado(Dump.getHexDump(cardInfoEntity.getStrTrack2()).replace(" ",""));
+               datosTarjeta.setTrack2Cifrado(Dump.getHexDump(cardInfoEntity.getStrTrack2()).replaceAll(" ",""));
                datosTarjeta.setPosEntryMode(ConstantsPosEntryMode.MAGNETIC_SWIP);
                datosTarjeta.setIsBanda(true);
                datosTarjeta.setFallBack(false);
@@ -576,6 +578,8 @@ public class MetodosSDKNewland {
                }
                if (Dump.getHexDump(cardInfoEntity.getPinBlock())!=null){
                    datosTarjeta.setPinBlock(Dump.getHexDump(cardInfoEntity.getPinBlock()).replaceAll(" ",""));
+               }else{
+                   datosTarjeta.setPinBlock("");
                }
                String [] track2 = Dump.getHexDump(cardInfoEntity.getStrTrack2()).replaceAll(" ","").split("D");
                datosTarjeta.setPan(track2[0]);
@@ -584,8 +588,8 @@ public class MetodosSDKNewland {
                String maskedPAN = track2[0].substring(0,8) + "****" + track2[0].substring(track2[0].length() - 4, track2[0].length());
                datosTarjeta.setPanEnmascarado(maskedPAN);
 
-               datosTarjeta.setTrack2(Dump.getHexDump(cardInfoEntity.getStrTrack2()));
-               datosTarjeta.setTrack2Cifrado(Dump.getHexDump(cardInfoEntity.getIccDataEncrypt()));
+               datosTarjeta.setTrack2(Dump.getHexDump(cardInfoEntity.getStrTrack2()).replaceAll(" ",""));
+               datosTarjeta.setTrack2Cifrado(Dump.getHexDump(cardInfoEntity.getIccDataEncrypt()).replaceAll(" ",""));
 
                switch (codigoTransaccion){
 
