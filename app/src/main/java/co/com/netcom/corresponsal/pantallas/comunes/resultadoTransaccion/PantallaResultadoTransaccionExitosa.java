@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -12,13 +13,15 @@ import co.com.netcom.corresponsal.pantallas.comunes.correo.PantallaCopiaCorreo;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun;
+import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
 import co.com.netcom.corresponsal.pantallas.funciones.CodificarBase64;
 
-public class PantallaResultadoTransaccionExitosa extends AppCompatActivity {
+public class PantallaResultadoTransaccionExitosa extends BaseActivity {
 
     private Header header = new Header("<b>Resultado transacción</b>");
     private TextView textViewNumeroAprovacion;
     private String idTransaccion;
+    private int transaccion;
     private CodificarBase64 base64;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,10 @@ public class PantallaResultadoTransaccionExitosa extends AppCompatActivity {
         //Recuperar información transaccion : ID de la transacción
         Bundle i = getIntent().getExtras();
         idTransaccion = i.getString("aprovalCode");
+        transaccion = i.getInt("transaccion");
+        Log.d("idTransaccion",idTransaccion);
+        Log.d("transaccion",String.valueOf(transaccion));
+        Log.d("RESULTADOTX","resultadotx");
 
         textViewNumeroAprovacion = findViewById(R.id.textView_referenciaTransaccion);
 
@@ -41,13 +48,14 @@ public class PantallaResultadoTransaccionExitosa extends AppCompatActivity {
 
     public void buttonSalirResultadoTransaccionExitosa(View view){
         PopUp pop = new PopUp(PantallaResultadoTransaccionExitosa.this);
-        pop.crearPopUpConfirmarEnvioCorreo(idTransaccion);
+        pop.crearPopUpConfirmarEnvioCorreo(transaccion,idTransaccion);
     }
 
     public void buttonEnviarCopiaCorreo(View view){
         //Hacer el intent a la pantalla de enviar correo y agregar el id de la transacción
         Intent i = new Intent(getApplicationContext(), PantallaCopiaCorreo.class);
         i.putExtra("aprovalCode",idTransaccion);
+        i.putExtra("transaccion",transaccion);
         startActivity(i);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
     }

@@ -27,6 +27,7 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManagerFactory;
 
+import co.com.netcom.corresponsal.pantallas.comunes.correo.PantallaCopiaCorreo;
 import co.com.netcom.corresponsal.pantallas.comunes.logIn.LogIn;
 import co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion;
 import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
@@ -55,6 +56,18 @@ public class Servicios {
     private static String apiVenta ="netcom/merchant/api/transactions/sales/v2";
     private static String apiParametricasBanco ="netcom/merchant/api/parametrics/terminal?userId=USERID&terminalCode=TERMINALCODE";
     private static String apiPanVirtual ="netcom/merchant/api/parametrics/terminal/pan?userId=USERID&terminalCode=TERMINALCODE";
+    private static String apiCorreoRetiroSinTarjeta ="netcom/merchant/api/mails/corresponsal/retiro/sinTarjeta";
+    private static String apiCorreoRetiroConTarjeta ="netcom/merchant/api/mails/corresponsal/retiro/tarjeta";
+    private static String apiCorreoDeposito = "netcom/merchant/api/mails/corresponsal/deposito";
+    private static String apiCorreoPagoCartera ="netcom/merchant/api/mails/corresponsal/pagoCartera";
+    private static String apiCorreoRecarga ="netcom/merchant/api/mails/corresponsal/recarga";
+    private static String apiCorreoPagoTarjetaCredito = "netcom/merchant/api/mails/corresponsal/pagoTarjetaCredito";
+    private static String apiCorreoConsultaSaldo ="netcom/merchant/api/mails/corresponsal/consultaSaldo";
+    private static String apiCorreoEnviarGiro ="netcom/merchant/api/mails/corresponsal/enviarGiro";
+    private static String apiCorreoReclamarGiro ="netcom/merchant/api/mails/corresponsal/reclamarGiro";
+    private static String apiCorreoCancelarGiro ="netcom/merchant/api/mails/corresponsal/cancelarGiro";
+    private static String apiCorreoRecaudo ="netcom/merchant/api/mails/corresponsal/recaudo";
+    private static String apiCorreoTransferencia ="netcom/merchant/api/mails/corresponsal/transferencia";
 
     private Context context;
     private String token;
@@ -716,6 +729,130 @@ public class Servicios {
         }
     }
 
+    /**Metodo enviarCorreo retiro sin tarjeta que retorna un Map <String,String>,
+     *recibe como parametro un String que contiene el id de la transacción
+     * recibe como parametro un String que contiene el correo
+     * se encarga de enviar el voucher de retiro sin tarjeta*/
+
+    public Map<String, String> envioCorreo(String idTransaccion, String correo, int codigoTransaccion){
+
+        PreferencesUsuario prefsInfoUsuario = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_INFO_USUARIO,context);
+        PreferencesUsuario prefsParametrics = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_PARAMETRICAS,context);
+        PreferencesUsuario prefsToken = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_TOKEN,context);
+        CodificarBase64 base64 = new CodificarBase64();
+
+        Log.d("transaccion",String.valueOf(codigoTransaccion));
+        String url ="";
+        switch (codigoTransaccion){
+            case CodigosTransacciones.CORRESPONSAL_RETIRO_SIN_TARJETA:
+                url = apiCorreoRetiroSinTarjeta;
+                break;
+            case CodigosTransacciones.CORRESPONSAL_RETIRO_CON_TARJETA:
+                url= apiCorreoRetiroConTarjeta;
+                break;
+
+            case CodigosTransacciones.CORRESPONSAL_DEPOSITO:
+                url = apiCorreoDeposito;
+                break;
+
+            case CodigosTransacciones.CORRESPONSAL_PAGO_PRODUCTOS:
+                url = apiCorreoPagoCartera;
+                break;
+
+            case CodigosTransacciones.CORRESPONSAL_RECARGAS:
+                url = apiCorreoRecarga;
+                break;
+
+            case CodigosTransacciones.CORRESPONSAL_PAGO_FACTURA_TARJETA_EMPRESARIAL:
+                url = apiCorreoPagoTarjetaCredito;
+                break;
+
+            case CodigosTransacciones.CORRESPONSAL_CONSULTA_SALDO:
+                url = apiCorreoConsultaSaldo;
+                break;
+
+            case CodigosTransacciones.CORRESPONSAL_ENVIO_GIRO:
+                url = apiCorreoEnviarGiro;
+                break;
+
+            case CodigosTransacciones.CORRESPONSAL_RECLAMACION_GIRO:
+                url = apiCorreoReclamarGiro;
+                break;
+
+            case CodigosTransacciones.CORRESPONSAL_CANCELACION_GIRO:
+                url = apiCorreoCancelarGiro;
+                break;
+
+            case CodigosTransacciones.CORRESPONSAL_PAGO_FACTURA_MANUAL:
+                url = apiCorreoRecaudo;
+                break;
+
+            case CodigosTransacciones.CORRESPONSAL_TRANSFERENCIA:
+                url = apiCorreoTransferencia;
+                break;
+        }
+
+        //Metodo para funcionar con cualquier ssl
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.hostnameVerifier(new HostnameVerifier() {
+            @Override
+            public boolean verify(String hostname, SSLSession session) {
+                return true;
+            }
+        });
+
+        OkHttpClient client = builder.sslSocketFactory(getSLLContext().getSocketFactory()).callTimeout(30,TimeUnit.SECONDS).build();
+
+
+        MediaType mediaType = MediaType.parse("application/json");
+        RequestBody body = RequestBody.create(mediaType, "{\n    \"to\": \""+base64.convertirBase64(correo)+"\",\n    \"img\": \"\",\n    \"approvalCode\": \""+base64.convertirBase64(idTransaccion)+"\",\n    \"userId\": \""+prefsInfoUsuario.getUserId()+"\",\n    \"terminalCode\": \""+prefsParametrics.getTerminalCodeParametricas()+"\",\n    \"adminApprovalCode\": \""+base64.convertirBase64("")+"\",\n    \"nameApp\": \"\",\n    \"versionApp\": \"\" ,\n    \"isAuthPin\": \"\"\n}\n");
+        //RequestBody body = RequestBody.create(mediaType, "{\n    \"to\": \"cGFibG8ucG9zYWRhbmEubmV0Y29tQGdtYWlsLmNvbQ==\",\n    \"img\": \"\",\n    \"approvalCode\": \"MTIzNDU3\",\n    \"userId\": \"MTIyOTAw\",\n    \"terminalCode\": \""+prefsParametrics.getTerminalCode()+"\",\n    \"adminApprovalCode\": \"\",\n    \"nameApp\": \"\",\n    \"versionApp\": \"\",\n    \"isAuthPin\": \"\"\n}");
+        Request request = new Request.Builder()
+                .url(urlBaseServicios+url)
+                .method("POST", body)
+                .addHeader("Content-Type", "application/json")
+                .addHeader("Accept", "text/*;q=0.3, text/html;q=0.7, text/html;level=1,text/html;level=2;q=0.4, */*;q=0.5")
+                .addHeader("Authorization", "Bearer "+prefsToken.getToken())
+                .build();
+
+        String a="";
+        try {
+            final Request copy = request.newBuilder().build();
+            final Buffer buffer = new Buffer();
+            copy.body().writeTo(buffer);
+            a = buffer.readUtf8();
+        } catch (final IOException e) {
+            a = "did not work";
+        }
+
+        Log.d("Body",a);
+        Log.d("Service",request.toString());
+        Log.d("Headers",request.headers().toString());
+
+        try {
+            Response response = client.newCall(request).execute();
+            Log.d("RESPONSE",response.toString());
+
+            String jsonData = response.body().string();
+            JSONObject Jobject = new JSONObject(jsonData);
+            Log.d("RESPUESTA",Jobject.toString());
+
+            Map <String,String > resp = new HashMap<String,String>();
+            resp.put("responseCode",Jobject.getString("responseCode"));
+            resp.put("responseMessage",Jobject.getString("responseMessage"));
+
+
+            return resp;
+
+        } catch (IOException | JSONException e) {
+            Map <String,String > resp = new HashMap<String,String>();
+            resp.put("responseCode",base64.convertirBase64("code"));
+            resp.put("responseMessage",base64.convertirBase64("responseMessage"));
+
+
+            return resp;
+        }
+    }
 
 
 }

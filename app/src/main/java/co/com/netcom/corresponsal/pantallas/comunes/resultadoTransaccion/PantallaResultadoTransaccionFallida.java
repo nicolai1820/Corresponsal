@@ -10,9 +10,10 @@ import android.widget.TextView;
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.header.Header;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun;
+import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
 import co.com.netcom.corresponsal.pantallas.funciones.CodificarBase64;
 
-public class PantallaResultadoTransaccionFallida extends AppCompatActivity {
+public class PantallaResultadoTransaccionFallida extends BaseActivity {
 
     private Header header = new Header("<b>Resultado transacción</b>");
     private TextView textViewTxFallida;

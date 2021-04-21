@@ -76,6 +76,8 @@ public class Header extends Fragment {
 
                 }  else if (getActivity().getLocalClassName().equals("pantallas.comunes.resultadoTransaccion.PantallaResultadoTransaccionFallida")) {
 
+                }else if (getActivity().getLocalClassName().equals("pantallas.comunes.correo.PantallaCopiaCorreo")) {
+
                 }
                 else {
                     //Se hace el correspondiente intent a la pantalla inicial, con la correspondiente animacion

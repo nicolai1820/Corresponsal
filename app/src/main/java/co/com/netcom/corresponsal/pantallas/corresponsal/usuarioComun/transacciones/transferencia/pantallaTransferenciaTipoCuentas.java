@@ -76,7 +76,7 @@ public class pantallaTransferenciaTipoCuentas extends BaseActivity {
         spinner_tipoCuentaOrigenTransferencia.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position==3){
+                if (position==4){
                     editText_PantallaTransferenciaTipoCuentasOtraCuenta.setVisibility(View.VISIBLE);
                 } else {
                     editText_PantallaTransferenciaTipoCuentasOtraCuenta.setVisibility(View.INVISIBLE);
@@ -151,12 +151,13 @@ public class pantallaTransferenciaTipoCuentas extends BaseActivity {
                 i.putExtra("clase","");
                 i.putExtra("contador", contador);
                 i.putExtra("tipoDeCuenta", tipoDeCuenta);
-                i.putExtra("transaccion", "");
+                i.putExtra("transaccion", codigo.CORRESPONSAL_TRANSFERENCIA);
                 i.putExtra("iconos",iconos);
                 i.putExtra("tarjeta",tarjeta);
                 startActivity(i);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
-            } else{
+            }
+            else{
                 if(seleccionCuentaOrigen.equals("Ahorros")){
                     tipoCuentaOrigen = "10";
                 }else{

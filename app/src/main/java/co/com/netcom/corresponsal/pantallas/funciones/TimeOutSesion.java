@@ -12,9 +12,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
 
+import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
+
 public class TimeOutSesion extends Activity {
 
-    public interface TimeOutSesionListener {
+    public  interface TimeOutSesionListener {
 
         void doLogout();
 
@@ -60,15 +62,21 @@ public class TimeOutSesion extends Activity {
                     horainicial = segundahora;
                     segundahora=0;
 
+                    DeviceInformation device = new DeviceInformation(context);
                     Log.d("SOLICITANDO TOKEN","token");
                     Servicios servicios = new Servicios(context);
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
+                    if(device.getInternetStatus()){
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
 
-                            servicios.refrescarToken();
-                        }
-                    }).start();
+                                servicios.refrescarToken();
+                            }
+                        }).start();
+                    }else{
+                        PopUp pop = new PopUp(context);
+                        pop.crearPopUpErrorInternet();
+                    }
                     /*Token t  = new Token(context);
 
                     t.refreshToken();

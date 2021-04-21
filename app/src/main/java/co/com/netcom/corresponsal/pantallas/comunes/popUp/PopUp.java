@@ -23,9 +23,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.logIn.LogIn;
-import co.com.netcom.corresponsal.pantallas.comunes.logIn.PantallaCambioContrasena;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.consultaSaldo.pantallaConsultaSaldoLectura;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.inicio.pantallaInicialUsuarioComun;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.pagoFacturas.tarjetaEmpresarial.PantallaTarjetaEmpresarialLectura;
@@ -53,12 +55,16 @@ public class PopUp extends AppCompatActivity {
     private AlertDialog alertDialogLoginFallido;
     private AlertDialog alertDialogConfirmarEnvioCorreo;
     private AlertDialog alertDialogRecuperarContrasena;
+    private AlertDialog alertDialogCorreoComercio;
+    private AlertDialog alertDialogCorreoCliente;
     private AlertDialog alertDialogGeneral;
     private AlertDialog alertDialogErrorServidor;
     private AlertDialog dialog;
     private Thread solicitarCierreSesion;
-    private Thread solicitarEnvioCorreoCliente;
+    private Thread solicitarEnvioCorreoComercio;
     private String respuestaCierreSesion;
+    private static Map<String,String > respuestaCorreo= new HashMap<String,String>();
+
 
     /**Constructor de la clase PopUpDesconexion, recibo como parametro el contexto de la actividad donde se inicializa*/
     public PopUp(Context contexto){
@@ -876,7 +882,7 @@ public class PopUp extends AppCompatActivity {
     }
 
     /**Metodo de tipo void, el cual se encarga de crear un pop up para confirmar que no quieren enviar correo al cliente*/
-    public void crearPopUpConfirmarEnvioCorreo(String codigoTransaccion){
+    public void crearPopUpConfirmarEnvioCorreo(int codigoTransaccion,String idTransaccion){
 
         Handler resp = new Handler(){
             @Override
@@ -884,7 +890,12 @@ public class PopUp extends AppCompatActivity {
                 super.handleMessage(msg);
                 switch (msg.what) {
                     case 1:
-                        //Hace el intent al inicio de la aplicación
+                        //Poner pop up resultado correo
+                        if(respuestaCorreo.get("responseCode").equals("Mq==")){
+                            crearPopUpResultadoCorreoComercio("Correo enviado exitosamente al comercio");
+                        }else{
+                            crearPopUpResultadoCorreoComercio("Hubo un error en el envio del correo al comercio");
+                        }
 
                 }}};
 
@@ -901,8 +912,8 @@ public class PopUp extends AppCompatActivity {
         Button btnAceptar= view.findViewById(R.id.button_PopUpSalirError);
         Button btnCerrar= view.findViewById(R.id.button_PopUpVolverIntentar);
 
-        btnCerrar.setText("Aceptar");
-        btnAceptar.setText("Cancelar");
+        btnCerrar.setText("Cancelar");
+        btnAceptar.setText("Aceptar");
         textViewErrorServidor.setText("Esta seguro que no desea enviar copia al cliente?");
 
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
@@ -914,12 +925,141 @@ public class PopUp extends AppCompatActivity {
         btnCerrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //ENvia copia al comercio
+                //Envia copia al comercio
+                alertDialogConfirmarEnvioCorreo.dismiss();
+            }
+        });
+
+        //Se crea el evento click para el boton del pop up, el cual redirige al inicio de la aplicacion
+        btnAceptar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialogConfirmarEnvioCorreo.dismiss();
+                Servicios serv = new Servicios(context);
+                CodificarBase64 base64 = new CodificarBase64();
+                PreferencesUsuario prefsParam = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_PARAMETRICAS,context);
+                solicitarEnvioCorreoComercio = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //solicitar envio correo
+
+                                respuestaCorreo = serv.envioCorreo(idTransaccion,base64.decodificarBase64(prefsParam.getCommerceMail()),codigoTransaccion);
+                        try{
+                            //Se envia un mensaje al handler de la clase consulta saldo, indicando que el usuario cancelo la transaccion
+                            Message usuarioCancela = new Message();
+                            usuarioCancela.what = 1;
+                            resp.sendMessage(usuarioCancela);
+                        }catch (Exception e){ }
+                    }
+                });
+
+                solicitarEnvioCorreoComercio.start();
+            }
+        });
+
+        //Se crea el correspondiente Dialog que se mostrara al usuario
+        alertDialogConfirmarEnvioCorreo = alertDialogBuilder.create();
+        //Se agrega esta linea para que no tenga fondo por defecto el dialog
+        alertDialogConfirmarEnvioCorreo.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        //Se muestra el Dialogo al usuario con su correspondiente ubicacion en la pantalla
+        alertDialogConfirmarEnvioCorreo.show();
+
+
+        Log.d("heigh",String.valueOf(dpHeight));
+        Log.d("width",String.valueOf(dpWidth*0.9));
+
+        alertDialogConfirmarEnvioCorreo.getWindow().setLayout((int)(dpWidth*0.7), LinearLayout.LayoutParams.WRAP_CONTENT);//
+    }
+
+    /**Metodo de tipo void, el cual se encarga de crear un pop up para informar el resultado del correo y muestra el resultado del correo del cliente*/
+    public void crearPopUpResultadoCorreoComercio(String mensaje){
+
+
+        //Se hace la respectiva conexión con el frontEnd del pop up
+        LayoutInflater li = LayoutInflater.from(context);
+        View view = li.inflate(R.layout.activity_pop_up_error, null);
+
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        alertDialogBuilder.setView(view);
+        alertDialogBuilder.setCancelable(false);
+
+        //Se genera la conexión con el boton del pop up
+        TextView textViewErrorServidor = view.findViewById(R.id.textView_PopUp);
+        Button btnAceptar= view.findViewById(R.id.button_PopUpSalir);
+        btnAceptar.setText("Aceptar");
+        textViewErrorServidor.setText(mensaje);
+
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        float dpHeight = displayMetrics.heightPixels;
+        float dpWidth = displayMetrics.widthPixels ;
+
+
+        //Se crea el evento click para el boton del pop up, el cual redirige al inicio de la aplicacion
+        btnAceptar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialogCorreoComercio.dismiss();
                 Intent i = new Intent(context, pantallaInicialUsuarioComun.class);
                 context.startActivity(i);
                 activity.overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
             }
         });
+
+        //Se crea el correspondiente Dialog que se mostrara al usuario
+        alertDialogCorreoComercio = alertDialogBuilder.create();
+        //Se agrega esta linea para que no tenga fondo por defecto el dialog
+        alertDialogCorreoComercio.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        //Se muestra el Dialogo al usuario con su correspondiente ubicacion en la pantalla
+        alertDialogCorreoComercio.show();
+
+
+        Log.d("heigh",String.valueOf(dpHeight));
+        Log.d("width",String.valueOf(dpWidth*0.9));
+
+        alertDialogCorreoComercio.getWindow().setLayout((int)(dpWidth*0.7), LinearLayout.LayoutParams.WRAP_CONTENT);//
+
+
+    }
+
+    /**Metodo de tipo void, el cual se encarga de crear un pop up para informar el resultado del correo y muestra el resultado del correo del cliente*/
+    public void crearPopUpResultadoCorreoCLiente(String mensaje,int codigoTransaccion,String idTransaccion){
+
+
+        Handler resp = new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                switch (msg.what) {
+                    case 1:
+                        dialog.dismiss();
+                        //Poner pop up resultado correo
+                        if(respuestaCorreo.get("responseCode").equals("MQ==")){
+                            crearPopUpResultadoCorreoComercio("Correo enviado exitosamente al comercio");
+                        }else{
+                            crearPopUpResultadoCorreoComercio("Hubo un error en el envio del correo al comercio");
+                        }
+
+                }}};
+        //Se hace la respectiva conexión con el frontEnd del pop up
+        LayoutInflater li = LayoutInflater.from(context);
+        View view = li.inflate(R.layout.activity_pop_up_error, null);
+
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        alertDialogBuilder.setView(view);
+        alertDialogBuilder.setCancelable(false);
+
+        //Se genera la conexión con el boton del pop up
+        TextView textViewErrorServidor = view.findViewById(R.id.textView_PopUp);
+        Button btnAceptar= view.findViewById(R.id.button_PopUpSalir);
+        btnAceptar.setText("Aceptar");
+        textViewErrorServidor.setText(mensaje);
+
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        float dpHeight = displayMetrics.heightPixels;
+        float dpWidth = displayMetrics.widthPixels ;
+
 
         //Se crea el evento click para el boton del pop up, el cual redirige al inicio de la aplicacion
         btnAceptar.setOnClickListener(new View.OnClickListener() {
@@ -937,38 +1077,46 @@ public class PopUp extends AppCompatActivity {
                 Log.d("OPEN"," se abrio el loader");
                 dialog.show();
 
-                alertDialogConfirmarEnvioCorreo.dismiss();
                 Servicios serv = new Servicios(context);
-                solicitarEnvioCorreoCliente = new Thread(new Runnable() {
+                CodificarBase64 base64 = new CodificarBase64();
+                PreferencesUsuario prefsParam = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_PARAMETRICAS,context);
+                solicitarEnvioCorreoComercio = new Thread(new Runnable() {
                     @Override
                     public void run() {
                         //solicitar envio correo
-                        //respuestaCierreSesion = serv.cerrarSesion();
+                        alertDialogCorreoCliente.dismiss();
+
+                        respuestaCorreo = serv.envioCorreo(idTransaccion,base64.decodificarBase64(prefsParam.getCommerceMail()),codigoTransaccion);
                         try{
                             //Se envia un mensaje al handler de la clase consulta saldo, indicando que el usuario cancelo la transaccion
-                            //Message usuarioCancela = new Message();
-                            //usuarioCancela.what = 1;
-                            //resp.sendMessage(usuarioCancela);
+                            Message usuarioCancela = new Message();
+                            usuarioCancela.what = 1;
+                            resp.sendMessage(usuarioCancela);
                         }catch (Exception e){ }
                     }
                 });
 
-                solicitarEnvioCorreoCliente.start();
+                solicitarEnvioCorreoComercio.start();
             }
         });
 
+
+
+
         //Se crea el correspondiente Dialog que se mostrara al usuario
-        alertDialogConfirmarEnvioCorreo = alertDialogBuilder.create();
+        alertDialogCorreoCliente = alertDialogBuilder.create();
         //Se agrega esta linea para que no tenga fondo por defecto el dialog
-        alertDialogConfirmarEnvioCorreo.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        alertDialogCorreoCliente.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         //Se muestra el Dialogo al usuario con su correspondiente ubicacion en la pantalla
-        alertDialogConfirmarEnvioCorreo.show();
+        alertDialogCorreoCliente.show();
 
 
         Log.d("heigh",String.valueOf(dpHeight));
         Log.d("width",String.valueOf(dpWidth*0.9));
 
-        alertDialogConfirmarEnvioCorreo.getWindow().setLayout((int)(dpWidth*0.7), LinearLayout.LayoutParams.WRAP_CONTENT);//
+        alertDialogCorreoCliente.getWindow().setLayout((int)(dpWidth*0.7), LinearLayout.LayoutParams.WRAP_CONTENT);//
+
+
     }
 }

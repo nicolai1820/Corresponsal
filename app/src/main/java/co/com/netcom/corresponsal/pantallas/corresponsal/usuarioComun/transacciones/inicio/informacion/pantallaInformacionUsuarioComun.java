@@ -29,7 +29,7 @@ import co.com.netcom.corresponsal.pantallas.funciones.PreferencesUsuario;
 import co.com.netcom.corresponsal.pantallas.funciones.Servicios;
 import co.com.netcom.corresponsal.pantallas.funciones.TimeOutSesion;
 
-public class pantallaInformacionUsuarioComun extends Fragment {
+public class pantallaInformacionUsuarioComun extends Fragment implements TimeOutSesion.TimeOutSesionListener {
 
 
     private Button preguntasFrecuentes,soporte, duplicado, cerrarSesion;
@@ -70,8 +70,6 @@ public class pantallaInformacionUsuarioComun extends Fragment {
 
                         if (respuesta.equals("MQ==")){
                             dialog.dismiss();
-                            TimeOutSesion timeOutSesion = new TimeOutSesion();
-                            timeOutSesion.stopLogoutTimer();
                             Intent i = new Intent(getActivity(), LogIn.class);
                             startActivity(i);
                             getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
@@ -163,5 +161,10 @@ public class pantallaInformacionUsuarioComun extends Fragment {
 
 
         return view;
+    }
+
+    @Override
+    public void doLogout() {
+        TimeOutSesion.stopLogoutTimer();
     }
 }

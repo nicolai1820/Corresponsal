@@ -8,8 +8,9 @@ import android.os.Handler;
 
 import co.com.netcom.corresponsal.R;
 import co.com.netcom.corresponsal.pantallas.comunes.logIn.LogIn;
+import co.com.netcom.corresponsal.pantallas.funciones.BaseActivity;
 
-public class PantallaResultadoTransaccionLoaderFallida extends AppCompatActivity {
+public class PantallaResultadoTransaccionLoaderFallida extends BaseActivity {
     private Intent a;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
