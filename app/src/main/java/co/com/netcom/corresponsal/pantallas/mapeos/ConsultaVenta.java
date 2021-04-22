@@ -1,5 +1,6 @@
 package co.com.netcom.corresponsal.pantallas.mapeos;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -246,47 +247,49 @@ public class ConsultaVenta {
     public ConsultaVenta fromJsonMap(JSONObject json) throws JSONException {
         ConsultaVenta venta = new ConsultaVenta();
 
-        venta.setDescripcionRespuesta(json.getString("descripcionRespuesta"));
-        venta.setNombreComercio(json.getString("nombreComercio"));
-        venta.setKsn(json.getString("ksn"));
-        venta.setValorCompra(json.getString("valorCompra"));
-        venta.setFechaGeneracion(json.getString("fechaGeneracion"));
-        venta.setValorBaseDevolucion(json.getString("valorBaseDevolucion"));
-        venta.setTerminalId(json.getString("terminalId"));
-        venta.setOrigen(json.getString("origen"));
-        venta.setUsuarioId(json.getString("usuarioId"));
-        venta.setValorIva(json.getString("valorIva"));
-        venta.setCodigoAprobacion(json.getString("codigoAprobacion"));
-        venta.setAnuladoIndicador(json.getString("anuladoIndicador"));
-        venta.setValorInc(json.getString("valorInc"));
-        venta.setCuotas(json.getString("cuotas"));
-        venta.setTrack2(json.getString("track2"));
-        venta.setCodigo(json.getString("codigo"));
-        venta.setComercioId(json.getString("comercioId"));
-        venta.setFechaVencimiento(json.getString("fechaVencimiento"));
-        venta.setValorAdicional(json.getString("valorAdicional"));
-        venta.setConsecutivo(json.getString("consecutivo"));
-        venta.setFecha(json.getString("fecha"));
-        venta.setMovimientoId(json.getString("movimientoId"));
-        venta.setTipoCuenta(json.getString("tipoCuenta"));
-        venta.setPosEntryMode(json.getString("posEntryMode"));
-        venta.setTipoTransaccion(json.getString("tipoTransaccion"));
-        venta.setCodigoRespuesta(json.getString("codigoRespuesta"));
+
+        venta.setDescripcionRespuesta(json.getJSONObject("movement").getString("descripcionRespuesta"));
+        venta.setNombreComercio(json.getJSONObject("movement").getString("nombreComercio"));
+        venta.setKsn(json.getJSONObject("movement").getString("ksn"));
+        venta.setValorCompra(json.getJSONObject("movement").getString("valorCompra"));
+        venta.setFechaGeneracion(json.getJSONObject("movement").getString("fechaGeneracion"));
+        venta.setValorBaseDevolucion(json.getJSONObject("movement").getString("valorBaseDevolucion"));
+        venta.setTerminalId(json.getJSONObject("movement").getString("terminalId"));
+        venta.setOrigen(json.getJSONObject("movement").getString("origen"));
+        venta.setUsuarioId(json.getJSONObject("movement").getString("usuarioId"));
+        venta.setValorIva(json.getJSONObject("movement").getString("valorIva"));
+        venta.setCodigoAprobacion(json.getJSONObject("movement").getString("codigoAprobacion"));
+        venta.setAnuladoIndicador(json.getJSONObject("movement").getString("anuladoIndicador"));
+        venta.setValorInc(json.getJSONObject("movement").getString("valorInc"));
+        venta.setCuotas(json.getJSONObject("movement").getString("cuotas"));
+        venta.setTrack2(json.getJSONObject("movement").getString("track2"));
+        venta.setCodigo(json.getJSONObject("movement").getString("codigo"));
+        venta.setComercioId(json.getJSONObject("movement").getString("comercioId"));
+        venta.setFechaVencimiento(json.getJSONObject("movement").getString("fechaVencimiento"));
+        venta.setValorAdicional(json.getJSONObject("movement").getString("valorAdicional"));
+        venta.setConsecutivo(json.getJSONObject("movement").getString("consecutivo"));
+        venta.setFecha(json.getJSONObject("movement").getString("fecha"));
+        venta.setMovimientoId(json.getJSONObject("movement").getString("movimientoId"));
+        venta.setTipoCuenta(json.getJSONObject("movement").getString("tipoCuenta"));
+        venta.setPosEntryMode(json.getJSONObject("movement").getString("posEntryMode"));
+        venta.setTipoTransaccion(json.getJSONObject("movement").getString("tipoTransaccion"));
+        venta.setCodigoRespuesta(json.getJSONObject("movement").getString("codigoRespuesta"));
 
         return venta;
     }
 
 
 
-    public ArrayList<ConsultaVenta> fromJsonList(JSONObject [] listaInicial ){
+    public ArrayList<ConsultaVenta> fromJsonList(JSONArray listaInicial ){
 
         ArrayList<ConsultaVenta> ventas = new ArrayList<ConsultaVenta>();
 
-        for (int i = 0; i<listaInicial.length;i++){
+        for (int i = 0; i<listaInicial.length();i++){
 
             ConsultaVenta consulta = new ConsultaVenta();
             try {
-                consulta = fromJsonMap(listaInicial[i]);
+                JSONObject objeto =  listaInicial.getJSONObject(i);
+                consulta = fromJsonMap(objeto);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

@@ -17,6 +17,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -32,6 +33,7 @@ import co.com.netcom.corresponsal.pantallas.comunes.logIn.LogIn;
 import co.com.netcom.corresponsal.pantallas.comunes.pantallaConfirmacion.pantallaConfirmacion;
 import co.com.netcom.corresponsal.pantallas.comunes.popUp.PopUp;
 import co.com.netcom.corresponsal.pantallas.corresponsal.usuarioComun.transacciones.consultaSaldo.pantallaConsultaSaldoLectura;
+import co.com.netcom.corresponsal.pantallas.mapeos.ConsultaVenta;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -68,6 +70,7 @@ public class Servicios {
     private static String apiCorreoCancelarGiro ="netcom/merchant/api/mails/corresponsal/cancelarGiro";
     private static String apiCorreoRecaudo ="netcom/merchant/api/mails/corresponsal/recaudo";
     private static String apiCorreoTransferencia ="netcom/merchant/api/mails/corresponsal/transferencia";
+    private static String apiReenvioVoucher ="netcom/merchant/api/transactions/last_trx/?terminalcode=TERMINALCODE&userid=USERID";
 
     private Context context;
     private String token;
@@ -854,5 +857,55 @@ public class Servicios {
         }
     }
 
+
+    public ArrayList<ConsultaVenta> obtenerTransacciones(){
+        PreferencesUsuario prefsInfoUsuario = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_INFO_USUARIO,context);
+        PreferencesUsuario prefsParametrics = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_PARAMETRICAS,context);
+        PreferencesUsuario prefsToken = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_TOKEN,context);
+
+        String userId = prefsInfoUsuario.getUserId();
+        String terminalCode = prefsParametrics.getTerminalCode();
+
+        //Metodo para funcionar con cualquier ssl
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.hostnameVerifier(new HostnameVerifier() {
+            @Override
+            public boolean verify(String hostname, SSLSession session) {
+                return true;
+            }
+        });
+
+        OkHttpClient client = builder.sslSocketFactory(getSLLContext().getSocketFactory()).callTimeout(30,TimeUnit.SECONDS).build();
+
+
+
+        Request request = new Request.Builder()
+                .url(urlBaseServicios+apiReenvioVoucher.replace("TERMINALCODE",terminalCode).replace("USERID",userId))
+                .method("GET", null)
+                .addHeader("Content-Type", "application/json")
+                .addHeader("Authorization", "Bearer "+prefsToken.getToken())
+                .build();
+        try {
+            Response response = client.newCall(request).execute();
+            Log.d("RESPONSE",response.toString());
+
+            String jsonData = response.body().string();
+            JSONObject Jobject = new JSONObject(jsonData);
+            Log.d("RESPUESTA",Jobject.toString());
+
+            ConsultaVenta consulta = new ConsultaVenta();
+
+            ArrayList<ConsultaVenta> ventas= consulta.fromJsonList(Jobject.getJSONArray("listTransaction"));
+
+            Log.d("DATA",ventas.toString());
+
+            return ventas;
+
+        }
+        catch(Exception e){
+            ArrayList<ConsultaVenta> venticas = new ArrayList<>();
+            return venticas;
+        }
+    }
 
 }

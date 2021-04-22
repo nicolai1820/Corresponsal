@@ -103,6 +103,7 @@ public class LogIn extends AppCompatActivity {
 
         //se crea popUp sesion cerrada por timeout
         if (sesion==1){
+            Log.d("TIMEOUT POP UP","volvi a pasar por el if del intent");
             popUp.crearPopUpLoginFallido("Sesión cerrada por inactividad.");
         }
 

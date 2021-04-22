@@ -35,7 +35,7 @@ public class CodigosTransacciones {
     public final static int PAGO_FACTURAS =59;
     public final static int RECARGAS=58;
     public final static int PAGO_PRODUCTOS=57;
-    public final static int TRANSFERENCIA =41;
+    public final static int TRANSFERENCIA =42;
     public final static int CONSULTA_SALDO = 31;
     public final static int ENVIAR_GIROS = 71;
     public final static int RECLAMAR_GIRO = 72;

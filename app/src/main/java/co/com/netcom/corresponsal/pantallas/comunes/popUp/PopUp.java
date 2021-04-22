@@ -890,8 +890,10 @@ public class PopUp extends AppCompatActivity {
                 super.handleMessage(msg);
                 switch (msg.what) {
                     case 1:
+
+                        alertDialogConfirmarEnvioCorreo.dismiss();
                         //Poner pop up resultado correo
-                        if(respuestaCorreo.get("responseCode").equals("Mq==")){
+                        if(respuestaCorreo.get("responseCode").equals("MQ==")){
                             crearPopUpResultadoCorreoComercio("Correo enviado exitosamente al comercio");
                         }else{
                             crearPopUpResultadoCorreoComercio("Hubo un error en el envio del correo al comercio");
@@ -934,7 +936,6 @@ public class PopUp extends AppCompatActivity {
         btnAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                alertDialogConfirmarEnvioCorreo.dismiss();
                 Servicios serv = new Servicios(context);
                 CodificarBase64 base64 = new CodificarBase64();
                 PreferencesUsuario prefsParam = new PreferencesUsuario(ConstantesCorresponsal.SHARED_PREFERENCES_PARAMETRICAS,context);
